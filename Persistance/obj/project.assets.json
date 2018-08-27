@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/var/www/html/Smart%20Finance/System/Persistance/Persistance.csproj",
+      "projectUniqueName": "/var/www/html/Smart%20Accounting/Persistance/Persistance.csproj",
       "projectName": "Persistance",
-      "projectPath": "/var/www/html/Smart%20Finance/System/Persistance/Persistance.csproj",
+      "projectPath": "/var/www/html/Smart%20Accounting/Persistance/Persistance.csproj",
       "packagesPath": "/home/appdiv/.nuget/packages/",
-      "outputPath": "/var/www/html/Smart%20Finance/System/Persistance/obj/",
+      "outputPath": "/var/www/html/Smart%20Accounting/Persistance/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/share/dotnet/sdk/NuGetFallbackFolder"

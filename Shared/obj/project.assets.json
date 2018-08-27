@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/var/www/html/Smart%20Finance/System/Shared/Shared.csproj",
+      "projectUniqueName": "/var/www/html/Smart%20Accounting/Shared/Shared.csproj",
       "projectName": "Shared",
-      "projectPath": "/var/www/html/Smart%20Finance/System/Shared/Shared.csproj",
+      "projectPath": "/var/www/html/Smart%20Accounting/Shared/Shared.csproj",
       "packagesPath": "/home/appdiv/.nuget/packages/",
-      "outputPath": "/var/www/html/Smart%20Finance/System/Shared/obj/",
+      "outputPath": "/var/www/html/Smart%20Accounting/Shared/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/share/dotnet/sdk/NuGetFallbackFolder"
