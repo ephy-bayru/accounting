@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Smart_Accounting.Domain.AccountCharts.AccountTypes;
 using Smart_Accounting.Domain.BankAccount;
 using Smart_Accounting.Domain.Customers;
-using Smart_Accounting.Domain.Employee;
+using Smart_Accounting.Domain.Employe;
 using Smart_Accounting.Domain.Jornals;
 using Smart_Accounting.Domain.OpeningBalances;
 using Smart_Accounting.Domain.Oranizations;

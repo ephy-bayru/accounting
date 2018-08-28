@@ -8,7 +8,7 @@ using Smart_Accounting.Domain.BankAccount;
 using Smart_Accounting.Domain.CalendarPeriods;
 using Smart_Accounting.Domain.Currencies;
 using Smart_Accounting.Domain.Customers;
-using Smart_Accounting.Domain.Employee;
+using Smart_Accounting.Domain.Employe;
 using Smart_Accounting.Domain.ExchangeRates;
 using Smart_Accounting.Domain.Jornals;
 using Smart_Accounting.Domain.Ledgers;

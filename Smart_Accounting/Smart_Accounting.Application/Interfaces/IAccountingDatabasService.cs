@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Smart_Accounting.Domain.Employee;
+using Smart_Accounting.Domain.Employe;
 using Smart_Accounting.Domain.AccountCharts;
 using Smart_Accounting.Domain.AccountCharts.AccountTypes;
 using Smart_Accounting.Domain.BankAccount;
