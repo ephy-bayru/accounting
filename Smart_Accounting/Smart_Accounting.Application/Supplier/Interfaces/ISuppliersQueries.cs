@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Smart_Accounting.Domain;
+using Smart_Accounting.Domain.Supplier;
 
 namespace Smart_Accounting.Application.Supplier.Interfaces {
     public interface ISuppliersQuery {

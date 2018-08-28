@@ -2,7 +2,7 @@ using Smart_Accounting.Application.Supplier.Interfaces;
 
 namespace Smart_Accounting.Application.Supplier.Commands
 {
-    public class SuppliersCommands : ISupplierCommandes
+    public class SupplierCommandes : ISupplierCommandes
     {
         public void Create()
         {

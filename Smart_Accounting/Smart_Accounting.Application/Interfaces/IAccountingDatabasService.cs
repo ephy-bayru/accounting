@@ -1,6 +1,19 @@
 using Microsoft.EntityFrameworkCore;
-using Smart_Accounting.Domain;
+using Smart_Accounting.Domain.Employee;
+using Smart_Accounting.Domain.AccountCharts;
+using Smart_Accounting.Domain.AccountCharts.AccountTypes;
+using Smart_Accounting.Domain.BankAccount;
+using Smart_Accounting.Domain.CalendarPeriods;
+using Smart_Accounting.Domain.Currencies;
 using Smart_Accounting.Domain.Customers;
+using Smart_Accounting.Domain.ExchangeRates;
+using Smart_Accounting.Domain.Jornals;
+using Smart_Accounting.Domain.Ledgers;
+using Smart_Accounting.Domain.OpeningBalances;
+using Smart_Accounting.Domain.Oranizations;
+using Smart_Accounting.Domain.Supplier;
+using Smart_Accounting.Domain.SystemDefault;
+using Smart_Accounting.Domain.Taxes;
 
 namespace Smart_Accounting.Application.Interfaces
 {

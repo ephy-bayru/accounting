@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Smart_Accounting.Domain;
+using Smart_Accounting.Domain.BankAccount;
 
 namespace Smart_Accounting.Persistance.BankAccount {
-    public class BankAccountConfiguration : IEntityTypeConfiguration<BankAccounts> {
+    public class BankAccountsConfiguration : IEntityTypeConfiguration<BankAccounts> {
 
         public void Configure (EntityTypeBuilder<BankAccounts> builder) {
             builder.HasKey (e => e.BankId);

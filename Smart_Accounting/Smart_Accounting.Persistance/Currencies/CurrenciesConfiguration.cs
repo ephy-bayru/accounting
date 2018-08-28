@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Smart_Accounting.Domain;
+using Smart_Accounting.Domain.Currencies;
 
 namespace Smart_Accounting.Persistance.Currencys {
-    public class CurrencyConfiguration : IEntityTypeConfiguration<Currency> {
+    public class CurrenciesConfiguration : IEntityTypeConfiguration<Currency> {
 
         public void Configure (EntityTypeBuilder<Currency> builder) {
             builder.ToTable ("currency");

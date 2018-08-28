@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Smart_Accounting.Domain;
+using Smart_Accounting.Domain.ExchangeRates;
 
 namespace Smart_Accounting.Persistance.ExchangeRates {
-    public class ExchangeRateConfiguration : IEntityTypeConfiguration<ExchangeRate> {
+    public class ExchangeRatesConfiguration : IEntityTypeConfiguration<ExchangeRate> {
         public void Configure (EntityTypeBuilder<ExchangeRate> builder) {
             builder.HasKey (e => e.RateId);
 

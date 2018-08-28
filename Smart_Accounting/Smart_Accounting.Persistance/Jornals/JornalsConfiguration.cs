@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Smart_Accounting.Domain;
+using Smart_Accounting.Domain.Jornals;
 
 namespace Smart_Accounting.Persistance.Jornals {
-    public class JornalConfiguration : IEntityTypeConfiguration<Jornal> {
+    public class JornalsConfiguration : IEntityTypeConfiguration<Jornal> {
         public void Configure (EntityTypeBuilder<Jornal> builder) {
             builder.ToTable ("jornal");
 

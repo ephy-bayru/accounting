@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Smart_Accounting.Domain;
+using Smart_Accounting.Domain.AccountCharts.AccountTypes;
 
-namespace Smart_Accounting.Persistance.Account.AccountTypes {
-    public class AccountTypeConfiguration : IEntityTypeConfiguration<AccountType> {
+namespace Smart_Accounting.Persistance.AccountCharts.AccountTypes {
+    public class AccountTypesConfiguration : IEntityTypeConfiguration<AccountType> {
 
         public void Configure (EntityTypeBuilder<AccountType> builder) {
             builder.HasKey (e => e.AccTypeId);

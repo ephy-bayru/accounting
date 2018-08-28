@@ -1,20 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Smart_Accounting.Domain;
+using Smart_Accounting.Domain.Oranizations;
 
-namespace Smart_Accounting.Persistance.Taxs {
-    public class TaxConfiguration : IEntityTypeConfiguration<Tax> {
-        public void Configure (EntityTypeBuilder<Tax> builder) {
-            builder.ToTable ("TAX");
-
-            builder.HasIndex (e => e.AccountId)
-                .HasName ("fk_table1_account_idx");
+namespace Smart_Accounting.Persistance.Organizations {
+    public class OrganizationsConfiguration : IEntityTypeConfiguration<Organization> {
+        public void Configure (EntityTypeBuilder<Organization> builder) {
+            builder.ToTable ("ORGANIZATION");
 
             builder.Property (e => e.Id).HasColumnName ("ID");
-
-            builder.Property (e => e.AccountId).HasColumnName ("ACCOUNT_ID");
-
-            builder.Property (e => e.Amount).HasColumnName ("amount");
 
             builder.Property (e => e.DateAdded)
                 .HasColumnName ("date_added")
@@ -27,16 +20,22 @@ namespace Smart_Accounting.Persistance.Taxs {
                 .HasDefaultValueSql ("'CURRENT_TIMESTAMP'")
                 .ValueGeneratedOnAddOrUpdate ();
 
+            builder.Property (e => e.Location)
+                .HasColumnName ("location")
+                .HasColumnType ("varchar(45)");
+
             builder.Property (e => e.Name)
                 .IsRequired ()
                 .HasColumnName ("name")
                 .HasColumnType ("varchar(45)");
 
-            builder.HasOne (d => d.Account)
-                .WithMany (p => p.Tax)
-                .HasForeignKey (d => d.AccountId)
-                .OnDelete (DeleteBehavior.ClientSetNull)
-                .HasConstraintName ("fk_table1_account");
+            builder.Property (e => e.Organizationcol)
+                .HasColumnName ("ORGANIZATIONcol")
+                .HasColumnType ("varchar(10)");
+
+            builder.Property (e => e.Tin)
+                .HasColumnName ("TIN")
+                .HasColumnType ("varchar(10)");
         }
     }
 }

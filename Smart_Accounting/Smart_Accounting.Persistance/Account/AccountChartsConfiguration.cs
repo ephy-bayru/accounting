@@ -1,10 +1,12 @@
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using Smart_Accounting.Domain;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Smart_Accounting.Persistance.AccountCharts{
-    public class AccountChartConfiguration : IEntityTypeConfiguration<AccountChart> {
-        public void Configure (Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<AccountChart> builder) {
+using Smart_Accounting.Domain.AccountCharts;
+
+namespace Smart_Accounting.Persistance.AccountCharts {
+    public class AccountsChartsConfiguration : IEntityTypeConfiguration<AccountChart> {
+        public void Configure (EntityTypeBuilder<AccountChart> builder) {
             builder.HasKey (e => e.AccountId);
 
             builder.ToTable ("account_chart");
@@ -69,5 +71,6 @@ namespace Smart_Accounting.Persistance.AccountCharts{
                 .HasForeignKey (d => d.SubAccountCode)
                 .HasConstraintName ("fk_account_chart_parent");
         }
+
     }
 }

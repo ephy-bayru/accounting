@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Smart_Accounting.Domain;
+using Smart_Accounting.Domain.Ledgers;
 
 namespace Smart_Accounting.Persistance.Ledgers
 {
-    public class LedgerConfiguration : IEntityTypeConfiguration<Ledger> 
+    public class LedgersConfiguration : IEntityTypeConfiguration<Ledger> 
     {
         public void Configure(EntityTypeBuilder<Ledger> builder)
         {   

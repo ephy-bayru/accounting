@@ -1,19 +1,15 @@
 using System.Collections.Generic;
 using Smart_Accounting.Application.AccountCharts.Interfaces;
-using Smart_Accounting.Domain;
+using Smart_Accounting.Domain.AccountCharts;
 
-namespace Smart_Accounting.Application.AccountCharts.Queries
-{
-    public class AccountChartQuery : IAccountChartQueries
-    {
-        public IEnumerable<AccountChart> GetAll()
-        {
-            throw new System.NotImplementedException();
+namespace Smart_Accounting.Application.AccountCharts.Queries {
+    public class AccountChartQuery : IAccountChartQueries {
+        IEnumerable<AccountChart> IAccountChartQueries.GetAll () {
+            throw new System.NotImplementedException ();
         }
 
-        public AccountChart GetById(uint accountId)
-        {
-            throw new System.NotImplementedException();
+        AccountChart IAccountChartQueries.GetById (uint accountId) {
+            throw new System.NotImplementedException ();
         }
     }
 }

@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Smart_Accounting.Domain;
+using Smart_Accounting.Domain.OpeningBalances;
 
 namespace Smart_Accounting.Persistance.OpeningBalances {
     public class OpeningBalanceConfiguration : IEntityTypeConfiguration<OpeningBalance> {

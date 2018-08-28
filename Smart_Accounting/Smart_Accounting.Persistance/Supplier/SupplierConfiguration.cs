@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Smart_Accounting.Domain;
+using Smart_Accounting.Domain.Supplier;
 
 namespace Smart_Accounting.Persistance.Supplier {
     public class SuppliersConfiguration : IEntityTypeConfiguration<Suppliers> {

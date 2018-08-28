@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+using System;
 using Smart_Accounting.Domain.AccountCharts;
 
-namespace Smart_Accounting.Domain.Employee {
-    public partial class Employees {
+namespace Smart_Accounting.Domain.Employe
+{
+    public class Employees
+    {
         public uint Id { get; set; }
         public string Name { get; set; }
         public uint AccountId { get; set; }
