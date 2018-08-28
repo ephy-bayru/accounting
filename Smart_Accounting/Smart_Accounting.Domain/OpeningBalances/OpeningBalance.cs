@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Smart_Accounting.Domain.AccountCharts;
+using Smart_Accounting.Domain.CalendarPeriods;
 
-namespace Smart_Accounting.Domain
-{
-    public partial class OpeningBalance
-    {
+namespace Smart_Accounting.Domain.OpeningBalances {
+    public partial class OpeningBalance {
         public uint Id { get; set; }
         public uint AccountId { get; set; }
         public uint PeriodId { get; set; }

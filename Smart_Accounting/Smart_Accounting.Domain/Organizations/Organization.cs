@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using Smart_Accounting.Domain.AccountCharts;
 
-namespace Smart_Accounting.Domain
-{
-    public partial class Organization
-    {
-        public Organization()
-        {
-            AccountChart = new HashSet<AccountChart>();
+namespace Smart_Accounting.Domain.Oranizations {
+    public partial class Organization {
+        public Organization () {
+            AccountChart = new HashSet<AccountChart> ();
         }
 
         public uint Id { get; set; }

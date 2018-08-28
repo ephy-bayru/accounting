@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using Smart_Accounting.Domain.ExchangeRates;
+using Smart_Accounting.Domain.Jornals;
 
-namespace Smart_Accounting.Domain
-{
-    public partial class Currency
-    {
-        public Currency()
-        {
-            Jornal = new HashSet<Jornal>();
+namespace Smart_Accounting.Domain.Currencies {
+    public partial class Currency {
+        public Currency () {
+            Jornal = new HashSet<Jornal> ();
         }
 
         public uint CurrencyId { get; set; }

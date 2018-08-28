@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using Smart_Accounting.Domain.CalendarPeriods;
+using Smart_Accounting.Domain.Jornals;
 
-namespace Smart_Accounting.Domain
-{
-    public partial class Ledger
-    {
-        public Ledger()
-        {
-            Jornal = new HashSet<Jornal>();
+namespace Smart_Accounting.Domain.Ledgers {
+    public partial class Ledger {
+        public Ledger () {
+            Jornal = new HashSet<Jornal> ();
         }
 
         public uint Id { get; set; }

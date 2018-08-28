@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Smart_Accounting.Domain
-{
-    public partial class AccountType
-    {
-        public AccountType()
-        {
-            AccountChart = new HashSet<AccountChart>();
+namespace Smart_Accounting.Domain.AccountCharts.AccountTypes {
+    public partial class AccountType {
+        public AccountType () {
+            AccountChart = new HashSet<AccountChart> ();
         }
 
         public uint AccTypeId { get; set; }

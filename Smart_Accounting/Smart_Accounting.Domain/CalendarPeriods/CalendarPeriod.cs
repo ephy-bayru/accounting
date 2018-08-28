@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using Smart_Accounting.Domain.Ledgers;
+using Smart_Accounting.Domain.OpeningBalances;
 
-namespace Smart_Accounting.Domain
-{
-    public class CalendarPeriod
-    {
-        public CalendarPeriod()
-        {
-            Ledger = new HashSet<Ledger>();
-            OpeningBalance = new HashSet<OpeningBalance>();
+namespace Smart_Accounting.Domain.CalendarPeriods {
+    public class CalendarPeriod {
+        public CalendarPeriod () {
+            Ledger = new HashSet<Ledger> ();
+            OpeningBalance = new HashSet<OpeningBalance> ();
         }
 
         public uint PeriodId { get; set; }

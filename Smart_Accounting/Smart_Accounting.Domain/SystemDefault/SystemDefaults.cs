@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Smart_Accounting.Domain
-{
-    public partial class SystemDefaults
-    {
+namespace Smart_Accounting.Domain.SystemDefault {
+    public partial class SystemDefaults {
         public uint Id { get; set; }
         public string Name { get; set; }
         public string Category { get; set; }

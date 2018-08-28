@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Smart_Accounting.Domain.AccountCharts;
 
-namespace Smart_Accounting.Domain
-{
-    public partial class BankAccounts
-    {
+namespace Smart_Accounting.Domain.BankAccount {
+    public partial class BankAccounts {
         public uint BankId { get; set; }
         public string Name { get; set; }
         public string BankAccountCode { get; set; }

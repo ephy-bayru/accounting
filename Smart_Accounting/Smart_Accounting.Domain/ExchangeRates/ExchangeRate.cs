@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using Smart_Accounting.Domain.Currencies;
 
-namespace Smart_Accounting.Domain
-{
-    public partial class ExchangeRate
-    {
-        public ExchangeRate()
-        {
-            Currency = new HashSet<Currency>();
+namespace Smart_Accounting.Domain.ExchangeRates {
+    public partial class ExchangeRate {
+        public ExchangeRate () {
+            Currency = new HashSet<Currency> ();
         }
 
         public uint RateId { get; set; }

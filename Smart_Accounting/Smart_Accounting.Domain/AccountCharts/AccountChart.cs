@@ -1,21 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using Smart_Accounting.Domain.AccountCharts.AccountTypes;
+using Smart_Accounting.Domain.BankAccount;
 using Smart_Accounting.Domain.Customers;
+using Smart_Accounting.Domain.Employee;
+using Smart_Accounting.Domain.Jornals;
+using Smart_Accounting.Domain.OpeningBalances;
+using Smart_Accounting.Domain.Oranizations;
+using Smart_Accounting.Domain.Supplier;
+using Smart_Accounting.Domain.Taxes;
 
-namespace Smart_Accounting.Domain
-{
-    public partial class AccountChart
-    {
-                public AccountChart()
-        {
-            BankAccounts = new HashSet<BankAccounts>();
-            Customer = new HashSet<Customer>();
-            Employees = new HashSet<Employees>();
-            InverseSubAccountCodeNavigation = new HashSet<AccountChart>();
-            Jornal = new HashSet<Jornal>();
-            OpeningBalance = new HashSet<OpeningBalance>();
-            Suppliers = new HashSet<Suppliers>();
-            Tax = new HashSet<Tax>();
+namespace Smart_Accounting.Domain.AccountCharts {
+    public partial class AccountChart {
+        public AccountChart () {
+            BankAccounts = new HashSet<BankAccounts> ();
+            Customer = new HashSet<Customer> ();
+            Employees = new HashSet<Employees> ();
+            InverseSubAccountCodeNavigation = new HashSet<AccountChart> ();
+            Jornal = new HashSet<Jornal> ();
+            OpeningBalance = new HashSet<OpeningBalance> ();
+            Suppliers = new HashSet<Suppliers> ();
+            Tax = new HashSet<Tax> ();
         }
 
         public string AccountCode { get; set; }
@@ -38,6 +43,6 @@ namespace Smart_Accounting.Domain
         public ICollection<OpeningBalance> OpeningBalance { get; set; }
         public ICollection<Suppliers> Suppliers { get; set; }
         public ICollection<Tax> Tax { get; set; }
-}
+    }
 
 }

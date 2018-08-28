@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Smart_Accounting.Domain.AccountCharts;
 
-namespace Smart_Accounting.Domain
-{
-    public partial class Suppliers
-    {
+namespace Smart_Accounting.Domain.Supplier {
+    public partial class Suppliers {
         public int SupplierId { get; set; }
         public string Name { get; set; }
         public string Discription { get; set; }

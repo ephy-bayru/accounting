@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using Smart_Accounting.Domain.AccountCharts;
+using Smart_Accounting.Domain.Currencies;
+using Smart_Accounting.Domain.Ledgers;
 
-namespace Smart_Accounting.Domain
-{
-    public partial class Jornal
-    {
+namespace Smart_Accounting.Domain.Jornals {
+    public partial class Jornal {
         public uint JornalId { get; set; }
         public double Credit { get; set; }
         public uint AccountId { get; set; }
