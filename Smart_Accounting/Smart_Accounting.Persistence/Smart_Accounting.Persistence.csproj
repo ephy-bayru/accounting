@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\Smart_Accounting.Domain\Smart_Accounting.Domain.csproj"/>
+    <ProjectReference Include="..\Smart_Accounting.Application\Smart_Accounting.Application.csproj"/>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.2"/>
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.1.1"/>
+  </ItemGroup>
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\Smart_Accounting.Application\Smart_Accounting.Application.csproj" />
+    <ProjectReference Include="..\Smart_Accounting.Commons\Smart_Accounting.Commons.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+</Project>
