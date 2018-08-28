@@ -1,0 +1,14 @@
+/var/www/html/SmartFinance/Smart_Accounting/Smart_Accounting.Application/bin/Debug/netstandard2.0/Smart_Accounting.Application.deps.json
+/var/www/html/SmartFinance/Smart_Accounting/Smart_Accounting.Application/bin/Debug/netstandard2.0/Smart_Accounting.Application.dll
+/var/www/html/SmartFinance/Smart_Accounting/Smart_Accounting.Application/bin/Debug/netstandard2.0/Smart_Accounting.Application.pdb
+/var/www/html/SmartFinance/Smart_Accounting/Smart_Accounting.Application/bin/Debug/netstandard2.0/Smart_Accounting.Commons.dll
+/var/www/html/SmartFinance/Smart_Accounting/Smart_Accounting.Application/bin/Debug/netstandard2.0/Smart_Accounting.Domain.dll
+/var/www/html/SmartFinance/Smart_Accounting/Smart_Accounting.Application/bin/Debug/netstandard2.0/Smart_Accounting.Commons.pdb
+/var/www/html/SmartFinance/Smart_Accounting/Smart_Accounting.Application/bin/Debug/netstandard2.0/Smart_Accounting.Domain.pdb
+/var/www/html/SmartFinance/Smart_Accounting/Smart_Accounting.Application/obj/Debug/netstandard2.0/Smart_Accounting.Application.csprojAssemblyReference.cache
+/var/www/html/SmartFinance/Smart_Accounting/Smart_Accounting.Application/obj/Debug/netstandard2.0/Smart_Accounting.Application.csproj.CoreCompileInputs.cache
+/var/www/html/SmartFinance/Smart_Accounting/Smart_Accounting.Application/obj/Debug/netstandard2.0/Smart_Accounting.Application.AssemblyInfoInputs.cache
+/var/www/html/SmartFinance/Smart_Accounting/Smart_Accounting.Application/obj/Debug/netstandard2.0/Smart_Accounting.Application.AssemblyInfo.cs
+/var/www/html/SmartFinance/Smart_Accounting/Smart_Accounting.Application/obj/Debug/netstandard2.0/Smart_Accounting.Application.csproj.CopyComplete
+/var/www/html/SmartFinance/Smart_Accounting/Smart_Accounting.Application/obj/Debug/netstandard2.0/Smart_Accounting.Application.dll
+/var/www/html/SmartFinance/Smart_Accounting/Smart_Accounting.Application/obj/Debug/netstandard2.0/Smart_Accounting.Application.pdb

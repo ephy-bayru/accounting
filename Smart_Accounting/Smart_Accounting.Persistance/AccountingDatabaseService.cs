@@ -33,6 +33,9 @@ using Smart_Accounting.Persistance.Supplier;
 
 namespace Smart_Accounting.Persistance {
     public class AccountingDatabaseService : DbContext, IAccountingDatabaseService {
+        public AccountingDatabaseService () {
+
+        }
         public AccountingDatabaseService (DbContextOptions<AccountingDatabaseService> options) : base (options) {
             //   DataBase.SetInitializer(new AccountingDatabaseInitializer());
         }
@@ -53,11 +56,10 @@ namespace Smart_Accounting.Persistance {
         public DbSet<SystemDefaults> SystemDefaults { get; set; }
         public DbSet<Tax> Tax { get; set; }
         public DbSet<Customer> Customers { get; set; }
-        public DbSet<Employees> Employee { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder) {
             if (!optionsBuilder.IsConfigured) {
-                optionsBuilder.UseMySql ("server=localhost;user=root;port=3306;database=smart_finance;");
+                optionsBuilder.UseMySql ("server=localhost;user=mikael;port=3306;database=bionic_inventory;");
             }
         }
 

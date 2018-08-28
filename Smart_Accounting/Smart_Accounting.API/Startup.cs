@@ -14,9 +14,11 @@ using Smart_Accounting.Application.AccountCharts.Queries;
 using Smart_Accounting.Application.Customers.Commands;
 using Smart_Accounting.Application.Customers.Interfaces;
 using Smart_Accounting.Application.Customers.Queries;
+using Smart_Accounting.Application.Interfaces;
 using Smart_Accounting.Application.Supplier.Commands;
 using Smart_Accounting.Application.Supplier.Interfaces;
 using Smart_Accounting.Application.Supplier.Queries;
+using Smart_Accounting.Persistance;
 
 namespace Smart_Accounting.API
 {
@@ -32,13 +34,17 @@ namespace Smart_Accounting.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IAccountingDatabaseService, AccountingDatabaseService>();
             services.AddMvc();
+         
             services.AddScoped<IAccountChartCommands, AccountChartCommands>();
+            
             services.AddScoped<IAccountChartQueries, AccountChartQuery>();
             services.AddScoped<ISupplierCommandes, SupplierCommandes>();
             services.AddScoped<ISuppliersQuery, SuppliersQuery>();
             services.AddScoped<ICustomerCommands, CustomerCommand>();
             services.AddScoped<ICustomerQuery, CustomerQuery>();
+    
             
         }
 

@@ -3,17 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Smart_Accounting.Application.Customers.Interfaces;
 
 namespace Smart_Accounting.API.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
+
+        private readonly ICustomerQuery _customerQ;
+        public ValuesController(ICustomerQuery customer) {
+            _customerQ = customer;
+        }
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            var x = _customerQ.GetAll();
+            return Ok(x);
         }
 
         // GET api/values/5
