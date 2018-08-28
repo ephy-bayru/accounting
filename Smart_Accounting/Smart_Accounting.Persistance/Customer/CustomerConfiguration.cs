@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Smart_Accounting.Domain;
+using Smart_Accounting.Domain.Customers;
 
 namespace Smart_Accounting.Persistance.Customers {
     public class CustomerConfiguration : IEntityTypeConfiguration<Customer> {

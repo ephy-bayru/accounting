@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Smart_Accounting.Application.Interfaces;
 using Smart_Accounting.Domain;
+using Smart_Accounting.Domain.Customers;
 using Smart_Accounting.Persistance.Account.AccountTypes;
 using Smart_Accounting.Persistance.AccountCharts;
 using Smart_Accounting.Persistance.BankAccount;
@@ -42,6 +43,7 @@ namespace Smart_Accounting.Persistance
         public  DbSet<Suppliers> Suppliers { get; set; }
         public  DbSet<SystemDefaults> SystemDefaults { get; set; }
         public  DbSet<Tax> Tax { get; set; }
+       public  DbSet<Customer> Customer { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

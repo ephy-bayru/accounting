@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Smart_Accounting.Domain
+namespace Smart_Accounting.Domain.Employee
 {
     public partial class Employees
     {

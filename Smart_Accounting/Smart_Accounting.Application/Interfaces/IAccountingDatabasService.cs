@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Smart_Accounting.Domain;
+using Smart_Accounting.Domain.Customers;
 
 namespace Smart_Accounting.Application.Interfaces
 {

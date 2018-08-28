@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Smart_Accounting.Domain.Customers;
 
 namespace Smart_Accounting.Domain
 {
