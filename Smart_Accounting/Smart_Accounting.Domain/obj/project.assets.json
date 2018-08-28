@@ -183,11 +183,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/var/www/html/Smart_Accounting/Smart_Accounting.Domain/Smart_Accounting.Domain.csproj",
+      "projectUniqueName": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Domain/Smart_Accounting.Domain.csproj",
       "projectName": "Smart_Accounting.Domain",
-      "projectPath": "/var/www/html/Smart_Accounting/Smart_Accounting.Domain/Smart_Accounting.Domain.csproj",
+      "projectPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Domain/Smart_Accounting.Domain.csproj",
       "packagesPath": "/home/appdiv/.nuget/packages/",
-      "outputPath": "/var/www/html/Smart_Accounting/Smart_Accounting.Domain/obj/",
+      "outputPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Domain/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/share/dotnet/sdk/NuGetFallbackFolder"

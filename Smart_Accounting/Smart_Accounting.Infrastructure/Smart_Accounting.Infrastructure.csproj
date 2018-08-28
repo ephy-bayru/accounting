@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Smart_Accounting.Application\Smart_Accounting.Application.csproj" />
+    <ProjectReference Include="..\Smart_Accounting.Domain\Smart_Accounting.Domain.csproj" />
     <ProjectReference Include="..\Smart_Accounting.Commons\Smart_Accounting.Commons.csproj" />
   </ItemGroup>
 

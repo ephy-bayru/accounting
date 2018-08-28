@@ -2559,11 +2559,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/var/www/html/Smart_Accounting/Smart_Accounting.Application/Smart_Accounting.Application.csproj",
+      "projectUniqueName": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Application/Smart_Accounting.Application.csproj",
       "projectName": "Smart_Accounting.Application",
-      "projectPath": "/var/www/html/Smart_Accounting/Smart_Accounting.Application/Smart_Accounting.Application.csproj",
+      "projectPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Application/Smart_Accounting.Application.csproj",
       "packagesPath": "/home/appdiv/.nuget/packages/",
-      "outputPath": "/var/www/html/Smart_Accounting/Smart_Accounting.Application/obj/",
+      "outputPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Application/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/share/dotnet/sdk/NuGetFallbackFolder"
@@ -2580,11 +2580,11 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "/var/www/html/Smart_Accounting/Smart_Accounting.Commons/Smart_Accounting.Commons.csproj": {
-              "projectPath": "/var/www/html/Smart_Accounting/Smart_Accounting.Commons/Smart_Accounting.Commons.csproj"
+            "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Commons/Smart_Accounting.Commons.csproj": {
+              "projectPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Commons/Smart_Accounting.Commons.csproj"
             },
-            "/var/www/html/Smart_Accounting/Smart_Accounting.Domain/Smart_Accounting.Domain.csproj": {
-              "projectPath": "/var/www/html/Smart_Accounting/Smart_Accounting.Domain/Smart_Accounting.Domain.csproj"
+            "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Domain/Smart_Accounting.Domain.csproj": {
+              "projectPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Domain/Smart_Accounting.Domain.csproj"
             }
           }
         }

@@ -12668,11 +12668,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/var/www/html/Smart_Accounting/Smart_Accounting.API/Smart_Accounting.API.csproj",
+      "projectUniqueName": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.API/Smart_Accounting.API.csproj",
       "projectName": "Smart_Accounting.API",
-      "projectPath": "/var/www/html/Smart_Accounting/Smart_Accounting.API/Smart_Accounting.API.csproj",
+      "projectPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.API/Smart_Accounting.API.csproj",
       "packagesPath": "/home/appdiv/.nuget/packages/",
-      "outputPath": "/var/www/html/Smart_Accounting/Smart_Accounting.API/obj/",
+      "outputPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.API/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/share/dotnet/sdk/NuGetFallbackFolder"

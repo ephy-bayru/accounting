@@ -942,7 +942,6 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "2.1.2",
           "Smart_Accounting.Commons": "1.0.0",
           "Smart_Accounting.Domain": "1.0.0"
         },
@@ -3797,6 +3796,7 @@
       "NETStandard.Library >= 2.0.1",
       "Pomelo.EntityFrameworkCore.MySql >= 2.1.1",
       "Smart_Accounting.Application >= 1.0.0",
+      "Smart_Accounting.Commons >= 1.0.0",
       "Smart_Accounting.Domain >= 1.0.0"
     ]
   },
@@ -3807,11 +3807,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/var/www/html/Smart_Accounting/Smart_Accounting.Persistence/Smart_Accounting.Persistence.csproj",
-      "projectName": "Smart_Accounting.Persistence",
-      "projectPath": "/var/www/html/Smart_Accounting/Smart_Accounting.Persistence/Smart_Accounting.Persistence.csproj",
+      "projectUniqueName": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Persistance/Smart_Accounting.Persistance.csproj",
+      "projectName": "Smart_Accounting.Persistance",
+      "projectPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Persistance/Smart_Accounting.Persistance.csproj",
       "packagesPath": "/home/appdiv/.nuget/packages/",
-      "outputPath": "/var/www/html/Smart_Accounting/Smart_Accounting.Persistence/obj/",
+      "outputPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Persistance/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/share/dotnet/sdk/NuGetFallbackFolder"
@@ -3828,11 +3828,14 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "/var/www/html/Smart_Accounting/Smart_Accounting.Application/Smart_Accounting.Application.csproj": {
-              "projectPath": "/var/www/html/Smart_Accounting/Smart_Accounting.Application/Smart_Accounting.Application.csproj"
+            "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Application/Smart_Accounting.Application.csproj": {
+              "projectPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Application/Smart_Accounting.Application.csproj"
             },
-            "/var/www/html/Smart_Accounting/Smart_Accounting.Domain/Smart_Accounting.Domain.csproj": {
-              "projectPath": "/var/www/html/Smart_Accounting/Smart_Accounting.Domain/Smart_Accounting.Domain.csproj"
+            "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Commons/Smart_Accounting.Commons.csproj": {
+              "projectPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Commons/Smart_Accounting.Commons.csproj"
+            },
+            "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Domain/Smart_Accounting.Domain.csproj": {
+              "projectPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Domain/Smart_Accounting.Domain.csproj"
             }
           }
         }

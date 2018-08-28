@@ -18,9 +18,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Smart_Accounting.Application\Smart_Accounting.Application.csproj" />
-    <ProjectReference Include="..\Smart_Accounting.Persistence\Smart_Accounting.Persistence.csproj" />
-    <ProjectReference Include="..\Smart_Accounting.Commons\Smart_Accounting.Commons.csproj" />
     <ProjectReference Include="..\Smart_Accounting.Infrastructure\Smart_Accounting.Infrastructure.csproj" />
+    <ProjectReference Include="..\Smart_Accounting.Persistance\Smart_Accounting.Persistance.csproj" />
+    <ProjectReference Include="..\Smart_Accounting.Commons\Smart_Accounting.Commons.csproj" />
   </ItemGroup>
 
 </Project>
