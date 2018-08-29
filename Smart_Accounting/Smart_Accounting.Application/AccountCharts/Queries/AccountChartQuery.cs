@@ -16,11 +16,13 @@ namespace Smart_Accounting.Application.AccountCharts.Queries {
 
         public IEnumerable<AccountChart> GetAll()
         {
+            //TODO Define Functionality that will get all the accounts
             throw new System.NotImplementedException();
         }
 
         public IEnumerable<AccountType> GetAllAccountTypes()
         {
+            
             return _database.AccountType.ToList();
         }
 
