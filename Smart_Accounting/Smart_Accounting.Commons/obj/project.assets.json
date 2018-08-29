@@ -177,23 +177,23 @@
     ]
   },
   "packageFolders": {
-    "/home/mikael/.nuget/packages/": {},
+    "/home/appdiv/.nuget/packages/": {},
     "/usr/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/var/www/html/SmartFinance/Smart_Accounting/Smart_Accounting.Commons/Smart_Accounting.Commons.csproj",
+      "projectUniqueName": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Commons/Smart_Accounting.Commons.csproj",
       "projectName": "Smart_Accounting.Commons",
-      "projectPath": "/var/www/html/SmartFinance/Smart_Accounting/Smart_Accounting.Commons/Smart_Accounting.Commons.csproj",
-      "packagesPath": "/home/mikael/.nuget/packages/",
-      "outputPath": "/var/www/html/SmartFinance/Smart_Accounting/Smart_Accounting.Commons/obj/",
+      "projectPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Commons/Smart_Accounting.Commons.csproj",
+      "packagesPath": "/home/appdiv/.nuget/packages/",
+      "outputPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Commons/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/home/mikael/.nuget/NuGet/NuGet.Config"
+        "/home/appdiv/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"

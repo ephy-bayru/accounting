@@ -3802,23 +3802,23 @@
     ]
   },
   "packageFolders": {
-    "/home/mikael/.nuget/packages/": {},
+    "/home/appdiv/.nuget/packages/": {},
     "/usr/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/var/www/html/SmartFinance/Smart_Accounting/Smart_Accounting.Persistance/Smart_Accounting.Persistance.csproj",
+      "projectUniqueName": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Persistance/Smart_Accounting.Persistance.csproj",
       "projectName": "Smart_Accounting.Persistance",
-      "projectPath": "/var/www/html/SmartFinance/Smart_Accounting/Smart_Accounting.Persistance/Smart_Accounting.Persistance.csproj",
-      "packagesPath": "/home/mikael/.nuget/packages/",
-      "outputPath": "/var/www/html/SmartFinance/Smart_Accounting/Smart_Accounting.Persistance/obj/",
+      "projectPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Persistance/Smart_Accounting.Persistance.csproj",
+      "packagesPath": "/home/appdiv/.nuget/packages/",
+      "outputPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Persistance/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/home/mikael/.nuget/NuGet/NuGet.Config"
+        "/home/appdiv/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
@@ -3829,14 +3829,14 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "/var/www/html/SmartFinance/Smart_Accounting/Smart_Accounting.Application/Smart_Accounting.Application.csproj": {
-              "projectPath": "/var/www/html/SmartFinance/Smart_Accounting/Smart_Accounting.Application/Smart_Accounting.Application.csproj"
+            "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Application/Smart_Accounting.Application.csproj": {
+              "projectPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Application/Smart_Accounting.Application.csproj"
             },
-            "/var/www/html/SmartFinance/Smart_Accounting/Smart_Accounting.Commons/Smart_Accounting.Commons.csproj": {
-              "projectPath": "/var/www/html/SmartFinance/Smart_Accounting/Smart_Accounting.Commons/Smart_Accounting.Commons.csproj"
+            "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Commons/Smart_Accounting.Commons.csproj": {
+              "projectPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Commons/Smart_Accounting.Commons.csproj"
             },
-            "/var/www/html/SmartFinance/Smart_Accounting/Smart_Accounting.Domain/Smart_Accounting.Domain.csproj": {
-              "projectPath": "/var/www/html/SmartFinance/Smart_Accounting/Smart_Accounting.Domain/Smart_Accounting.Domain.csproj"
+            "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Domain/Smart_Accounting.Domain.csproj": {
+              "projectPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Domain/Smart_Accounting.Domain.csproj"
             }
           }
         }
