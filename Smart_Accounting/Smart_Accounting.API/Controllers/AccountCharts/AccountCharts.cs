@@ -4,10 +4,9 @@ using Smart_Accounting.Application.AccountCharts.Models;
 
 namespace Smart_Accounting.API.Controllers.AccountCharts
 {
-    [Route("api/AccountCharts")]
+    [Route("api/AccountChart")]
     public class AccountCharts : Controller
     {
-
         private readonly IAccountChartCommands _accountCommand;
         private readonly IAccountChartQueries _accountQuery;
         public AccountCharts(
@@ -17,15 +16,15 @@ namespace Smart_Accounting.API.Controllers.AccountCharts
             _accountQuery = accountQry;
         }
 
-        [HttpGet]
+        [HttpGet("types")]
         [ProducesResponseType(200)]
         [ProducesResponseType(500)]
-        public IActionResult GetAllAccounts() {
-            var accounts = _accountQuery.GetAll();
+        public IActionResult GetAllAccountTypes() {
+            var accounts = _accountQuery.GetAllAccountTypes();
             return Ok(accounts);
         }
 
-        [HttpPost]
+        [HttpPost("types")]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
         [ProducesResponseType(422)]
