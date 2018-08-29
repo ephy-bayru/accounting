@@ -10,7 +10,7 @@ namespace Smart_Accounting.Domain.CalendarPeriods {
             OpeningBalance = new HashSet<OpeningBalance> ();
         }
 
-        public uint PeriodId { get; set; }
+        public uint Id { get; set; }
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
         public sbyte Active { get; set; }

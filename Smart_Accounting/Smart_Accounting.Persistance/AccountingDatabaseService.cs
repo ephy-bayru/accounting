@@ -59,7 +59,7 @@ namespace Smart_Accounting.Persistance {
 
         protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder) {
             if (!optionsBuilder.IsConfigured) {
-                optionsBuilder.UseMySql ("server=localhost;user=mikael;port=3306;database=bionic_inventory;");
+                optionsBuilder.UseMySql ("server=localhost;user=root;port=3306;database=smart_finance;");
             }
         }
 

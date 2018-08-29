@@ -14,6 +14,10 @@ using Smart_Accounting.Application.AccountCharts.Queries;
 using Smart_Accounting.Application.Customers.Commands;
 using Smart_Accounting.Application.Customers.Interfaces;
 using Smart_Accounting.Application.Customers.Queries;
+using Smart_Accounting.Application.Employee.Commands;
+using Smart_Accounting.Application.Employee.Commands.Factories;
+using Smart_Accounting.Application.Employee.Interfaces;
+using Smart_Accounting.Application.Employee.Queries;
 using Smart_Accounting.Application.Interfaces;
 using Smart_Accounting.Application.Supplier.Commands;
 using Smart_Accounting.Application.Supplier.Interfaces;
@@ -38,7 +42,9 @@ namespace Smart_Accounting.API
             services.AddMvc();
          
             services.AddScoped<IAccountChartCommands, AccountChartCommands>();
-            
+            services.AddScoped<IEmployeeCommands, EmployeeCommand>();
+            services.AddScoped<IEmployeesQueries,  EmployeesQuery>();
+            services.AddScoped<IEmployeeCommandsFactory,  EmployeeCommandsFactory>();
             services.AddScoped<IAccountChartQueries, AccountChartQuery>();
             services.AddScoped<ISupplierCommandes, SupplierCommandes>();
             services.AddScoped<ISuppliersQuery, SuppliersQuery>();

@@ -7,11 +7,11 @@ namespace Smart_Accounting.Persistance.CalendarPeriods {
 
         public void Configure (EntityTypeBuilder<CalendarPeriod> builder) {
 
-            builder.HasKey (e => e.PeriodId);
+            builder.HasKey (e => e.Id);
 
             builder.ToTable ("calendar_period");
 
-            builder.Property (e => e.PeriodId).HasColumnName ("PERIOD_ID");
+            builder.Property (e => e.Id).HasColumnName ("ID");
 
             builder.Property (e => e.Active)
                 .HasColumnName ("active")

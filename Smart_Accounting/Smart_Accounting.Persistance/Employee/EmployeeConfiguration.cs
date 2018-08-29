@@ -36,6 +36,7 @@ namespace Smart_Accounting.Persistance.Employee {
                 .HasForeignKey (d => d.AccountId)
                 .OnDelete (DeleteBehavior.ClientSetNull)
                 .HasConstraintName ("fk_EMPLOYEES_account");
+                
         }
     }
 }
