@@ -38,7 +38,7 @@ namespace Smart_Accounting.API.Controllers.Employee
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
         [ProducesResponseType(422)]
-        public IActionResult CreateNewEmployee(NewEmployeeModel newEmployee) {
+        public IActionResult CreateNewEmployee([FromBody] NewEmployeeModel newEmployee) {
             _employeeCommands.Create(newEmployee);
             return StatusCode(201, newEmployee);
         }
@@ -47,7 +47,7 @@ namespace Smart_Accounting.API.Controllers.Employee
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(422)]
-        public IActionResult UpdateEmployee(uint id, NewEmployeeModel newEmployee) {
+        public IActionResult UpdateEmployee(uint id,[FromBody] NewEmployeeModel newEmployee) {
             _employeeCommands.Create(newEmployee);
             return Ok(newEmployee);
         }

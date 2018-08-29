@@ -13,6 +13,8 @@ namespace Smart_Accounting.Application.Employee.Commands.Factories
 
             employee.CreditLimit = 400;
 
+            employee.AccountId = 1;
+
             return employee;
         }
 

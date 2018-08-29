@@ -10,7 +10,6 @@ namespace Smart_Accounting.Domain.AccountCharts.AccountTypes {
         public uint AccTypeId { get; set; }
         public string Name { get; set; }
         public string Active { get; set; }
-
         public ICollection<AccountChart> AccountChart { get; set; }
     }
 }

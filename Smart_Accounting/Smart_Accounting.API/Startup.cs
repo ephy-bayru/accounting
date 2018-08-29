@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Smart_Accounting.Application.AccountCharts.Command;
+using Smart_Accounting.Application.AccountCharts.Commands;
 using Smart_Accounting.Application.AccountCharts.Interfaces;
 using Smart_Accounting.Application.AccountCharts.Queries;
 using Smart_Accounting.Application.Customers.Commands;
@@ -45,6 +46,7 @@ namespace Smart_Accounting.API
             services.AddScoped<IEmployeeCommands, EmployeeCommand>();
             services.AddScoped<IEmployeesQueries,  EmployeesQuery>();
             services.AddScoped<IEmployeeCommandsFactory,  EmployeeCommandsFactory>();
+            services.AddScoped<IAccountChartCommandsFactory, AccountChartCommandsFactory>();
             services.AddScoped<IAccountChartQueries, AccountChartQuery>();
             services.AddScoped<ISupplierCommandes, SupplierCommandes>();
             services.AddScoped<ISuppliersQuery, SuppliersQuery>();
