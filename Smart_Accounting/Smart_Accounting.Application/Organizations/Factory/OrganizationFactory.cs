@@ -11,20 +11,18 @@ namespace Smart_Accounting.Application.Organizations.Factory {
 
             organization.Name = org.Name;
             organization.Location = org.Location;
-            organization.Tin = org.Location;
+            organization.Tin = org.Tin;
             organization.DateAdded = DateTime.Now;
             organization.DateUpdated = DateTime.Now;
             return organization;
 
         }
 
-        public Organization OrganizationForCreation (UpdatedOrganizationModel org) {
-            var organization = new Organization ();
+        public Organization OrganizationForUpdate (Organization organization, UpdatedOrganizationModel org) {
             organization.Name = org.Name;
             organization.Id = org.Id;
             organization.Location = org.Location;
             organization.Tin = org.Tin;
-            organization.DateUpdated = DateTime.Now;
 
             return organization;
         }
