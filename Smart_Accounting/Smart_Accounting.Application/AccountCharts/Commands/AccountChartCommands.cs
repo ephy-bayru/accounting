@@ -14,12 +14,6 @@ namespace Smart_Accounting.Application.AccountCharts.Command {
             _accountCommandFactory = accountCmdFactory;
         }
 
-        public void create () {
-            //TODO define account creation functionality
-
-            throw new System.NotImplementedException ();
-        }
-
         public void creatAccountType (NewAccountTypeModel newType) {
 
             var accountType = _accountCommandFactory.NewAccountType (newType);
@@ -34,10 +28,16 @@ namespace Smart_Accounting.Application.AccountCharts.Command {
             throw new System.NotImplementedException ();
         }
 
-        public void update () {
-            //TODO Define Account Type Update Functionality
+        public void createAccount(NewAccountModel newAccount)
+        {
+            throw new System.NotImplementedException();
+        }
 
-            throw new System.NotImplementedException ();
+        
+        public void updateAccount(UpdatedAccountModel updatedAccount)
+        {
+            //TODO Create function that will be used for updateing acounts
+            throw new System.NotImplementedException();
         }
     }
 }
