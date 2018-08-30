@@ -20,6 +20,10 @@ using Smart_Accounting.Application.Employee.Commands.Factories;
 using Smart_Accounting.Application.Employee.Interfaces;
 using Smart_Accounting.Application.Employee.Queries;
 using Smart_Accounting.Application.Interfaces;
+using Smart_Accounting.Application.Organizations.Commands;
+using Smart_Accounting.Application.Organizations.Factory;
+using Smart_Accounting.Application.Organizations.Interfaces;
+using Smart_Accounting.Application.Organizations.Queries;
 using Smart_Accounting.Application.Supplier.Commands;
 using Smart_Accounting.Application.Supplier.Interfaces;
 using Smart_Accounting.Application.Supplier.Queries;
@@ -43,6 +47,10 @@ namespace Smart_Accounting.API
             services.AddMvc();
          
             services.AddScoped<IAccountChartCommands, AccountChartCommands>();
+            services.AddScoped<IOrganizationsQuery, OrganizationQuery>();
+            services.AddScoped<IOrganizationCommands, OrganizationCommand>();
+            services.AddScoped<IOrganizationFactory, OrganizationFactory>();
+
             services.AddScoped<IEmployeeCommands, EmployeeCommand>();
             services.AddScoped<IEmployeesQueries,  EmployeesQuery>();
             services.AddScoped<IEmployeeCommandsFactory,  EmployeeCommandsFactory>();
