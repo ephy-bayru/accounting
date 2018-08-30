@@ -1,6 +1,7 @@
 
 using Smart_Accounting.Application.AccountCharts.Interfaces;
 using Smart_Accounting.Application.AccountCharts.Models;
+using Smart_Accounting.Domain.AccountCharts;
 using Smart_Accounting.Domain.AccountCharts.AccountTypes;
 
 namespace Smart_Accounting.Application.AccountCharts.Commands
@@ -9,11 +10,12 @@ namespace Smart_Accounting.Application.AccountCharts.Commands
     {
         public AccountType NewAccountType(NewAccountTypeModel newType)
         {
-            var type = new AccountType();
+            throw new System.NotImplementedException();
+        }
 
-            type.Name = newType.Name;
-
-            return type;
+        public AccountChart UpdatedAccountType(NewAccountModel newModel)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
