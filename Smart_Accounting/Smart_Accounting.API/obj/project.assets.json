@@ -6905,7 +6905,7 @@
       ]
     },
     "Microsoft.Extensions.PlatformAbstractions/1.1.0": {
-      "sha512": "H6ZsQzxYw/6k2DfEQRXdC+vQ6obd6Uba3uGJrnJ2vG4PRXjQZ7seB13JdCfE72abp8E6Fk3gGgDzfJiLZi5ZpQ==",
+      "sha512": "UMlN++q5qqzQ2HH+uOrKxN5fmBXMQDhrYkSaPJxhmyzfJaFPirrVr1raim/Ocq1psAZoB9+7JSAf0GDAX35wUg==",
       "type": "package",
       "path": "microsoft.extensions.platformabstractions/1.1.0",
       "files": [
@@ -11718,7 +11718,7 @@
       ]
     },
     "System.Security.Cryptography.Xml/4.4.2": {
-      "sha512": "q9Dren/YP5jhRCkDvLfuaPpMTQzP97ANvzq/OoGgwK8YdLRSTABS9oW5/23OKoM2DRCuBrh4qaecD2YNhPtuzQ==",
+      "sha512": "1m+fKVrApgKYMRuE0MF0vGjqy4XqAp1rCtyAzMXhJajMDDytMh/rHk9hp4M7KKk3QQZoWJUvyUY7xcw74w+JiQ==",
       "type": "package",
       "path": "system.security.cryptography.xml/4.4.2",
       "files": [
@@ -12938,11 +12938,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.API/Smart_Accounting.API.csproj",
+      "projectUniqueName": "/home/appdiv/Smart_Accounting/Smart_Accounting/Smart_Accounting.API/Smart_Accounting.API.csproj",
       "projectName": "Smart_Accounting.API",
-      "projectPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.API/Smart_Accounting.API.csproj",
+      "projectPath": "/home/appdiv/Smart_Accounting/Smart_Accounting/Smart_Accounting.API/Smart_Accounting.API.csproj",
       "packagesPath": "/home/appdiv/.nuget/packages/",
-      "outputPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.API/obj/",
+      "outputPath": "/home/appdiv/Smart_Accounting/Smart_Accounting/Smart_Accounting.API/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/share/dotnet/sdk/NuGetFallbackFolder"
@@ -12959,17 +12959,17 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Application/Smart_Accounting.Application.csproj": {
-              "projectPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Application/Smart_Accounting.Application.csproj"
+            "/home/appdiv/Smart_Accounting/Smart_Accounting/Smart_Accounting.Application/Smart_Accounting.Application.csproj": {
+              "projectPath": "/home/appdiv/Smart_Accounting/Smart_Accounting/Smart_Accounting.Application/Smart_Accounting.Application.csproj"
             },
-            "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Commons/Smart_Accounting.Commons.csproj": {
-              "projectPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Commons/Smart_Accounting.Commons.csproj"
+            "/home/appdiv/Smart_Accounting/Smart_Accounting/Smart_Accounting.Commons/Smart_Accounting.Commons.csproj": {
+              "projectPath": "/home/appdiv/Smart_Accounting/Smart_Accounting/Smart_Accounting.Commons/Smart_Accounting.Commons.csproj"
             },
-            "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Infrastructure/Smart_Accounting.Infrastructure.csproj": {
-              "projectPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Infrastructure/Smart_Accounting.Infrastructure.csproj"
+            "/home/appdiv/Smart_Accounting/Smart_Accounting/Smart_Accounting.Infrastructure/Smart_Accounting.Infrastructure.csproj": {
+              "projectPath": "/home/appdiv/Smart_Accounting/Smart_Accounting/Smart_Accounting.Infrastructure/Smart_Accounting.Infrastructure.csproj"
             },
-            "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Persistance/Smart_Accounting.Persistance.csproj": {
-              "projectPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Persistance/Smart_Accounting.Persistance.csproj"
+            "/home/appdiv/Smart_Accounting/Smart_Accounting/Smart_Accounting.Persistance/Smart_Accounting.Persistance.csproj": {
+              "projectPath": "/home/appdiv/Smart_Accounting/Smart_Accounting/Smart_Accounting.Persistance/Smart_Accounting.Persistance.csproj"
             }
           }
         }
