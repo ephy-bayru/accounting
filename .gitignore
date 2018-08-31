@@ -1,8 +1,14 @@
-Smart_Accounting/Smart_Accounting.Infrastructure/obj
-Smart_Accounting/Smart_Accounting.API/obj
-Smart_Accounting/Smart_Accounting.Commons/obj
+Smart_Accounting/Smart_Accounting.Infrastructure/obj/
+Smart_Accounting/Smart_Accounting.API/obj/
+Smart_Accounting/Smart_Accounting.Commons/obj/
 Smart_Accounting/Smart_Accounting.Domain/obj/
 Smart_Accounting/Smart_Accounting.Persistance/obj/
 Smart_Accounting/Smart_Accounting.Application/obj/
 node_modules/
+Smart_Accounting/Smart_Accounting.Infrastructure/bin/
+Smart_Accounting/Smart_Accounting.API/bin
+Smart_Accounting/Smart_Accounting.Commons/bin/
+Smart_Accounting/Smart_Accounting.Domain/bin/
+Smart_Accounting/Smart_Accounting.Persistance/bin/
+Smart_Accounting/Smart_Accounting.Application/bin/
 
