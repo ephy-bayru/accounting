@@ -1,0 +1,101 @@
+<div class="user">
+        <div class="title">
+          <mat-card-title>{{title}}</mat-card-title>
+        </div>
+        <div>
+          <form class="user-form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+          <div class="card">
+            <mat-card class="user-card">
+              <div>
+                  <mat-form-field>
+                    <input matInput placeholder="first name"
+                          formControlName="First_Name"
+                          type="text">
+                  </mat-form-field>
+              </div>
+              <div>
+                  <mat-form-field>
+                      <input matInput placeholder="last name"
+                          formControlName="Last_Name"
+                          type="text">
+                  </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field>
+                    <input matInput placeholder="email"
+                        formControlName="Email"
+                        type="email">
+                </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field>
+                  <input matInput placeholder="account id"
+                      formControlName="Account_Id"
+                      type="search">
+              </mat-form-field>
+          </div>
+              <div>
+                  <section class="">
+                     <label class="user-margin">Gender:</label>
+                        <mat-radio-group [(ngModel)]="labelPosition"
+                                         formControlName="Gender">                 
+                          <mat-radio-button class="margin" value="female">female</mat-radio-button>
+                          <mat-radio-button class="margin" value="male">male</mat-radio-button>
+                        </mat-radio-group>
+                  </section>                
+                </div>
+                <div class="div">
+                  <mat-form-field>
+                    <input matInput placeholder="password"
+                          formControlName="Password"
+                          type="password">
+                  </mat-form-field>
+                </div>
+              
+              <div class="div">
+                <mat-form-field>
+                  <input matInput placeholder="confirm password"
+                        formControlName="Password"
+                        type="password">
+                </mat-form-field>
+              </div>
+                <div>
+                    <mat-form-field class="">
+                     <input matInput [matDatepicker]="picker" 
+                            placeholder="Choose Birth Date"
+                            formControlName="Birth_Date">
+                              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                              <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>       
+                  </div>
+            </mat-card>
+          </div>
+          <div class="div">
+            <mat-form-field>
+              <input matInput [matDatepicker]="dp"
+                     placeholder="date created"
+                     formControlName="Date_Created"
+                     disabled>
+              <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+              <mat-datepicker #dp></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput [matDatepicker]="dp1"
+                     placeholder="date updated"
+                     formControlName="Date_Updated"
+                     disabled>
+              <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
+              <mat-datepicker #dp1></mat-datepicker>
+            </mat-form-field>
+          </div>
+        <!-- <div class="btn">
+          <mat-card-actions>
+            <button type="submit" ejs-button>submit</button>
+            <button ejs-button cssClass="e-danger">cancel</button>     
+          </mat-card-actions>
+         </div>
+        </form>
+       </div>
+      </div>
+       {{userForm.value | json}}  -->
+      

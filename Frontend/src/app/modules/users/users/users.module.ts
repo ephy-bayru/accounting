@@ -9,8 +9,9 @@ import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
 // class, service and routings are imported here
 import { UsersComponent } from './users.component';
-import { providerDef } from '@angular/core/src/view';
-
+import { UsersService } from './../users.service';
+// syncfussion
+import { ButtonModule } from '@syncfusion/ej2-ng-buttons';
 
 @NgModule({
   imports: [
@@ -22,9 +23,11 @@ import { providerDef } from '@angular/core/src/view';
     MatSelectModule,
     MatCardModule,
     MatExpansionModule,
+    // syncfussion modules
+    ButtonModule
     // class, service & routings of the user module
   ],
   declarations: [UsersComponent],
-  providers: []
+  providers: [UsersService]
 })
 export class UsersModule { }
