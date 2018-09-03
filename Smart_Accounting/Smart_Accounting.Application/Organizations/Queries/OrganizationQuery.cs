@@ -1,3 +1,11 @@
+/*
+ * @CreateTime: Aug 31, 2018 1:03 PM
+ * @Author:  Mikael Araya
+ * @Contact: MikaelAraya12@gmail.com
+ * @Last Modified By:  Mikael Araya
+ * @Last Modified Time: Aug 31, 2018 1:03 PM
+ * @Description: Modify Here, Please 
+ */
 using System.Collections.Generic;
 using System.Linq;
 using Smart_Accounting.Application.Interfaces;
