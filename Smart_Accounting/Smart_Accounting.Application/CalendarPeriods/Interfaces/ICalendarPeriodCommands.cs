@@ -5,8 +5,8 @@ namespace Smart_Accounting.Application.CalendarPeriods.Interfaces {
 
     public interface ICalendarPeriodsCommands 
     {
-        void Create  (NewCalendarModel newCalendar);
-        void Update ();
-        void Delete (CalendarPeriod calender);
+        CalendarViewModel CreateCalendar  (NewCalendarModel newCalendar);
+        bool  UpdateCalendar (CalendarPeriod calender,UpdateCalendarModel UpdateCalendar);
+        bool DeleteCalendar (CalendarPeriod calender);
     }
 }

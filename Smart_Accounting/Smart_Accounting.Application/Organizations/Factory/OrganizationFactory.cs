@@ -23,7 +23,7 @@ namespace Smart_Accounting.Application.Organizations.Factory {
             organization.Id = org.Id;
             organization.Location = org.Location;
             organization.Tin = org.Tin;
-
+            
             return organization;
         }
 
@@ -37,7 +37,7 @@ namespace Smart_Accounting.Application.Organizations.Factory {
             organization.Tin = org.Tin;
             organization.DateAdded = org.DateAdded;
             organization.DateUpdated = org.DateUpdated;
-
+            
 
             return organization;
         }

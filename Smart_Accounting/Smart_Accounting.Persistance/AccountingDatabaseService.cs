@@ -20,6 +20,7 @@ using Smart_Accounting.Domain.Taxes;
 using Smart_Accounting.Persistance.AccountCharts;
 using Smart_Accounting.Persistance.AccountCharts.AccountTypes;
 using Smart_Accounting.Persistance.BankAccount;
+using Smart_Accounting.Persistance.CalendarPeriods;
 using Smart_Accounting.Persistance.Currencys;
 using Smart_Accounting.Persistance.Customers;
 using Smart_Accounting.Persistance.Defaults;
@@ -68,6 +69,7 @@ namespace Smart_Accounting.Persistance {
 
             modelBuilder.ApplyConfiguration (new CustomersConfiguration ());
             modelBuilder.ApplyConfiguration (new EmployeeConfiguration ());
+            modelBuilder.ApplyConfiguration (new CalendarPeriodsConfiguration ());
             modelBuilder.ApplyConfiguration (new AccountsChartsConfiguration ());
             modelBuilder.ApplyConfiguration (new AccountTypesConfiguration ());
             modelBuilder.ApplyConfiguration (new LedgersConfiguration ());
