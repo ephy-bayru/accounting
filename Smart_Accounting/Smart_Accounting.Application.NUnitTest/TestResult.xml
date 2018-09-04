@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" name="Smart_Accounting.Application.NUnitTest.dll" fullname="/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Application.NUnitTest/bin/Debug/netcoreapp2.0/Smart_Accounting.Application.NUnitTest.dll" testcasecount="3" result="Passed" start-time="2018-09-04 08:44:31Z" end-time="2018-09-04 08:44:31Z" duration="0.055602" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="18" random-seed="516099460">
+  <command-line><![CDATA[/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Application.NUnitTest/bin/Debug/netcoreapp2.0/Smart_Accounting.Application.NUnitTest.dll]]></command-line>
+  <filter />
+  <test-suite type="Assembly" id="1005" name="Smart_Accounting.Application.NUnitTest.dll" fullname="/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Application.NUnitTest/bin/Debug/netcoreapp2.0/Smart_Accounting.Application.NUnitTest.dll" runstate="Runnable" testcasecount="3" result="Passed" start-time="2018-09-04 08:44:31Z" end-time="2018-09-04 08:44:31Z" duration="0.055602" total="3" passed="3" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="18">
+    <environment framework-version="3.10.1.0" clr-version="4.0.30319.42000" os-version="Linux 4.15.0-32-generic #35-Ubuntu SMP Fri Aug 10 17:58:07 UTC 2018" platform="Unix" cwd="/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Application.NUnitTest" machine-name="appdiv-OptiPlex-3020" user="appdiv" user-domain="appdiv-OptiPlex-3020" culture="en-US" uiculture="en-US" os-architecture="x64" />
+    <settings>
+      <setting name="WorkDirectory" value="/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Application.NUnitTest" />
+      <setting name="NumberOfTestWorkers" value="4" />
+    </settings>
+    <properties>
+      <property name="_PID" value="13441" />
+      <property name="_APPDOMAIN" value="Smart_Accounting.Application.NUnitTest" />
+    </properties>
+    <test-suite type="TestSuite" id="1006" name="Smart_Accounting" fullname="Smart_Accounting" runstate="Runnable" testcasecount="3" result="Passed" start-time="2018-09-04 08:44:31Z" end-time="2018-09-04 08:44:31Z" duration="0.044685" total="3" passed="3" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="18">
+      <test-suite type="TestSuite" id="1007" name="Application" fullname="Smart_Accounting.Application" runstate="Runnable" testcasecount="3" result="Passed" start-time="2018-09-04 08:44:31Z" end-time="2018-09-04 08:44:31Z" duration="0.044124" total="3" passed="3" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="18">
+        <test-suite type="TestSuite" id="1008" name="NUnitTest" fullname="Smart_Accounting.Application.NUnitTest" runstate="Runnable" testcasecount="3" result="Passed" start-time="2018-09-04 08:44:31Z" end-time="2018-09-04 08:44:31Z" duration="0.044106" total="3" passed="3" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="18">
+          <test-suite type="TestSuite" id="1009" name="Organizations" fullname="Smart_Accounting.Application.NUnitTest.Organizations" runstate="Runnable" testcasecount="3" result="Passed" start-time="2018-09-04 08:44:31Z" end-time="2018-09-04 08:44:31Z" duration="0.044102" total="3" passed="3" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="18">
+            <test-suite type="TestSuite" id="1011" name="Commands" fullname="Smart_Accounting.Application.NUnitTest.Organizations.Commands" runstate="Runnable" testcasecount="0" result="Passed" start-time="2018-09-04 08:44:31Z" end-time="2018-09-04 08:44:31Z" duration="0.008196" total="0" passed="0" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="0">
+              <test-suite type="TestFixture" id="1004" name="OrganizationCommandsTest" fullname="Smart_Accounting.Application.NUnitTest.Organizations.Commands.OrganizationCommandsTest" classname="Smart_Accounting.Application.NUnitTest.Organizations.Commands.OrganizationCommandsTest" runstate="Runnable" testcasecount="0" result="Passed" start-time="2018-09-04 08:44:31Z" end-time="2018-09-04 08:44:31Z" duration="0.000587" total="0" passed="0" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Author" value="Mikael Araya &lt;MikaelAraya12@gmail.com&gt;" />
+                </properties>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1010" name="Factories" fullname="Smart_Accounting.Application.NUnitTest.Organizations.Factories" runstate="Runnable" testcasecount="3" result="Passed" start-time="2018-09-04 08:44:31Z" end-time="2018-09-04 08:44:31Z" duration="0.044087" total="3" passed="3" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="18">
+              <test-suite type="TestFixture" id="1000" name="OrganizationFactoryTest" fullname="Smart_Accounting.Application.NUnitTest.Organizations.Factories.OrganizationFactoryTest" classname="Smart_Accounting.Application.NUnitTest.Organizations.Factories.OrganizationFactoryTest" runstate="Runnable" testcasecount="3" result="Passed" start-time="2018-09-04 08:44:31Z" end-time="2018-09-04 08:44:31Z" duration="0.033714" total="3" passed="3" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="18">
+                <properties>
+                  <property name="Author" value="Mikael Araya &lt;Mikaelaraya12@gmail.com&gt;" />
+                </properties>
+                <test-case id="1001" name="OrganizationForCreationTEST" fullname="Smart_Accounting.Application.NUnitTest.Organizations.Factories.OrganizationFactoryTest.OrganizationForCreationTEST" methodname="OrganizationForCreationTEST" classname="Smart_Accounting.Application.NUnitTest.Organizations.Factories.OrganizationFactoryTest" runstate="Runnable" seed="1551107075" result="Passed" start-time="2018-09-04 08:44:31Z" end-time="2018-09-04 08:44:31Z" duration="0.026549" asserts="6" />
+                <test-case id="1002" name="OrganizationForUpdateTEST" fullname="Smart_Accounting.Application.NUnitTest.Organizations.Factories.OrganizationFactoryTest.OrganizationForUpdateTEST" methodname="OrganizationForUpdateTEST" classname="Smart_Accounting.Application.NUnitTest.Organizations.Factories.OrganizationFactoryTest" runstate="Runnable" seed="703215748" result="Passed" start-time="2018-09-04 08:44:31Z" end-time="2018-09-04 08:44:31Z" duration="0.001763" asserts="6" />
+                <test-case id="1003" name="OrganizationForViewTest" fullname="Smart_Accounting.Application.NUnitTest.Organizations.Factories.OrganizationFactoryTest.OrganizationForViewTest" methodname="OrganizationForViewTest" classname="Smart_Accounting.Application.NUnitTest.Organizations.Factories.OrganizationFactoryTest" runstate="Runnable" seed="1484649555" result="Passed" start-time="2018-09-04 08:44:31Z" end-time="2018-09-04 08:44:31Z" duration="0.000968" asserts="6" />
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>
