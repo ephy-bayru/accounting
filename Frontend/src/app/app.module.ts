@@ -20,6 +20,7 @@ import { BalanceSheetComponent } from './modules/reports/balance_sheet/balance-s
 import { IncomeStatementComponent } from './modules/reports/income_statement/income-statement/income-statement.component';
 import { TrialBalanceComponent } from './modules/reports/trial_balance/trial-balance/trial-balance.component';
 import { UsersModule } from './modules/users/users/users.module';
+import { SideNavComponent } from './shared/side-nav/side-nav.component';
 
 @NgModule({
   declarations: [
@@ -38,16 +39,17 @@ import { UsersModule } from './modules/users/users/users.module';
     BalanceSheetComponent,
     IncomeStatementComponent,
     TrialBalanceComponent,
+    SideNavComponent
     // modules
-    UsersModule
+  //  UsersModule
   ],
   imports: [
     BrowserModule,
+    MatSidenavModule,
     BrowserAnimationsModule,
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
-    MatSidenavModule,
     MatIconModule,
     MatListModule
   ],

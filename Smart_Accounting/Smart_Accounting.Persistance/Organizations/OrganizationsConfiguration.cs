@@ -29,11 +29,7 @@ namespace Smart_Accounting.Persistance.Organizations {
                 .HasColumnName ("name")
                 .HasColumnType ("varchar(45)");
 
-            builder.Property (e => e.Organizationcol)
-                .HasColumnName ("ORGANIZATIONcol")
-                .HasColumnType ("varchar(10)");
-
-            builder.Property (e => e.Tin)
+           builder.Property (e => e.Tin)
                 .HasColumnName ("TIN")
                 .HasColumnType ("varchar(10)");
         }

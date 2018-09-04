@@ -11,7 +11,7 @@ using Smart_Accounting.Domain.Supplier;
 using Smart_Accounting.Domain.Taxes;
 
 namespace Smart_Accounting.Domain.AccountCharts {
-    public partial class AccountChart {
+    public class AccountChart {
         public AccountChart () {
             BankAccounts = new HashSet<BankAccounts> ();
             Customer = new HashSet<Customer> ();

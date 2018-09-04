@@ -8,14 +8,12 @@
  *  create or convert one kind of organization object to another type
  */
 
-
 using System;
 using Smart_Accounting.Application.Organizations.Interfaces;
 using Smart_Accounting.Application.Organizations.Models;
 using Smart_Accounting.Domain.Oranizations;
 
 namespace Smart_Accounting.Application.Organizations.Factory {
-
 
     public class OrganizationFactory : IOrganizationFactory {
 
@@ -47,11 +45,15 @@ namespace Smart_Accounting.Application.Organizations.Factory {
         /// <returns>Organization</returns>
         public Organization OrganizationForUpdate (Organization organization, UpdatedOrganizationModel org) {
             organization.Name = org.Name;
-            organization.Id = org.Id;
             organization.Location = org.Location;
             organization.Tin = org.Tin;
 
             return organization;
+        }
+
+        public Organization OrganizationForUpdate(object old_organization, NewOrganizationModel nEW_ORGANIZATION)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -70,7 +72,6 @@ namespace Smart_Accounting.Application.Organizations.Factory {
             organization.Tin = org.Tin;
             organization.DateAdded = org.DateAdded;
             organization.DateUpdated = org.DateUpdated;
-
 
             return organization;
         }
