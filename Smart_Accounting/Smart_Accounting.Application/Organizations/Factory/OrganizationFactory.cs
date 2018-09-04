@@ -2,8 +2,8 @@
  * @CreateTime: Aug 31, 2018 12:55 PM
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
- * @Last Modified By: undefined
- * @Last Modified Time: Aug 31, 2018 1:02 PM
+ * @Last Modified By:  Mikael Araya
+ * @Last Modified Time: Sep 4, 2018 12:50 PM
  * @Description: OrganizationFactory, Provides Different Functions that 
  *  create or convert one kind of organization object to another type
  */
@@ -47,7 +47,7 @@ namespace Smart_Accounting.Application.Organizations.Factory {
             organization.Name = org.Name;
             organization.Location = org.Location;
             organization.Tin = org.Tin;
-
+            
             return organization;
         }
 
@@ -72,7 +72,7 @@ namespace Smart_Accounting.Application.Organizations.Factory {
             organization.Tin = org.Tin;
             organization.DateAdded = org.DateAdded;
             organization.DateUpdated = org.DateUpdated;
-
+            
             return organization;
         }
     }

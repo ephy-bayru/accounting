@@ -1,17 +1,16 @@
 using Microsoft.AspNetCore.Mvc;
 using Smart_Accounting.Application.AccountCharts.Interfaces;
 using Smart_Accounting.Application.AccountCharts.Models;
+using Smart_Accounting.Application.Interfaces;
 
-namespace Smart_Accounting.API.Controllers.AccountCharts
+namespace Smart_Accounting.API.Controllers.Accountss
 {
-    [Route("api/AccountChart")]
-    public class AccountCharts : Controller
+    [Route("api/accounts")]
+    public class AccountsController : Controller
     {
         private readonly IAccountChartCommands _accountCommand;
         private readonly IAccountChartQueries _accountQuery;
-        public AccountCharts(
-                                IAccountChartCommands accountCmd, 
-                                IAccountChartQueries accountQry) {
+        public AccountsController(IAccountChartCommands accountCmd,IAccountChartQueries accountQry) {
             _accountCommand = accountCmd;
             _accountQuery = accountQry;
         }
@@ -32,9 +31,6 @@ namespace Smart_Accounting.API.Controllers.AccountCharts
             _accountCommand.creatAccountType(newType);
             return StatusCode(201, newType);
         }
-        
-
-
-        
+               
     }
 }

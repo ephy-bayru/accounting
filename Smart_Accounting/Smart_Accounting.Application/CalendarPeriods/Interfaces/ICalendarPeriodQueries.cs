@@ -7,7 +7,7 @@ namespace Smart_Accounting.Application.CalendarPeriods.Interfaces
 {
     public interface ICalendarPeriodQueries
     {
-        CalendarPeriod GetById(uint Id);
+        CalendarPeriod GetById(uint id);
 
         IEnumerable<CalendarPeriod> GetAll();
     }

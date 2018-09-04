@@ -2,9 +2,12 @@ using System;
 
 namespace Smart_Accounting.Application.CalendarPeriods.Models
 {
-    public class NewCalendarModel
+    public class UpdateCalendarModel 
     {
+        
+        public uint Id ;
         public DateTime Start;
-        public DateTime End ;
+        public DateTime End;
+        
     }
 }
