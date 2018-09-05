@@ -86,5 +86,7 @@ namespace Smart_Accounting.Persistance {
         public void Save () {
             this.SaveChanges ();
         }
+
+        
     }
 }

@@ -2,8 +2,8 @@
  * @CreateTime: Aug 31, 2018 12:47 PM
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
- * @Last Modified By: undefined
- * @Last Modified Time: Aug 31, 2018 12:55 PM
+ * @Last Modified By:  Mikael Araya
+ * @Last Modified Time: Sep 4, 2018 4:58 PM
  * @Description: OrganizationCommand, provides different data manipulation functions 
  *               on Organization Domain Object
  */

@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+ * @CreateTime: Sep 5, 2018 3:15 PM
+ * @Author:  Mikael Araya
+ * @Contact: MikaelAraya12@gmail.com
+ * @Last Modified By:  Mikael Araya
+ * @Last Modified Time: Sep 5, 2018 3:15 PM
+ * @Description: Samrt Accounting Application Layer Test Class 
+ */
+using System;
 using System.Reflection;
 using NUnitLite;
 

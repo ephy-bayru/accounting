@@ -3,8 +3,8 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Aug 31, 2018 1:03 PM
- * @Description: Modify Here, Please 
+ * @Last Modified Time: Sep 5, 2018 3:17 PM
+ * @Description: Class Used to Fetch Organization data from datastore 
  */
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +25,6 @@ namespace Smart_Accounting.Application.Organizations.Queries {
 
         }
         public IEnumerable<Organization> GetAllOrganizations () {
-            //TODO GetAllOrganization Function in OrganizationQuery Class
             return _database.Organization.ToList();
         }
 
