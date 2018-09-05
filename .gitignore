@@ -257,6 +257,12 @@ Smart_Accounting/Smart_Accounting.Commons/obj/
 Smart_Accounting/Smart_Accounting.Domain/obj/
 Smart_Accounting/Smart_Accounting.Persistance/obj/
 Smart_Accounting/Smart_Accounting.Application/obj/
+Smart_Accounting/Smart_Accounting.Infrastructure.NUnitTest/obj/
+Smart_Accounting/Smart_Accounting.API.NUnitTest/obj/
+Smart_Accounting/Smart_Accounting.Commons.NUnitTest/obj/
+Smart_Accounting/Smart_Accounting.Domain.NUnitTest/obj/
+Smart_Accounting/Smart_Accounting.Persistance.NUnitTest/obj/
+Smart_Accounting/Smart_Accounting.Application.NUnitTest/obj/
 node_modules/
 Smart_Accounting/Smart_Accounting.Infrastructure/bin/
 Smart_Accounting/Smart_Accounting.API/bin
@@ -264,4 +270,11 @@ Smart_Accounting/Smart_Accounting.Commons/bin/
 Smart_Accounting/Smart_Accounting.Domain/bin/
 Smart_Accounting/Smart_Accounting.Persistance/bin/
 Smart_Accounting/Smart_Accounting.Application/bin/
+
+Smart_Accounting/Smart_Accounting.Infrastructure.NUnitTest/bin/
+Smart_Accounting/Smart_Accounting.API.NUnitTest/bin
+Smart_Accounting/Smart_Accounting.Commons.NUnitTest/bin/
+Smart_Accounting/Smart_Accounting.Domain.NUnitTest/bin/
+Smart_Accounting/Smart_Accounting.Persistance.NUnitTest/bin/
+Smart_Accounting/Smart_Accounting.Application.NUnitTest/bin/
 
