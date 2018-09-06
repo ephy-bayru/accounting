@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Sep 5, 2018 3:17 PM
+ * @Last Modified Time: Sep 5, 2018 4:24 PM
  * @Description: Organization RESTfull API Controller
  */
 using System;
@@ -24,9 +24,10 @@ namespace Smart_Accounting.API.NUnitTest.Organizatios {
     public class OrganizationControllerTEST {
 
         private OrganizationViewModel organizationView;
-
+        private uint organizationId;
+        private NewOrganizationModel newOrganization;
         private Organization organization;
-        public OrganizationController organizationController;
+        private OrganizationController organizationController;
         private Mock<IOrganizationCommands> MockIOrganizationCommand;
         private Mock<IOrganizationsQuery> MockIOrganizationQuerys;
 
@@ -34,6 +35,8 @@ namespace Smart_Accounting.API.NUnitTest.Organizatios {
 
         [SetUp]
         public void Init () {
+
+            organizationId = 1;
             organization = new Organization () {
                 Id = 1,
                 Name = "AppDiv",
@@ -51,25 +54,17 @@ namespace Smart_Accounting.API.NUnitTest.Organizatios {
                 DateAdded = DateTime.Now,
                 DateUpdated = DateTime.Now.AddDays (1)
             };
+
+            MockIOrganizationCommand = new Mock<IOrganizationCommands> ();
+            MockIOrganizationQuerys = new Mock<IOrganizationsQuery> ();
+            MockIOrganizationFactories = new Mock<IOrganizationFactory> ();
+
+            MockIOrganizationQuerys.Setup (query => query.GetOrganizationById (organizationId)).Returns (organization);
+            MockIOrganizationFactories.Setup (factory => factory.OrganizationView (organization)).Returns (organizationView);
         }
 
         [Test]
         public void GetOrganizationById () {
-            MockIOrganizationCommand = new Mock<IOrganizationCommands> ();
-            MockIOrganizationQuerys = new Mock<IOrganizationsQuery> ();
-            MockIOrganizationFactories = new Mock<IOrganizationFactory> ();
-            uint organizationId = 1;
-            organization = new Organization () {
-                Id = 1,
-                Name = "AppDiv",
-                Location = "A.A",
-                Tin = "1234567890",
-                DateAdded = DateTime.Now,
-                DateUpdated = DateTime.Now.AddDays (1)
-            };
-
-            MockIOrganizationQuerys.Setup (query => query.GetOrganizationById (organizationId)).Returns (organization);
-            MockIOrganizationFactories.Setup (factory => factory.OrganizationView (organization)).Returns (organizationView);
 
             organizationController = new OrganizationController (
                 MockIOrganizationCommand.Object,
@@ -77,12 +72,85 @@ namespace Smart_Accounting.API.NUnitTest.Organizatios {
                 MockIOrganizationFactories.Object
             );
 
-            var result = organizationController.GetOrganizationById (organizationId);
-            Assert.IsNotNull (result);
-
-            var okResult = result as OkObjectResult;
+            var result = organizationController.GetOrganizationById (7);
 
             Assert.IsNotNull (result);
+
+            //TODO : Test if the return type of GetOrganizationById is OrganizationViewModel
+            //TODO : Test if the Http Header return type of GetOrganizationById is 200 ok Status Code
+        }
+        
+        public void GetAllOrganizationsTest() {
+            //TODO : Test GetAllOrganizations Controller Method
+        }
+
+        [Test]
+        public void CreateNewOrganizationTest () {
+            newOrganization = new NewOrganizationModel () {
+                Name = "AppDiv",
+                Location = "A.A",
+                Tin = "1234567890"
+            };
+
+            MockIOrganizationCommand.Setup (cmd => cmd.CreateOrganization (newOrganization)).Returns (organizationView);
+
+            organizationController = new OrganizationController (
+                MockIOrganizationCommand.Object,
+                MockIOrganizationQuerys.Object,
+                MockIOrganizationFactories.Object
+            );
+
+            var result = organizationController.AddNewOrganization (newOrganization);
+
+            Assert.IsNotNull (result);
+
+            //TODO : Test if the return type of AddNewOrganization is OrganizationViewModel
+            //TODO : Test if the Http Header return type of AddNewOrganization is 201 Create Status Code
+            //  OrganizationViewModel view = result as OrganizationViewModel;
+
+            //    Assert.That(view.Name, Is.EqualTo(organizationView.Name));
+
+        }
+
+        [Test]
+        public void UpdateOrganizationTest () {
+            UpdatedOrganizationModel updatedOrganization = new UpdatedOrganizationModel () {
+                Id = 1,
+                Name = "AppDiv Updated",
+                Location = "A.A",
+                Tin = "1234567890"
+
+            };
+
+            MockIOrganizationCommand.Setup (cmd => cmd.UpdateOrganization (organization, updatedOrganization)).Returns (true);
+
+            organizationController = new OrganizationController (
+                MockIOrganizationCommand.Object,
+                MockIOrganizationQuerys.Object,
+                MockIOrganizationFactories.Object
+            );
+
+            var result = organizationController.UpdateOrganization (1, updatedOrganization);
+
+            Assert.IsNotNull (result);
+
+            //TODO : Test if the return type of UpdateOrganization is 204 NoContent Status Code
+
+        }
+
+        [Test]
+        public void DeleteOrganizationTest () {
+            MockIOrganizationCommand.Setup (cmd => cmd.deleteOrganization (organization)).Returns (true);
+
+            organizationController = new OrganizationController (
+                MockIOrganizationCommand.Object,
+                MockIOrganizationQuerys.Object,
+                MockIOrganizationFactories.Object
+            );
+
+            var result = organizationController.DeleteOrganization (1);
+            Assert.IsNotNull (result);
+            //TODO : Test if the return type of DeleteOrganization is 204 NoContent Status Code
 
         }
 

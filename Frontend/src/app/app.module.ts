@@ -7,7 +7,6 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import { AccountsComponent } from './modules/accounts/accounts/accounts.component';
 import { BanksComponent } from './modules/banks/banks/banks.component';
-import { CompanyComponent } from './modules/company/company/company.component';
 import { CurrencyComponent } from './modules/currency/currency/currency.component';
 import { CustomerComponent } from './modules/customers/customer/customer.component';
 import { LedgerComponent } from './modules/ledgers/ledger/ledger.component';
@@ -22,12 +21,14 @@ import { TrialBalanceComponent } from './modules/reports/trial_balance/trial-bal
 import { UsersModule } from './modules/users/users/users.module';
 import { SideNavComponent } from './shared/side-nav/side-nav.component';
 
+import { CompanyModule } from './modules/company/company.module';
+
 @NgModule({
   declarations: [
     AppComponent,
     AccountsComponent,
+
     BanksComponent,
-    CompanyComponent,
     CurrencyComponent,
     CustomerComponent,
     LedgerComponent,
@@ -39,12 +40,13 @@ import { SideNavComponent } from './shared/side-nav/side-nav.component';
     BalanceSheetComponent,
     IncomeStatementComponent,
     TrialBalanceComponent,
-    SideNavComponent
+    SideNavComponent,
     // modules
   //  UsersModule
   ],
   imports: [
     BrowserModule,
+    CompanyModule,
     MatSidenavModule,
     BrowserAnimationsModule,
     LayoutModule,

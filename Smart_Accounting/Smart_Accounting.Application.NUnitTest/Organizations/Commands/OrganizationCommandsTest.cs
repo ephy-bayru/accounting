@@ -96,7 +96,7 @@ namespace Smart_Accounting.Application.NUnitTest.Organizations.Commands {
         /// </summary>
         [Test]
         public void UpdateOrganizationTEST () {
-//TODO UpdateOrganizationTest Function in Organization command Test File
+            //TODO UpdateOrganizationTest Function in Organization command Test File
             // create UpdatedOrganizationModel type object
             UpdatedOrganizationModel updatedOrganization = new UpdatedOrganizationModel () {
                 Id = 1,

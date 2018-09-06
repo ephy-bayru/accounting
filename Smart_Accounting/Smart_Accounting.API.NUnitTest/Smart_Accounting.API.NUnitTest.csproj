@@ -4,13 +4,15 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="NUnit" Version="3.10.1" />
-    <PackageReference Include="NUnitLite" Version="3.10.1" />
-    <PackageReference Include="Moq" Version="4.9.0" />
+    <PackageReference Include="NUnit" Version="3.10.1"/>
+    <PackageReference Include="NUnitLite" Version="3.10.1"/>
+    <PackageReference Include="Moq" Version="4.9.0"/>
+    <PackageReference Include="NUnit3TestAdapter" Version="3.10.0"/>
+    <PackageReference Include="FluentAssertions" Version="5.4.1"/>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Smart_Accounting.API\Smart_Accounting.API.csproj" />
-    <ProjectReference Include="..\Smart_Accounting.Application\Smart_Accounting.Application.csproj" />
-    <ProjectReference Include="..\Smart_Accounting.Domain\Smart_Accounting.Domain.csproj" />
+    <ProjectReference Include="..\Smart_Accounting.API\Smart_Accounting.API.csproj"/>
+    <ProjectReference Include="..\Smart_Accounting.Application\Smart_Accounting.Application.csproj"/>
+    <ProjectReference Include="..\Smart_Accounting.Domain\Smart_Accounting.Domain.csproj"/>
   </ItemGroup>
 </Project>

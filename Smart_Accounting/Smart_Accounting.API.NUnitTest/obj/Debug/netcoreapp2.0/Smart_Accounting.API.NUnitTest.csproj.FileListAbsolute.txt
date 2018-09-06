@@ -22,3 +22,7 @@
 /var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.API.NUnitTest/obj/Debug/netcoreapp2.0/Smart_Accounting.API.NUnitTest.csproj.CopyComplete
 /var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.API.NUnitTest/obj/Debug/netcoreapp2.0/Smart_Accounting.API.NUnitTest.dll
 /var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.API.NUnitTest/obj/Debug/netcoreapp2.0/Smart_Accounting.API.NUnitTest.pdb
+/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.API.NUnitTest/bin/Debug/netcoreapp2.0/NUnit3.TestAdapter.dll
+/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.API.NUnitTest/bin/Debug/netcoreapp2.0/NUnit3.TestAdapter.pdb
+/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.API.NUnitTest/bin/Debug/netcoreapp2.0/nunit.engine.netstandard.dll
+/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.API.NUnitTest/bin/Debug/netcoreapp2.0/Mono.Cecil.dll
