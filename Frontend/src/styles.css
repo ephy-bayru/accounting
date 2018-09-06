@@ -4,7 +4,8 @@
 @import "../node_modules/@syncfusion/ej2-ng-calendars/styles/material.css";
 @import "../node_modules/@syncfusion/ej2-ng-lists/styles/material.css";
 @import '../node_modules/@syncfusion/ej2-ng-grids/styles/material.css';
-@import '../../node_modules/@syncfusion/ej2-navigations/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-navigations/styles/material.css';
+
 
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Roboto', sans-serif; }

@@ -38,11 +38,11 @@
                   <section class="">
                      <label class="user-margin">Gender:</label>
                         <mat-radio-group [(ngModel)]="labelPosition"
-                                         formControlName="Gender">                 
+                                         formControlName="Gender">
                           <mat-radio-button class="margin" value="female">female</mat-radio-button>
                           <mat-radio-button class="margin" value="male">male</mat-radio-button>
                         </mat-radio-group>
-                  </section>                
+                  </section>
                 </div>
                 <div class="div">
                   <mat-form-field>
@@ -51,7 +51,7 @@
                           type="password">
                   </mat-form-field>
                 </div>
-              
+
               <div class="div">
                 <mat-form-field>
                   <input matInput placeholder="confirm password"
@@ -61,12 +61,12 @@
               </div>
                 <div>
                     <mat-form-field class="">
-                     <input matInput [matDatepicker]="picker" 
+                     <input matInput [matDatepicker]="picker"
                             placeholder="Choose Birth Date"
                             formControlName="Birth_Date">
                               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                               <mat-datepicker #picker></mat-datepicker>
-                    </mat-form-field>       
+                    </mat-form-field>
                   </div>
             </mat-card>
           </div>
@@ -91,11 +91,10 @@
         <!-- <div class="btn">
           <mat-card-actions>
             <button type="submit" ejs-button>submit</button>
-            <button ejs-button cssClass="e-danger">cancel</button>     
+            <button ejs-button cssClass="e-danger">cancel</button>
           </mat-card-actions>
          </div>
         </form>
        </div>
       </div>
        {{userForm.value | json}}  -->
-      

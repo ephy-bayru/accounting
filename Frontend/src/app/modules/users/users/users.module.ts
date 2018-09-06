@@ -14,7 +14,6 @@ import { UsersService } from './../users.service';
 // syncfussion
 import { ButtonModule } from '@syncfusion/ej2-ng-buttons';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DatePickerModule } from '@syncfusion/ej2-ng-calendars';
 import { GridModule, ResizeService  } from '@syncfusion/ej2-ng-grids';
 import { NumericTextBoxComponent } from '@syncfusion/ej2-ng-inputs';
 import { UserGridComponent } from './../user-grid/user-grid.component';
@@ -50,7 +49,6 @@ import { PageService,
     ReactiveFormsModule,
     // syncfussion modules
     ButtonModule,
-    DatePickerModule,
     GridModule
     // class, service & routings of the user module
   ],

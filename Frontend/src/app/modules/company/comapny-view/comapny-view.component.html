@@ -1,8 +1,51 @@
-<ejs-grid [dataSource]='data' [editSettings]='editSettings' [toolbar]='toolbar' height='273px'>
-  <e-columns>
-      <e-column field='OrderID' headerText='Order ID' textAlign='Right' isPrimaryKey='true' width=100></e-column>
-      <e-column field='CustomerID' headerText='Customer ID' width=120></e-column>
-      <e-column field='Freight' headerText='Freight' textAlign= 'Right' width=120 format= 'C2'></e-column>
-      <e-column field='ShipCountry' headerText='Ship Country' width=150></e-column>
-  </e-columns>
+<div class="e-card">
+
+
+  <ejs-grid [dataSource]='dataSource'
+            #grid
+            id='Grid'
+            [toolbar]='toolbarOptions'
+            [allowPaging]="true"
+            [pageSettings]='pageSettings'
+            height='100%'
+            [allowSorting]="true"
+            [allowFiltering]="true"
+            [allowGrouping]="true"
+            [allowResizing]='true'
+
+            [showColumnChooser]='true'
+
+            showColumnMenu='true'
+            [groupSettings]='groupOptions'
+            allowFiltering='true'
+            [filterSettings]='filterOptions'
+            allowTextWrap='true'
+            [textWrapSettings]='wrapSettings'
+            gridLines='Both'
+            [editSettings]='editSettings'
+            [selectionSettings]='selectionOptions'
+            [allowPdfExport]='true'
+            (toolbarClick)='toolbarClick($event)'
+    >
+    <e-columns>
+      <e-column *ngFor="let column of gridColumns"
+                [field]="column.field"
+                [headerText]="column.text"
+                [isPrimaryKey]="column.primaryKey"
+                [format]="column.format"
+                [type]='column'
+                [allowEditing]="column.editable"
+                [allowFiltering]="column.filterable"
+                [allowGrouping]="column.groupable"
+                [editType]="column.editType"
+                [foreignKeyField]="column.foreignKey"
+                [foreignKeyValue]="column.foreignKeyValue"
+                [isFrozen]="column.frozen"
+                width='50'></e-column>
+
+    </e-columns>
   </ejs-grid>
+
+</div>
+<!-- ConfirmDelete
+editType= 'dropdownedit' -->

@@ -20,19 +20,15 @@ import { IncomeStatementComponent } from './modules/reports/income_statement/inc
 import { TrialBalanceComponent } from './modules/reports/trial_balance/trial-balance/trial-balance.component';
 import { UsersModule } from './modules/users/users/users.module';
 import { SideNavComponent } from './shared/side-nav/side-nav.component';
-<<<<<<< HEAD
 import { MainNavComponent } from './shared/main-nav/main-nav.component';
-import { ListViewModule } from '@syncfusion/ej2-ng-lists';
 import { ButtonModule } from '@syncfusion/ej2-ng-buttons';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { GridModule } from '@syncfusion/ej2-ng-grids';
-
-
-=======
-
 import { CompanyModule } from './modules/company/company.module';
->>>>>>> 7268e7ec44c93464c283252f7b8d93f94e525a29
+import { RmHeaderInterceptorService } from './shared/rm-header-interceptor.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -52,17 +48,13 @@ import { CompanyModule } from './modules/company/company.module';
     IncomeStatementComponent,
     TrialBalanceComponent,
     SideNavComponent,
-    // modules
-<<<<<<< HEAD
+
+
     MainNavComponent,
     SideNavComponent,
-=======
-  //  UsersModule
->>>>>>> 7268e7ec44c93464c283252f7b8d93f94e525a29
   ],
   imports: [
     BrowserModule,
-    CompanyModule,
     MatSidenavModule,
     BrowserAnimationsModule,
     LayoutModule,
@@ -73,19 +65,14 @@ import { CompanyModule } from './modules/company/company.module';
     UsersModule,
     RouterModule,
     CommonModule,
-
+    CompanyModule,
     // sincfussion modules
-    ListViewModule,
     ButtonModule,
     GridModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: RmHeaderInterceptorService, multi: true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-
-// <a mat-list-item *ngFor="let link of menu" routerLincActive="active" [routerLink]="link.path">
-// <mat-icon>{{link.icon}}</mat-icon>
-// {{link.label}}
-// </a>

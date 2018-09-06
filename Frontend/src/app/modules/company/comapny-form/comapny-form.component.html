@@ -1,3 +1,25 @@
-<p>
-  comapny-form works!
-</p>
+<div class="container">
+  <form name="form" (ngSubmit)="onSubmit()" [formGroup]="organizationForm">
+
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="e-float-input">
+            <input type="text" required (focus)="focusIn($event.target)" formControlName="Name" (blur)="focusOut($event.target)">
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+           <div class="e-float-input">
+          <input type="text" required (focus)="focusIn($event.target)" formControlName="Location" (blur)="focusOut($event.target)">
+        </div>
+        </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+    <div class="e-float-input">
+      <input type="text" required (focus)="focusIn($event.target)" formControlName="Tin" (blur)="focusOut($event.target)">
+    </div>
+  </div>
+  </div>
+  <app-form-options></app-form-options>
+  </form>
+</div>

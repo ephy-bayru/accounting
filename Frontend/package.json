@@ -23,18 +23,14 @@
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
     "@syncfusion/ej2-ng-buttons": "^16.2.50",
-<<<<<<< HEAD
     "@syncfusion/ej2-ng-calendars": "^16.2.50",
-    "@syncfusion/ej2-ng-grids": "^16.2.50",
-    "@syncfusion/ej2-ng-inputs": "^16.2.50",
+    "@syncfusion/ej2-ng-grids": "^16.2.52",
+    "@syncfusion/ej2-ng-inputs": "^16.2.53",
     "@syncfusion/ej2-ng-lists": "^16.2.50",
     "@syncfusion/ej2-ng-navigations": "^16.2.50",
-=======
-    "@syncfusion/ej2-ng-grids": "^16.2.52",
->>>>>>> 7268e7ec44c93464c283252f7b8d93f94e525a29
     "core-js": "^2.5.4",
     "rxjs": "^6.3.1",
-    "rxjs-compat": "^6.3.1",
+    "rxjs-compat": "^6.3.2",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

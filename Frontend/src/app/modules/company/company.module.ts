@@ -5,7 +5,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CompanyRoutingModule } from './company-routing.module';
 import { CompanyViewComponent } from './comapny-view/comapny-view.component';
 import { ComapnyFormComponent } from './comapny-form/comapny-form.component';
-import { GridModule, EditService, ToolbarService } from '@syncfusion/ej2-ng-grids';
+import {
+  GridModule, EditService, ToolbarService, GroupService, PdfExportService,
+  ExcelExportService, ColumnMenuService, SearchService, DetailRowService,
+  PageService, SortService, FilterService, ColumnChooserService, ReorderService, CommandColumnService, ResizeService
+} from '@syncfusion/ej2-ng-grids';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ButtonModule } from '@syncfusion/ej2-ng-buttons';
+import { FormOptionsComponent } from '../../shared/form-options/form-options.component';
+import { CompanyService } from './company.service';
+
 
 @NgModule({
   imports: [
@@ -13,11 +22,30 @@ import { GridModule, EditService, ToolbarService } from '@syncfusion/ej2-ng-grid
     BrowserModule,
     GridModule,
     CompanyRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    // syncfussion modules
+    ButtonModule,
     GridModule
   ],
-  declarations: [CompanyViewComponent, ComapnyFormComponent],
+  declarations: [CompanyViewComponent, ComapnyFormComponent, FormOptionsComponent],
   exports: [CompanyViewComponent, ComapnyFormComponent],
-  providers: [ToolbarService, EditService]
+  providers: [   PageService,
+    SortService,
+    FilterService,
+    GroupService,
+    EditService,
+    ExcelExportService,
+    ColumnChooserService,
+    ColumnMenuService,
+    DetailRowService,
+    SearchService,
+    PdfExportService,
+    ReorderService,
+    CommandColumnService,
+    CompanyService,
+    ToolbarService,
+    ResizeService]
 })
 
 export class CompanyModule { }
