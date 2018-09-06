@@ -1,92 +1,128 @@
-<div class="user">
-  <div class="title">
-    <mat-card-title>{{title}}</mat-card-title>
-  </div>
-  <div>
-    <form class="user-form" [formGroup]="usersForm" (ngSubmit)="onSubmit()">
-    <div class="card">
-      <mat-card class="user-card">
-        <div>
-            <mat-form-field>
-              <input matInput placeholder="first name"
-                    formControlName="First_Name"
-                    type="text">
-            </mat-form-field>
-        </div>
-        <div>
-            <mat-form-field>
-                <input matInput placeholder="last name"
-                    formControlName="Last_Name"
-                    type="text">
-            </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field>
-              <input matInput placeholder="email"
-                  formControlName="Email"
-                  type="email">
-          </mat-form-field>
-      </div>
-      <div>
-        <mat-form-field>
-            <input matInput placeholder="account id"
-                formControlName="Account_Id"
-                type="search">
-        </mat-form-field>
-    </div>
-        <div>
-            <section class="">
-               <label class="user-margin">Gender:</label>
-                  <mat-radio-group [(ngModel)]="labelPosition"
-                                   formControlName="Gender">                 
-                    <mat-radio-button class="margin" value="female">female</mat-radio-button>
-                    <mat-radio-button class="margin" value="male">male</mat-radio-button>
-                  </mat-radio-group>
-            </section>                
+    <!-- users form -->
+    <div class="form">
+      <div class="e-card">
+        <div class="wrap">
+          <div class="e-card-header">
+            User Form
           </div>
-          <div class="div">
-            <mat-form-field>
-              <input matInput placeholder="password"
-                    formControlName="Password"
-                    type="password">
-            </mat-form-field>
-          </div>
-        
-        <div class="div">
-          <mat-form-field>
-            <input matInput placeholder="confirm password"
-                  formControlName="Password"
-                  type="password">
-          </mat-form-field>
-        </div>
-          <div>
-              <mat-form-field class="">
-               <input matInput [matDatepicker]="picker" 
-                      placeholder="Choose Birth Date"
-                      formControlName="Birth_Date">
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field>       
+          <form class="user-form">
+            <div id="inline">
+              <!-- first name -->
+              <div class="e-float-input e-input-group">
+                <input type="text" required formControlName="First_Name">
+                <span class="e-float-line"></span>
+                <label class="e-float-text">First Name</label>
+                <span (mouseup)="onMouseUp($event.target)" (mousedown)="onMouseDown($event.target)">
+                </span>
+              </div>
+              <!-- last name -->
+              <div class="e-float-input e-input-group">
+                <input type="text" required formControlName="Last_Name">
+                <span class="e-float-line"></span>
+                <label class="e-float-text">Last Name</label>
+                <span (mouseup)="onMouseUp($event.target)" (mousedown)="onMouseDown($event.target)">
+                </span>
+              </div>
             </div>
-      </mat-card>
-    </div>
-    <div class="div">
-      <mat-form-field>
-        <input matInput [matDatepicker]="dp"
-               placeholder="date created"
-               formControlName="Date_Created"
-               disabled>
-        <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
-        <mat-datepicker #dp></mat-datepicker>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput [matDatepicker]="dp1"
-               placeholder="date updated"
-               formControlName="Date_Updated"
-               disabled>
-        <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
-        <mat-datepicker #dp1></mat-datepicker>
-      </mat-form-field>
+            <div id="inline">
+              <!-- email -->
+              <div class="e-float-input e-input-group">
+                <input type="email" required formControlName="Email">
+                <span class="e-float-line"></span>
+                <label class="e-float-text">Email</label>
+                <span (mouseup)="onMouseUp($event.target)" (mousedown)="onMouseDown($event.target)">
+                </span>
+              </div>
+              <!-- account id -->
+              <div class="e-float-input e-input-group">
+                <input type="number" required formControlName="Account_Id">
+                <span class="e-float-line"></span>
+                <label class="e-float-text">Account Id</label>
+                <span (mouseup)="onMouseUp($event.target)" (mousedown)="onMouseDown($event.target)">
+                </span>
+              </div>
+            </div>
+    
+            <div id="inline">
+              <!-- password -->
+              <div class="e-float-input e-input-group">
+                <input type="password" required formControlName="password">
+                <span class="e-float-line"></span>
+                <label class="e-float-text">Password</label>
+                <span (mouseup)="onMouseUp($event.target)" (mousedown)="onMouseDown($event.target)">
+                </span>
+              </div>
+              <!-- confirm password -->
+              <div class="e-float-input e-input-group">
+                <input type="password" required formControlName="Confirm_Password">
+                <span class="e-float-line"></span>
+                <label class="e-float-text">Confirm Password</label>
+                <span (mouseup)="onMouseUp($event.target)" (mousedown)="onMouseDown($event.target)">
+                </span>
+              </div>
+            </div>
+            <!-- Gender information -->
+            <label>gender</label>
+            <div id="inline">
+              <!-- birth date -->
+              <div class="f">
+                <ejs-datepicker format='yyyy-MM-dd' placeholder='Enter Birth Date' formControlName='Birth_Date' [value]=dateValue>
+                </ejs-datepicker>
+              </div>
+              <!-- date created -->
+              <div class="s">
+                <ejs-datepicker format='yyyy-MM-dd' [enabled]=disable placeholder='Created Date' formControlName='Created_Date' [value]=dateValue
+                  [readonly]=readonly>
+                </ejs-datepicker>
+              </div>
+              <!-- date updated -->
+              <div class="t">
+                <ejs-datepicker format='yyyy-MM-dd' [enabled]=disable placeholder='Updated Date' formControlName='Updated_Date' [value]=dateValue
+                  [readonly]=readonly>
+                </ejs-datepicker>
+              </div>
+            </div>
+    
+          </form>
+        </div>
+        <!-- Buttons -->
+        <div class="e-card-actions">
+          <!-- submit button -->
+          <button ejs-button>
+            submit
+          </button>
+          <!-- cancel button -->
+          <button class="e-card-btn">cancel</button>
+        </div>
+      </div>
     </div>
 
- {{userForm.value | json}}  -->
+{{userForm.value | json}}  
+
+<!-- users table -->
+
+<!-- <ejs-grid [dataSource]='getAllUsers'
+          [allowPaging]="true"
+          [pageSettings]='pageSettings'
+          [allowSorting]="true"
+          [allowFiltering]="true"
+          [allowGrouping]="true"
+          [EditService]= "true"
+          [ColumnChooserService]= "true"
+          [ColumnMenuService]= "true"
+          [DetailRowService]= "true"
+          [SearchService]= "true"
+          [PdfExportService]= "true"
+          [ReorderService]= "true"
+          [CommandColumnService]= "true">
+    <e-columns>
+        <e-column field='UserID' headerText='User ID' textAlign='Right' width=90></e-column>
+        <e-column field='First_Name' headerText='First Name' width=90></e-column>
+        <e-column field='Last_Name' headerText='Last Name' textAlign='Right' width=90></e-column>
+        <e-column field='Account_Id' headerText='Account Id' textAlign='Right' width=90></e-column>
+        <e-column field='Gender' headerText='Gender' textAlign='Right' width=90></e-column>
+        <e-column field='Birth_Date' headerText='Birth Date' textAlign='Right' format='yMd' width=90></e-column>
+        <e-column field='Date_Added' headerText='Date Added' textAlign='Right' format='yMd' width=90></e-column>
+        <e-column field='Date_Updated' headerText='Date Updated' textAlign='Right' format='yMd' width=90></e-column>
+    </e-columns>
+</ejs-grid> -->

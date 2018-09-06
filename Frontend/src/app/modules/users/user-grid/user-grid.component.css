@@ -1,12 +1,15 @@
-.e-card {
+
+/* .e-card {
     margin-left: 6%;
     margin-right: 10%;
     align-content: center;
-}
-.form {
+} */
+
+/* .form {
     margin-right: 25%;
     margin-left: 10%;
-}
+} */
+
 .title {
     text-align: center;
 }
@@ -28,4 +31,16 @@
     height:100px;
     /* display: inline-block; */
     float: left;
+}
+.e-grid .e-altrow {
+    background-color: #fafafa;
+}
+.e-resizable {
+    resize: both;
+    overflow: auto;
+    border: 1px solid red;
+    padding: 10px;
+    height: 300px;
+    min-height: 250px;
+    min-width: 250px;
 }

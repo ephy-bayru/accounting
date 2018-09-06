@@ -1,12 +1,14 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<app-side-nav></app-side-nav>
+<app-side-nav>
+    <button mat-button *ngFor="let link of links" 
+    [routerLink]="link.path"
+    routerLinkActive="active">
+        {{link.label}}
+    </button>
+</app-side-nav>
 
-<div style="text-align:center">
-  <h1>
-    {{ title }}!
-  </h1>
+<!-- <div style="text-align:center"> -->
 
-  <button ejs-button>
-    Navigate
-  </button>
+  
+  <button ejs-button cssClass="e-block" (onsubmit)="submit()">user</button>
 

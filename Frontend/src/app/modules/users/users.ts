@@ -8,5 +8,5 @@ export interface Users {
     Gender: string;
     Birth_Date: Date;
     Date_Added: Date;
-    DateUpdated: Date;
+    Date_Updated: Date;
 }

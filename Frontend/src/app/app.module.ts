@@ -20,6 +20,15 @@ import { BalanceSheetComponent } from './modules/reports/balance_sheet/balance-s
 import { IncomeStatementComponent } from './modules/reports/income_statement/income-statement/income-statement.component';
 import { TrialBalanceComponent } from './modules/reports/trial_balance/trial-balance/trial-balance.component';
 import { UsersModule } from './modules/users/users/users.module';
+import { SideNavComponent } from './shared/side-nav/side-nav.component';
+import { MainNavComponent } from './shared/main-nav/main-nav.component';
+import { ListViewModule } from '@syncfusion/ej2-ng-lists';
+import { ButtonModule } from '@syncfusion/ej2-ng-buttons';
+import { RouterModule, Routes } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { GridModule } from '@syncfusion/ej2-ng-grids';
+
+
 
 @NgModule({
   declarations: [
@@ -39,7 +48,8 @@ import { UsersModule } from './modules/users/users/users.module';
     IncomeStatementComponent,
     TrialBalanceComponent,
     // modules
-    UsersModule
+    MainNavComponent,
+    SideNavComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,9 +59,23 @@ import { UsersModule } from './modules/users/users/users.module';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    UsersModule,
+    RouterModule,
+    CommonModule,
+
+    // sincfussion modules
+    ListViewModule,
+    ButtonModule,
+    GridModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+// <a mat-list-item *ngFor="let link of menu" routerLincActive="active" [routerLink]="link.path">
+// <mat-icon>{{link.icon}}</mat-icon>
+// {{link.label}}
+// </a>
