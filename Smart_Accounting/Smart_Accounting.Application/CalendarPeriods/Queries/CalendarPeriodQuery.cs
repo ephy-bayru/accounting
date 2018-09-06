@@ -21,9 +21,11 @@ namespace Smart_Accounting.Application.CalendarPeriods.Queries
             return _database.CalendarPeriod.ToList();
         }
 
-        public CalendarPeriod GetById(uint Id)
+        public CalendarPeriod GetById(uint id)
         {
-            throw new System.NotImplementedException();
+            var calendar = _database.CalendarPeriod.Find(id);
+            return calendar;
+            
         }
     }
 }

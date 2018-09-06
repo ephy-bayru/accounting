@@ -6,6 +6,7 @@
     <Folder Include="wwwroot\"/>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4"/>
   </ItemGroup>
   <ItemGroup>
@@ -16,5 +17,17 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8"/>
+=======
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8"/>
+  </ItemGroup>
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Smart_Accounting.Application\Smart_Accounting.Application.csproj"/>
+    <ProjectReference Include="..\Smart_Accounting.Infrastructure\Smart_Accounting.Infrastructure.csproj"/>
+    <ProjectReference Include="..\Smart_Accounting.Persistance\Smart_Accounting.Persistance.csproj"/>
+    <ProjectReference Include="..\Smart_Accounting.Commons\Smart_Accounting.Commons.csproj"/>
+>>>>>>> 7268e7ec44c93464c283252f7b8d93f94e525a29
   </ItemGroup>
 </Project>

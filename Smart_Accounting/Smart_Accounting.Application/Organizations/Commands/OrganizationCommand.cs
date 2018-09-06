@@ -1,3 +1,13 @@
+/*
+ * @CreateTime: Aug 31, 2018 12:47 PM
+ * @Author:  Mikael Araya
+ * @Contact: MikaelAraya12@gmail.com
+ * @Last Modified By:  Mikael Araya
+ * @Last Modified Time: Sep 4, 2018 4:58 PM
+ * @Description: OrganizationCommand, provides different data manipulation functions 
+ *               on Organization Domain Object
+ */
+
 using System;
 using Microsoft.EntityFrameworkCore;
 using Smart_Accounting.Application.Interfaces;
@@ -6,10 +16,13 @@ using Smart_Accounting.Application.Organizations.Models;
 using Smart_Accounting.Domain.Oranizations;
 
 namespace Smart_Accounting.Application.Organizations.Commands {
+
     public class OrganizationCommand : IOrganizationCommands {
 
-        private readonly IOrganizationFactory _factory;
-        private readonly IAccountingDatabaseService _database;
+        //factory class interface that will create deferent organization object types
+        private readonly IOrganizationFactory _factory; 
+        //main interface for database access
+        private readonly IAccountingDatabaseService _database; 
         public OrganizationCommand (
             IOrganizationFactory factory,
             IAccountingDatabaseService database) {
@@ -17,28 +30,34 @@ namespace Smart_Accounting.Application.Organizations.Commands {
             _factory = factory;
         }
 
-        //creates organization on success or returns null on failure
+        /// <summary>
+        /// Used to create new instance of organization object
+        /// </summary>
+        /// <param name="newOrganization">NewOrganizationModel</param>
+        /// <returns>OrganizationViewModel</returns>
         public OrganizationViewModel CreateOrganization (NewOrganizationModel newOrganization) {
             try {
-            //convert the new organization data passed to organization object
-            var organization = _factory.OrganizationForCreation (newOrganization);
+                var organization = _factory.OrganizationForCreation (newOrganization);
 
-            _database.Organization.Add (organization); //add to database
+                _database.Organization.Add (organization);
 
-            _database.Save (); // save new organization in the database
+                _database.Save ();
 
-            //return new organization object to organization view object
-            return _factory.OrganizationView (organization);
-            } catch( Exception) {
+                return _factory.OrganizationView (organization);
+            } catch (Exception) {
                 return null;
             }
 
         }
-
+        /// <summary>
+        /// Deletes Single organization record
+        /// </summary>
+        /// <param name="organization">Organization</param>
+        /// <returns>bool</returns>
         public bool deleteOrganization (Organization organization) {
             try {
                 _database.Organization.Remove (organization);
-                _database.Save (); // save change in the database
+                _database.Save ();
                 return true;
             } catch (Exception) {
                 return false;
@@ -46,12 +65,22 @@ namespace Smart_Accounting.Application.Organizations.Commands {
 
         }
 
-        public bool UpdateOrganization (Organization old, UpdatedOrganizationModel updatedOrganization) {
+        /// <summary>
+        /// Updates Single organization Record
+        /// </summary>
+        /// <param name="currentOrganization">Organization</param>
+        /// <param name="updatedOrganization">UpdatedOrganizationModel</param>
+        /// <returns>bool</returns>
+        public bool UpdateOrganization (Organization currentOrganization, UpdatedOrganizationModel updatedOrganization) {
             try {
-                var organization = _factory.OrganizationForUpdate (old, updatedOrganization);
+
+                var organization = _factory.OrganizationForUpdate (currentOrganization, updatedOrganization);
+
                 _database.Organization.Add (organization).State = EntityState.Modified;
                 _database.Save ();
+
                 return true;
+
             } catch (Exception) {
                 return false;
             }

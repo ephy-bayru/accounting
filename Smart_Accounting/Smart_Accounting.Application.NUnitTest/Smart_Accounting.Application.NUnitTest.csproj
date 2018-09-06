@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="NUnit" Version="3.10.1"/>
+    <PackageReference Include="NUnitLite" Version="3.10.1"/>
+    <PackageReference Include="Moq" Version="4.9.0"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Smart_Accounting.Application\Smart_Accounting.Application.csproj"/>
+  </ItemGroup>
+</Project>
