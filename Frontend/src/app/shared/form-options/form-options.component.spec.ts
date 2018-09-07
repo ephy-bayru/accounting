@@ -9,25 +9,26 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FormOptionsComponent } from './form-options.component';
+import { Location } from '@angular/common';
 
+class MockLocation {
+  back(): void {
+
+  }
+}
 describe('FormOptionsComponent', () => {
-  let component: FormOptionsComponent;
-  let fixture: ComponentFixture<FormOptionsComponent>;
+  let locationService: Location;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ FormOptionsComponent ]
-    })
-    .compileComponents();
-  }));
+  let component: FormOptionsComponent;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormOptionsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    locationService = jasmine.createSpyObj(['back']);
+    component = new FormOptionsComponent(locationService);
   });
 
-  it('should create', () => {
+  it('should be created', () => {
     expect(component).toBeTruthy();
   });
+
+
 });
