@@ -33,53 +33,50 @@ using Smart_Accounting.Application.Supplier.Interfaces;
 using Smart_Accounting.Application.Supplier.Queries;
 using Smart_Accounting.Persistance;
 
-namespace Smart_Accounting.API
-{
-    public class Startup
-    {
-        public Startup(IConfiguration configuration)
-        {
+namespace Smart_Accounting.API {
+    public class Startup {
+        public Startup (IConfiguration configuration) {
             Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddScoped<IAccountingDatabaseService, AccountingDatabaseService>();
-            services.AddMvc();
-         
-            services.AddScoped<IAccountChartCommands, AccountChartCommands>();
-            services.AddScoped<IAccountChartCommandsFactory, AccountChartCommandsFactory>();
-            services.AddScoped<IAccountChartQueries, AccountChartQuery>();
-            services.AddScoped<IOrganizationsQuery, OrganizationQuery>();
-            services.AddScoped<IOrganizationCommands, OrganizationCommand>();
-            services.AddScoped<IOrganizationFactory, OrganizationFactory>();
-            services.AddScoped<ICalendarPeriodQueries, CalendarPeriodsQuery>();
-            services.AddScoped<ICalendarPeriodsCommands, CalendarPeriodsCommands>();
-            services.AddScoped<ICalendarPeriodsCommandsFactory, CalendarPeriodCommandsFactorys>();
+        public void ConfigureServices (IServiceCollection services) {
+            services.AddScoped<IAccountingDatabaseService, AccountingDatabaseService> ();
+            services.AddMvc ();
 
-            services.AddScoped<IEmployeeCommands, EmployeeCommand>();
-            services.AddScoped<IEmployeesQueries,  EmployeesQuery>();
-            services.AddScoped<IEmployeeCommandsFactory,  EmployeeCommandsFactory>();
-            services.AddScoped<ISupplierCommandes, SupplierCommandes>();
-            services.AddScoped<ISuppliersQuery, SuppliersQuery>();
-            services.AddScoped<ICustomerCommands, CustomerCommand>();
-            services.AddScoped<ICustomerQuery, CustomerQuery>();
-    
-            
+            services.AddScoped<IAccountChartCommands, AccountChartCommands> ();
+            services.AddScoped<IAccountChartCommandsFactory, AccountChartCommandsFactory> ();
+            services.AddScoped<IAccountChartQueries, AccountChartQuery> ();
+            services.AddScoped<IOrganizationsQuery, OrganizationQuery> ();
+            services.AddScoped<IOrganizationCommands, OrganizationCommand> ();
+            services.AddScoped<IOrganizationFactory, OrganizationFactory> ();
+            services.AddScoped<ICalendarPeriodQueries, CalendarPeriodsQuery> ();
+            services.AddScoped<ICalendarPeriodsCommands, CalendarPeriodsCommands> ();
+            services.AddScoped<ICalendarPeriodsCommandsFactory, CalendarPeriodCommandsFactorys> ();
+
+            services.AddScoped<IEmployeeCommands, EmployeeCommand> ();
+            services.AddScoped<IEmployeesQueries, EmployeesQuery> ();
+            services.AddScoped<IEmployeeCommandsFactory, EmployeeCommandsFactory> ();
+            services.AddScoped<ISupplierCommandes, SupplierCommandes> ();
+            services.AddScoped<ISuppliersQuery, SuppliersQuery> ();
+            services.AddScoped<ICustomerCommands, CustomerCommand> ();
+            services.AddScoped<ICustomerQuery, CustomerQuery> ();
+            services.AddCors (options => {
+                options.AddPolicy ("AllowSpecificOrigin",
+                    builder1 => builder1.WithOrigins ("http://localhost:4200"));
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
+        public void Configure (IApplicationBuilder app, IHostingEnvironment env) {
+            if (env.IsDevelopment ()) {
+                app.UseDeveloperExceptionPage ();
             }
-
-            app.UseMvc();
+            app.UseCors("AllowSpecificOrigin");
+            app.UseMvc ();
         }
     }
 }

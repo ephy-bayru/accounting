@@ -7,31 +7,25 @@
  * @Description: Organization Service
  */
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class CompanyService {
 
-  private url = 'organization';
+  private url = 'organizations';
   constructor(private httpClient: HttpClient) {
 
   }
   // Gets a single organization information by Id and returns an observable of organization
   getOrganizationById(id: number): Observable<Organization> {
-    return this.httpClient.get<Organization>(`${this.url}/${id}`)
-      .pipe(
-        catchError(this.handleError)
-      );
+    return this.httpClient.get<Organization>(`${this.url}/${id}`);
   }
 
   // Gets all the record of organization and returns and observable of Organization object
   getOrganizationsList(): Observable<Organization[]> {
-    return this.httpClient.get<Organization[]>(`${this.url}`)
-      .pipe(
-        catchError(this.handleError)
-      );
+    return this.httpClient.get<Organization[]>(`${this.url}`);
   }
 
   // gets organization based on the location and returns an aray of organizations found there
@@ -45,7 +39,9 @@ export class CompanyService {
   // Creates a new instance of organization record in the system amd returns an observable
   // of the new organization information on success
   createOrganization(newOrganization: Organization): Observable<Organization> {
-    return this.httpClient.post<Organization>(`${this.url}`, newOrganization)
+    const config = { headers: new HttpHeaders().set('Content-Type', 'application/json') };
+    return this.httpClient.post<Organization>(`${this.url}`, JSON.stringify(newOrganization),
+    config )
       .pipe(
         catchError(this.handleError)
       );

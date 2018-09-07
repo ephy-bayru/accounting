@@ -3,14 +3,12 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 // import { data } from './data-source';
 import { ToolbarItems } from '@syncfusion/ej2-ng-grids';
 import { ClickEventArgs } from '@syncfusion/ej2-ng-navigations';
-import { DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
 import {
   SortService,
   GroupService,
   ColumnMenuService,
   PageService,
   FilterService,
-  ContextMenuItem,
   GroupSettingsModel,
   FilterSettingsModel,
   EditSettingsModel,
@@ -24,6 +22,8 @@ import {
   PdfExportCompleteArgs,
   FreezeService
 } from '@syncfusion/ej2-ng-grids';
+import { Router } from '@angular/router';
+import { CompanyService, Organization } from '../company.service';
 
 @Component({
   selector: 'app-company-view',
@@ -45,12 +45,11 @@ import {
 
 export class CompanyViewComponent implements OnInit {
   title = 'sinkT';
-  SERVICE_URI: 'http://localhost/api/users';
+
   @ViewChild('grid')
   public grid: GridComponent;
-  public dataSource: Object[];
+  public dataSource: Organization[];
   // public data: object[];
-  public gridd: GridComponent;
   public groupOptions: GroupSettingsModel;
   public filterSettings: FilterSettingsModel;
   public filterOptions: FilterSettingsModel;
@@ -60,30 +59,33 @@ export class CompanyViewComponent implements OnInit {
   public editSettings: EditSettingsModel;
   public selectionOptions: SelectionSettingsModel;
   public pageSettings;
-  constructor() { }
+  constructor(private companyService: CompanyService,private router: Router) { }
   public gridColumns = [
     {
-      field: 'Id', text: 'Id', primaryKey: true, format: '', type: 'text', editable: false, filterable: true, groupable: false,
+      field: 'id', text: 'Id', primaryKey: true, format: '', type: 'text', editable: false, filterable: true, groupable: false,
       editType: '', foreignKey: false, foreignKeyValue: '', frozen: false
     },
     {
-      field: 'name', text: 'Name', primaryKey: false, format: '', type: 'text', editable: false, filterable: true, groupable: false,
+      field: 'name', text: 'Name', primaryKey: false, format: '', type: 'text', editable: true, filterable: true, groupable: false,
       editType: '', foreignKey: false, foreignKeyValue: '', frozen: false
     },
     {
-      field: 'location', text: 'Location', primaryKey: false, format: '', type: 'text', editable: false, filterable: true,
+      field: 'location', text: 'Location', primaryKey: false, format: '', type: 'text', editable: true, filterable: true,
       groupable: false, editType: '', foreignKey: false, foreignKeyValue: '', frozen: false
     },
     {
-      field: 'tin', text: 'Tin', primaryKey: false, format: '', type: 'text', editable: false, filterable: true, groupable: false,
+      field: 'tin', text: 'Tin', primaryKey: false, format: '', type: 'text', editable: true, filterable: true, groupable: false,
       editType: '', foreignKey: false, foreignKeyValue: '', frozen: false
     }
   ];
   ngOnInit() {
-    this.dataSource = data;
-    // fetching data from api
-    /*
-this.data = new DataManager({
+    this.dataSource = [];
+    this.companyService.getOrganizationsList().subscribe(org => { this.dataSource = org;
+        console.log(this.dataSource);
+      }
+    );
+/*
+  this.data = new DataManager({
   url: 'http://localhost:5000/api/organization',
   adaptor: new WebApiAdaptor(),
   crossDomain: true,
@@ -92,7 +94,6 @@ this.data = new DataManager({
   timeTillExpiration: 100000
 });
 */
-    this.toolbarOptions = ['ColumnChooser'];
     this.groupOptions = { showGroupedColumn: true };
     this.filterSettings = { type: 'CheckBox' };
     this.wrapSettings = { wrapMode: 'Content' };
@@ -105,6 +106,7 @@ this.data = new DataManager({
       'Print',
       'PdfExport',
       'ExcelExport',
+      'ColumnChooser',
       'Search'
     ];
     this.editSettings = {
@@ -122,38 +124,25 @@ this.data = new DataManager({
   toolbarClick(args: ClickEventArgs): void {
     if (args.item.id === 'Grid_PdfExport') {
       this.grid.pdfExport();
-    }
-    //
-    if (args.item.id === 'Grid') {
+    } else if (args.item.id === 'Grid_ExcelExport') {
       this.grid.excelExport();
+    } else if (args.item.id === 'Grid_add') {
+      this.router.navigate(['add/organization']);
+    } else if (args.item.id === 'Grid_edit') {
+      this.router.navigate(['updated/organization']);
+    } else if (args.item.id === 'Grid_delete') {
+      alert('Delete');
     }
-    if (args.item.id === 'Grid_add') { // 'Grid_pdfexport' -> Grid component id + _ + toolbar item name
-      alert('add');
-    }
+
+
   }
 }
 
-
-
-
-
 export let data: Object[] = [
-  {
-    Id: 10248, name: 'VINET', location: 'AA', tin: '1234567890'
-  },
-  {
-    Id: 10248, name: 'VINET', location: 'AA', tin: '1234567890'
-  },
-  {
-    Id: 10248, name: 'VINET', location: 'AA', tin: '1234567890'
-  },
-  {
-    Id: 10248, name: 'VINET', location: 'AA', tin: '1234567890'
-  },
-  {
-    Id: 10248, name: 'VINET', location: 'AA', tin: '1234567890'
-  },
-  {
-    Id: 10248, name: 'VINET', location: 'AA', tin: '1234567890'
-  }
+  { Id: 10248, name: 'VINET', location: 'AA', tin: '1234567890' },
+  { Id: 10248, name: 'VINET', location: 'AA', tin: '1234567890' },
+  { Id: 10248, name: 'VINET', location: 'AA', tin: '1234567890' },
+  { Id: 10248, name: 'VINET', location: 'AA', tin: '1234567890' },
+  { Id: 10248, name: 'VINET', location: 'AA', tin: '1234567890' },
+  { Id: 10248, name: 'VINET', location: 'AA', tin: '1234567890' }
 ];

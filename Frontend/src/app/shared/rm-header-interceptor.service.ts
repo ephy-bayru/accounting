@@ -19,8 +19,8 @@ export class RmHeaderInterceptorService  implements HttpInterceptor {
       const requestUrl = request.url;
       // modify request content-type header to application/json
       const modifiedRequest: HttpRequest<any> =  request.clone({
-        setHeaders: {'Content-Type' : 'application/json' },
-        url: `http://localhost/api/${requestUrl}`
+
+        url: `http://localhost:53267/api/${requestUrl}`
       });
       // check the request method used
         if (request.method === 'GET') {
