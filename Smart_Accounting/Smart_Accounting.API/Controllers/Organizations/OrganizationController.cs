@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Smart_Accounting.Application.Organizations.Interfaces;
 using Smart_Accounting.Application.Organizations.Models;
+using Smart_Accounting.API.Commons.Models;
+using System.Collections;
 
 namespace Smart_Accounting.API.Controllers.Organizations {
 
@@ -23,17 +25,19 @@ namespace Smart_Accounting.API.Controllers.Organizations {
         public IActionResult GetAllOrganizations () {
             var organizations = _query.GetAllOrganizations ();
 
-            IList<OrganizationViewModel> organizationList = new List<OrganizationViewModel>();
+            IList<OrganizationViewModel> organizationList = new List<OrganizationViewModel> ();
 
-            foreach (var item in organizations)
-            {
-                var x = _factory.OrganizationView(item);
-                organizationList.Add(x);
-                
-                
+            foreach (var item in organizations) {
+
+                var x = _factory.OrganizationView (item);
+                organizationList.Add (x);
+
             }
+            ResponseFormat response = new ResponseFormat ();
+            response.Items = (IList)organizationList;
+            response.Count = organizationList.Count;
 
-            return StatusCode (200,  organizationList);
+            return StatusCode (200, response);
         }
 
         [HttpGet ("{id}")]
@@ -41,9 +45,9 @@ namespace Smart_Accounting.API.Controllers.Organizations {
         [ProducesResponseType (404)]
         public IActionResult GetOrganizationById (uint id) {
             var organization = _query.GetOrganizationById (id);
-            
+
             if (organization != null) {
-                var organizationView = _factory.OrganizationView(organization);
+                var organizationView = _factory.OrganizationView (organization);
                 return StatusCode (200, organizationView);
             } else {
                 return StatusCode (404);
@@ -100,22 +104,52 @@ namespace Smart_Accounting.API.Controllers.Organizations {
 
         }
 
-        [HttpDelete("{id}")]
-        [ProducesResponseType(204)]
-        [ProducesResponseType(404)]
-        [ProducesResponseType(500)]
-        public IActionResult DeleteOrganization(uint id) {
-            var organization = _query.GetOrganizationById(id);
+         [HttpPut]
+        [ProducesResponseType (204)]
+        [ProducesResponseType (404)]
+        [ProducesResponseType (500)]
+        public IActionResult UpdateOrganization ([FromBody] UpdatedOrganizationModel data) {
 
-                if(organization != null) {
-                    if(_command.deleteOrganization(organization)) {
-                        return StatusCode(204);
+            if (ModelState.IsValid) {
+
+                var organization = _query.GetOrganizationById (data.id);
+
+                if (organization != null) {
+                    var result = _command.UpdateOrganization (organization, data);
+
+                    if (result != false) {
+                        return StatusCode (204);
+
                     } else {
                         return StatusCode (500, "Unknown Error Occured While Processing Data Try Again Later");
                     }
+
                 } else {
-                    return StatusCode(404);
+                    return StatusCode (404);
                 }
+
+            } else {
+                return StatusCode (422, "One or More Required Fields Missing");
+            }
+
+        }
+
+        [HttpDelete ("{id}")]
+        [ProducesResponseType (204)]
+        [ProducesResponseType (404)]
+        [ProducesResponseType (500)]
+        public IActionResult DeleteOrganization (uint id) {
+            var organization = _query.GetOrganizationById (id);
+
+            if (organization != null) {
+                if (_command.deleteOrganization (organization)) {
+                    return StatusCode (204);
+                } else {
+                    return StatusCode (500, "Unknown Error Occured While Processing Data Try Again Later");
+                }
+            } else {
+                return StatusCode (404);
+            }
         }
 
     }

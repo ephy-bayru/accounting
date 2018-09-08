@@ -47,10 +47,10 @@ namespace Smart_Accounting.API.NUnitTest.Organizatios {
             };
 
             organizationView = new OrganizationViewModel () {
-                Id = 1,
-                Name = "AppDiv",
-                Location = "A.A",
-                Tin = "1234567890",
+                id = 1,
+                name = "AppDiv",
+                location = "A.A",
+                tin = "1234567890",
                 DateAdded = DateTime.Now,
                 DateUpdated = DateTime.Now.AddDays (1)
             };
@@ -115,10 +115,10 @@ namespace Smart_Accounting.API.NUnitTest.Organizatios {
         [Test]
         public void UpdateOrganizationTest () {
             UpdatedOrganizationModel updatedOrganization = new UpdatedOrganizationModel () {
-                Id = 1,
-                Name = "AppDiv Updated",
-                Location = "A.A",
-                Tin = "1234567890"
+                id = 1,
+                name = "AppDiv Updated",
+                location = "A.A",
+                tin = "1234567890"
 
             };
 

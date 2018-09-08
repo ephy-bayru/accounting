@@ -32,9 +32,9 @@ namespace Smart_Accounting.Application.NUnitTest.Organizations.Factories {
 
             //initialize updated organization model
             updated_ORGANIZATION = new UpdatedOrganizationModel ();
-            updated_ORGANIZATION.Name = "updated  AppDiv";
-            updated_ORGANIZATION.Location = "updated A.A";
-            updated_ORGANIZATION.Tin = "1029384756";
+            updated_ORGANIZATION.name = "updated  AppDiv";
+            updated_ORGANIZATION.location = "updated A.A";
+            updated_ORGANIZATION.tin = "1029384756";
 
             organizationFactory = new OrganizationFactory ();
         }
@@ -71,9 +71,9 @@ namespace Smart_Accounting.Application.NUnitTest.Organizations.Factories {
             Organization result = organizationFactory.OrganizationForUpdate (old_organization, updated_ORGANIZATION);
 
             Assert.That (result.Id, Is.EqualTo (old_organization.Id));
-            Assert.That (result.Name, Is.EqualTo (updated_ORGANIZATION.Name));
-            Assert.That (result.Location, Is.EqualTo (updated_ORGANIZATION.Location));
-            Assert.That (result.Tin, Is.EqualTo (updated_ORGANIZATION.Tin));
+            Assert.That (result.Name, Is.EqualTo (updated_ORGANIZATION.name));
+            Assert.That (result.Location, Is.EqualTo (updated_ORGANIZATION.location));
+            Assert.That (result.Tin, Is.EqualTo (updated_ORGANIZATION.tin));
             Assert.That (Is.Equals (result.DateAdded.ToString (), DateTime.Now.ToString ()));
             Assert.That (Is.Equals (result.DateUpdated.ToString (), DateTime.Now.AddDays (1).ToString ()));
 
@@ -98,10 +98,10 @@ namespace Smart_Accounting.Application.NUnitTest.Organizations.Factories {
 
             OrganizationViewModel view = organizationFactory.OrganizationView (organization);
 
-            Assert.That (view.Id, Is.EqualTo (organization.Id));
-            Assert.That (view.Name, Is.EqualTo (organization.Name));
-            Assert.That (view.Location, Is.EqualTo (organization.Location));
-            Assert.That (view.Tin, Is.EqualTo (organization.Tin));
+            Assert.That (view.id, Is.EqualTo (organization.Id));
+            Assert.That (view.name, Is.EqualTo (organization.Name));
+            Assert.That (view.location, Is.EqualTo (organization.Location));
+            Assert.That (view.tin, Is.EqualTo (organization.Tin));
             Assert.That (view.DateAdded.ToString (), Is.EqualTo (DateTime.Now.ToString()));
             Assert.That (view.DateUpdated.ToString (), Is.EqualTo (DateTime.Now.AddDays (1).ToString ()));
 

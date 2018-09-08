@@ -44,9 +44,9 @@ namespace Smart_Accounting.Application.Organizations.Factory {
         /// <param name="updatedOrganization">UpdatedOrganizationModel</param>
         /// <returns>Organization</returns>
         public Organization OrganizationForUpdate (Organization organization, UpdatedOrganizationModel org) {
-            organization.Name = org.Name;
-            organization.Location = org.Location;
-            organization.Tin = org.Tin;
+            organization.Name = org.name;
+            organization.Location = org.location;
+            organization.Tin = org.tin;
             
             return organization;
         }
@@ -66,10 +66,10 @@ namespace Smart_Accounting.Application.Organizations.Factory {
 
             var organization = new OrganizationViewModel ();
 
-            organization.Id = org.Id;
-            organization.Name = org.Name;
-            organization.Location = org.Location;
-            organization.Tin = org.Tin;
+            organization.id = org.Id;
+            organization.name = org.Name;
+            organization.location = org.Location;
+            organization.tin = org.Tin;
             organization.DateAdded = org.DateAdded;
             organization.DateUpdated = org.DateUpdated;
             

@@ -1,6 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-
-// import { data } from './data-source';
 import { ToolbarItems } from '@syncfusion/ej2-ng-grids';
 import { ClickEventArgs } from '@syncfusion/ej2-ng-navigations';
 import {
@@ -18,12 +16,11 @@ import {
   ExcelExportService,
   PdfExportService,
   SelectionSettingsModel,
-  ExcelExportCompleteArgs,
-  PdfExportCompleteArgs,
   FreezeService
 } from '@syncfusion/ej2-ng-grids';
 import { Router } from '@angular/router';
 import { CompanyService, Organization } from '../company.service';
+import { WebApiAdaptor, DataManager } from '@syncfusion/ej2-data';
 
 @Component({
   selector: 'app-company-view',
@@ -49,6 +46,7 @@ export class CompanyViewComponent implements OnInit {
   @ViewChild('grid')
   public grid: GridComponent;
   public dataSource: Organization[];
+  public data: DataManager;
   // public data: object[];
   public groupOptions: GroupSettingsModel;
   public filterSettings: FilterSettingsModel;
@@ -59,7 +57,7 @@ export class CompanyViewComponent implements OnInit {
   public editSettings: EditSettingsModel;
   public selectionOptions: SelectionSettingsModel;
   public pageSettings;
-  constructor(private companyService: CompanyService,private router: Router) { }
+  constructor(private companyService: CompanyService, private router: Router) { }
   public gridColumns = [
     {
       field: 'id', text: 'Id', primaryKey: true, format: '', type: 'text', editable: false, filterable: true, groupable: false,
@@ -79,21 +77,16 @@ export class CompanyViewComponent implements OnInit {
     }
   ];
   ngOnInit() {
-    this.dataSource = [];
-    this.companyService.getOrganizationsList().subscribe(org => { this.dataSource = org;
-        console.log(this.dataSource);
-      }
-    );
-/*
-  this.data = new DataManager({
-  url: 'http://localhost:5000/api/organization',
-  adaptor: new WebApiAdaptor(),
-  crossDomain: true,
-  enableCaching: true,
-  cachingPageSize: 10,
-  timeTillExpiration: 100000
-});
-*/
+
+
+    this.data = new DataManager({
+      url: 'http://localhost:53267/api/organizations',
+      adaptor: new WebApiAdaptor(),
+      updateUrl: 'api/organization',
+      insertUrl: 'api/organization',
+      removeUrl: 'api/organization'
+    });
+
     this.groupOptions = { showGroupedColumn: true };
     this.filterSettings = { type: 'CheckBox' };
     this.wrapSettings = { wrapMode: 'Content' };
@@ -127,22 +120,14 @@ export class CompanyViewComponent implements OnInit {
     } else if (args.item.id === 'Grid_ExcelExport') {
       this.grid.excelExport();
     } else if (args.item.id === 'Grid_add') {
-      this.router.navigate(['add/organization']);
+      // this.router.navigate(['add/organization']);
     } else if (args.item.id === 'Grid_edit') {
-      this.router.navigate(['updated/organization']);
+      // this.router.navigate(['update/organization']);
     } else if (args.item.id === 'Grid_delete') {
-      alert('Delete');
     }
 
 
   }
 }
 
-export let data: Object[] = [
-  { Id: 10248, name: 'VINET', location: 'AA', tin: '1234567890' },
-  { Id: 10248, name: 'VINET', location: 'AA', tin: '1234567890' },
-  { Id: 10248, name: 'VINET', location: 'AA', tin: '1234567890' },
-  { Id: 10248, name: 'VINET', location: 'AA', tin: '1234567890' },
-  { Id: 10248, name: 'VINET', location: 'AA', tin: '1234567890' },
-  { Id: 10248, name: 'VINET', location: 'AA', tin: '1234567890' }
-];
+

@@ -54,10 +54,10 @@ namespace Smart_Accounting.Application.NUnitTest.Organizations.Commands {
             };
 
             organizationView = new OrganizationViewModel () {
-                Id = 1,
-                Name = "AppDiv view",
-                Location = "A.A",
-                Tin = "1234567890",
+                id = 1,
+                name = "AppDiv view",
+                location = "A.A",
+                tin = "1234567890",
                 DateAdded = DateTime.Now,
                 DateUpdated = DateTime.Now.AddDays (1)
             };
@@ -87,7 +87,7 @@ namespace Smart_Accounting.Application.NUnitTest.Organizations.Commands {
             var result = organizationCommand.CreateOrganization (newOrganization);
 
             //check if the action created new organization instance and retuned view model of the instancs
-            Assert.That (result.Name, Is.EqualTo (organizationView.Name));
+            Assert.That (result.name, Is.EqualTo (organizationView.name));
 
         }
 
@@ -99,10 +99,10 @@ namespace Smart_Accounting.Application.NUnitTest.Organizations.Commands {
             //TODO UpdateOrganizationTest Function in Organization command Test File
             // create UpdatedOrganizationModel type object
             UpdatedOrganizationModel updatedOrganization = new UpdatedOrganizationModel () {
-                Id = 1,
-                Name = "AppDiv updated",
-                Location = "A.A",
-                Tin = "1029384756"
+                id = 1,
+                name = "AppDiv updated",
+                location = "A.A",
+                tin = "1029384756"
             };
 
             //create organization object

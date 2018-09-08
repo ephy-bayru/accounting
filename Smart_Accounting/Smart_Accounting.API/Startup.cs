@@ -32,6 +32,8 @@ using Smart_Accounting.Application.Supplier.Commands;
 using Smart_Accounting.Application.Supplier.Interfaces;
 using Smart_Accounting.Application.Supplier.Queries;
 using Smart_Accounting.Persistance;
+using Microsoft.AspNetCore.Cors;
+using Newtonsoft.Json.Serialization;
 
 namespace Smart_Accounting.API {
     public class Startup {
@@ -44,7 +46,7 @@ namespace Smart_Accounting.API {
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices (IServiceCollection services) {
             services.AddScoped<IAccountingDatabaseService, AccountingDatabaseService> ();
-            services.AddMvc ();
+           
 
             services.AddScoped<IAccountChartCommands, AccountChartCommands> ();
             services.AddScoped<IAccountChartCommandsFactory, AccountChartCommandsFactory> ();
@@ -65,8 +67,10 @@ namespace Smart_Accounting.API {
             services.AddScoped<ICustomerQuery, CustomerQuery> ();
             services.AddCors (options => {
                 options.AddPolicy ("AllowSpecificOrigin",
-                    builder1 => builder1.WithOrigins ("http://localhost:4200"));
+                    builder1 => builder1.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             });
+             services.AddMvc ()
+              .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());;
 
         }
 
