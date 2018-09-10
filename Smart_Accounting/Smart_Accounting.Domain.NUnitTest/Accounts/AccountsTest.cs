@@ -13,19 +13,22 @@ using Smart_Accounting.Domain.AccountCharts.AccountTypes;
 namespace Smart_Accounting.Domain.NUnitTest.Account {
 
     [Author ("Mikael Araya", "Mikaelaraya12@gmail.com")]
+    [TestFixture]
     public class AccountChartTest {
 
-        private AccountChart account;
+        public AccountChart account;
 
-        
-        [SetUp]  //Initialize Basic Account Chart Data
+        [SetUp] //Initialize Basic Account Chart Data
         public void Init () {
-            AccountChart account = new AccountChart ();
-            account.AccountId = 1;
-            account.Active = 0;
-            account.AccountCode = "2";
-            account.Name = "Cash";
-            account.SubAccountCode = "3";
+            account = new AccountChart () {
+                AccountId = 1,
+                Active = 0,
+                AccountCode = "2",
+                Name = "Cash",
+                SubAccountCode = "3",
+                AccountTypeNavigation = new AccountType ()
+            };
+
         }
 
         [Test]
