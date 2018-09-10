@@ -7,10 +7,11 @@
  * @Description: Modify Here, Please
  */
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute} from '@angular/router';
 import { Organization, CompanyService } from 'src/app/modules/company/company.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-comapny-form',
@@ -22,12 +23,10 @@ export class ComapnyFormComponent implements OnInit {
   private organizationId: number;
   organizationForm: FormGroup;
   constructor(private formBuilder: FormBuilder,
-    private organizationService: CompanyService, private activatedRoute: ActivatedRoute) {
-    this.organizationForm = this.formBuilder.group({
-      Name: '',
-      Location: '',
-      Tin: ''
-    });
+              private location: Location,
+              private organizationService: CompanyService,
+              private activatedRoute: ActivatedRoute) {
+
   }
 
   ngOnInit(): void {
@@ -35,16 +34,28 @@ export class ComapnyFormComponent implements OnInit {
     if (this.organizationId) {
       this.organizationService.getOrganizationById(this.organizationId).subscribe(
         (success: Organization) => this.populateForm(success),
-        (error: HttpErrorResponse) => this.handelResponse(error)
+        (error: HttpErrorResponse) => this.handelError(error)
       );
     }
+
+    this.initalizeForm();
   }
 
+
+  initalizeForm() {
+    this.organizationForm = this.formBuilder.group({
+      Name: ['', Validators.required],
+      Location: ['', Validators.required],
+      Tin:  ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]]
+    });
+
+  }
   populateForm(organization: Organization) {
-    this.organizationForm.patchValue({
-      Name: organization.Name,
-      Location: organization.Location,
-      Tin: organization.Tin
+    console.log(organization.name);
+    this.organizationForm = this.formBuilder.group({
+      Name: [organization.name, Validators.required],
+      Location: [organization.location, Validators.required],
+      Tin: [organization.tin, [Validators.required, Validators.minLength(10), Validators.maxLength(10)]]
     });
   }
   public focusIn(target: HTMLElement): void {
@@ -69,25 +80,29 @@ export class ComapnyFormComponent implements OnInit {
   prepareData(): Organization {
     const form = this.organizationForm.value;
     return {
-      Name: form.Name,
-      Location: form.Location,
-      Tin: form.Tin
+      name: form.Name,
+      location: form.Location,
+      tin: form.Tin
     };
   }
-  handelResponse(response: any) {
+  handelSuccess(response: Organization | Boolean) {
+    this.location.back();
+  }
+
+  handelError(error: HttpErrorResponse) {
 
   }
   onSubmit() {
     const data = this.prepareData();
     if (this.organizationId) {
       this.organizationService.updateOrganization(this.organizationId, data).subscribe(
-        success => this.handelResponse(success),
-        error => this.handelResponse(error)
+        success => this.handelSuccess(success),
+        error => this.handelError(error)
       );
     }
     this.organizationService.createOrganization(data).subscribe(
-      success => this.handelResponse(success),
-      error => this.handelResponse(error)
+      success => this.handelSuccess(success),
+      error => this.handelError(error)
     );
   }
 

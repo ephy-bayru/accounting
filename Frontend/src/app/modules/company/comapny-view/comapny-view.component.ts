@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ToolbarItems } from '@syncfusion/ej2-ng-grids';
+import { ToolbarItems, RowDataBoundEventArgs } from '@syncfusion/ej2-ng-grids';
 import { ClickEventArgs } from '@syncfusion/ej2-ng-navigations';
 import {
   SortService,
@@ -56,6 +56,7 @@ export class CompanyViewComponent implements OnInit {
   public toolbar: ToolbarItems[];
   public editSettings: EditSettingsModel;
   public selectionOptions: SelectionSettingsModel;
+
   public pageSettings;
   constructor(private companyService: CompanyService, private router: Router) { }
   public gridColumns = [
@@ -86,7 +87,7 @@ export class CompanyViewComponent implements OnInit {
       insertUrl: 'api/organization',
       removeUrl: 'api/organization'
     });
-
+    this.selectionOptions = { type: 'Single' };
     this.groupOptions = { showGroupedColumn: true };
     this.filterSettings = { type: 'CheckBox' };
     this.wrapSettings = { wrapMode: 'Content' };
@@ -94,8 +95,6 @@ export class CompanyViewComponent implements OnInit {
       'Add',
       'Edit',
       'Delete',
-      'Update',
-      'Cancel',
       'Print',
       'PdfExport',
       'ExcelExport',
@@ -105,8 +104,7 @@ export class CompanyViewComponent implements OnInit {
     this.editSettings = {
       allowEditing: true,
       allowAdding: true,
-      allowDeleting: true,
-      mode: 'Dialog'
+      allowDeleting: true
     };
     this.filterOptions = {
       // type: 'Menu'
@@ -119,14 +117,22 @@ export class CompanyViewComponent implements OnInit {
       this.grid.pdfExport();
     } else if (args.item.id === 'Grid_ExcelExport') {
       this.grid.excelExport();
-    } else if (args.item.id === 'Grid_add') {
-      // this.router.navigate(['add/organization']);
-    } else if (args.item.id === 'Grid_edit') {
-      // this.router.navigate(['update/organization']);
-    } else if (args.item.id === 'Grid_delete') {
+    } else if (args.item.id === 'organization_add') {
+      this.router.navigate(['add/organization']);
+    } else if (args.item.id === 'organization_edit') {
+      const selectedrowindex: number[] = this.grid.getSelectedRowIndexes();  // Get the selected row indexes.
+      alert(selectedrowindex); // To alert the selected row indexes.
+      const selectedrecords: Object = this.grid.getSelectedRecords();  // Get the selected records.
+      this.router.navigate(['update/organization', selectedrecords[0]['id']]);
     }
 
 
+  }
+
+  public rowDataBound(args: RowDataBoundEventArgs) {
+    if (args.data['OrderID'] === 10249) {
+
+    }
   }
 }
 

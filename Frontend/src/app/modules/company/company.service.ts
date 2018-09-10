@@ -73,7 +73,7 @@ export class CompanyService {
 // i.e for insert operation
 export class Organization {
   id?: number;
-  Name: string;
-  Location: string;
-  Tin: string;
+  name: string;
+  location: string;
+  tin: string;
 }
