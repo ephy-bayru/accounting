@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,6 +28,7 @@ import { GridModule } from '@syncfusion/ej2-ng-grids';
 import { CompanyModule } from './modules/company/company.module';
 import { RmHeaderInterceptorService } from './shared/rm-header-interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { SidebarModule, TreeViewComponent, ToolbarComponent } from '@syncfusion/ej2-angular-navigations';
 
 
 @NgModule({
@@ -52,6 +53,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
     MainNavComponent,
     SideNavComponent,
+    // syncfusion
+    TreeViewComponent, ToolbarComponent
   ],
   imports: [
     BrowserModule,
@@ -68,11 +71,13 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     CompanyModule,
     // sincfussion modules
     ButtonModule,
-    GridModule
+    GridModule,
+    SidebarModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: RmHeaderInterceptorService, multi: true},
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

@@ -1,15 +1,90 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, Inject, ViewChild } from '@angular/core';
+import { ButtonComponent } from '@syncfusion/ej2-ng-buttons';
+import { SidebarComponent, TreeViewComponent } from '@syncfusion/ej2-angular-navigations';
 
 @Component({
   selector: 'app-main-nav',
   templateUrl: './main-nav.component.html',
   styleUrls: ['./main-nav.component.css']
 })
-export class MainNavComponent implements OnInit {
+export class MainNavComponent {
+  title = 'sidebar';
+  @ViewChild('sidebar')
+  public sidebar: SidebarComponent;
+  public type: 'Push';
+  public target: 'content';
+  @ViewChild('togglebtn')
+  public togglebtn: ButtonComponent;
+  public hierarchicalData: Object[] = [
+    {
+      id: '01', name: 'COMPANY',
+      subChild: [
+        {
+          id: '1', name: 'PROFILE',
+        },
+        {
+          id: '01-02', name: 'USER',
+        },
+        {
+          id: '01-03', name: 'CUSTOMER',
+        },
+        {
+          id: '01-04', name: 'SUPPLIER'
+        },
+        {
+          id: '01-05', name: 'BANK'
+        },
+        {
+          id: '01-06', name: 'CURRENCY'
+        }
+      ],
+    },
+    {
+      id: '02', name: 'ACCOUNTS',
+      subChild: [
+        {
+          id: '02-01', name: 'sample',
+        },
+        {
+          id: '02-02', name: 'sample',
+        },
+        {
+          id: '02-03', name: 'sample',
+        },
+      ]
+    },
+    {
+      id: '03', name: 'REPORTS',
+      subChild: [
+        {
+          id: '03-01', name: 'TRIAL BALANCE',
+        },
+        {
+          id: '03-02', name: 'BALANCE SHEEET',
+        },
+        {
+          id: '03-03', name: 'INCOME STATMENT',
+        },
+        {
+          id: '03-04', name: 'ACCOUNT PAYABLE',
+        },
+        {
+          id: '03-03', name: 'ACOUNT RECEIVABLE',
+        },
+      ]
+    },
 
-  constructor() { }
-
-  ngOnInit() {
+  ];
+  public field: Object = { dataSource: this.hierarchicalData, id: 'id', text: 'name', child: 'subChild' };
+  btnClick() {
+    if (this.togglebtn.element.classList.contains('e-active')) {
+      this.togglebtn.content = 'Open';
+      this.sidebar.hide();
+    } else {
+      this.togglebtn.content = 'Close';
+      this.sidebar.show();
+    }
   }
+  constructor() { }
 
 }
