@@ -8,6 +8,7 @@
  */
 using System;
 using System.Net.Http;
+using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -24,7 +25,7 @@ namespace Smart_Accounting.API.NUnitTest.Organizatios {
     public class OrganizationControllerTEST {
 
         private OrganizationViewModel organizationView;
-        private uint organizationId;
+        private uint existingOrganizationId;
         private NewOrganizationModel newOrganization;
         private Organization organization;
         private OrganizationController organizationController;
@@ -33,10 +34,14 @@ namespace Smart_Accounting.API.NUnitTest.Organizatios {
 
         private Mock<IOrganizationFactory> MockIOrganizationFactories;
 
+
+        /// <summary>
+        /// Setting up globally used configurations for organization api controller
+        /// </summary>
         [SetUp]
         public void Init () {
 
-            organizationId = 1;
+            existingOrganizationId = 1;
             organization = new Organization () {
                 Id = 1,
                 Name = "AppDiv",
@@ -59,12 +64,8 @@ namespace Smart_Accounting.API.NUnitTest.Organizatios {
             MockIOrganizationQuerys = new Mock<IOrganizationsQuery> ();
             MockIOrganizationFactories = new Mock<IOrganizationFactory> ();
 
-            MockIOrganizationQuerys.Setup (query => query.GetOrganizationById (organizationId)).Returns (organization);
+            MockIOrganizationQuerys.Setup (query => query.GetOrganizationById (existingOrganizationId)).Returns (organization);
             MockIOrganizationFactories.Setup (factory => factory.OrganizationView (organization)).Returns (organizationView);
-        }
-
-        [Test]
-        public void GetOrganizationById () {
 
             organizationController = new OrganizationController (
                 MockIOrganizationCommand.Object,
@@ -72,20 +73,39 @@ namespace Smart_Accounting.API.NUnitTest.Organizatios {
                 MockIOrganizationFactories.Object
             );
 
-            var result = organizationController.GetOrganizationById (7);
-
-            Assert.IsNotNull (result);
-
-            //TODO : Test if the return type of GetOrganizationById is OrganizationViewModel
-            //TODO : Test if the Http Header return type of GetOrganizationById is 200 ok Status Code
-        }
-        
-        public void GetAllOrganizationsTest() {
-            //TODO : Test GetAllOrganizations Controller Method
         }
 
+        /// <summary>
+        /// Test GetOrganizationById for Existing organization record by its Id
+        /// </summary>
         [Test]
-        public void CreateNewOrganizationTest () {
+        public void GetOrganizationById_Existing_Organization_TEST () {
+
+            var result = (ObjectResult) organizationController.GetOrganizationById (existingOrganizationId);
+
+            result.StatusCode.Should ().Be (200);
+            result.Value.GetType ().Should ().Be (typeof (OrganizationViewModel));
+
+        }
+
+        /// <summary>
+        /// Tests GetOrganizationById For Non existing organization Id
+        /// </summary>
+        [Test]
+        public void GetOrganizationById_Non_Existing_Organization_Test () {
+            uint nonExistingOrganizationId = 2;
+
+            var result = (StatusCodeResult) organizationController.GetOrganizationById (nonExistingOrganizationId);
+
+            result.StatusCode.Should ().Be (404);
+        }
+
+
+        /// <summary>
+        /// Tests createOrganization() for the successful creation of new organization 
+        /// </summary>
+        [Test]
+        public void CreateNewOrganization_201_Successful_TEST () {
             newOrganization = new NewOrganizationModel () {
                 Name = "AppDiv",
                 Location = "A.A",
@@ -100,20 +120,50 @@ namespace Smart_Accounting.API.NUnitTest.Organizatios {
                 MockIOrganizationFactories.Object
             );
 
-            var result = organizationController.AddNewOrganization (newOrganization);
+            var result = (ObjectResult) organizationController.AddNewOrganization (newOrganization);
 
-            Assert.IsNotNull (result);
-
-            //TODO : Test if the return type of AddNewOrganization is OrganizationViewModel
-            //TODO : Test if the Http Header return type of AddNewOrganization is 201 Create Status Code
-            //  OrganizationViewModel view = result as OrganizationViewModel;
-
-            //    Assert.That(view.Name, Is.EqualTo(organizationView.Name));
+            result.StatusCode.Should ().Be (201);
+            result.Value.GetType ().Should ().Be (typeof (OrganizationViewModel));
 
         }
 
+        /// <summary>
+        /// Tests CreateOrganization() for Failure result when passed invalid organization data
+        /// </summary>
         [Test]
-        public void UpdateOrganizationTest () {
+        public void CreateNewOrganization_422_Failed_TEST () {
+            NewOrganizationModel invalidOrganization = new NewOrganizationModel () {
+
+                Tin = "1234567890"
+            };
+            newOrganization = new NewOrganizationModel () {
+                Name = "AppDiv",
+                Location = "A.A",
+                Tin = "1234567890"
+            };
+
+            MockIOrganizationCommand.Setup (cmd => cmd.CreateOrganization (newOrganization)).Returns (organizationView);
+
+            organizationController = new OrganizationController (
+                MockIOrganizationCommand.Object,
+                MockIOrganizationQuerys.Object,
+                MockIOrganizationFactories.Object
+            );
+
+            var result = (StatusCodeResult) organizationController.AddNewOrganization (invalidOrganization);
+
+            result.StatusCode.Should ().Be (422);
+
+            result.StatusCode.Should ().Be (422);
+
+        }
+
+        /// <summary>
+        /// Test UpdateOrganization() controller function for a successful update completion
+        /// by testing the return type
+        /// </summary>
+        [Test]
+        public void UpdateOrganization_204_Successful_Test () {
             UpdatedOrganizationModel updatedOrganization = new UpdatedOrganizationModel () {
                 id = 1,
                 name = "AppDiv Updated",
@@ -130,16 +180,79 @@ namespace Smart_Accounting.API.NUnitTest.Organizatios {
                 MockIOrganizationFactories.Object
             );
 
-            var result = organizationController.UpdateOrganization (1, updatedOrganization);
+            var result = (StatusCodeResult) organizationController.UpdateOrganization (1, updatedOrganization);
 
-            Assert.IsNotNull (result);
-
-            //TODO : Test if the return type of UpdateOrganization is 204 NoContent Status Code
+            result.StatusCode.Should ().Be (204);
 
         }
 
+        /// <summary>
+        /// Tests UpdateOrganization() controller for the  response when presented with un existing organization Id
+        /// to return 404 or fail
+        /// </summary>
         [Test]
-        public void DeleteOrganizationTest () {
+        public void UpdateOrganization_404_NoFound_Test () {
+            UpdatedOrganizationModel updatedOrganization = new UpdatedOrganizationModel () {
+                id = 1,
+                name = "AppDiv Updated",
+                location = "A.A",
+                tin = "1234567890"
+
+            };
+
+            MockIOrganizationCommand.Setup (cmd => cmd.UpdateOrganization (organization, updatedOrganization)).Returns (true);
+
+            organizationController = new OrganizationController (
+                MockIOrganizationCommand.Object,
+                MockIOrganizationQuerys.Object,
+                MockIOrganizationFactories.Object
+            );
+
+            var result = (StatusCodeResult) organizationController.UpdateOrganization (2, updatedOrganization);
+
+            result.StatusCode.Should ().Be (404);
+
+        }
+
+        /// <summary>
+        /// Tests UpdateOrganization for the scenario when the passed data is missing required fields 
+        /// by testing if it returns 422 unprocessable entity result
+        /// </summary>
+        [Test]
+        public void UpdateOrganization_422_Unprocessable_Entity_Test () {
+            UpdatedOrganizationModel updatedOrganization = new UpdatedOrganizationModel () {
+                id = 1,
+                name = "AppDiv Updated",
+                location = "A.A",
+                tin = "1234567890"
+
+            };
+
+            UpdatedOrganizationModel invalidOrganization = new UpdatedOrganizationModel () {
+
+                tin = "1234567890"
+            };
+
+            MockIOrganizationCommand.Setup (cmd => cmd.UpdateOrganization (organization, updatedOrganization)).Returns (true);
+
+            organizationController = new OrganizationController (
+                MockIOrganizationCommand.Object,
+                MockIOrganizationQuerys.Object,
+                MockIOrganizationFactories.Object
+            );
+
+            var result = (StatusCodeResult) organizationController.UpdateOrganization (1, invalidOrganization);
+
+            result.StatusCode.Should ().Be (422);
+
+        }
+
+        /// <summary>
+        /// Test for deleteOrganizationBy controller function for successful deletion of organization data
+        /// by checking if the status code is 204
+        /// </summary>
+        [Test]
+        public void DeleteOrganization_204_Successful_Test () {
             MockIOrganizationCommand.Setup (cmd => cmd.deleteOrganization (organization)).Returns (true);
 
             organizationController = new OrganizationController (
@@ -148,9 +261,26 @@ namespace Smart_Accounting.API.NUnitTest.Organizatios {
                 MockIOrganizationFactories.Object
             );
 
-            var result = organizationController.DeleteOrganization (1);
-            Assert.IsNotNull (result);
-            //TODO : Test if the return type of DeleteOrganization is 204 NoContent Status Code
+            var result = (StatusCodeResult) organizationController.DeleteOrganization (1);
+            result.StatusCode.Should ().Be (204);
+
+        }
+        /// <summary>
+        /// tests deleteOrganization for response when presented with non existing organization Id
+        /// by checking if it returns 404
+        /// </summary>
+        [Test]
+        public void DeleteOrganization_404_NotFound_Test () {
+            MockIOrganizationCommand.Setup (cmd => cmd.deleteOrganization (organization)).Returns (true);
+
+            organizationController = new OrganizationController (
+                MockIOrganizationCommand.Object,
+                MockIOrganizationQuerys.Object,
+                MockIOrganizationFactories.Object
+            );
+
+            var result = (StatusCodeResult) organizationController.DeleteOrganization (4);
+            result.StatusCode.Should ().Be (404);
 
         }
 

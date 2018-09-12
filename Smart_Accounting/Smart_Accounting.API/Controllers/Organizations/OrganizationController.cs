@@ -119,12 +119,12 @@ namespace Smart_Accounting.API.Controllers.Organizations {
 
             try {
 
-                if (ModelState.IsValid) {
+                if (ModelState.IsValid && newOrganization != null) {
                     var organization = _command.CreateOrganization (newOrganization);
                     if (organization != null) {
                         return StatusCode (201, organization);
                     } else {
-                        return StatusCode (500, "Unknown Error Occured While Processing Data Try Again Later");
+                        return StatusCode (422);
                     }
 
                 } else {
@@ -163,7 +163,7 @@ namespace Smart_Accounting.API.Controllers.Organizations {
                             return StatusCode (204);
 
                         } else {
-                            return StatusCode (500, "Unknown Error Occured While Processing Data Try Again Later");
+                            return StatusCode (422);
                         }
 
                     } else {

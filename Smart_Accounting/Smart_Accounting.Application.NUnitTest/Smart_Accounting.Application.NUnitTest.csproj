@@ -7,6 +7,7 @@
     <PackageReference Include="NUnit" Version="3.10.1"/>
     <PackageReference Include="NUnitLite" Version="3.10.1"/>
     <PackageReference Include="Moq" Version="4.9.0"/>
+    <PackageReference Include="FluentAssertions.AspNetCore.Mvc" Version="2.0.0"/>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Smart_Accounting.Application\Smart_Accounting.Application.csproj"/>
