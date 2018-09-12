@@ -76,7 +76,7 @@ namespace Smart_Accounting.Application.Organizations.Commands {
 
                 var organization = _factory.OrganizationForUpdate (currentOrganization, updatedOrganization);
 
-                _database.Organization.Add (organization).State = EntityState.Modified;
+                _database.Organization.Update (organization);
                 _database.Save ();
 
                 return true;
