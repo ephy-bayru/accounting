@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ToolbarItems, RowDataBoundEventArgs } from '@syncfusion/ej2-ng-grids';
+import { ToolbarItems, PageSettingsModel } from '@syncfusion/ej2-ng-grids';
 import { ClickEventArgs } from '@syncfusion/ej2-ng-navigations';
 import {
   SortService,
@@ -19,7 +19,6 @@ import {
   FreezeService
 } from '@syncfusion/ej2-ng-grids';
 import { Router } from '@angular/router';
-import { CompanyService, Organization } from '../company.service';
 import { WebApiAdaptor, DataManager } from '@syncfusion/ej2-data';
 
 @Component({
@@ -41,44 +40,46 @@ import { WebApiAdaptor, DataManager } from '@syncfusion/ej2-data';
 })
 
 export class CompanyViewComponent implements OnInit {
-  title = 'sinkT';
+  title = 'Company Profile';
 
   @ViewChild('grid')
   public grid: GridComponent;
-  public dataSource: Organization[];
   public data: DataManager;
-  // public data: object[];
   public groupOptions: GroupSettingsModel;
   public filterSettings: FilterSettingsModel;
-  public filterOptions: FilterSettingsModel;
   public toolbarOptions: ToolbarItems[];
   public wrapSettings: TextWrapSettingsModel;
   public toolbar: ToolbarItems[];
   public editSettings: EditSettingsModel;
   public selectionOptions: SelectionSettingsModel;
+  public pageSettings: PageSettingsModel;
 
-  public pageSettings;
-  constructor(private companyService: CompanyService, private router: Router) { }
+  constructor(
+    private router: Router) { }
+
   public gridColumns = [
     {
-      field: 'id', text: 'Id', primaryKey: true, format: '', type: 'text', editable: false, filterable: true, groupable: false,
+      field: 'id', text: 'Id', primaryKey: true, format: '',
+      type: 'text', editable: false, filterable: true, groupable: false,
       editType: '', foreignKey: false, foreignKeyValue: '', frozen: false
     },
     {
-      field: 'name', text: 'Name', primaryKey: false, format: '', type: 'text', editable: true, filterable: true, groupable: false,
+      field: 'name', text: 'Name', primaryKey: false, format: '',
+      type: 'text', editable: true, filterable: true, groupable: false,
       editType: '', foreignKey: false, foreignKeyValue: '', frozen: false
     },
     {
-      field: 'location', text: 'Location', primaryKey: false, format: '', type: 'text', editable: true, filterable: true,
-      groupable: false, editType: '', foreignKey: false, foreignKeyValue: '', frozen: false
+      field: 'location', text: 'Location', primaryKey: false, format: '',
+      type: 'text', editable: true, filterable: true, groupable: false,
+      editType: '', foreignKey: false, foreignKeyValue: '', frozen: false
     },
     {
-      field: 'tin', text: 'Tin', primaryKey: false, format: '', type: 'text', editable: true, filterable: true, groupable: false,
+      field: 'tin', text: 'Tin', primaryKey: false, format: '',
+      type: 'text', editable: true, filterable: true, groupable: false,
       editType: '', foreignKey: false, foreignKeyValue: '', frozen: false
     }
   ];
   ngOnInit() {
-
 
     this.data = new DataManager({
       url: 'http://localhost:53267/api/organizations',
@@ -101,39 +102,33 @@ export class CompanyViewComponent implements OnInit {
       'ColumnChooser',
       'Search'
     ];
-    this.editSettings = {
-      allowEditing: true,
-      allowAdding: true,
-      allowDeleting: true
-    };
-    this.filterOptions = {
-      // type: 'Menu'
-      ignoreAccent: true
-    };
+    this.pageSettings = { pageSize: 4 };
+    this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true };
     this.selectionOptions = { mode: 'Both' };
   }
+
+
+  // Click handler for when the toolbar is cliked
   toolbarClick(args: ClickEventArgs): void {
-    if (args.item.id === 'Grid_PdfExport') {
-      this.grid.pdfExport();
-    } else if (args.item.id === 'Grid_ExcelExport') {
-      this.grid.excelExport();
+    if (args.item.id === 'organization_pdfexport') {
+      this.grid.pdfExport();                            // when pdf export call grid prdfexport function
+    } else if (args.item.id === 'organization_excelexport') {
+      this.grid.excelExport();        // when excel export call grid excelexport function
     } else if (args.item.id === 'organization_add') {
-      this.router.navigate(['add/organization']);
+      this.router.navigate(['add/organization']);   // when user click add route to the organization form
     } else if (args.item.id === 'organization_edit') {
-      const selectedrowindex: number[] = this.grid.getSelectedRowIndexes();  // Get the selected row indexes.
-      alert(selectedrowindex); // To alert the selected row indexes.
-      const selectedrecords: Object = this.grid.getSelectedRecords();  // Get the selected records.
-      this.router.navigate(['update/organization', selectedrecords[0]['id']]);
+
+      const selectedrowindex: number[] = this.grid.getSelectedRowIndexes();
+      const selectedrecords: Object = this.grid.getSelectedRecords();
+      this.router.navigate(['update/organization', selectedrecords[0]['id']]); // when user click update route to the organization
+
+    } else if (args.item.id === 'organization_print') {
+      this.grid.print();      // when the user click print print the current page
     }
 
 
   }
 
-  public rowDataBound(args: RowDataBoundEventArgs) {
-    if (args.data['OrderID'] === 10249) {
-
-    }
-  }
 }
 
 

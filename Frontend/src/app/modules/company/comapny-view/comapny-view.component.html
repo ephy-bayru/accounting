@@ -3,6 +3,7 @@
 
   <ejs-grid [dataSource]='data'
             #grid
+            [allowExcelExport]="true"
             id='organization'
             [toolbar]='toolbarOptions'
             [allowPaging]="true"
@@ -12,7 +13,6 @@
             [allowFiltering]="true"
             [allowGrouping]="true"
             [allowResizing]='true'
-
             [showColumnChooser]='true'
             [selectionSettings]='selectionOptions'
             showColumnMenu='true'
@@ -23,7 +23,6 @@
             [textWrapSettings]='wrapSettings'
             gridLines='Both'
             [editSettings]='editSettings'
-            (rowDataBound)="rowDataBound($event)"
             [selectionSettings]='selectionOptions'
             [allowPdfExport]='true'
             (toolbarClick)='toolbarClick($event)'
