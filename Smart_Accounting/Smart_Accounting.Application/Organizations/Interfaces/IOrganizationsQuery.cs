@@ -13,7 +13,7 @@ using Smart_Accounting.Domain.Oranizations;
 namespace Smart_Accounting.Application.Organizations.Interfaces {
     public interface IOrganizationsQuery {
         Organization GetOrganizationById (uint id);
-        Organization GetOrganizationByLocation (uint id);
+        Organization GetOrganizationByLocation (string id);
         IEnumerable<Organization> GetAllOrganizations ();
     }
 }

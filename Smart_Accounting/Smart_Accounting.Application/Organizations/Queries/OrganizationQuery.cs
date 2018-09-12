@@ -24,18 +24,32 @@ namespace Smart_Accounting.Application.Organizations.Queries {
             _database = database;
 
         }
+        /// <summary>
+        /// Gets all the organization record from the database
+        /// </summary>
+        /// <returns>IEnumerable<Organization> </returns>
         public IEnumerable<Organization> GetAllOrganizations () {
             return _database.Organization.ToList();
         }
 
+        /// <summary>
+        /// Gets a single organization recored based on its id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Organization</returns>
         public Organization GetOrganizationById (uint id) {
             var organization = _database.Organization.Find(id);
             return organization;
         }
 
-        public Organization GetOrganizationByLocation (uint id) {
-            //TODO GetOrganizationByLocation Method in Organization Query
-            throw new System.NotImplementedException ();
+        /// <summary>
+        /// Gets Single orfanization record based on its location
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns>Organization</returns>
+        public Organization GetOrganizationByLocation (string location) {
+            var organization = _database.Organization.FirstOrDefault(org => org.Location == location);
+            return organization;
         }
     }
 }
