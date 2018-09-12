@@ -17,10 +17,14 @@ export class MainNavComponent {
   public togglebtn: ButtonComponent;
   public hierarchicalData: Object[] = [
     {
-      id: '01', name: 'COMPANY',
+      id: '1', name: 'ORGANIZATION',
       subChild: [
         {
-          id: '1', name: 'PROFILE',
+          id: '01', name: 'COMPANY',
+          subChild: [
+            { id: '001', name: 'PROFILE' },
+            { id: '002', name: 'CALENDER' },
+        ]
         },
         {
           id: '01-02', name: 'USER',
