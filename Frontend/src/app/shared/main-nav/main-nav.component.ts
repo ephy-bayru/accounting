@@ -22,12 +22,12 @@ export class MainNavComponent {
         {
           id: '01', name: 'COMPANY',
           subChild: [
-            { id: '001', name: 'PROFILE' },
+            { id: '001', name: 'PROFILE', navigateUrl: 'organizations' },
             { id: '002', name: 'CALENDER' },
         ]
         },
         {
-          id: '01-02', name: 'USER',
+          id: '01-02', name: 'USER', navigteUrl: 'user'
         },
         {
           id: '01-03', name: 'CUSTOMER',
