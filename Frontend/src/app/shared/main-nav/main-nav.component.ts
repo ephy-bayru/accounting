@@ -1,6 +1,8 @@
 import { Component, ViewEncapsulation, Inject, ViewChild } from '@angular/core';
 import { ButtonComponent } from '@syncfusion/ej2-ng-buttons';
 import { SidebarComponent, TreeViewComponent } from '@syncfusion/ej2-angular-navigations';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-main-nav',
@@ -22,12 +24,12 @@ export class MainNavComponent {
         {
           id: '01', name: 'COMPANY',
           subChild: [
-            { id: '001', name: 'PROFILE' },
+            { id: '001', name: 'PROFILE', navigateUrl: 'organizations' },
             { id: '002', name: 'CALENDER' },
         ]
         },
         {
-          id: '01-02', name: 'USER',
+          id: '01-02', name: 'USER', tooltip: 'users data', navigateUrl: '/users-grid'
         },
         {
           id: '01-03', name: 'CUSTOMER',
@@ -84,11 +86,17 @@ export class MainNavComponent {
     if (this.togglebtn.element.classList.contains('e-active')) {
       this.togglebtn.content = 'Open';
       this.sidebar.hide();
+      this.sidebar.type = 'Push';
     } else {
       this.togglebtn.content = 'Close';
+      this.sidebar.type = 'Push';
       this.sidebar.show();
     }
   }
-  constructor() { }
+  constructor(private router: Router) {}
+
+  goUsers() {
+    this.router.navigate(['/users']);
+  }
 
 }

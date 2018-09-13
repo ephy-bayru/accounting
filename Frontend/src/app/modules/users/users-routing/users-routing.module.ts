@@ -9,11 +9,11 @@ const UserRoutes: Routes = [
   { path: '/users/',
     component: UsersComponent
   },
-  { path: '/user/id',
+  { path: '/users/id',
    component: UsersComponent
   },
   {
-    path: '/user-grid',
+    path: '/users-grid',
     component: UserGridComponent
   }
 ];
