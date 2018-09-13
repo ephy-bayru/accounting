@@ -1,35 +1,38 @@
-<div class="container">
-  <form  (ngSubmit)="onSubmit()" [formGroup]="organizationForm">
+<div class="e-card">
+  <div class="e-card-header">
+    <div class="e-card-header-caption">
+      <div class="container">
+        <form (ngSubmit)="onSubmit()" [formGroup]="organizationForm">
 
-    <div class="row">
-      <div class="col-md-6 col-sm-6 col-xs-12">
-        <div class="e-float-input">
-          <input type="text" required (focus)="focusIn($event.target)" value="" placeholder="Name" name="name" formControlName="Name"
-            (blur)="focusOut($event.target)">
+          <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <div class="e-float-input">
+                <input type="text" required (focus)="focusIn($event.target)" value="" placeholder="Name" name="name"
+                  formControlName="Name" (blur)="focusOut($event.target)">
 
-        </div>
-      </div>
-      <div class="col-md-6 col-sm-6 col-xs-12">
-        <div class="e-float-input">
-          <input type="text" required (focus)="focusIn($event.target)" value="" name="location" placeholder="Location" formControlName="Location"
-            (blur)="focusOut($event.target)">
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <div class="e-float-input">
+                <input type="text" required (focus)="focusIn($event.target)" value="" name="location" placeholder="Location"
+                  formControlName="Location" (blur)="focusOut($event.target)">
 
-        </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="e-float-input e-input-group">
+                <input type="text" required name="tin" minlength="10" maxlength="10" (focus)="focusIn($event.target)"
+                  placeholder="Tin Number" value="" formControlName="Tin" (blur)="focusOut($event.target)">
+
+              </div>
+            </div>
+          </div>
+
+          <app-form-options [submitDisabled]="organizationForm.invalid"></app-form-options>
+        </form>
       </div>
     </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="e-float-input e-input-group">
-          <input type="text"
-                required
-                name="tin"
-                minlength="10"
-                maxlength="10" (focus)="focusIn($event.target)" placeholder="Tin Number"
-            value="" formControlName="Tin" (blur)="focusOut($event.target)">
-
-        </div>
-      </div>
-    </div>
-    <app-form-options [submitDisabled]="organizationForm.invalid"></app-form-options>
-  </form>
+  </div>
 </div>

@@ -30,6 +30,7 @@ export class MainNavComponent {
         },
         {
           id: '01-02', name: 'USER', tooltip: 'users data', navigateUrl: '/users-grid'
+
         },
         {
           id: '01-03', name: 'CUSTOMER',

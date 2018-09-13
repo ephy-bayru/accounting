@@ -14,6 +14,6 @@ namespace Smart_Accounting.Application.Organizations.Interfaces {
     public interface IOrganizationsQuery {
         Organization GetOrganizationById (uint id);
         Organization GetOrganizationByLocation (string id);
-        IEnumerable<Organization> GetAllOrganizations ();
+        IEnumerable<Organization> GetAllOrganizations (string filter, string orderby, int top, int limit);
     }
 }

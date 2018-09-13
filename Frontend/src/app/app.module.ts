@@ -29,6 +29,7 @@ import { CompanyModule } from './modules/company/company.module';
 import { RmHeaderInterceptorService } from './shared/rm-header-interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SidebarModule, TreeViewComponent, ToolbarComponent } from '@syncfusion/ej2-angular-navigations';
+import { AppRoutingModule } from './app-routing/app-routing.module';
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import { SidebarModule, TreeViewComponent, ToolbarComponent } from '@syncfusion/
     // sincfussion modules
     ButtonModule,
     GridModule,
-    SidebarModule
+    SidebarModule,
+    AppRoutingModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: RmHeaderInterceptorService, multi: true},

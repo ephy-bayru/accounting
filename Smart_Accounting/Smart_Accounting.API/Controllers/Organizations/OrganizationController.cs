@@ -26,10 +26,14 @@ namespace Smart_Accounting.API.Controllers.Organizations {
         /// <returns>List<OrganizationViewModel></returns>
         [HttpGet]
         [ProducesResponseType (200, Type = typeof (OrganizationViewModel))]
-        public IActionResult GetAllOrganizations () {
+        public IActionResult GetAllOrganizations (
+                                                    [FromQuery(Name = "$inlineCount")] string filter = "all", 
+                                                    [FromQuery(Name = "$orderby")] string orderby = "mike",
+                                                    [FromQuery(Name = "$skip")] int skip = 0,
+                                                    [FromQuery(Name = "$orderby")] int top = 10) {
             try {
-            
-                var organizations = _query.GetAllOrganizations ();
+                
+                var organizations = _query.GetAllOrganizations (filter, orderby, skip, top);
 
                 IList<OrganizationViewModel> organizationList = new List<OrganizationViewModel> ();
                 // convert each organization object to organization view model

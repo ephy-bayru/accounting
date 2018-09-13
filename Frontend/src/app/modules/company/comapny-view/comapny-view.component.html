@@ -3,27 +3,23 @@
 
   <ejs-grid [dataSource]='data'
             #grid
+            [allowExcelExport]="true"
             id='organization'
             [toolbar]='toolbarOptions'
             [allowPaging]="true"
             [pageSettings]='pageSettings'
-            height='100%'
+            height='300px'
             [allowSorting]="true"
-            [allowFiltering]="true"
             [allowGrouping]="true"
             [allowResizing]='true'
-
             [showColumnChooser]='true'
             [selectionSettings]='selectionOptions'
-            showColumnMenu='true'
             [groupSettings]='groupOptions'
             allowFiltering='true'
-            [filterSettings]='filterOptions'
             allowTextWrap='true'
             [textWrapSettings]='wrapSettings'
             gridLines='Both'
             [editSettings]='editSettings'
-            (rowDataBound)="rowDataBound($event)"
             [selectionSettings]='selectionOptions'
             [allowPdfExport]='true'
             (toolbarClick)='toolbarClick($event)'
@@ -36,11 +32,9 @@
                 [format]="column.format"
                 [type]='column'
                 [allowEditing]="column.editable"
-                [allowFiltering]="column.filterable"
+
                 [allowGrouping]="column.groupable"
                 [editType]="column.editType"
-                [foreignKeyField]="column.foreignKey"
-                [foreignKeyValue]="column.foreignKeyValue"
                 [isFrozen]="column.frozen"
                 width='50'></e-column>
 

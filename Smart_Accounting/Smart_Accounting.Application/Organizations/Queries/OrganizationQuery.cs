@@ -28,8 +28,9 @@ namespace Smart_Accounting.Application.Organizations.Queries {
         /// Gets all the organization record from the database
         /// </summary>
         /// <returns>IEnumerable<Organization> </returns>
-        public IEnumerable<Organization> GetAllOrganizations () {
-            return _database.Organization.ToList();
+        public IEnumerable<Organization> GetAllOrganizations (string filter, string count, int top, int limit) {
+    
+            return _database.Organization.Skip(top).Take(limit).ToList();
         }
 
         /// <summary>
