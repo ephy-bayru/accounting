@@ -2,41 +2,21 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ToolbarItems, PageSettingsModel } from '@syncfusion/ej2-ng-grids';
 import { ClickEventArgs } from '@syncfusion/ej2-ng-navigations';
 import {
-  SortService,
-  GroupService,
-  ColumnMenuService,
-  PageService,
-  FilterService,
   GroupSettingsModel,
   FilterSettingsModel,
   EditSettingsModel,
   TextWrapSettingsModel,
   GridComponent,
-  ToolbarService,
-  ExcelExportService,
-  PdfExportService,
   SelectionSettingsModel,
-  FreezeService
 } from '@syncfusion/ej2-ng-grids';
 import { Router } from '@angular/router';
-import { WebApiAdaptor, DataManager } from '@syncfusion/ej2-data';
+import { WebApiAdaptor, DataManager, Query, ReturnOption, ODataV4Adaptor, JsonAdaptor, UrlAdaptor } from '@syncfusion/ej2-data';
+import { CompanyService } from '../company.service';
 
 @Component({
   selector: 'app-company-view',
   templateUrl: './comapny-view.component.html',
-  styleUrls: ['./comapny-view.component.css'],
-  providers: [
-    SortService,
-    GroupService,
-    ColumnMenuService,
-    PageService,
-    PdfExportService,
-    FreezeService,
-    FreezeService,
-    FilterService,
-    ToolbarService,
-    ExcelExportService,
-  ]
+  styleUrls: ['./comapny-view.component.css']
 })
 
 export class CompanyViewComponent implements OnInit {
@@ -53,45 +33,49 @@ export class CompanyViewComponent implements OnInit {
   public editSettings: EditSettingsModel;
   public selectionOptions: SelectionSettingsModel;
   public pageSettings: PageSettingsModel;
+  public filterOptions: FilterSettingsModel;
 
-  constructor(
-    private router: Router) { }
+  constructor(private router: Router, private companyService: CompanyService) { }
 
   public gridColumns = [
     {
       field: 'id', text: 'Id', primaryKey: true, format: '',
-      type: 'text', editable: false, filterable: true, groupable: false,
-      editType: '', foreignKey: false, foreignKeyValue: '', frozen: false
+      type: 'number', editable: false, filterable: true, groupable: false,
+      editType: ''
     },
     {
       field: 'name', text: 'Name', primaryKey: false, format: '',
-      type: 'text', editable: true, filterable: true, groupable: false,
-      editType: '', foreignKey: false, foreignKeyValue: '', frozen: false
+      type: 'string', editable: true, filterable: true, groupable: false,
+      editType: 'textbox'
     },
     {
       field: 'location', text: 'Location', primaryKey: false, format: '',
-      type: 'text', editable: true, filterable: true, groupable: false,
-      editType: '', foreignKey: false, foreignKeyValue: '', frozen: false
+      type: 'string', editable: true, filterable: true, groupable: false,
+      editType: 'textbox'
     },
     {
       field: 'tin', text: 'Tin', primaryKey: false, format: '',
-      type: 'text', editable: true, filterable: true, groupable: false,
-      editType: '', foreignKey: false, foreignKeyValue: '', frozen: false
+      type: 'string', editable: true, filterable: true, groupable: false,
+      editType: 'textbox'
     }
   ];
+
+
+  columnMenuOpen(arg) {
+    console.log(`${arg} column menu open`);
+  }
+  columnMenuClick(arg) {
+    console.log(`${arg} column menu Click`);
+  }
   ngOnInit() {
 
-    this.data = new DataManager({
-      url: 'http://localhost:53267/api/organizations',
-      adaptor: new WebApiAdaptor(),
-      updateUrl: 'api/organization',
-      insertUrl: 'api/organization',
-      removeUrl: 'api/organization'
+  this.companyService.getOrganizationsList().subscribe((success: any) => {
+      this.data = success;
     });
-    this.selectionOptions = { type: 'Single' };
-    this.groupOptions = { showGroupedColumn: true };
-    this.filterSettings = { type: 'CheckBox' };
-    this.wrapSettings = { wrapMode: 'Content' };
+
+    this.filterOptions = { type: 'Menu' }; // put unique filter menue for each column based on the column type
+    this.selectionOptions = { type: 'Single' }; // allow only single row to be selected at a time for edit or delete
+    this.groupOptions = { showGroupedColumn: true }; // make columns used for grouping visable
     this.toolbarOptions = [
       'Add',
       'Edit',
@@ -99,12 +83,11 @@ export class CompanyViewComponent implements OnInit {
       'Print',
       'PdfExport',
       'ExcelExport',
-      'ColumnChooser',
       'Search'
     ];
-    this.pageSettings = { pageSize: 4 };
+
+    this.pageSettings = { pageSize: 5 };  // initial page row size for the grid
     this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true };
-    this.selectionOptions = { mode: 'Both' };
   }
 
 

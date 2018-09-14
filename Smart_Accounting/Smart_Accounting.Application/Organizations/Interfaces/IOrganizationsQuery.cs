@@ -7,6 +7,7 @@
  * @Description: Modify Here, Please 
  */
 using System.Collections.Generic;
+using Smart_Accounting.Application.Models;
 using Smart_Accounting.Application.Organizations.Models;
 using Smart_Accounting.Domain.Oranizations;
 

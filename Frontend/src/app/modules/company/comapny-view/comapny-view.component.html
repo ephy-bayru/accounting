@@ -3,16 +3,16 @@
 
   <ejs-grid [dataSource]='data'
             #grid
+            height="300px"
             [allowExcelExport]="true"
             id='organization'
             [toolbar]='toolbarOptions'
             [allowPaging]="true"
             [pageSettings]='pageSettings'
-            height='300px'
+            [allowFiltering]="true"
             [allowSorting]="true"
             [allowGrouping]="true"
             [allowResizing]='true'
-            [showColumnChooser]='true'
             [selectionSettings]='selectionOptions'
             [groupSettings]='groupOptions'
             allowFiltering='true'
@@ -22,7 +22,12 @@
             [editSettings]='editSettings'
             [selectionSettings]='selectionOptions'
             [allowPdfExport]='true'
+
             (toolbarClick)='toolbarClick($event)'
+            (columnMenuOpen)="columnMenuOpen($event)"
+            (columnMenuClick)="columnMenuClick($event)"
+
+            [filterSettings]="filterOptions"
     >
     <e-columns>
       <e-column *ngFor="let column of gridColumns"
@@ -30,17 +35,12 @@
                 [headerText]="column.text"
                 [isPrimaryKey]="column.primaryKey"
                 [format]="column.format"
-                [type]='column'
+                [type]="column.type"
                 [allowEditing]="column.editable"
-
-                [allowGrouping]="column.groupable"
-                [editType]="column.editType"
-                [isFrozen]="column.frozen"
+                [editType]="column.type"
                 width='50'></e-column>
 
     </e-columns>
   </ejs-grid>
 
 </div>
-<!-- ConfirmDelete
-editType= 'dropdownedit' -->
