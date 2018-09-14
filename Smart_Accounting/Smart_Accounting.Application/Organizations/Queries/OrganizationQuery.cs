@@ -6,6 +6,7 @@
  * @Last Modified Time: Sep 5, 2018 3:17 PM
  * @Description: Class Used to Fetch Organization data from datastore 
  */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Smart_Accounting.Application.Interfaces;
@@ -55,5 +56,6 @@ namespace Smart_Accounting.Application.Organizations.Queries {
             var organization = _database.Organization.FirstOrDefault (org => org.Location == location);
             return organization;
         }
+
     }
 }
