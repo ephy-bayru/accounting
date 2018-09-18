@@ -2,6 +2,7 @@ export interface Users {
     First_Name: string;
     Last_Name: string;
     Email: string | number;
+    Phone_No: number;
     Password: string | number;
     Confirm_Password: string | number;
     Account_Id: string | number;

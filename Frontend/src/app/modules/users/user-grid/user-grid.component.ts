@@ -44,7 +44,7 @@ import {
 })
 export class UserGridComponent implements OnInit {
   title = 'sinkT';
-  SERVICE_URI: 'http://localhost/api/users';
+  SERVICE_URI: 'users';
   @ViewChild('grid')
   public grid: GridComponent;
   public data: DataManager;

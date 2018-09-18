@@ -1,9 +1,11 @@
-import { Component, OnInit, ViewEncapsulation} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild} from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Users } from './../users';
 import { UsersService } from './../users.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import {PageSettingsModel } from '@syncfusion/ej2-ng-grids';
+import { EmitType } from '@syncfusion/ej2-base';
+import { DialogComponent } from '@syncfusion/ej2-angular-popups';
 
 @Component({
   selector: 'app-users',
@@ -15,6 +17,7 @@ export class UsersComponent implements OnInit {
   public readonly: true;
   public dateValue: Date = new Date('04/09/2018');
   public disable: false;
+  public gender: 'Select Gender';
   title = 'User';
   userForm: FormGroup;
   user: Users;
@@ -25,9 +28,13 @@ export class UsersComponent implements OnInit {
   requestProcessing = false;
   userUpdate = null;
   processValidation = false;
-  // data table
-  // public data: Object[];
-  public pageSettings: PageSettingsModel;
+    public pageSettings: PageSettingsModel;
+    // defined the array of data
+    public data: { [key: string]: Object }[] = [
+      { Class: 'male', Type: 'Male', Id: '1' },
+      { Class: 'female', Type: 'Female ', Id: '2' },
+    ];
+  // map the icon column to iconCSS field.
 
   constructor(
     private usersService: UsersService,
@@ -53,10 +60,12 @@ export class UsersComponent implements OnInit {
     this.userForm = this.fb.group({
       First_Name: User.First_Name ? [User.First_Name, Validators.required] :
         ['', Validators.required],
-      Last_Name: User.First_Name ? [User.First_Name, Validators.required] :
+      Last_Name: User.Last_Name ? [User.Last_Name, Validators.required] :
         ['', Validators.required],
       Email: User.Email ? [User.Email, Validators.compose] :
         ['', Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')],
+      Phone_No: User.Phone_No ? [User.Phone_No, Validators.required] :
+        ['', Validators.required,  Validators.min(1000000000), Validators.max(9999999999)],
       Account_Id: User.Account_Id ? [User.Account_Id, Validators.required] :
         ['', Validators.required],
       Password: User.Password ? [User.Password, Validators.minLength(6)] :
@@ -66,11 +75,7 @@ export class UsersComponent implements OnInit {
       Gender: User.Gender ? [User.Gender, Validators.required] :
         ['', Validators.required],
       Birth_Date: User.Birth_Date ? [User.Birth_Date, Validators.required] :
-        ['', Validators.required],
-      Date_Created: User.Date_Created ? [User.Date_Created, Validators.required] :
-      ['', Validators.required],
-      Date_Updated: User.Date_Updated ? [User.Date_Updated, Validators.required] :
-      ['', Validators.required]
+        ['', Validators.required]
     });
   }
   // user model
@@ -85,9 +90,7 @@ export class UsersComponent implements OnInit {
       Password: formModel.Password ? formModel.Password : '',
       Confirm_Password: formModel.Confirm_Password ? formModel.Confirm_Password : '',
       Gender: formModel.Gender ? formModel.Gender : '',
-      Birth_Date: formModel.Birth_Date ? formModel.Birth_Date : '',
-      Date_Created: formModel.Date_Created ? formModel.Date_Created : '',
-      Date_Updated: formModel.Date_Updated ? formModel.Date_Updated : ''
+      Birth_Date: formModel.Birth_Date ? formModel.Birth_Date : ''
     };
     return userData;
   }
@@ -112,7 +115,7 @@ export class UsersComponent implements OnInit {
           .subscribe(success => {
             this.statusCode = success;
             this.getAllUsers();
-            this.back();
+            this.router.navigate(['users']);
     },
     errorCode => this.statusCode = errorCode);
   } else {
@@ -124,6 +127,9 @@ export class UsersComponent implements OnInit {
         },
         errorCode => this.statusCode = errorCode);
     }
+  }
+  public isFieldValid(field: string) {
+    return !this.userForm.get(field).valid && (this.userForm.get(field).dirty || this.userForm.get(field).touched);
   }
   // cancel button function
   onCancel() {

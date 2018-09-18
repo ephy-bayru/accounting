@@ -6,14 +6,14 @@ import { UserGridComponent } from './../user-grid/user-grid.component';
 
 
 const UserRoutes: Routes = [
-  { path: '/users/',
+  { path: 'users',
     component: UsersComponent
   },
-  { path: '/users/id',
+  { path: 'users/id',
    component: UsersComponent
   },
   {
-    path: '/users-grid',
+    path: 'users-grid',
     component: UserGridComponent
   }
 ];

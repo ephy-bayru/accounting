@@ -14,7 +14,7 @@ export class MainNavComponent {
   @ViewChild('sidebar')
   public sidebar: SidebarComponent;
   public type: 'Push';
-  public target: 'content';
+  public target: '.content';
   @ViewChild('togglebtn')
   public togglebtn: ButtonComponent;
   public hierarchicalData: Object[] = [
@@ -29,11 +29,10 @@ export class MainNavComponent {
         ]
         },
         {
-          id: '01-02', name: 'USER', tooltip: 'users data', navigateUrl: '/users-grid'
-
+          id: '01-02', name: 'USER', tooltip: 'users data', navigateUrl: 'users'
         },
         {
-          id: '01-03', name: 'CUSTOMER',
+          id: '01-03', name: 'CUSTOMER', navigateUrl: 'users-grid'
         },
         {
           id: '01-04', name: 'SUPPLIER'
@@ -97,7 +96,7 @@ export class MainNavComponent {
   constructor(private router: Router) {}
 
   goUsers() {
-    this.router.navigate(['/users']);
+    this.router.navigate(['users']);
   }
 
 }
