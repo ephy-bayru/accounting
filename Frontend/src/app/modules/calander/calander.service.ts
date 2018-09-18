@@ -11,7 +11,7 @@ export class CalanderService {
 
   }
   // Gets a single organization information by Id and returns an observable of organization
-  getOrganizationById(id: number): Observable<CalanderPeriod> {
+  getCalanderById(id: number): Observable<CalanderPeriod> {
     return this.httpClient.get<CalanderPeriod>(`${this.url}/${id}`);
   }
 
@@ -57,8 +57,8 @@ export class CalanderService {
 
 export class CalanderPeriod {
   id?: number;
-  startDate: Date;
-  endDate: Date;
+  startDate: string;
+  endDate: string;
   active: boolean;
 
 }
