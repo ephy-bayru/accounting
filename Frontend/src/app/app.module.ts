@@ -2,9 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ModuleWithProviders, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import { AccountsComponent } from './modules/accounts/accounts/accounts.component';
 import { BanksComponent } from './modules/banks/banks/banks.component';
 import { CurrencyComponent } from './modules/currency/currency/currency.component';
@@ -30,6 +27,7 @@ import { RmHeaderInterceptorService } from './shared/rm-header-interceptor.servi
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SidebarModule, TreeViewComponent, ToolbarComponent } from '@syncfusion/ej2-angular-navigations';
 import { AppRoutingModule } from './app-routing/app-routing.module';
+import { CompareDirective } from './shared/compare.directive';
 
 
 @NgModule({
@@ -55,17 +53,10 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     MainNavComponent,
     SideNavComponent,
     // syncfusion
-    TreeViewComponent, ToolbarComponent
+    TreeViewComponent, ToolbarComponent, CompareDirective
   ],
   imports: [
     BrowserModule,
-    MatSidenavModule,
-    BrowserAnimationsModule,
-    LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    MatListModule,
     UsersModule,
     RouterModule,
     CommonModule,

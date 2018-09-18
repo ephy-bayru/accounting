@@ -1,25 +1,20 @@
 .e-card {
-    margin-left: 6%;
-    margin-right: 10%;
-    align-content: center;
+    width: 90%;
+    min-height: 100%;
+    margin-left: 5%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 1%;
+    margin-top: 1%;
 }
-.form {
-    margin-right: 25%;
-    margin-left: 10%;
-}
-.title {
+.form-title {
     text-align: center;
 }
-.user-form {
-    margin-top: 1%;
-    margin-left: 5%;
-    margin-right: 5%;
+.btn {
+    align-content: flex-end;
 }
-/* .btn {
-    margin-left: 70;
-} */
 
-#inline { width:100%;
+#inline { width:90%;
     height:auto;
     display:flex;
 }
@@ -28,4 +23,7 @@
     height:100px;
     /* display: inline-block; */
     float: left;
+}
+#control_wrapper {
+    margin: 25px auto;
 }

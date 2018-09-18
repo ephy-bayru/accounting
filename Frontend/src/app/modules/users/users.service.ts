@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { HttpClient, HttpHeaders  } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse  } from '@angular/common/http';
 // import { RequestOptions } from '@angular/http';
 import {Users} from './users';
 import {map, catchError} from 'rxjs/operators';
@@ -10,7 +10,7 @@ import {map, catchError} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UsersService {
-  private Url = 'http://localhost/api/users';
+   Url = 'users';
   private _header = new HttpHeaders()
       .set(
         'Content-Type', 'application/json'
@@ -84,7 +84,13 @@ export class UsersService {
           return body;
       }
   private handleError (error: Response | any) {
-    console.error(error.message || error);
+    // console.error(error.message || error);
+    if (error instanceof HttpErrorResponse) {
+      console.error('backend error:', error.status);
+      console.error('Response body:', error.message);
+    }  else {
+      console.error('An error occured:', error.message);
+    }
     return Observable.throw(error.status);
       }
 }
