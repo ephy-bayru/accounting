@@ -5,6 +5,7 @@ using Smart_Accounting.Application.Organizations.Interfaces;
 using Smart_Accounting.Application.Organizations.Models;
 using Smart_Accounting.API.Commons.Models;
 using System;
+using System.Linq;
 
 namespace Smart_Accounting.API.Controllers.Organizations {
 
@@ -37,18 +38,21 @@ namespace Smart_Accounting.API.Controllers.Organizations {
 
                 IList<OrganizationViewModel> organizationList = new List<OrganizationViewModel> ();
                 // convert each organization object to organization view model
-                foreach (var item in organizations) {
+            foreach (var item in organizations) {
 
                     var x = _factory.OrganizationView (item);
                     organizationList.Add (x);
 
                 }
+    
                 // prepare response body 
-                ResponseFormat response = new ResponseFormat ();
-                response.Items = (IList) organizationList;
+            /*
+            ResponseFormat response = new ResponseFormat ();
+                response.Items = (IList)  organizationList;
                 response.Count = organizationList.Count;
+                */
 
-                return StatusCode (200, response);
+                return StatusCode (200, organizationList);
 
             } catch (Exception e) {
 

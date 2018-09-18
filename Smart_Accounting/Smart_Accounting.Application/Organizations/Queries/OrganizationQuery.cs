@@ -6,9 +6,11 @@
  * @Last Modified Time: Sep 5, 2018 3:17 PM
  * @Description: Class Used to Fetch Organization data from datastore 
  */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Smart_Accounting.Application.Interfaces;
+using Smart_Accounting.Application.Models;
 using Smart_Accounting.Application.Organizations.Interfaces;
 using Smart_Accounting.Application.Organizations.Models;
 using Smart_Accounting.Domain.Oranizations;
@@ -29,8 +31,10 @@ namespace Smart_Accounting.Application.Organizations.Queries {
         /// </summary>
         /// <returns>IEnumerable<Organization> </returns>
         public IEnumerable<Organization> GetAllOrganizations (string filter, string count, int top, int limit) {
-    
-            return _database.Organization.Skip(top).Take(limit).ToList();
+
+            var data = _database.Organization.ToList ();
+
+            return data;
         }
 
         /// <summary>
@@ -39,7 +43,7 @@ namespace Smart_Accounting.Application.Organizations.Queries {
         /// <param name="id"></param>
         /// <returns>Organization</returns>
         public Organization GetOrganizationById (uint id) {
-            var organization = _database.Organization.Find(id);
+            var organization = _database.Organization.Find (id);
             return organization;
         }
 
@@ -49,8 +53,9 @@ namespace Smart_Accounting.Application.Organizations.Queries {
         /// <param name="location"></param>
         /// <returns>Organization</returns>
         public Organization GetOrganizationByLocation (string location) {
-            var organization = _database.Organization.FirstOrDefault(org => org.Location == location);
+            var organization = _database.Organization.FirstOrDefault (org => org.Location == location);
             return organization;
         }
+
     }
 }

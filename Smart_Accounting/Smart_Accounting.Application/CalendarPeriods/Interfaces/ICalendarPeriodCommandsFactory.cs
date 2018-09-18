@@ -5,8 +5,8 @@ namespace Smart_Accounting.Application.CalendarPeriods.Interfaces {
 
     public interface ICalendarPeriodsCommandsFactory 
     {
-        CalendarPeriod NewCalendar (NewCalendarModel calendar);
-        CalendarPeriod UpdateCalander(CalendarPeriod CalendarPeriods,UpdateCalendarModel calendar);
+        CalendarPeriod NewCalendar (CalanderPeriodDto calendar);
+        CalendarPeriod UpdateCalander(CalanderPeriodDto updatedCalander);
         CalendarViewModel CalendarView (CalendarPeriod calendar);
         //object UpdateCalander(CalendarPeriod old, UpdateCalendarModel updateCalendar);
     }
