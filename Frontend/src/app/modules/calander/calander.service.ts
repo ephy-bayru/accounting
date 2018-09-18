@@ -5,6 +5,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class CalanderService {
+
   private url = 'calanders';
   constructor(private httpClient: HttpClient) {
 
@@ -56,8 +57,8 @@ export class CalanderService {
 
 export class CalanderPeriod {
   id?: number;
-  startDate: string;
-  endDate: string;
+  startDate: Date;
+  endDate: Date;
   active: boolean;
 
 }

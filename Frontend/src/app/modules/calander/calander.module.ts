@@ -10,7 +10,6 @@ import {
   SearchService, PdfExportService, ReorderService, CommandColumnService,
   ToolbarService, ResizeService, GridModule
 } from '@syncfusion/ej2-ng-grids';
-import { CompanyService } from '../company/company.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { CalanderService } from './calander.service';

@@ -1,3 +1,45 @@
-<p>
-  calander-view works!
-</p>
+<div class="e-card">
+
+
+  <ejs-grid [dataSource]='data'
+            #grid
+            height="300px"
+            [allowExcelExport]="true"
+            id='calander'
+            [toolbar]='toolbarOptions'
+            [allowPaging]="true"
+            [pageSettings]='pageSettings'
+            [allowFiltering]="true"
+            [allowSorting]="true"
+            [allowGrouping]="true"
+            [allowResizing]='true'
+            [selectionSettings]='selectionOptions'
+            [groupSettings]='groupOptions'
+            allowFiltering='true'
+            allowTextWrap='true'
+            [textWrapSettings]='wrapSettings'
+            gridLines='Both'
+            [editSettings]='editSettings'
+            [selectionSettings]='selectionOptions'
+            [allowPdfExport]='true'
+
+            (toolbarClick)='toolbarClick($event)'
+            (columnMenuOpen)="columnMenuOpen($event)"
+            (columnMenuClick)="columnMenuClick($event)"
+            [filterSettings]="filterOptions"
+    >
+    <e-columns>
+      <e-column *ngFor="let column of gridColumns"
+                [field]="column.field"
+                [headerText]="column.text"
+                [isPrimaryKey]="column.primaryKey"
+                [format]="column.format"
+                [type]="column.type"
+                [editType]="column.type"
+                [width]="column.width"
+                width='50'></e-column>
+
+    </e-columns>
+  </ejs-grid>
+
+</div>

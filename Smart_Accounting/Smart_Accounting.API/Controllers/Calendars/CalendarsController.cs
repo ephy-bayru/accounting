@@ -14,7 +14,7 @@ using Smart_Accounting.Application.Interfaces;
 
 namespace Smart_Accounting.API.Controllers.Calendarss {
 
-    [Route ("api/calendars")]
+    [Route ("api/calanders")]
     public class CalendarsController : Controller {
 
         private readonly ICalendarPeriodsCommands _calendarCommand;
