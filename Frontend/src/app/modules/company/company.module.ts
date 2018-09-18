@@ -22,11 +22,9 @@ import { CompanyService } from './company.service';
     BrowserModule,
     GridModule,
     CompanyRoutingModule,
-    FormsModule,
     ReactiveFormsModule,
     // syncfussion modules
     ButtonModule,
-    GridModule
   ],
   declarations: [CompanyViewComponent, ComapnyFormComponent, FormOptionsComponent],
   exports: [CompanyViewComponent, ComapnyFormComponent],

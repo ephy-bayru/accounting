@@ -25,7 +25,7 @@ export class MainNavComponent {
           id: '01', name: 'COMPANY',
           subChild: [
             { id: '001', name: 'PROFILE', navigateUrl: 'organizations' },
-            { id: '002', name: 'CALENDER' },
+            { id: '002', name: 'CALENDER', navigateUrl: 'calanders' },
         ]
         },
         {

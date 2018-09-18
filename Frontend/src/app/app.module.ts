@@ -28,6 +28,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SidebarModule, TreeViewComponent, ToolbarComponent } from '@syncfusion/ej2-angular-navigations';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { CompareDirective } from './shared/compare.directive';
+import { CalanderModule } from './modules/calander/calander.module';
 
 
 @NgModule({
@@ -61,6 +62,7 @@ import { CompareDirective } from './shared/compare.directive';
     RouterModule,
     CommonModule,
     CompanyModule,
+    CalanderModule,
     // sincfussion modules
     ButtonModule,
     GridModule,

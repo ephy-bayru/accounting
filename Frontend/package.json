@@ -23,6 +23,7 @@
     "@angular/platform-browser": "^6.1.0",
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
+    "@schematics/angular": "^0.7.2",
     "@syncfusion/ej2-angular-navigations": "^16.3.18",
     "@syncfusion/ej2-angular-popups": "^16.3.18",
     "@syncfusion/ej2-cards": "^16.2.45",
