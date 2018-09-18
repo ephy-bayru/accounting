@@ -45,12 +45,12 @@ namespace Smart_Accounting.API.Controllers.Calendarss {
         }
 
         [HttpPost]
-        [ProducesResponseType (201)]
+        [ProducesResponseType (201, Type = typeof (CalendarViewModel))]
         [ProducesResponseType (400)]
         [ProducesResponseType (422)]
         public IActionResult CreateNewCalendarPeriod ([FromBody] CalanderPeriodDto newCalendar) {
             try {
-                if (ModelState.IsValid) {
+                if (ModelState.IsValid || newCalendar != null) {
                     // Checks if the date specified has already been used or not
                     if (_calendarQuery.IsEndDateOveraped (newCalendar.End) || _calendarQuery.IsStartDateOveraped (newCalendar.Start)) {
                         return StatusCode (422, "Overlaping Dates Used");
@@ -62,7 +62,7 @@ namespace Smart_Accounting.API.Controllers.Calendarss {
                     var calendar = _calendarCommand.CreateCalendar (calanderFactory);
 
                     if (calendar != null) {
-                        return StatusCode (201, calanderFactory);
+                        return StatusCode (201, calendar);
                     } else {
                         return StatusCode (500, "unkown error");
                     }
@@ -88,10 +88,11 @@ namespace Smart_Accounting.API.Controllers.Calendarss {
                     //  check if calander with the specified id exists
                     if (calendar != null) {
 
-                        // convert calander data passed from the user to calanderperiod Object
                         var calanerFactory = _factory.UpdateCalander (data);
 
                         var result = _calendarCommand.UpdateCalendar (calanerFactory);
+
+                        // convert calander data passed from the user to calanderperiod Object
 
                         if (result != false) {
                             return StatusCode (204); // when updated Successfully

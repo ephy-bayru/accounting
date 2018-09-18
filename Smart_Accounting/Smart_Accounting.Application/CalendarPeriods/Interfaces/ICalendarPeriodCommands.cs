@@ -1,3 +1,11 @@
+/*
+ * @CreateTime: Sep 14, 2018 4:06 PM
+ * @Author:  Mikael Araya
+ * @Contact: MikaelAraya12@gmail.com
+ * @Last Modified By:  Mikael Araya
+ * @Last Modified Time: Sep 14, 2018 4:06 PM
+ * @Description: Modify Here, Please 
+ */
 using Smart_Accounting.Application.CalendarPeriods.Models;
 using Smart_Accounting.Domain.CalendarPeriods;
 
