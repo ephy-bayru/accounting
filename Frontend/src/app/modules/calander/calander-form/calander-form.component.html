@@ -1,3 +1,41 @@
-<p>
-  calander-form works!
-</p>
+<section class="ejs-card">
+  <form [formGroup]="calanderForm" novalidate (ngSubmit)="onSubmit()" name="calanderForm">
+
+    <div formArrayName="calanders" class="content-wrapper">
+      <div *ngFor="let calander of calanders.controls; let i=index; let last=last"  class="row">
+        <div class="col-8">
+          <ejs-daterangepicker [formControlName]="i" [attr.name]="'calanderPeriod'+i" [attr.id]="'calanderPeriod'+i">
+          </ejs-daterangepicker>
+        </div>
+        <div class="col-2">
+          <button #statusBtn (click)="btnClick()" type="button" ejs-button class="e-small e-success e-outline e-active" iconCss="e-icons e-play-icon" [isToggle]="true" > Active</button>
+        </div>
+        <div class="col-2">
+          <button type="button" ejs-button class="e-round e-info e-small " iconCss="e-icons e-plus-icon" [disabled]="!last || calanders.invalid" (click)="addPeriod()"></button>
+          <button type="button" ejs-button class="e-round e-danger e-small e-icons e-times-icon" (click)="calanders.removeAt(i)"></button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button ejs-button class="e-outline e-success" type="submit">Submit</button>
+          <button ejs-button class="e-iutline e-warning">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <p>
+    Form Status:<code> {{calanderForm.status | json}}
+      </code>
+
+    </p>
+    <p>
+        Form: <code>
+            {{calanderForm.value | json}}
+          </code>
+    </p>
+    <p>
+        Form: <code>
+            {{calanders.status | json}}
+          </code>
+    </p>
+  </form>
+</section>

@@ -13,6 +13,8 @@ import {
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { CalanderService } from './calander.service';
+import { DateRangePickerModule } from '@syncfusion/ej2-angular-calendars';
+import { ButtonModule } from '@syncfusion/ej2-ng-buttons';
 
 @NgModule({
   imports: [
@@ -20,7 +22,9 @@ import { CalanderService } from './calander.service';
     BrowserModule,
     CalanderRoutingModule,
     GridModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DateRangePickerModule,
+    ButtonModule
   ],
   declarations: [CalanderFormComponent, CalanderViewComponent],
   providers: [PageService,
