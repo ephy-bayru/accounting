@@ -1,11 +1,13 @@
 namespace Smart_Accounting.Application.Employee.Models {
     public class NewEmployeeModel {
-        public string Name { get; set; }
-        //   public string Phonenumber {get; set;}
-        // public string Country {get; set;}
-        //  public string City {get; set;}
-        // public string SubCity {get; set;}
-        // public string HouseNo {get; set;}
-        //  public uint? AccountId {get; set;}
+        public long id { get; set; }
+        public string First_Name { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string Phone_No { get; set; }
+        public string gender { get; set; }
+        public string Account_Id { get; set; }
+        public string Password { get; set; }
+        public string Birth_Date { get; set; }
     }
 }
