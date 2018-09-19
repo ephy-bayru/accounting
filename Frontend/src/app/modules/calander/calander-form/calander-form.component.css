@@ -1,0 +1,12 @@
+.customWeekEnds .e-calendar .e-content .e-weekend span { /* csslint allow: adjoining-classes*/
+  color: #ff3337;
+  }
+
+  .customWeekEnds .e-calendar .e-content .e-selected span.e-day, /* csslint allow: adjoining-classes*/
+.customWeekEnds .e-calendar .e-content .e-selected span.e-day:hover, /* csslint allow: adjoining-classes*/
+.customWeekEnds .e-calendar .e-content .e-today.e-selected:hover span.e-day, /* csslint allow: adjoining-classes*/
+.customWeekEnds .e-calendar .e-content .e-today.e-selected span.e-day, /* csslint allow: adjoining-classes*/
+.customWeekEnds .e-calendar .e-content .e-selected:hover span.e-day /* csslint allow: adjoining-classes*/
+{
+background-color: #35b86b;
+}

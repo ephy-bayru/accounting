@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Smart_Accounting.Application.CalendarPeriods.Interfaces;
 using Smart_Accounting.Application.CalendarPeriods.Models;
@@ -16,9 +17,13 @@ namespace Smart_Accounting.Application.CalendarPeriods.Commands {
             _calendarCommandFactory = calendarCommandFactory;
         }
 
-        public CalendarViewModel CreateCalendar (CalendarPeriod newCalendar) {
+        public IEnumerable<CalendarViewModel> CreateCalendar (IEnumerable<CalendarPeriod> newCalendar) {
             try {
-                _database.CalendarPeriod.Add (newCalendar);
+
+                foreach (var item in newCalendar) {
+                _database.CalendarPeriod.Add (item);
+                }
+                
                 _database.Save ();
 
                 return _calendarCommandFactory.CalendarView (newCalendar);

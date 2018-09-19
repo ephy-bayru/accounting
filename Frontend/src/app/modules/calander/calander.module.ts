@@ -14,7 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { CalanderService } from './calander.service';
 import { DateRangePickerModule } from '@syncfusion/ej2-angular-calendars';
-import { ButtonModule } from '@syncfusion/ej2-ng-buttons';
+import { ButtonModule, SwitchModule } from '@syncfusion/ej2-ng-buttons';
+
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { ButtonModule } from '@syncfusion/ej2-ng-buttons';
     GridModule,
     ReactiveFormsModule,
     DateRangePickerModule,
-    ButtonModule
+    ButtonModule,
+    SwitchModule
   ],
   declarations: [CalanderFormComponent, CalanderViewComponent],
   providers: [PageService,

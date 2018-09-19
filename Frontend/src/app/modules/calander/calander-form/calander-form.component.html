@@ -1,14 +1,15 @@
-<section class="ejs-card">
+<section class="ejs-cards">
   <form [formGroup]="calanderForm" novalidate (ngSubmit)="onSubmit()" name="calanderForm">
 
     <div formArrayName="calanders" class="content-wrapper">
-      <div *ngFor="let calander of calanders.controls; let i=index; let last=last"  class="row">
+      <div *ngFor="let calander of calanders.controls; let i=index; let last=last"  class="row" [formGroup]="calander">
         <div class="col-8">
-          <ejs-daterangepicker [formControlName]="i" [attr.name]="'calanderPeriod'+i" [attr.id]="'calanderPeriod'+i">
+          <ejs-daterangepicker (change)="dateChanged($event)"  (select)="dateSelected($event)" [minDays]="minDays" cssClass="customWeekEnds" placeholder="Select Period Range" [maxDays]="maxDays" [firstDayOfWeek]="firstDay"
+           [format]="format" formControlName="order" [attr.name]="'calanderPeriod'+i" [attr.id]="'calanderPeriod'+i">
           </ejs-daterangepicker>
         </div>
         <div class="col-2">
-          <button #statusBtn (click)="btnClick()" type="button" ejs-button class="e-small e-success e-outline e-active" iconCss="e-icons e-play-icon" [isToggle]="true" > Active</button>
+          <ejs-switch [checked]="true" formControlName="active"></ejs-switch>`
         </div>
         <div class="col-2">
           <button type="button" ejs-button class="e-round e-info e-small " iconCss="e-icons e-plus-icon" [disabled]="!last || calanders.invalid" (click)="addPeriod()"></button>
@@ -18,24 +19,17 @@
       <div class="row">
         <div class="col">
           <button ejs-button class="e-outline e-success" type="submit">Submit</button>
-          <button ejs-button class="e-iutline e-warning">Cancel</button>
+          <button ejs-button type="button" class="e-iutline e-warning">Cancel</button>
         </div>
       </div>
     </div>
-    <p>
-    Form Status:<code> {{calanderForm.status | json}}
-      </code>
 
-    </p>
     <p>
         Form: <code>
             {{calanderForm.value | json}}
           </code>
     </p>
     <p>
-        Form: <code>
-            {{calanders.status | json}}
-          </code>
     </p>
   </form>
 </section>

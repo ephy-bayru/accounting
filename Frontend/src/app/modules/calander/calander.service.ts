@@ -22,9 +22,9 @@ export class CalanderService {
 
   // Creates a new instance of CalanderPeriod record in the system amd returns an observable
   // of the new CalanderPeriod information on success
-  createCalanderPeriod(newCalanderPeriod: CalanderPeriod): Observable<CalanderPeriod> {
+  createCalanderPeriod(newCalanderPeriod: CalanderPeriod[]): Observable<CalanderPeriod[]> {
     const config = { headers: new HttpHeaders().set('Content-Type', 'application/json') };
-    return this.httpClient.post<CalanderPeriod>(`${this.url}`, JSON.stringify(newCalanderPeriod),
+    return this.httpClient.post<CalanderPeriod[]>(`${this.url}`, JSON.stringify(newCalanderPeriod),
     config )
       .pipe(
         catchError(this.handleError)
@@ -57,8 +57,8 @@ export class CalanderService {
 
 export class CalanderPeriod {
   id?: number;
-  startDate: string;
-  endDate: string;
-  active: boolean;
+  Start: string;
+  End: string;
+  Active: boolean;
 
 }

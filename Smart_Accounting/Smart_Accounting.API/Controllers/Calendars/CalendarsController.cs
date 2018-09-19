@@ -7,6 +7,7 @@
  * @Description: Calander Period API Controller Class
  */
 using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Smart_Accounting.Application.CalendarPeriods.Interfaces;
 using Smart_Accounting.Application.CalendarPeriods.Models;
@@ -45,16 +46,19 @@ namespace Smart_Accounting.API.Controllers.Calendarss {
         }
 
         [HttpPost]
-        [ProducesResponseType (201, Type = typeof (CalendarViewModel))]
+        [ProducesResponseType (201, Type = typeof (IEnumerable<CalendarViewModel>))]
         [ProducesResponseType (400)]
         [ProducesResponseType (422)]
-        public IActionResult CreateNewCalendarPeriod ([FromBody] CalanderPeriodDto newCalendar) {
+        public IActionResult CreateNewCalendarPeriod ([FromBody] IEnumerable<CalanderPeriodDto> newCalendar) {
             try {
                 if (ModelState.IsValid || newCalendar != null) {
                     // Checks if the date specified has already been used or not
-                    if (_calendarQuery.IsEndDateOveraped (newCalendar.End) || _calendarQuery.IsStartDateOveraped (newCalendar.Start)) {
-                        return StatusCode (422, "Overlaping Dates Used");
+                    foreach (var item in newCalendar) {
+                        if (_calendarQuery.IsEndDateOveraped (item.End) || _calendarQuery.IsStartDateOveraped (item.Start)) {
+                            return StatusCode (422, "Overlaping Dates Used");
+                        }
                     }
+
                     // convert the data passed from client to CalanderPeriod object
                     var calanderFactory = _factory.NewCalendar (newCalendar);
 

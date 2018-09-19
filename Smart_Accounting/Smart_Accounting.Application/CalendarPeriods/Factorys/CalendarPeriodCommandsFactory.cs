@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Smart_Accounting.Application.CalendarPeriods.Interfaces;
 using Smart_Accounting.Application.CalendarPeriods.Models;
 using Smart_Accounting.Domain.CalendarPeriods;
@@ -5,21 +6,33 @@ using Smart_Accounting.Domain.CalendarPeriods;
 namespace Smart_Accounting.Application.CalendarPeriods.Factorys {
     public class CalendarPeriodCommandsFactorys : ICalendarPeriodsCommandsFactory {
 
-        public CalendarViewModel CalendarView (CalendarPeriod calendar) {
-            var calendars = new CalendarViewModel ();
+        public IEnumerable<CalendarViewModel> CalendarView (IEnumerable<CalendarPeriod> calendar) {
+            List<CalendarViewModel> calendars = new List<CalendarViewModel> ();
 
-            calendar.Id = calendars.Id;
-            calendar.Start = calendars.Start;
-            calendar.End = calendars.End;
+            foreach (var item in calendar) {
+                CalendarViewModel cal = new CalendarViewModel() {
+                    Id = item.Id,
+                    Start = item.Start,
+                    End = item.End
+
+                };
+
+                calendars.Add(cal);
+            }
 
             return calendars;
         }
 
-        public CalendarPeriod NewCalendar (CalanderPeriodDto calendar) {
-            var calendars = new CalendarPeriod ();
-            calendars.Id = (calendar.id > 0) ? calendar.id : 0;
-            calendars.Start = calendar.Start;
-            calendars.End = calendar.End;
+        public IEnumerable<CalendarPeriod> NewCalendar (IEnumerable<CalanderPeriodDto> calendar) {
+            List<CalendarPeriod> calendars = new List<CalendarPeriod> ();
+
+            foreach (var item in calendar) {
+                CalendarPeriod cal = new CalendarPeriod ();
+                cal.Id = (item.id > 0) ? item.id : 0;
+                cal.Start = item.Start;
+                cal.End = item.End;
+                calendars.Add (cal);
+            }
 
             return calendars;
 
