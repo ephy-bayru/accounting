@@ -47,6 +47,8 @@ namespace Smart_Accounting.Application.Employee.Commands.Factories
              employees.Gender = employee.Gender;
              employees.Account_Id = employee.Account_Id
              employees.Password = employee.Password;
+             employees.Date_Created = employee.Date_Created;
+             employees.Date_Updated = employee.Date_Updated;
 
              return employees;
 
