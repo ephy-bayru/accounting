@@ -27,8 +27,11 @@ namespace Smart_Accounting.Application.Employee.Commands {
             _database.Save();
         }
 
-        public void Update () {
-            throw new System.NotImplementedException ();
+        public void Update (Employees employee, UpdatedEmployeeModel updatedEmployee ) {
+            var employee = _employeeCmdFactory.UpdateEmployee(employee, updatedEmployee);
+            _database.Employee.Update(employee);
+            _database.Save();
+            return true;
         }
     }
 }
