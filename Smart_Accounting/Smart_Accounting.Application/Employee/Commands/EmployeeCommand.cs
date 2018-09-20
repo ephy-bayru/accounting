@@ -27,11 +27,10 @@ namespace Smart_Accounting.Application.Employee.Commands {
             _database.Save();
         }
 
-        public void Update (Employees employee, UpdatedEmployeeModel updatedEmployee ) {
-            var employee = _employeeCmdFactory.UpdateEmployee(employee, updatedEmployee);
-            _database.Employee.Update(employee);
+        public void Update (Employees employee, UpdatedEmployeeDto updatedEmployee ) {
+            var emp = _employeeCmdFactory.UpdatesEmployee(employee, updatedEmployee);
+            _database.Employees.Update(emp);
             _database.Save();
-            return true;
         }
     }
 }
