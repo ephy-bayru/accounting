@@ -21,37 +21,37 @@ namespace Smart_Accounting.Application.Employee.Commands.Factories
             return employee;
         }
 
-        public Employees UpdateEmployee(Employee employee, UpdatedEmployeeModel updateEmployee)
-        {
-            employee.First_Name = updateEmployee.First_Name;
-            employee.Last_Name = updateEmployee.Last_Name;
-            employee.Email = updateEmployee.Email;
-            employee.Phone_No = updateEmployee.Phone_No;
-            employee.Birth_Date = updateEmployee.Birth_Date;
-            employee.Gender = updateEmployee.Gender;
-            employee.Account_Id = updateEmployee.Account_Id;
-            employee.Password = updateEmployee.Password;
 
-            return employee;
-        }
         // throw new System.NotImplementedException();
-         public EmployeeViewModel EmployeeView(Employee employee) {
+         public EmployeeViewModel EmployeeView(Employees employee) {
              var employees = new EmployeeViewModel();
              
-             employees.id = employee.id;
+             employees.id = employee.Id;
              employees.First_Name = employee.First_Name;
              employees.Last_Name = employee.First_Name;
              employees.Email = employees.Email;
              employees.Phone_No = employee.Phone_No;
              employees.Birth_Date = employee.Birth_Date;
              employees.Gender = employee.Gender;
-             employees.Account_Id = employee.Account_Id
-             employees.Password = employee.Password;
+             employees.Account_Id = employee.Account_Id;
              employees.Date_Created = employee.Date_Created;
              employees.Date_Updated = employee.Date_Updated;
 
              return employees;
 
          }
+
+        public Employees UpdatesEmployee(Employees currentEmployee, UpdatedEmployeeDto updateEmployee)
+        {
+            currentEmployee.Last_Name = updateEmployee.Last_Name;
+            currentEmployee.Email = updateEmployee.Email;
+            currentEmployee.Phone_No = updateEmployee.Phone_No;
+            currentEmployee.Birth_Date = updateEmployee.Birth_Date;
+            currentEmployee.Gender = updateEmployee.Gender;
+            currentEmployee.Account_Id = updateEmployee.Account_Id;
+            currentEmployee.Password = updateEmployee.Password;
+
+            return currentEmployee;
+        }
     }
 }

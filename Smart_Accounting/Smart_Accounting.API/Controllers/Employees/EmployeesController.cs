@@ -87,7 +87,7 @@ namespace Smart_Accounting.API.Controllers.Employee {
         [ProducesResponseType (204)]
         [ProducesResponseType (400)]
         [ProducesResponseType (422)]
-        public IActionResult UpdateEmployee (uint id, [FromBody] NewEmployeeModel updateEmployee) {
+        public IActionResult UpdateEmployee (uint id, [FromBody] UpdatedEmployeeDto updateEmployee) {
             try {
                 if (updateEmployee == null) {
                     return BadRequest ();
@@ -96,8 +96,11 @@ namespace Smart_Accounting.API.Controllers.Employee {
                 if (!ModelState.IsValid) {
                     return StatusCode (422);
                 }
-                _employeesQuery.GetEmployeeById (id);
-                _employeeCommands.UpdateEmployee (updateEmployee);
+               var currentEmployee =   _employeesQuery.GetById (id);
+               if( currentEmployee == null ) {
+                   return NotFound();
+               }
+                _employeeCommands.Update (currentEmployee, updateEmployee );
                 return StatusCode (204);
 
             } catch (Exception x) {
@@ -113,12 +116,11 @@ namespace Smart_Accounting.API.Controllers.Employee {
         [ProducesResponseType (422)]
         public IActionResult DeleteEmployee (uint id) {
             try {
-                var emp = _employeesQuery.GetEmployeeById (id);
+                var emp = _employeesQuery.GetById (id);
                 if (emp == null) {
                     _logger.LogError ($"employee with id: {id}, not found.");
                     return NotFound ();
                 }
-                _employeesQuery.DeleteEmployee (emp);
                 _employeeCommands.Delete (emp);
                 return NoContent ();
 

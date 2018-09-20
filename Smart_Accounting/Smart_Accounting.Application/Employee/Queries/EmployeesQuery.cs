@@ -2,7 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Smart_Accounting.Application.Employee.Interfaces;
 using Smart_Accounting.Application.Interfaces;
-using Smart_Accounting.Domain.Employee;
+using Smart_Accounting.Domain.Employe;
+using Smart_Accounting.Application.Employee.Commands.Factories;
 
 namespace Smart_Accounting.Application.Employee.Queries {
     public class EmployeesQuery : IEmployeesQueries {
@@ -19,7 +20,7 @@ namespace Smart_Accounting.Application.Employee.Queries {
         }
 
         public Employees GetById (uint id) {
-            var employee = _database.Employee(id);
+            var employee = _database.Employees.Find(id);
             return employee;
         }
     }
