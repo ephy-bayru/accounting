@@ -5,8 +5,7 @@ import { CalanderFormComponent } from './calander-form/calander-form.component';
 
 const routes: Routes = [
   {path: 'calanders' , component: CalanderViewComponent},
-  {path: 'calanders/new' , component: CalanderFormComponent},
-  {path: 'calanders/update' , component: CalanderFormComponent}
+  {path: 'calanders/new' , component: CalanderFormComponent}
 ];
 
 @NgModule({

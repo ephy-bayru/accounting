@@ -81,7 +81,7 @@ export class CalanderViewComponent implements OnInit {
     ];
 
     this.pageSettings = { pageSize: 5 };  // initial page row size for the grid
-    this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true };
+    this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Dialog' };
   }
 
   handleError(error: HttpErrorResponse) {
