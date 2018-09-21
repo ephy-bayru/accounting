@@ -10,9 +10,11 @@
 .form-title {
     text-align: center;
 }
+
 .btn {
-    align-content: flex-end;
-}
+    padding-left: 60%;
+    margin-left: 15%;
+  }
 
 #inline { width:90%;
     height:auto;
