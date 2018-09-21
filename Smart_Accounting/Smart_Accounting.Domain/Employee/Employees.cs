@@ -5,16 +5,18 @@ namespace Smart_Accounting.Domain.Employe
 {
     public class Employees
     {
-        public uint Id { get; set; }
-        public string First_Name { get; set; }
-        public string Last_Name { get; set; }
+          public uint Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string Email { get; set; }
+        public string PhoneNo { get; set; }
+        public string Gender { get; set; }
         public string Password { get; set; }
-        public string Account_Id { get; set; }
-        public string Phone_No {get; set;}
-        public string Gender {get; set; }
-        public DateTime? Birth_Date { get; set; }
-        public DateTime? Date_Created { get; set; }
-        public DateTime? Date_Updated {get; set; }
+        public DateTime BirthDate { get; set; }
+        public DateTime DateCreated { get; set; }
+        public uint? AccountId { get; set; }
+        public DateTime DateUpdated { get; set; }
+
+        public AccountChart Account { get; set; }
     }
 }

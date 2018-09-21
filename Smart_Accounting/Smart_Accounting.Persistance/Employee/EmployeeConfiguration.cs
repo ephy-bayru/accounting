@@ -7,64 +7,69 @@ namespace Smart_Accounting.Persistance.Employee
     public class EmployeeConfiguration : IEntityTypeConfiguration<Employees>
     {
 
-        public void Configure(EntityTypeBuilder<Employees> builder)
+        public void Configure(EntityTypeBuilder<Employees> entity)
         {
-            builder.ToTable("EMPLOYEES");
+         
+              
+                entity.ToTable("employees");
 
-            builder.Property(e => e.Id)
-            .HasColumnName("ID");
+                entity.HasIndex(e => e.AccountId)
+                    .HasName("fk_employees_1_idx");
 
-            builder.Property(e => e.First_Name)
-                .IsRequired()
-                .HasColumnName("FIRST_NAME")
-                .HasColumnType("varchar(45)");
+                entity.Property(e => e.Id).HasColumnName("ID");
 
-            builder.Property(e => e.Last_Name)
-                .IsRequired()
-                .HasColumnName("LAST_NAME")
-                .HasColumnType("varchar(45)");
+                entity.Property(e => e.AccountId).HasColumnName("ACCOUNT_ID");
 
-            builder.Property(e => e.Email)
-                .IsRequired()
-                .HasColumnName("EMAIL")
-                .HasColumnType("VARCHAR(45)");
+                entity.Property(e => e.BirthDate)
+                    .HasColumnName("BIRTH_DATE")
+                    .HasColumnType("datetime");
 
-            builder.Property(e => e.Phone_No)
-                .IsRequired()
-                .HasColumnType("VARCHAR(45)")
-                .HasColumnName("PHONE_NO");
+                entity.Property(e => e.DateCreated)
+                    .HasColumnName("DATE_CREATED")
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("'CURRENT_TIMESTAMP'");
 
-            builder.Property(e => e.Gender)
-                .IsRequired()
-                .HasColumnType("CHAR(5)")
-                .HasColumnName("GENDER");
+                entity.Property(e => e.DateUpdated)
+                    .HasColumnName("DATE_UPDATED")
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("'CURRENT_TIMESTAMP'");
 
+                entity.Property(e => e.Email)
+                    .IsRequired()
+                    .HasColumnName("EMAIL")
+                    .HasColumnType("varchar(45)");
 
-            builder.Property(e => e.Account_Id)
-                .IsRequired()
-                .HasColumnName("ACCOUNT_ID")
-                .HasColumnType("VARCHAR(45)");
+                entity.Property(e => e.FirstName)
+                    .IsRequired()
+                    .HasColumnName("FIRST_NAME")
+                    .HasColumnType("varchar(45)");
 
-            // builder.HasIndex(e => e.Account_Id)
-            //     .HasName("fk_employees_1");
+                entity.Property(e => e.Gender)
+                    .IsRequired()
+                    .HasColumnName("GENDER")
+                    .HasColumnType("char(5)");
 
-            builder.Property(e => e.Password)
-                .IsRequired()
-                .HasColumnName("PASSWORD")
-                .HasColumnType("VARCHAR(45)");
+                entity.Property(e => e.LastName)
+                    .HasColumnName("LAST_NAME")
+                    .HasColumnType("varchar(45)");
 
-            builder.Property(e => e.Birth_Date)
-                .HasColumnName("BIRTH_DATE")
-                .HasColumnType("datetime");
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasColumnName("PASSWORD")
+                    .HasColumnType("varchar(45)");
 
-            builder.Property(e => e.Date_Created)
-                .HasColumnName("DATE_CREATED")
-                .HasColumnType("datetime")
-                .HasDefaultValueSql("'CURRENT_TIMESTAMP'");
+                entity.Property(e => e.PhoneNo)
+                    .IsRequired()
+                    .HasColumnName("PHONE_NO")
+                    .HasColumnType("varchar(45)");
 
-            builder.Property(e => e.Date_Updated)
-                .HasColumnName("DATE_UPDATED")
-                .HasColumnType("'CURRENT_TIMESTAMP'");
+                entity.HasOne(d => d.Account)
+                    .WithMany(p => p.Employees)
+                    .HasForeignKey(d => d.AccountId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_employees_1");
+     
+
 
         }
     }

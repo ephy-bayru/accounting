@@ -9,14 +9,14 @@ namespace Smart_Accounting.Application.Employee.Commands.Factories
         {
             var employee = new  Employees();
 
-            employee.First_Name = newEmp.First_Name;
-            employee.Last_Name = newEmp.Last_Name;
+            employee.FirstName = newEmp.First_Name;
+            employee.LastName = newEmp.Last_Name;
             employee.Email = newEmp.Email;
-            employee.Phone_No = newEmp.Phone_No;
-            employee.Account_Id = newEmp.Account_Id;
+            employee.PhoneNo = newEmp.Phone_No;
+            employee.AccountId = newEmp.Account_Id;
             employee.Gender = newEmp.Gender;
             employee.Password = newEmp.Password;
-            employee.Birth_Date = newEmp.Birth_Date;
+            employee.BirthDate = newEmp.Birth_Date;
 
             return employee;
         }
@@ -27,15 +27,15 @@ namespace Smart_Accounting.Application.Employee.Commands.Factories
              var employees = new EmployeeViewModel();
              
              employees.id = employee.Id;
-             employees.First_Name = employee.First_Name;
-             employees.Last_Name = employee.First_Name;
+             employees.First_Name = employee.FirstName;
+             employees.Last_Name = employee.FirstName;
              employees.Email = employees.Email;
-             employees.Phone_No = employee.Phone_No;
-             employees.Birth_Date = employee.Birth_Date;
+             employees.Phone_No = employee.PhoneNo;
+             employees.Birth_Date = employee.BirthDate;
              employees.Gender = employee.Gender;
-             employees.Account_Id = employee.Account_Id;
-             employees.Date_Created = employee.Date_Created;
-             employees.Date_Updated = employee.Date_Updated;
+             employees.Account_Id = (uint) employee.AccountId;
+             employees.Date_Created = employee.DateCreated;
+             employees.Date_Updated = employee.DateUpdated;
 
              return employees;
 
@@ -43,12 +43,12 @@ namespace Smart_Accounting.Application.Employee.Commands.Factories
 
         public Employees UpdatesEmployee(Employees currentEmployee, UpdatedEmployeeDto updateEmployee)
         {
-            currentEmployee.Last_Name = updateEmployee.Last_Name;
+            currentEmployee.LastName = updateEmployee.Last_Name;
             currentEmployee.Email = updateEmployee.Email;
-            currentEmployee.Phone_No = updateEmployee.Phone_No;
-            currentEmployee.Birth_Date = updateEmployee.Birth_Date;
+            currentEmployee.PhoneNo = updateEmployee.Phone_No;
+            currentEmployee.BirthDate = updateEmployee.Birth_Date;
             currentEmployee.Gender = updateEmployee.Gender;
-            currentEmployee.Account_Id = updateEmployee.Account_Id;
+            currentEmployee.AccountId = updateEmployee.Account_Id;
             currentEmployee.Password = updateEmployee.Password;
 
             return currentEmployee;
