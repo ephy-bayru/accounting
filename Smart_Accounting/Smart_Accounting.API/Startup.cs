@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json.Serialization;
 using Smart_Accounting.Application.AccountCharts.Command;
 using Smart_Accounting.Application.AccountCharts.Commands;
 using Smart_Accounting.Application.AccountCharts.Interfaces;
@@ -31,10 +33,8 @@ using Smart_Accounting.Application.Organizations.Queries;
 using Smart_Accounting.Application.Supplier.Commands;
 using Smart_Accounting.Application.Supplier.Interfaces;
 using Smart_Accounting.Application.Supplier.Queries;
-using Smart_Accounting.Persistance;
-using Microsoft.AspNetCore.Cors;
-using Newtonsoft.Json.Serialization;
 using Smart_Accounting.API.Commons.Factories;
+using Smart_Accounting.Persistance;
 
 namespace Smart_Accounting.API {
     public class Startup {
@@ -47,7 +47,6 @@ namespace Smart_Accounting.API {
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices (IServiceCollection services) {
             services.AddScoped<IAccountingDatabaseService, AccountingDatabaseService> ();
-           
 
             services.AddScoped<IAccountChartCommands, AccountChartCommands> ();
             services.AddScoped<IAccountChartCommandsFactory, AccountChartCommandsFactory> ();
@@ -69,10 +68,10 @@ namespace Smart_Accounting.API {
             services.AddScoped<IResponseFactory, ResponseFactory> ();
             services.AddCors (options => {
                 options.AddPolicy ("AllowSpecificOrigin",
-                    builder1 => builder1.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+                    builder1 => builder1.AllowAnyOrigin ().AllowAnyHeader ().AllowAnyMethod ());
             });
-             services.AddMvc ()
-              .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());;
+            services.AddMvc ()
+                .AddJsonOptions (options => options.SerializerSettings.ContractResolver = new DefaultContractResolver ());;
 
         }
 
@@ -81,7 +80,7 @@ namespace Smart_Accounting.API {
             if (env.IsDevelopment ()) {
                 app.UseDeveloperExceptionPage ();
             }
-            app.UseCors("AllowSpecificOrigin");
+            app.UseCors ("AllowSpecificOrigin");
             app.UseMvc ();
         }
     }
