@@ -4,7 +4,7 @@ import { GridComponent } from '@syncfusion/ej2-ng-grids';
 import { DataManager, WebApiAdaptor, UrlAdaptor } from '@syncfusion/ej2-data';
 import {
   GroupSettingsModel, FilterSettingsModel, ToolbarItems,
-  TextWrapSettingsModel, EditSettingsModel, SelectionSettingsModel, PageSettingsModel
+  TextWrapSettingsModel, EditSettingsModel, SelectionSettingsModel, PageSettingsModel, CommandModel
 } from '@syncfusion/ej2-grids';
 import { Router } from '@angular/router';
 
@@ -32,31 +32,8 @@ export class CalanderViewComponent implements OnInit {
   public selectionOptions: SelectionSettingsModel;
   public pageSettings: PageSettingsModel;
   public filterOptions: FilterSettingsModel;
-
+  public commands: CommandModel[];
   constructor(private router: Router, private calanderService: CalanderService) { }
-
-  public gridColumns = [
-    {
-      field: 'Id', text: 'Id', primaryKey: true, format: '',
-      editable: false, filterable: true, groupable: false,
-      type: 'number', editType: '', width: '50px'
-    },
-    {
-      field: 'Start', text: 'Start', primaryKey: false, format: 'yMd',
-      editable: true, filterable: true, groupable: false,
-      type: 'datetime', editType: 'datepickeredit', width: '100px'
-    },
-    {
-      field: 'End', text: 'End', primaryKey: false, format: 'yMd',
-      editable: true, filterable: true, groupable: false,
-      type: 'datetime', editType: 'datepickeredit', width: '100px'
-    },
-    {
-      field: 'Active', text: 'Active', primaryKey: false, format: '',
-      type: 'boolean', editable: true, filterable: true, groupable: false,
-      editType: 'booleanedit', width: '50px'
-    }
-  ];
 
   ngOnInit() {
     this.data = new DataManager({
@@ -73,16 +50,15 @@ export class CalanderViewComponent implements OnInit {
     this.groupOptions = { showGroupedColumn: true }; // make columns used for grouping visable
     this.toolbarOptions = [
       'Add',
-      'Edit',
-      'Delete',
       'Print',
       'PdfExport',
       'ExcelExport',
       'Search'
     ];
-
+    this.commands = [{ type: 'Edit', buttonOption: { cssClass: 'e-flat', iconCss: 'e-edit e-icons' } },
+    { type: 'Delete', buttonOption: { cssClass: 'e-flat', iconCss: 'e-delete e-icons' } }];
     this.pageSettings = { pageSize: 5 };  // initial page row size for the grid
-    this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Dialog' };
+    this.editSettings = {showDeleteConfirmDialog: true, allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Dialog' };
   }
 
   handleError(error: HttpErrorResponse) {
