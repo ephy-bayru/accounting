@@ -1,13 +1,12 @@
-export interface Users {
+export class Users {
+    id: number;
     First_Name: string;
     Last_Name: string;
-    Email: string | number;
+    Email: string ;
     Phone_No: number;
-    Password: string | number;
-    Confirm_Password: string | number;
-    Account_Id: string | number;
+    Password: string ;
+    Confirm_Password: string ;
+    Account_Id: string ;
     Gender: string;
     Birth_Date: Date;
-    Date_Added: Date;
-    Date_Updated: Date;
 }

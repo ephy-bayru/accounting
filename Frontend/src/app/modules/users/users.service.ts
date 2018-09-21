@@ -10,7 +10,7 @@ import {map, catchError} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UsersService {
-   Url = 'users';
+   Url = 'employees';
   private _header = new HttpHeaders()
       .set(
         'Content-Type', 'application/json'
@@ -20,12 +20,9 @@ export class UsersService {
     private httpClient: HttpClient
   ) { }
 
-  getUsers(): Observable<Users> {
-    return this.httpClient.get<Users>(`${this.Url}`)
-            .pipe(
-              // map(this.extractData),
-              catchError(this.handleError)
-            );
+  getUsers(): Observable<Users[]> {
+    const options = {headers: this._header};
+    return this.httpClient.get<Users[]>(`${this.Url}`, options);
   }
   getUser(id: number): Observable<Users> {
     const options = {headers: this._header};
@@ -37,9 +34,7 @@ export class UsersService {
             );
   }
   addUser(newUser: Users): Observable<Users> {
-    const data = this.userData(newUser);
-    const options = {headers: this._header};
-    return this.httpClient.post<Users>(`${this.Url}`, data.toString(), options)
+    return this.httpClient.post<Users>(`${this.Url}`, newUser)
               .pipe(
                //  map(this.extractData),
                 catchError(this.handleError)
@@ -48,7 +43,7 @@ export class UsersService {
   updateUser(updateUser: Users, id: number): Observable<Users> {
     const data = this.userData(updateUser);
     const options = {headers: this._header};
-    return this.httpClient.put<Users>( `${this.Url}` + id, data.toString(), options)
+    return this.httpClient.put<Users>(`${this.Url}/${id}`, data.toString(), options)
               .pipe(
                //  map(this.extractData),
                 catchError(this.handleError)
@@ -57,7 +52,7 @@ export class UsersService {
 
   deleteUser(id: number) {
       const options = { headers: this._header };
-      return this.httpClient.delete(this.Url + '/' + id, options)
+      return this.httpClient.delete(`${this.Url}/${id}`, options)
                 .pipe(
                   map(success => success, 200),
                   catchError(this.handleError)
@@ -68,14 +63,12 @@ export class UsersService {
     const user = new URLSearchParams();
       user.set('First_Name', userForm.First_Name);
       user.set('Last_Name', userForm.Last_Name);
-      user.set('Email', userForm.Email.toString());
-      user.set('Password', userForm.Password.toString());
-      user.set('Confirm_Password', userForm.Confirm_Password.toString());
-      user.set('Account_Id', userForm.Account_Id.toString());
+      user.set('Email', userForm.Email);
+      user.set('Password', userForm.Password);
+      user.set('Confirm_Password', userForm.Confirm_Password);
+      user.set('Account_Id', userForm.Account_Id);
       user.set('Gender', userForm.Gender);
-      user.set('Birth_Date', userForm.Birth_Date.toString());
-      user.set('Date_Added', userForm.Date_Added.toString());
-      user.set('Date _Updated', userForm.Date_Updated.toString());
+      user.set('Birth_Date', userForm.Birth_Date.toISOString());
     return user;
   }
 

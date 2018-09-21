@@ -9,12 +9,16 @@ const UserRoutes: Routes = [
   { path: 'users',
     component: UsersComponent
   },
-  { path: 'users/id',
+  { path: 'update/user/id',
    component: UsersComponent
   },
   {
     path: 'users-grid',
     component: UserGridComponent
+  },
+  {
+    path: 'add/user',
+    component: UsersComponent
   }
 ];
 @NgModule({

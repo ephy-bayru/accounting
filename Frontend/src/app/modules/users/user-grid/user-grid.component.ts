@@ -1,112 +1,105 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {  } from './../users.service';
-// import { data } from './data-source';
-import { ToolbarItems } from '@syncfusion/ej2-ng-grids';
+import { UsersService } from './../users.service';
 import { ClickEventArgs } from '@syncfusion/ej2-ng-navigations';
 import { DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
+import { Router } from '@angular/router';
+import { Users } from '../users';
 import {
-  SortService,
-  GroupService,
-  ColumnMenuService,
-  PageService,
-  FilterService,
-  ContextMenuItem,
-  GroupSettingsModel,
+  GridComponent,
   FilterSettingsModel,
+  SelectionSettingsModel,
+  GroupSettingsModel,
   EditSettingsModel,
   TextWrapSettingsModel,
-  GridComponent,
+  PageSettingsModel,
+  ToolbarItems,
   ToolbarService,
-  ExcelExportService,
-  PdfExportService,
-  SelectionSettingsModel,
-  ExcelExportCompleteArgs,
-  PdfExportCompleteArgs,
-  FreezeService
+  PdfExportService
+
 } from '@syncfusion/ej2-ng-grids';
 
 @Component({
   selector: 'app-user-grid',
   templateUrl: './user-grid.component.html',
   styleUrls: ['./user-grid.component.css'],
-  providers: [
-    SortService,
-    GroupService,
-    ColumnMenuService,
-    PageService,
-    PdfExportService,
-    FreezeService,
-    FreezeService,
-    FilterService,
-    ToolbarService,
-    ExcelExportService,
-  ]
+  providers: [ToolbarService, PdfExportService]
 })
 export class UserGridComponent implements OnInit {
-  title = 'sinkT';
-  SERVICE_URI: 'users';
+  title = 'Users Data';
   @ViewChild('grid')
+  SERVICE_URI: 'users';
+
   public grid: GridComponent;
-  public data: DataManager;
-  // public data: object[];
-  public gridd: GridComponent;
-  public groupOptions: GroupSettingsModel;
+  public data: Users[] = [];
+
+  public editSettings: EditSettingsModel;
   public filterSettings: FilterSettingsModel;
   public filterOptions: FilterSettingsModel;
-  public toolbarOptions: ToolbarItems[];
-  public wrapSettings: TextWrapSettingsModel;
   public toolbar: ToolbarItems[];
-  public editSettings: EditSettingsModel;
+  public toolbarOptions: ToolbarItems[];
+  public groupOptions: GroupSettingsModel;
+  public wrapSettings: TextWrapSettingsModel;
+  public pageSettings: PageSettingsModel;
   public selectionOptions: SelectionSettingsModel;
-  constructor() {}
+
+
+  constructor(private router: Router, private usersService: UsersService) { }
 
   ngOnInit() {
-    // this.data = this.data;
-        // fetching data from api
-    this.data = new DataManager({
-      url: this.SERVICE_URI,
-      adaptor: new WebApiAdaptor(),
-      crossDomain: true,
-      enableCaching: true,
-      cachingPageSize: 10,
-      timeTillExpiration: 100000
-    });
-    this.toolbarOptions = ['ColumnChooser'];
-    this.groupOptions = { showGroupedColumn: true };
-    this.filterSettings = { type: 'CheckBox' };
-    this.wrapSettings = { wrapMode: 'Content' };
+    this.filterOptions = {
+      type: 'Menu'
+    };
     this.toolbarOptions = [
       'Add',
       'Edit',
       'Delete',
-      'Update',
-      'Cancel',
       'Print',
       'PdfExport',
+      'WordExport',
       'ExcelExport',
       'Search'
     ];
+
     this.editSettings = {
       allowEditing: true,
       allowAdding: true,
       allowDeleting: true,
-      mode: 'Dialog'
     };
-    this.filterOptions = {
-      // type: 'Menu'
-      ignoreAccent: true
-    };
-    this.selectionOptions = { mode: 'Both' };
+
+    this.pageSettings = { pageSize: 10 };
+    this.groupOptions = { showGroupedColumn: true };
+    this.wrapSettings = { wrapMode: 'Content' };
+    this.selectionOptions = { mode: 'Both', type: 'Single' };
+
+    this.usersService.getUsers().subscribe((success: Users[]) => {
+      this.data = success;
+    });
+
+    // adaptor: new WebApiAdaptor(),
+    // crossDomain: true,
+    // enableCaching: true,
+    // cachingPageSize: 10,
+    // timeTillExpiration: 100000
   }
+
+  columnMenuOpen(arg) {
+    console.log(`${arg} column menu open`);
+  }
+  columnMenuClick(arg) {
+    console.log(`${arg} column menu Click`);
+  }
+
   toolbarClick(args: ClickEventArgs): void {
-    if (args.item.id === 'PdfExport') {
+    if (args.item.id === 'add-user') {
+      this.router.navigate(['add/user']);
+    } else if (args.item.id === 'edit-user') {
+      const selecteduser: Object = this.grid.getSelectedRecords();
+      this.router.navigate(['update/user/id'], selecteduser);
+    } else if (args.item.id === 'employee_pdfexport') {
       this.grid.pdfExport();
-    }
-    // if (args.item.id === 'Grid_add') { // 'Grid_pdfexport' -> Grid component id + _ + toolbar item name
-    //   alert('add');
-    // }
-    if (args.item.id === 'ExcelExport') {
+    } else if (args.item.id === 'employee_excelexport') {
       this.grid.excelExport();
     }
   }
 }
+

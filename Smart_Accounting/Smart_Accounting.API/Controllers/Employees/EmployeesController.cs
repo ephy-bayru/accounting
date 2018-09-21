@@ -70,7 +70,7 @@ namespace Smart_Accounting.API.Controllers.Employee {
                 }
                 if (!ModelState.IsValid) {
                     _logger.LogError ("invalid data sent from users");
-                    return BadRequest ("Invalid user model");
+                    return StatusCode(422, "Invalid user model");
                 }
 
                 _employeeCommands.Create (newEmployee);

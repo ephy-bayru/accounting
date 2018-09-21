@@ -6,20 +6,23 @@
 
 <ejs-grid [dataSource]='data' #grid id='employee' [rowHeight]='30' height='100%' width='100%'
 [toolbar]='toolbarOptions'
+
 [allowFiltering]="true"
 [filterSettings]="filterOptions"
 allowFiltering='true'
 
 [allowPaging]="true"
-[allowSorting]="true"
 [pageSettings]='pageSettings'
+[allowSorting]="true"
 
 [allowExcelExport]="true"
-[allowPdfExport]='true'
+allowpdfExport='true'
 
 gridLines='Both'
 
+[EditService]="true"
 [editSettings]='editSettings'
+
 [allowGrouping]="true"
 [selectionSettings]='selectionOptions'
 [groupSettings]='groupOptions'
@@ -27,7 +30,6 @@ allowTextWrap='true'
 [textWrapSettings]='wrapSettings'
 
 [DetailRowService]="true"
-[EditService]="true"
 [SearchService]="true"
 
 

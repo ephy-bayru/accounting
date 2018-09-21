@@ -1,28 +1,6 @@
 
-/* .e-card {
-    margin-left: 6%;
-    margin-right: 10%;
-    align-content: center;
-} */
 
-/* .form {
-    margin-right: 25%;
-    margin-left: 10%;
-} */
-
-.title {
-    text-align: center;
-}
-.user-form {
-    margin-top: 1%;
-    margin-left: 5%;
-    margin-right: 5%;
-}
-/* .btn {
-    margin-left: 70;
-} */
-
-#inline { width:100%;
+#inline { width:80%;
     height:auto;
     display:flex;
 }
@@ -35,12 +13,20 @@
 .e-grid .e-altrow {
     background-color: #fafafa;
 }
-.e-resizable {
-    resize: both;
+.cont {
+    /* resize: both; */
     overflow: auto;
     border: 1px solid red;
     padding: 10px;
-    height: 300px;
-    min-height: 250px;
+    min-height: 550px;
     min-width: 250px;
+    padding-bottom: 5px;
+
+}
+.e-card {
+    padding-left: 1%;
+    padding-right: 1%;
+}
+#title {
+    align-content: center;
 }
