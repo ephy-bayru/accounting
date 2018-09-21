@@ -6,6 +6,7 @@
             height="300px"
             [allowExcelExport]="true"
             id='calander'
+
             [toolbar]='toolbarOptions'
             [allowPaging]="true"
             [pageSettings]='pageSettings'
@@ -22,10 +23,7 @@
             [editSettings]='editSettings'
             [selectionSettings]='selectionOptions'
             [allowPdfExport]='true'
-
             (toolbarClick)='toolbarClick($event)'
-            (columnMenuOpen)="columnMenuOpen($event)"
-            (columnMenuClick)="columnMenuClick($event)"
             [filterSettings]="filterOptions"
     >
     <e-columns>
@@ -34,8 +32,9 @@
                 [headerText]="column.text"
                 [isPrimaryKey]="column.primaryKey"
                 [format]="column.format"
+
                 [type]="column.type"
-                [editType]="column.type"
+                [editType]="column.editType"
                 [width]="column.width"
                 width='50'></e-column>
 

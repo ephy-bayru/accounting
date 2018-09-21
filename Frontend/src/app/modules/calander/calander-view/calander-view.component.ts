@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ClickEventArgs } from '@syncfusion/ej2-navigations';
 import { GridComponent } from '@syncfusion/ej2-ng-grids';
-import { DataManager } from '@syncfusion/ej2-data';
+import { DataManager, WebApiAdaptor, UrlAdaptor } from '@syncfusion/ej2-data';
 import {
   GroupSettingsModel, FilterSettingsModel, ToolbarItems,
   TextWrapSettingsModel, EditSettingsModel, SelectionSettingsModel, PageSettingsModel
@@ -22,7 +22,7 @@ export class CalanderViewComponent implements OnInit {
 
   @ViewChild('grid')
   public grid: GridComponent;
-  public data: CalanderPeriod[] = [];
+  public data: DataManager;
   public groupOptions: GroupSettingsModel;
   public filterSettings: FilterSettingsModel;
   public toolbarOptions: ToolbarItems[];
@@ -44,12 +44,12 @@ export class CalanderViewComponent implements OnInit {
     {
       field: 'Start', text: 'Start', primaryKey: false, format: 'yMd',
       editable: true, filterable: true, groupable: false,
-      type: 'date', editType: 'datetimeedit', width: '100px'
+      type: 'datetime', editType: 'datepickeredit', width: '100px'
     },
     {
       field: 'End', text: 'End', primaryKey: false, format: 'yMd',
       editable: true, filterable: true, groupable: false,
-      type: 'date', editType: 'datetimeedit', width: '100px'
+      type: 'datetime', editType: 'datepickeredit', width: '100px'
     },
     {
       field: 'Active', text: 'Active', primaryKey: false, format: '',
@@ -59,13 +59,14 @@ export class CalanderViewComponent implements OnInit {
   ];
 
   ngOnInit() {
+    this.data = new DataManager({
+      url: 'http://localhost:53267/api/calanders',
+      updateUrl: 'http://localhost:53267/api/calanders',
+      insertUrl: 'http://localhost:53267/api/calanders',
+      removeUrl: 'http://localhost:53267/api/calanders',
+      adaptor: new WebApiAdaptor
+    });
 
-    this.calanderService.getCalanderPeriodsList().subscribe(
-      (success: CalanderPeriod[]) => {
-        console.log(success);
-        this.data = success;
-      },
-      (error: HttpErrorResponse) => this.handleError(error));
 
     this.filterOptions = { type: 'Menu' }; // put unique filter menue for each column based on the column type
     this.selectionOptions = { type: 'Single' }; // allow only single row to be selected at a time for edit or delete
@@ -81,7 +82,7 @@ export class CalanderViewComponent implements OnInit {
     ];
 
     this.pageSettings = { pageSize: 5 };  // initial page row size for the grid
-    this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true };
+    this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Dialog' };
   }
 
   handleError(error: HttpErrorResponse) {
@@ -97,9 +98,6 @@ export class CalanderViewComponent implements OnInit {
     } else if (args.item.id === 'calander_add') {
       this.router.navigate(['calanders/new']);   // when user click add route to the calander form
     } else if (args.item.id === 'calander_edit') {
-
-      const selectedrecords: Object = this.grid.getSelectedRecords();
-      this.router.navigate(['calanders/update', selectedrecords[0]['id']]); // when user click update route to the calander
 
     } else if (args.item.id === 'calander_print') {
       this.grid.print();      // when the user click print print the current page

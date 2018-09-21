@@ -29,8 +29,12 @@
               </div>
             </div>
           </div>
-
-          <app-form-options [submitDisabled]="organizationForm.invalid"></app-form-options>
+          <div class="row">
+            <div class="col submit-container">
+              <button ejs-button class=" e-success" [disabled]="organizationForm.invalid" type="submit">Submit</button>
+              <button ejs-button type="button" class=" e-warning">Cancel</button>
+            </div>
+          </div>
         </form>
       </div>
     </div>

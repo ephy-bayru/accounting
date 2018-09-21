@@ -12,6 +12,8 @@ using Microsoft.AspNetCore.Mvc;
 using Smart_Accounting.Application.CalendarPeriods.Interfaces;
 using Smart_Accounting.Application.CalendarPeriods.Models;
 using Smart_Accounting.Application.Interfaces;
+using Smart_Accounting.API.Commons.Factories;
+using Smart_Accounting.Domain.CalendarPeriods;
 
 namespace Smart_Accounting.API.Controllers.Calendarss {
 
@@ -21,19 +23,23 @@ namespace Smart_Accounting.API.Controllers.Calendarss {
         private readonly ICalendarPeriodsCommands _calendarCommand;
         private readonly ICalendarPeriodsCommandsFactory _factory;
         private readonly ICalendarPeriodQueries _calendarQuery;
+        private readonly IResponseFactory _responseFactory;
         public CalendarsController (ICalendarPeriodQueries calendarQuery,
             ICalendarPeriodsCommands calendarCommand,
-            ICalendarPeriodsCommandsFactory factory) {
+            ICalendarPeriodsCommandsFactory factory,
+            IResponseFactory response) {
             _calendarQuery = calendarQuery;
             _calendarCommand = calendarCommand;
             _factory = factory;
+            _responseFactory = response;
         }
 
         [HttpGet]
         [ProducesResponseType (200)]
         public IActionResult GetAllCalendarPeriod () {
             var calendars = _calendarQuery.GetAll ();
-            return Ok (calendars);
+            var response = _responseFactory.Create ((List<CalendarPeriod>) calendars);
+            return Ok (response);
         }
 
         [HttpGet ("{id}")]
@@ -49,7 +55,7 @@ namespace Smart_Accounting.API.Controllers.Calendarss {
         [ProducesResponseType (201, Type = typeof (IEnumerable<CalendarViewModel>))]
         [ProducesResponseType (400)]
         [ProducesResponseType (422)]
-        public IActionResult CreateNewCalendarPeriod ([FromBody] IEnumerable<CalanderPeriodDto> newCalendar) {
+        public IActionResult CreateNewCalendarPeriod ([FromBody] IEnumerable<NewCalendarPeriodDto> newCalendar) {
             try {
                 if (ModelState.IsValid || newCalendar != null) {
                     // Checks if the date specified has already been used or not
@@ -79,43 +85,43 @@ namespace Smart_Accounting.API.Controllers.Calendarss {
 
         }
 
+        [HttpPut]
         [HttpPut ("{id}")]
         [ProducesResponseType (204)]
         [ProducesResponseType (400)]
         [ProducesResponseType (422)]
-        public IActionResult UpdateCalendarPeriod (uint id, [FromBody] CalanderPeriodDto data) {
+        public IActionResult UpdateCalendarPeriod (uint id, [FromBody] UpdatedCalanderDto data) {
 
-            try {
-                if (ModelState.IsValid) {
+            if (ModelState.IsValid) {
 
-                    var calendar = _calendarQuery.GetById (id);
-                    //  check if calander with the specified id exists
-                    if (calendar != null) {
+                id = (id == 0) ? data.id : id;
 
-                        var calanerFactory = _factory.UpdateCalander (data);
+                var calendar = _calendarQuery.GetById (id);
+                //  check if calander with the specified id exists
+                if (calendar != null) {
 
-                        var result = _calendarCommand.UpdateCalendar (calanerFactory);
+                    var calanerFactory = _factory.UpdateCalander (calendar, data);
 
-                        // convert calander data passed from the user to calanderperiod Object
+                    var result = _calendarCommand.UpdateCalendar (calanerFactory);
 
-                        if (result != false) {
-                            return StatusCode (204); // when updated Successfully
+                    // convert calander data passed from the user to calanderperiod Object
 
-                        } else {
-
-                            return StatusCode (500, "unkown error");
-                        }
+                    if (result != false) {
+                        return StatusCode (204); // when updated Successfully
 
                     } else {
 
-                        return StatusCode (404);
+                        return StatusCode (500, "unkown error");
                     }
+
                 } else {
-                    return StatusCode (422, "required field is missing");
+
+                    return StatusCode (404);
                 }
-            } catch (Exception) {
-                return StatusCode (500, "Unknown Error Occured Try Again Later");
+            } else {
+                return StatusCode (422, "required field is missing");
             }
+
         }
 
         [HttpDelete ("{id}")]

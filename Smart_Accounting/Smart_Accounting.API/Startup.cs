@@ -34,6 +34,7 @@ using Smart_Accounting.Application.Supplier.Queries;
 using Smart_Accounting.Persistance;
 using Microsoft.AspNetCore.Cors;
 using Newtonsoft.Json.Serialization;
+using Smart_Accounting.API.Commons.Factories;
 
 namespace Smart_Accounting.API {
     public class Startup {
@@ -65,6 +66,7 @@ namespace Smart_Accounting.API {
             services.AddScoped<ISuppliersQuery, SuppliersQuery> ();
             services.AddScoped<ICustomerCommands, CustomerCommand> ();
             services.AddScoped<ICustomerQuery, CustomerQuery> ();
+            services.AddScoped<IResponseFactory, ResponseFactory> ();
             services.AddCors (options => {
                 options.AddPolicy ("AllowSpecificOrigin",
                     builder1 => builder1.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());

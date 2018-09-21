@@ -23,12 +23,11 @@ namespace Smart_Accounting.Application.CalendarPeriods.Factorys {
             return calendars;
         }
 
-        public IEnumerable<CalendarPeriod> NewCalendar (IEnumerable<CalanderPeriodDto> calendar) {
+        public IEnumerable<CalendarPeriod> NewCalendar (IEnumerable<NewCalendarPeriodDto> calendar) {
             List<CalendarPeriod> calendars = new List<CalendarPeriod> ();
 
             foreach (var item in calendar) {
                 CalendarPeriod cal = new CalendarPeriod ();
-                cal.Id = (item.id > 0) ? item.id : 0;
                 cal.Start = item.Start;
                 cal.End = item.End;
                 calendars.Add (cal);
@@ -38,13 +37,13 @@ namespace Smart_Accounting.Application.CalendarPeriods.Factorys {
 
         }
 
-        public CalendarPeriod UpdateCalander (CalanderPeriodDto calendar) {
-            CalendarPeriod calanderPeriod = new CalendarPeriod ();
-            calanderPeriod.Id = calendar.id;
-            calanderPeriod.Start = calendar.Start;
-            calanderPeriod.End = calendar.End;
+        public CalendarPeriod UpdateCalander (CalendarPeriod oldCalendar, UpdatedCalanderDto calendar) {
+            
+            
+            oldCalendar.Start = calendar.Start;
+            oldCalendar.End = calendar.End;
 
-            return calanderPeriod;
+            return oldCalendar;
 
         }
     }

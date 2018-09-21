@@ -44,13 +44,10 @@ namespace Smart_Accounting.Application.CalendarPeriods.Commands {
         }
 
         public bool UpdateCalendar (CalendarPeriod updatedCalander) {
-            try {
+
                 _database.CalendarPeriod.Update (updatedCalander);
                 _database.Save ();
                 return true;
-            } catch (Exception) {
-                return false;
-            }
         }
     }
 }
