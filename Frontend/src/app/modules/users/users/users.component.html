@@ -1,131 +1,132 @@
 <div class="e-card">
-  <div class="control-section">
+  <div class="col-lg-12 control-section e-input-section">
     <div class="col-lg-12">
       <h4 class="form-title">User Form</h4>
     </div>
     <div>
       <form id="reactive" [formGroup]="userForm" (ngSubmit)="onSubmit()">
-
         <div class="content-wrapper">
           <div class="row">
-            <!-- first name -->
-            <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
-              <div class="e-float-input" [ngClass]="{'e-success': userForm.controls.First_Name.valid}">
-                <input type="text"
-                       id="First_Name"
-                       name="First_Name" 
-                       class="required" 
-                       formControlName="First_Name" required>
-                <span class="e-float-line"></span>
-                <label class="e-float-text" for="First_Name">First Name</label>
+            <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+              <div class="form-group template">
+                <div class="e-float-input" [ngClass]="{'e-success': userForm.controls.First_Name.valid}">
+                  <input type="text" id="First_Name" name="First_Name" class="required" formControlName="First_Name"
+                    required>
+                  <span class="e-float-line"></span>
+                  <label class="e-float-text" for="First_Name">First Name</label>
+                </div>
+                <app-field-error-display [displayError]="isFieldValid('First_Name')" errorMsg="* Enter your first name">
+                </app-field-error-display>
               </div>
-              <app-field-error-display [displayError]="isFieldValid('First_Name')" errorMsg="* Enter your first name">
-              </app-field-error-display>
-            </div>
-            <!-- last name -->
-            <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
-              <div class="e-float-input" [ngClass]= "{'e-success': userForm.controls.Last_Name.valid}">
-                <input type="text"
-                       id="Last_Name" 
-                       name="Last_Name" 
-                       class="required" 
-                       formControlName="Last_Name" required>
-                <span class="e-float-line"></span>
-                <label class="e-float-text" for="Last_Name">Last Name</label>
-              </div>
-              <app-field-error-display [displayError]="isFieldValid('Last_Name')" errorMsg="* Enter your last name">
-              </app-field-error-display>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
-              <div class="e-float-input" [ngClass]= "{'e-success': userForm.controls.Email.valid}">
-                <input type="text" 
-                       id="Email" 
-                       name="Email" 
-                       formControlName="Email" 
-                       class="required" required>
-                <span class="e-float-line"></span>
-                <label class="e-float-text" for="Email">Email</label>
-              </div>
-              <app-field-error-display [displayError]="isFieldValid('Email')" errorMsg="* Enter your email address">
-              </app-field-error-display>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
-              <div id="mobile-no" class="e-float-input" [ngClass]= "{'e-success': userForm.controls.Phone_No.valid}">
-                <input type="number" 
-                       id="Phone_No" 
-                       name="mobile" 
-                       formControlName="Phone_No" 
-                       class="required" required>
-                <span class="e-float-line"></span>
-                <label class="e-float-text" for="Phone_No">Phone No</label>
-              </div>
-               <app-field-error-display [displayError]="isFieldValid('Phone_No')" errorMsg="* Enter your phone number">
-              </app-field-error-display>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
-              <div class="e-float-input" [ngClass]= "{'e-success': userForm.controls.Password.valid}">
-                <input type="password" 
-                       id="password" 
-                       name="password" 
-                       class="required" 
-                       formControlName="Password" required>
-                <span class="e-float-line"></span>
-                <label class="e-float-text" for="Password">Password</label>
-              </div>
-              <app-field-error-display [displayError]="isFieldValid('Password')" errorMsg="* Enter your password">
-              </app-field-error-display>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
-              <div class="e-float-input">
-                <input type="password"
-                       id="Confirm_Password" 
-                       name="Confirm_Password" 
-                       class="required" 
-                       formControlName="Confirm_Password" required>
-                <span class="e-float-line"></span>
-                <label class="e-float-text" for="Confirm_Password">Confirm Password</label>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs12 col-sm-12 col-lg-12 col-md-12">
-                <ejs-combobox id='comboelement' #samples [dataSource]='data' [autofill]='true' [placeholder]='gender'></ejs-combobox>
             </div>
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
-              <div class="e-input-group">
-                <!-- Mousedown and Mouseup Event binding for input icon Ripple Effect -->
-                <input class="e-input"
-                       type="text" 
-                       placeholder="Date of Birth" 
-                       (focus)="focusIn($event.target)" 
-                       (blur)="focusOut($event.target)" />
-                <span class="e-input-group-icon e-input-calendar" 
-                      (mouseup)="onMouseUp($event.target)" 
-                      (mousedown)="onMouseDown($event.target)">
-                </span>
+              <div class="form-group template">
+                <div class="e-float-input" [ngClass]="{'e-success': userForm.controls.Last_Name.valid}">
+                  <input type="text" id="Last_Name" name="Last_Name" class="required" formControlName="Last_Name"
+                    required>
+                  <span class="e-float-line"></span>
+                  <label class="e-float-text" for="Last_Name">Last Name</label>
+                </div>
+                <app-field-error-display [displayError]="isFieldValid('Last_Name')" errorMsg="* Enter your last name">
+                </app-field-error-display>
               </div>
             </div>
           </div>
+          <div class="row">
+            <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+              <div class="form-group template">
+                <div id="mobile-no" class="e-float-input" [ngClass]="{'e-success': userForm.controls.Email.valid}">
+                  <input type="text" id="email" name="email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                    class="required" formControlName="Email">
+                  <span class="e-float-line"></span>
+                  <label class="e-float-text" for="Email">Email</label>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+              <div class="form-group template">
+                <div class="e-float-input" [ngClass]="{'e-success': userForm.controls.Phone_No.valid}">
+                  <input type="number" name="phone" minlength="6" required class="required" formControlName="Phone_No">
+                  <span class="e-float-line"></span>
+                  <label class="e-float-text" for="Phone_No">Phone No</label>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+              <ejs-datepicker [value]='dateValue' [cssClass]='cssClass' placeholder='Enter Birth Date' formControlName="Birth_Date">
+                <div class="e-input-group">
+                </div>
+              </ejs-datepicker>
+            </div>
+
+            <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+              <div class="form-group template">
+                <div class="e-float-input" [ngClass]="{'e-success': userForm.controls.Account_Id.valid}">
+                  <input type="number" name="Account" minlength="10" required class="required" formControlName="Account_Id">
+                  <span class="e-float-line"></span>
+                  <label class="e-float-text" for="Account_Id">Account Id</label>
+                </div>
+
+              </div>
+            </div>
+            
+          </div>
+
+
+          <div class="row">
+            <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+              <div class="form-group template">
+                <div class="e-float-input" [ngClass]="{'e-success': userForm.controls.Password?.valid}">
+                  <input type="password" name="password" minlength="6" required class="required" formControlName="Password">
+                  <span class="e-float-line"></span>
+                  <label class="e-float-text" for="Password">Password</label>
+                </div>
+                <div class="text-danger" *ngIf="Password?.invalid && (Password.dirty || Password.touched)">
+                  *Password is required
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+              <div class="form-group template">
+                <div class="e-float-input" [ngClass]="{'e-success': userForm.controls.Confirm_Password.valid}">
+                  <input type="password" name="confirm_password" minlength="6" required class="required"
+                    formControlName="Confirm_Password">
+                  <span class="e-float-line"></span>
+                  <label class="e-float-text" for="confirm_password">Confirm Password</label>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+          <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+              <div class="form-group template">
+                <label>Gender:</label>
+                <br>
+                <ejs-radiobutton label="Female" name="payment" value="female" checked="true" formControlName="Gender"></ejs-radiobutton>
+                <ejs-radiobutton label="Male" name="payment" value="male" checked="true"formControlName="Gender"></ejs-radiobutton>
+            </div>
         </div>
-
+        </div>
+        <div class="btn">
+          <button ejs-button cssClass="e-success" type="submit" [disabled]="userForm.invalid" >
+            SUBMIT
+          </button>
+          <button ejs-button cssClass="e-primary" (submit)="onCancel">
+            CANCEL
+          </button>
+        </div>
       </form>
-    </div>
-    <div class="btn">
-    <button ejs-button cssClass="e-success" type="submit" [disabled]= "userForm.invalid">
-      SUBMIT
-    </button>
-    <button ejs-button cssClass="e-primary">
-      CANCEL
-    </button>
-  </div>
-  </div>
-</div>
+      </div>
+      </div>
+      </div>
 
-<div class= "e-card">
-  <h5>Form Status : {{userForm.status}}
+  <h5>Form Status : {{userForm.status}}</h5>
   <h6>form value</h6>
   <pre>{{userForm.value | json}}</pre>
