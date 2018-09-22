@@ -50,12 +50,13 @@ export class CalanderViewComponent implements OnInit {
     this.groupOptions = { showGroupedColumn: true }; // make columns used for grouping visable
     this.toolbarOptions = [
       'Add',
+      'Edit',
       'Print',
       'PdfExport',
       'ExcelExport',
       'Search'
     ];
-    this.commands = [{ type: 'Edit', buttonOption: { cssClass: 'e-flat', iconCss: 'e-edit e-icons' } },
+    this.commands = [
     { type: 'Delete', buttonOption: { cssClass: 'e-flat', iconCss: 'e-delete e-icons' } }];
     this.pageSettings = { pageSize: 5 };  // initial page row size for the grid
     this.editSettings = {showDeleteConfirmDialog: true, allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Dialog' };

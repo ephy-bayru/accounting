@@ -1,11 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Smart_Accounting.Application.Organizations.Interfaces;
 using Smart_Accounting.Application.Organizations.Models;
+using Smart_Accounting.API.Commons.Factories;
 using Smart_Accounting.API.Commons.Models;
-using System;
-using System.Linq;
+using Smart_Accounting.Domain.Oranizations;
 
 namespace Smart_Accounting.API.Controllers.Organizations {
 
@@ -13,13 +15,16 @@ namespace Smart_Accounting.API.Controllers.Organizations {
     public class OrganizationController : Controller {
         private readonly IOrganizationCommands _command;
         private readonly IOrganizationsQuery _query;
+        private readonly IResponseFactory _response;
         private readonly IOrganizationFactory _factory;
         public OrganizationController (IOrganizationCommands command,
             IOrganizationsQuery query,
-            IOrganizationFactory factory) {
+            IOrganizationFactory factory,
+            IResponseFactory response) {
             _factory = factory;
             _command = command;
             _query = query;
+            _response = response;
         }
         /// <summary>
         /// gets all records of organization in the databse (url=api/organizations)
@@ -28,31 +33,24 @@ namespace Smart_Accounting.API.Controllers.Organizations {
         [HttpGet]
         [ProducesResponseType (200, Type = typeof (OrganizationViewModel))]
         public IActionResult GetAllOrganizations (
-                                                    [FromQuery(Name = "$inlineCount")] string filter = "all", 
-                                                    [FromQuery(Name = "$orderby")] string orderby = "mike",
-                                                    [FromQuery(Name = "$skip")] int skip = 0,
-                                                    [FromQuery(Name = "$orderby")] int top = 10) {
+            [FromQuery (Name = "$inlineCount")] string filter = "all", [FromQuery (Name = "$orderby")] string orderby = "mike", [FromQuery (Name = "$skip")] int skip = 0, [FromQuery (Name = "$orderby")] int top = 10) {
             try {
-                
+
                 var organizations = _query.GetAllOrganizations (filter, orderby, skip, top);
 
                 IList<OrganizationViewModel> organizationList = new List<OrganizationViewModel> ();
+
                 // convert each organization object to organization view model
-            foreach (var item in organizations) {
+                foreach (var item in organizations) {
 
                     var x = _factory.OrganizationView (item);
                     organizationList.Add (x);
 
                 }
-    
-                // prepare response body 
-            /*
-            ResponseFormat response = new ResponseFormat ();
-                response.Items = (IList)  organizationList;
-                response.Count = organizationList.Count;
-                */
 
-                return StatusCode (200, organizationList);
+                var response = _response.CreateOrganizationResponse ((List<OrganizationViewModel>) organizationList);
+
+                return StatusCode (200, response);
 
             } catch (Exception e) {
 
@@ -71,7 +69,7 @@ namespace Smart_Accounting.API.Controllers.Organizations {
         public IActionResult GetOrganizationById (uint id) {
 
             try {
-        
+
                 var organization = _query.GetOrganizationById (id);
 
                 if (organization != null) {
@@ -80,7 +78,7 @@ namespace Smart_Accounting.API.Controllers.Organizations {
                 } else {
                     return StatusCode (404);
                 }
-        
+
             } catch (Exception e) {
                 return StatusCode (500, e.Message);
             }

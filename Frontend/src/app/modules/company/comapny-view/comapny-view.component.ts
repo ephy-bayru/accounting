@@ -37,7 +37,7 @@ export class CompanyViewComponent implements OnInit {
   public commands: CommandModel[];
 
   constructor(private router: Router, private companyService: CompanyService) {
-    this.commands = [{ type: 'Edit', buttonOption: { cssClass: 'e-flat', iconCss: 'e-edit e-icons' } },
+    this.commands = [
     { type: 'Delete', buttonOption: { cssClass: 'e-flat', iconCss: 'e-delete e-icons' } }];
   }
 
@@ -51,16 +51,17 @@ export class CompanyViewComponent implements OnInit {
     console.log(`${arg} column menu Click`);
   }
   ngOnInit() {
-
-    this.companyService.getOrganizationsList().subscribe((success: any) => {
-      this.data = success;
-    });
+      this.data = new DataManager({
+        url : 'http://localhost:53267/api/organizations',
+        adaptor: new WebApiAdaptor
+      });
 
     this.filterOptions = { type: 'Menu' }; // put unique filter menue for each column based on the column type
     this.selectionOptions = { type: 'Single' }; // allow only single row to be selected at a time for edit or delete
     this.groupOptions = { showGroupedColumn: true }; // make columns used for grouping visable
     this.toolbarOptions = [
       'Add',
+      'Edit',
       'Print',
       'PdfExport',
       'ExcelExport',
@@ -71,6 +72,9 @@ export class CompanyViewComponent implements OnInit {
     this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true };
   }
 
+  editClick(eve) {
+    console.log(eve);
+  }
 
   // Click handler for when the toolbar is cliked
   toolbarClick(args: ClickEventArgs): void {
