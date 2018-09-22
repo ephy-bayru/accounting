@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UsersService } from './../users.service';
 import { ClickEventArgs } from '@syncfusion/ej2-ng-navigations';
-import { DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
+import { DataManager, WebApiAdaptor, Adaptor } from '@syncfusion/ej2-data';
 import { Router } from '@angular/router';
 import { Users } from '../users';
 import {
@@ -30,7 +30,7 @@ export class UserGridComponent implements OnInit {
   SERVICE_URI: 'users';
 
   public grid: GridComponent;
-  public data: Users[] = [];
+  public data: DataManager;
 
   public editSettings: EditSettingsModel;
   public filterSettings: FilterSettingsModel;
@@ -71,9 +71,11 @@ export class UserGridComponent implements OnInit {
     this.wrapSettings = { wrapMode: 'Content' };
     this.selectionOptions = { mode: 'Both', type: 'Single' };
 
-    this.usersService.getUsers().subscribe((success: Users[]) => {
-      this.data = success;
+    this.data = new DataManager({
+      url: 'http://localhost:53267/api/employees',
+      adaptor: new WebApiAdaptor
     });
+
 
     // adaptor: new WebApiAdaptor(),
     // crossDomain: true,

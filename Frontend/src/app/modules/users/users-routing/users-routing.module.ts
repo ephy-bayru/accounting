@@ -7,14 +7,10 @@ import { UserGridComponent } from './../user-grid/user-grid.component';
 
 const UserRoutes: Routes = [
   { path: 'users',
-    component: UsersComponent
+    component: UserGridComponent
   },
   { path: 'update/user/id',
    component: UsersComponent
-  },
-  {
-    path: 'users-grid',
-    component: UserGridComponent
   },
   {
     path: 'add/user',

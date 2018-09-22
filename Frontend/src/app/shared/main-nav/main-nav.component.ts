@@ -32,7 +32,7 @@ export class MainNavComponent {
           id: '01-02', name: 'USER', tooltip: 'users data', navigateUrl: 'users'
         },
         {
-          id: '01-03', name: 'CUSTOMER', navigateUrl: 'users-grid'
+          id: '01-03', name: 'CUSTOMER'
         },
         {
           id: '01-04', name: 'SUPPLIER'

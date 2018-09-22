@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Smart_Accounting.Application.Employee.Commands.Factories;
 using Smart_Accounting.Application.Employee.Interfaces;
 using Smart_Accounting.Application.Interfaces;
@@ -17,7 +18,7 @@ namespace Smart_Accounting.Application.Employee.Queries {
             _factory = factory;
         }
         public IEnumerable<Employees> GetAll () {
-            return _database.Employees.ToList ();
+            return _database.Employees.AsNoTracking().ToList ();
         }
 
         public Employees GetById (uint id) {
