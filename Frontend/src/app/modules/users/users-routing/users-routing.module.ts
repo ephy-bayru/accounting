@@ -9,7 +9,7 @@ const UserRoutes: Routes = [
   { path: 'users',
     component: UserGridComponent
   },
-  { path: 'update/user/id',
+  { path: 'update/user/:id',
    component: UsersComponent
   },
   {

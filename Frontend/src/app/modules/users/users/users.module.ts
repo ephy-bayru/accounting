@@ -8,7 +8,7 @@ import { UsersRoutingModule } from './../users-routing/users-routing.module';
 // syncfussion
 import { ButtonModule, RadioButtonModule  } from '@syncfusion/ej2-ng-buttons';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { GridModule, ResizeService  } from '@syncfusion/ej2-ng-grids';
+import { GridModule, ResizeService, ExcelExportService  } from '@syncfusion/ej2-ng-grids';
 import { NumericTextBoxComponent } from '@syncfusion/ej2-ng-inputs';
 import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { UserGridComponent } from './../user-grid/user-grid.component';
@@ -49,23 +49,21 @@ import { PageService,
     NumericTextBoxComponent
   ],
   providers: [UsersService,
-    // data table services
-              PageService,
-              SortService,
-              FilterService,
-              GroupService,
-              EditService,
-              ColumnChooserService,
-              ColumnMenuService,
-              DetailRowService,
-              SearchService,
-              PdfExportService,
-              ReorderService,
-              CommandColumnService,
-              ToolbarService,
-              ResizeService,
-              FreezeService,
-              SelectionService
+    // data tPageService,
+    SortService,
+    FilterService,
+    GroupService,
+    EditService,
+    ExcelExportService,
+    ColumnChooserService,
+    ColumnMenuService,
+    DetailRowService,
+    SearchService,
+    PdfExportService,
+    ReorderService,
+    CommandColumnService,
+    ToolbarService,
+    ResizeService
 
             ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

@@ -26,12 +26,8 @@ export class UsersService {
   }
   getUser(id: number): Observable<Users> {
     const options = {headers: this._header};
-    console.log(`${this.Url}/{id}`);
-    return this.httpClient.get<Users>(`${this.Url}/${id}`, options)
-            .pipe(
-             //  map(this.extractData),
-              catchError(this.handleError)
-            );
+
+    return this.httpClient.get<Users>(`${this.Url}/${id}`, options);
   }
   addUser(newUser: Users): Observable<Users> {
     return this.httpClient.post<Users>(`${this.Url}`, newUser)
@@ -41,13 +37,8 @@ export class UsersService {
               );
   }
   updateUser(updateUser: Users, id: number): Observable<Users> {
-    const data = this.userData(updateUser);
-    const options = {headers: this._header};
-    return this.httpClient.put<Users>(`${this.Url}/${id}`, data.toString(), options)
-              .pipe(
-               //  map(this.extractData),
-                catchError(this.handleError)
-              );
+
+    return this.httpClient.put<Users>(`${this.Url}/${id}`, updateUser);
   }
 
   deleteUser(id: number) {

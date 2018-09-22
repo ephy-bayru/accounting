@@ -9,25 +9,25 @@
           <div class="row">
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
               <div class="form-group template">
-                <div class="e-float-input" [ngClass]="{'e-success': userForm.controls.First_Name.valid}">
+                <div class="e-float-input" >
                   <input type="text" id="First_Name" name="First_Name" class="required" formControlName="First_Name"
                     required>
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="First_Name">First Name</label>
                 </div>
-                <app-field-error-display [displayError]="isFieldValid('First_Name')" errorMsg="* Enter your first name">
+                <app-field-error-display>
                 </app-field-error-display>
               </div>
             </div>
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
               <div class="form-group template">
-                <div class="e-float-input" [ngClass]="{'e-success': userForm.controls.Last_Name.valid}">
+                <div class="e-float-input">
                   <input type="text" id="Last_Name" name="Last_Name" class="required" formControlName="Last_Name"
                     required>
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="Last_Name">Last Name</label>
                 </div>
-                <app-field-error-display [displayError]="isFieldValid('Last_Name')" errorMsg="* Enter your last name">
+                <app-field-error-display  errorMsg="* Enter your last name">
                 </app-field-error-display>
               </div>
             </div>
@@ -35,7 +35,7 @@
           <div class="row">
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
               <div class="form-group template">
-                <div id="mobile-no" class="e-float-input" [ngClass]="{'e-success': userForm.controls.Email.valid}">
+                <div id="mobile-no" class="e-float-input">
                   <input type="text" id="email" name="email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
                     class="required" formControlName="Email">
                   <span class="e-float-line"></span>
@@ -47,7 +47,7 @@
 
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
               <div class="form-group template">
-                <div class="e-float-input" [ngClass]="{'e-success': userForm.controls.Phone_No.valid}">
+                <div class="e-float-input" >
                   <input type="number" name="phone" minlength="6" required class="required" formControlName="Phone_No">
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="Phone_No">Phone No</label>
@@ -59,7 +59,7 @@
 
           <div class="row">
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
-              <ejs-datepicker [value]='dateValue' [cssClass]='cssClass' placeholder='Enter Birth Date' formControlName="Birth_Date">
+              <ejs-datepicker [value]='dateValue'  placeholder='Enter Birth Date' formControlName="Birth_Date">
                 <div class="e-input-group">
                 </div>
               </ejs-datepicker>
@@ -67,7 +67,7 @@
 
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
               <div class="form-group template">
-                <div class="e-float-input" [ngClass]="{'e-success': userForm.controls.Account_Id.valid}">
+                <div class="e-float-input">
                   <input type="number" name="Account" minlength="10" required class="required" formControlName="Account_Id">
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="Account_Id">Account Id</label>
@@ -75,26 +75,26 @@
 
               </div>
             </div>
-            
+
           </div>
 
 
           <div class="row">
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
               <div class="form-group template">
-                <div class="e-float-input" [ngClass]="{'e-success': userForm.controls.Password?.valid}">
+                <div class="e-float-input">
                   <input type="password" name="password" minlength="6" required class="required" formControlName="Password">
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="Password">Password</label>
                 </div>
-                <div class="text-danger" *ngIf="Password?.invalid && (Password.dirty || Password.touched)">
+                <div class="text-danger">
                   *Password is required
                 </div>
               </div>
             </div>
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
               <div class="form-group template">
-                <div class="e-float-input" [ngClass]="{'e-success': userForm.controls.Confirm_Password.valid}">
+                <div class="e-float-input" >
                   <input type="password" name="confirm_password" minlength="6" required class="required"
                     formControlName="Confirm_Password">
                   <span class="e-float-line"></span>
@@ -115,11 +115,11 @@
         </div>
         </div>
         <div class="btn">
-          <button ejs-button cssClass="e-success" type="submit"  >
+          <button type="submit" ejs-button cssClass="e-success" type="submit"  >
             SUBMIT
           </button>
           &nbsp;
-          <button ejs-button cssClass="e-primary" (submit)="onCancel">
+          <button type="button" ejs-button cssClass="e-primary" >
             CANCEL
           </button>
         </div>

@@ -3,7 +3,6 @@ import { UsersService } from './../users.service';
 import { ClickEventArgs } from '@syncfusion/ej2-ng-navigations';
 import { DataManager, WebApiAdaptor, Adaptor } from '@syncfusion/ej2-data';
 import { Router } from '@angular/router';
-import { Users } from '../users';
 import {
   GridComponent,
   FilterSettingsModel,
@@ -27,9 +26,9 @@ import {
 export class UserGridComponent implements OnInit {
   title = 'Users Data';
   @ViewChild('grid')
+  public grid: GridComponent;
   SERVICE_URI: 'users';
 
-  public grid: GridComponent;
   public data: DataManager;
 
   public editSettings: EditSettingsModel;
@@ -76,12 +75,6 @@ export class UserGridComponent implements OnInit {
       adaptor: new WebApiAdaptor
     });
 
-
-    // adaptor: new WebApiAdaptor(),
-    // crossDomain: true,
-    // enableCaching: true,
-    // cachingPageSize: 10,
-    // timeTillExpiration: 100000
   }
 
   columnMenuOpen(arg) {
@@ -95,8 +88,9 @@ export class UserGridComponent implements OnInit {
     if (args.item.id === 'employee_add') {
       this.router.navigate(['add/user']);
     } else if (args.item.id === 'employee_edit') {
-      const selecteduser: Object = this.grid.getSelectedRecords();
-      this.router.navigate([`update/user/${selecteduser}`]);
+      const selectedrowindex: number[] = this.grid.getSelectedRowIndexes();
+      const selectedrecords: Object = this.grid.getSelectedRecords();
+      this.router.navigate([`update/user/${selectedrecords[0]['id']}`]);
     } else if (args.item.id === 'employee_pdfexport') {
       this.grid.pdfExport();
     } else if (args.item.id === 'employee_excelexport') {
