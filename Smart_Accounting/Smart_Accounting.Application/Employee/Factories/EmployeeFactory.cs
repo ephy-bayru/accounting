@@ -9,7 +9,7 @@ namespace Smart_Accounting.Application.Employee.Factories {
             
             List<EmployeeViewModel> employeeViews = new List<EmployeeViewModel> ();
             
-            foreach (var item in employee as List<Employees>) {
+            foreach (var item in employee) {
                 EmployeeViewModel view = new EmployeeViewModel () {
                     id = item.Id,
                         First_Name = item.FirstName,

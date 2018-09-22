@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewEncapsulation, ViewChild} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Users } from './../users';
 import { UsersService } from './../users.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import {PageSettingsModel } from '@syncfusion/ej2-ng-grids';
+import { PageSettingsModel } from '@syncfusion/ej2-ng-grids';
 import { EmitType } from '@syncfusion/ej2-base';
 import { DialogComponent } from '@syncfusion/ej2-angular-popups';
 
@@ -42,12 +42,13 @@ export class UsersComponent implements OnInit {
       .paramMap
       .get('id');
     // console.log('user id' + this.id);
-    this
-      .usersService
-      .getUser(this.id)
-      .subscribe((user: Users) => this.usersForm(user));
-
-      this.usersForm();
+    if (this.id) {
+      this
+        .usersService
+        .getUser(this.id)
+        .subscribe((user: Users) => this.usersForm(user));
+        this.usersForm();
+    }
   }
 
   // this function is called
@@ -134,53 +135,53 @@ export class UsersComponent implements OnInit {
     };
     return userData;
   }
-onSubmit() {
-  console.log('hi');
-  const data = this.userForm.value;
-//  if (this.userForm.invalid) {
-  //  return; // Validation failed, exit from method.
-  // }
-  // Form is valid, now perform create or update
-  if (this.userUpdate) {
+  onSubmit() {
+
+    const data = this.userForm.value;
+    //  if (this.userForm.invalid) {
+    //  return; // Validation failed, exit from method.
+    // }
+    // Form is valid, now perform create or update
+    if (this.userUpdate) {
+      this
+        .usersService
+        .updateUser(data, this.id)
+        .subscribe(success => {
+          this.statusCode = success;
+          this.router.navigate(['users']);
+        }, errorCode => this.statusCode = errorCode);
+    } else {
+      this
+        .usersService
+        .addUser(data)
+        .subscribe(success => {
+          this.statusCode = success;
+          this
+            .router
+            .navigate(['users']);
+        }, errorCode => this.statusCode = errorCode);
+    }
+  }
+  public isFieldValid(field: string) {
+    return !this
+      .userForm
+      .get(field)
+      .valid && (this.userForm.get(field).dirty || this.userForm.get(field).touched);
+  }
+  // cancel button function
+  onCancel() {
+    this.userForm.reset();
+    this.router.navigate(['user-grid']);
+  }
+  // delete function
+  onDelete(id: number) {
     this
       .usersService
-      .updateUser(data, this.id)
-      .subscribe(success => {
-        this.statusCode = success;
-        this.router.navigate(['user-grid']);
+      .deleteUser(id)
+      .subscribe(successCode => {
+        //  this.statusCode = successCode;
+        this.statusCode = 204;
       }, errorCode => this.statusCode = errorCode);
-  } else {
-    this
-    .usersService
-    .addUser(data)
-    .subscribe(success => {
-      this.statusCode = success;
-      this
-        .router
-        .navigate(['users-grid']);
-    }, errorCode => this.statusCode = errorCode);
   }
-}
-public isFieldValid(field: string) {
-  return !this
-    .userForm
-    .get(field)
-    .valid && (this.userForm.get(field).dirty || this.userForm.get(field).touched);
-}
-// cancel button function
-onCancel() {
-  this.userForm.reset();
-  this.router.navigate(['user-grid']);
-}
-// delete function
-onDelete(id: number) {
-  this
-    .usersService
-    .deleteUser(id)
-    .subscribe(successCode => {
-      //  this.statusCode = successCode;
-      this.statusCode = 204;
-    }, errorCode => this.statusCode = errorCode);
-}
 
 }

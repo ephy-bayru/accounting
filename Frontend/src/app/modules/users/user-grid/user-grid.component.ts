@@ -92,11 +92,11 @@ export class UserGridComponent implements OnInit {
   }
 
   toolbarClick(args: ClickEventArgs): void {
-    if (args.item.id === 'add-user') {
+    if (args.item.id === 'employee_add') {
       this.router.navigate(['add/user']);
-    } else if (args.item.id === 'edit-user') {
+    } else if (args.item.id === 'employee_edit') {
       const selecteduser: Object = this.grid.getSelectedRecords();
-      this.router.navigate(['update/user/id'], selecteduser);
+      this.router.navigate([`update/user/${selecteduser}`]);
     } else if (args.item.id === 'employee_pdfexport') {
       this.grid.pdfExport();
     } else if (args.item.id === 'employee_excelexport') {
