@@ -13,11 +13,17 @@ background-color: #35b86b;
 
 
 .e-card {
-  margin: 30px;
-  padding: 20px;
+  margin-left: 15%;
+  padding-left: 5%;
+  padding-top: 3%;
   text-align: center;
+  width: 70%;
+
 }
 
 .submit-container, .submit-container button {
   margin: 10px;
 }
+.btns {
+  text-align: center;
+}         

@@ -45,7 +45,7 @@ namespace Smart_Accounting.API.Controllers.Employee {
                 var employees = _employeesQuery.GetById (id);
 
                 if (employees == null) {
-                    _logger.LogError ("employee with id: {id}, hasn't been found.");
+                    _logger.LogError ($"employee with id: {id}, hasn't been found.");
                     return NotFound ();
                 } else {
                     _logger.LogInformation ($"Returned employee with id: {id}");

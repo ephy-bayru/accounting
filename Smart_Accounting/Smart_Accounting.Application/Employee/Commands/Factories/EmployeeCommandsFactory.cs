@@ -43,6 +43,7 @@ namespace Smart_Accounting.Application.Employee.Commands.Factories
 
         public Employees UpdatesEmployee(Employees currentEmployee, UpdatedEmployeeDto updateEmployee)
         {
+            currentEmployee.FirstName = updateEmployee.Last_Name;
             currentEmployee.LastName = updateEmployee.Last_Name;
             currentEmployee.Email = updateEmployee.Email;
             currentEmployee.PhoneNo = updateEmployee.Phone_No;

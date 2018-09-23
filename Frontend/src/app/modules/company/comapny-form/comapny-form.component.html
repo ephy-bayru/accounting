@@ -1,4 +1,73 @@
 <div class="e-card">
+  <div class="col-lg-12 control-section e-input-section">
+    <div class="col-lg-12">
+      <h4 class="title">Organization Form</h4>
+    </div>
+    <div>
+      <form id="reactive" [formGroup]="organizationForm" (ngSubmit)="onSubmit()">
+        <div class="content-wrapper">
+          <div class="row">
+            <!-- name -->
+            <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+              <div class="form-group template">
+                <div class="e-float-input">
+                  <input type="text" id="Name" name="Name" class="required" formControlName="Name" required>
+                  <span class="e-float-line"></span>
+                  <label class="e-float-text" for="Name">Name</label>
+                </div>
+                <div class="text-danger">
+
+                </div>
+              </div>
+            </div>
+            <!-- location -->
+            <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+              <div class="form-group template">
+                <div class="e-float-input">
+                  <input type="text" id="Location" name="Location" class="required" formControlName="Location" required>
+                  <span class="e-float-line"></span>
+                  <label class="e-float-text" for="Location">Location</label>
+                </div>
+                <div class="text-danger">
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- tin number -->
+          <div class="row">
+            <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+              <div class="form-group template">
+                <div class="e-float-input">
+                  <input type="text" id="Tin" name="Tin" class="required" formControlName="Tin" required>
+                  <span class="e-float-line"></span>
+                  <label class="e-float-text" for="Tin">Tin Number</label>
+                </div>
+                <div class="text-danger">
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- button -->
+        <div class="btn">
+          <button ejs-button cssClass="e-success" type="submit"> SUBMIT </button>
+          &nbsp;
+          <button ejs-button cssClass="e-primary" (submit)="onCancel"> CANCEL </button>
+        </div>
+       </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- form validation
+[ngClass]="{'e-success': organizationForm.controls.Name.valid}" -->
+<!-- <h5>Form Status : {{organizationForm.status}}</h5>
+<h6>form value</h6>
+<pre>{{organizationForm.value | json}}</pre> -->
+
+<!-- 
+<div class="e-card">
   <div class="e-card-header">
     <div class="e-card-header-caption">
       <div class="container">
@@ -39,4 +108,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
