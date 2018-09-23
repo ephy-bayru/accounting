@@ -1,9 +1,12 @@
 using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Smart_Accounting.API.Commons.Factories;
 using Smart_Accounting.Application.Employee.Commands.Factories;
 using Smart_Accounting.Application.Employee.Interfaces;
 using Smart_Accounting.Application.Employee.Models;
+using Smart_Accounting.Domain.Employe;
 
 namespace Smart_Accounting.API.Controllers.Employee {
     [Route ("api/employees")]
@@ -11,29 +14,34 @@ namespace Smart_Accounting.API.Controllers.Employee {
         private IEmployeesQueries _employeesQuery;
         private IEmployeeCommands _employeeCommands;
         private readonly ILogger<EmployeesController> _logger;
+        private readonly IEmployeeFactory _employeeFactory;
+        private readonly IResponseFactory _response;
 
         public EmployeesController (IEmployeesQueries employeeQuery,
             IEmployeeCommands employeeCommand,
-            ILogger<EmployeesController> logger) {
+            ILogger<EmployeesController> logger,
+            IEmployeeFactory employeeFactory,
+            IResponseFactory response) {
             _employeesQuery = employeeQuery;
             _employeeCommands = employeeCommand;
             _logger = logger;
+            _employeeFactory = employeeFactory;
+            _response = response;
         }
 
         [HttpGet]
         [ProducesResponseType (200)]
         public IActionResult GetAllEmployees () {
 
-            try {
+
 
                 var employees = _employeesQuery.GetAll ();
                 _logger.LogInformation ($"Returned all employees from database.");
-                return Ok (employees);
+                var view = _employeeFactory.createEmployeeView(employees);
 
-            } catch (Exception x) {
-                _logger.LogError ($"something went wrong: {x.Message}");
-                return StatusCode (500, "Internal server error");
-            }
+                var response = _response.CreateEmployeeResponse(view);
+                return StatusCode (200,response);
+
         }
 
         [HttpGet ("{id}")]

@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation  } from '@angular/core';
 import { UsersService } from './../users.service';
 import { ClickEventArgs } from '@syncfusion/ej2-ng-navigations';
-import { DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
+import { DataManager, WebApiAdaptor, Adaptor } from '@syncfusion/ej2-data';
 import { Router } from '@angular/router';
+
 import { Users } from '../users';
 import { Tooltip } from '@syncfusion/ej2-popups';
 import {
@@ -31,8 +32,10 @@ import {
 export class UserGridComponent implements OnInit {
   @ViewChild('grid')
   public grid: GridComponent;
-  public data: Object[];
+
+  public data: DataManager;
   public initialPage: Object;
+
   public groupOptions: GroupSettingsModel;
   public filterSettings: FilterSettingsModel;
   public toolbar: string[];
@@ -50,8 +53,12 @@ export class UserGridComponent implements OnInit {
  }
   ngOnInit() {
     // this.data = usersDAta;
-    this.usersService.getUsers().subscribe((success: Users[]) => {
-      this.data = success;
+    // this.usersService.getUsers().subscribe((success: Users[]) => {
+    //   this.data = success;
+    // });
+    this.data = new DataManager({
+      url: 'http://localhost:53267/api/employees',
+      adaptor: new WebApiAdaptor
     });
     this.initialPage = {pageCount: 5,  pageSizes: true};
     this.groupOptions = { showGroupedColumn: true };
@@ -66,8 +73,10 @@ export class UserGridComponent implements OnInit {
     { type: 'Delete', buttonOption: { iconCss: 'e-icons e-delete', cssClass: 'e-flat'} },
     { type: 'Edit', buttonOption: { iconCss: ' e-icons e-edit', cssClass: 'e-flat' } },
    ];
+
   }
   toolbarClick(args: ClickEventArgs): void {
+
     switch (args.item.text) {
         case 'PDF Export':
             this.grid.pdfExport();
@@ -78,7 +87,7 @@ export class UserGridComponent implements OnInit {
         case 'beginEdit':
            this.router.navigate(['users']);
            break;
-    }
+
 
       // if (args.item.id === 'add-user') {
       //   this.router.navigate(['add/user']);
@@ -91,7 +100,5 @@ export class UserGridComponent implements OnInit {
       //   this.grid.excelExport();
       // }
     }
-
+  }
 }
-
-

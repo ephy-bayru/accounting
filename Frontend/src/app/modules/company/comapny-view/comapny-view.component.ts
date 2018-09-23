@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ToolbarItems, PageSettingsModel } from '@syncfusion/ej2-ng-grids';
+import { ToolbarItems, PageSettingsModel, CommandModel } from '@syncfusion/ej2-ng-grids';
 import { ClickEventArgs } from '@syncfusion/ej2-ng-navigations';
 import {
   GroupSettingsModel,
@@ -34,31 +34,14 @@ export class CompanyViewComponent implements OnInit {
   public selectionOptions: SelectionSettingsModel;
   public pageSettings: PageSettingsModel;
   public filterOptions: FilterSettingsModel;
+  public commands: CommandModel[];
 
-  constructor(private router: Router, private companyService: CompanyService) { }
+  constructor(private router: Router, private companyService: CompanyService) {
+    this.commands = [
+    { type: 'Delete', buttonOption: { cssClass: 'e-flat', iconCss: 'e-delete e-icons' } }];
+  }
 
-  public gridColumns = [
-    {
-      field: 'id', text: 'Id', primaryKey: true, format: '',
-      type: 'number', editable: false, filterable: true, groupable: false,
-      editType: ''
-    },
-    {
-      field: 'name', text: 'Name', primaryKey: false, format: '',
-      type: 'string', editable: true, filterable: true, groupable: false,
-      editType: 'textbox'
-    },
-    {
-      field: 'location', text: 'Location', primaryKey: false, format: '',
-      type: 'string', editable: true, filterable: true, groupable: false,
-      editType: 'textbox'
-    },
-    {
-      field: 'tin', text: 'Tin', primaryKey: false, format: '',
-      type: 'string', editable: true, filterable: true, groupable: false,
-      editType: 'textbox'
-    }
-  ];
+
 
 
   columnMenuOpen(arg) {
@@ -68,10 +51,10 @@ export class CompanyViewComponent implements OnInit {
     console.log(`${arg} column menu Click`);
   }
   ngOnInit() {
-
-  this.companyService.getOrganizationsList().subscribe((success: any) => {
-      this.data = success;
-    });
+      this.data = new DataManager({
+        url : 'http://localhost:53267/api/organizations',
+        adaptor: new WebApiAdaptor
+      });
 
     this.filterOptions = { type: 'Menu' }; // put unique filter menue for each column based on the column type
     this.selectionOptions = { type: 'Single' }; // allow only single row to be selected at a time for edit or delete
@@ -79,7 +62,6 @@ export class CompanyViewComponent implements OnInit {
     this.toolbarOptions = [
       'Add',
       'Edit',
-      'Delete',
       'Print',
       'PdfExport',
       'ExcelExport',
@@ -90,6 +72,9 @@ export class CompanyViewComponent implements OnInit {
     this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true };
   }
 
+  editClick(eve) {
+    console.log(eve);
+  }
 
   // Click handler for when the toolbar is cliked
   toolbarClick(args: ClickEventArgs): void {
