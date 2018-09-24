@@ -84,6 +84,7 @@ export class UserGridComponent implements OnInit {
       } else if (args.item.id === 'employee_pdfexport') {
         this.grid.pdfExport();
       } else if (args.item.id === 'employee_excelexport') {
+
         this.grid.excelExport(this.appConfig.EXCEL_EXPORT_PROPERTY);
       }
 

@@ -80,7 +80,7 @@ export class CompanyViewComponent implements OnInit {
   // Click handler for when the toolbar is cliked
   toolbarClick(args: ClickEventArgs): void {
     if (args.item.id === 'organization_pdfexport') {
-      this.grid.pdfExport();                            // when pdf export call grid prdfexport function
+      this.grid.pdfExport(this.appConfig.PDF_EXPORT_PROPERTY);                            // when pdf export call grid prdfexport function
     } else if (args.item.id === 'organization_excelexport') {
       this.grid.excelExport(this.appConfig.EXCEL_EXPORT_PROPERTY);        // when excel export call grid excelexport function
     } else if (args.item.id === 'organization_add') {
