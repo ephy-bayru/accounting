@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Sep 4, 2018 5:25 PM
+ * @Last Modified Time: Sep 24, 2018 9:23 AM
  * @Description: TEST class for organization command factory
  */
 
@@ -119,9 +119,9 @@ namespace Smart_Accounting.Application.NUnitTest.Organizations.Commands {
             // create UpdatedOrganizationModel type object
             UpdatedOrganizationModel validUpdatedOrganization = new UpdatedOrganizationModel () {
                 id = 1,
-                name = "AppDiv updated",
-                location = "A.A",
-                tin = "1029384756"
+                Name = "AppDiv updated",
+                Location = "A.A",
+                Tin = "1029384756"
             };
 
             //create organization object

@@ -29,6 +29,7 @@ import { SidebarModule, TreeViewComponent, ToolbarComponent } from '@syncfusion/
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { CompareDirective } from './shared/compare.directive';
 import { CalanderModule } from './modules/calander/calander.module';
+import { SmartAppConfigService } from './smart-app-config.service';
 
 
 @NgModule({
@@ -70,6 +71,7 @@ import { CalanderModule } from './modules/calander/calander.module';
     AppRoutingModule
   ],
   providers: [
+    SmartAppConfigService,
     {provide: HTTP_INTERCEPTORS, useClass: RmHeaderInterceptorService, multi: true},
   ],
   bootstrap: [AppComponent],

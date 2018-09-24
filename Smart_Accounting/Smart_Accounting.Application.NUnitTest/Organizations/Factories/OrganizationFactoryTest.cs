@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Sep 4, 2018 11:54 AM
+ * @Last Modified Time: Sep 24, 2018 9:23 AM
  * @Description: Organization Factory Test 
  */
 using System;
@@ -32,9 +32,9 @@ namespace Smart_Accounting.Application.NUnitTest.Organizations.Factories {
 
             //initialize updated organization model
             updated_ORGANIZATION = new UpdatedOrganizationModel ();
-            updated_ORGANIZATION.name = "updated  AppDiv";
-            updated_ORGANIZATION.location = "updated A.A";
-            updated_ORGANIZATION.tin = "1029384756";
+            updated_ORGANIZATION.Name = "updated  AppDiv";
+            updated_ORGANIZATION.Location = "updated A.A";
+            updated_ORGANIZATION.Tin = "1029384756";
 
             organizationFactory = new OrganizationFactory ();
         }
@@ -71,9 +71,9 @@ namespace Smart_Accounting.Application.NUnitTest.Organizations.Factories {
             Organization result = organizationFactory.OrganizationForUpdate (old_organization, updated_ORGANIZATION);
 
             Assert.That (result.Id, Is.EqualTo (old_organization.Id));
-            Assert.That (result.Name, Is.EqualTo (updated_ORGANIZATION.name));
-            Assert.That (result.Location, Is.EqualTo (updated_ORGANIZATION.location));
-            Assert.That (result.Tin, Is.EqualTo (updated_ORGANIZATION.tin));
+            Assert.That (result.Name, Is.EqualTo (updated_ORGANIZATION.Name));
+            Assert.That (result.Location, Is.EqualTo (updated_ORGANIZATION.Location));
+            Assert.That (result.Tin, Is.EqualTo (updated_ORGANIZATION.Tin));
             Assert.That (Is.Equals (result.DateAdded.ToString (), DateTime.Now.ToString ()));
             Assert.That (Is.Equals (result.DateUpdated.ToString (), DateTime.Now.AddDays (1).ToString ()));
 

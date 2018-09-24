@@ -17,6 +17,7 @@ using Smart_Accounting.Application.Organizations.Interfaces;
 using Smart_Accounting.Application.Organizations.Models;
 using Smart_Accounting.API.Controllers.Organizations;
 using Smart_Accounting.Domain.Oranizations;
+using Smart_Accounting.API.Commons.Factories;
 
 namespace Smart_Accounting.API.NUnitTest.Organizatios {
 
@@ -28,6 +29,8 @@ namespace Smart_Accounting.API.NUnitTest.Organizatios {
         private uint existingOrganizationId;
         private NewOrganizationModel newOrganization;
         private Organization organization;
+
+        private Mock<IResponseFactory> MockIResponseFactory;
         private OrganizationController organizationController;
         private Mock<IOrganizationCommands> MockIOrganizationCommand;
         private Mock<IOrganizationsQuery> MockIOrganizationQuerys;
@@ -63,6 +66,7 @@ namespace Smart_Accounting.API.NUnitTest.Organizatios {
             MockIOrganizationCommand = new Mock<IOrganizationCommands> ();
             MockIOrganizationQuerys = new Mock<IOrganizationsQuery> ();
             MockIOrganizationFactories = new Mock<IOrganizationFactory> ();
+            MockIResponseFactory = new Mock<IResponseFactory>();
 
             MockIOrganizationQuerys.Setup (query => query.GetOrganizationById (existingOrganizationId)).Returns (organization);
             MockIOrganizationFactories.Setup (factory => factory.OrganizationView (organization)).Returns (organizationView);
@@ -70,7 +74,8 @@ namespace Smart_Accounting.API.NUnitTest.Organizatios {
             organizationController = new OrganizationController (
                 MockIOrganizationCommand.Object,
                 MockIOrganizationQuerys.Object,
-                MockIOrganizationFactories.Object
+                MockIOrganizationFactories.Object,
+                MockIResponseFactory.Object
             );
 
         }
@@ -117,7 +122,8 @@ namespace Smart_Accounting.API.NUnitTest.Organizatios {
             organizationController = new OrganizationController (
                 MockIOrganizationCommand.Object,
                 MockIOrganizationQuerys.Object,
-                MockIOrganizationFactories.Object
+                MockIOrganizationFactories.Object,
+                MockIResponseFactory.Object
             );
 
             var result = (ObjectResult) organizationController.AddNewOrganization (newOrganization);
@@ -147,7 +153,9 @@ namespace Smart_Accounting.API.NUnitTest.Organizatios {
             organizationController = new OrganizationController (
                 MockIOrganizationCommand.Object,
                 MockIOrganizationQuerys.Object,
-                MockIOrganizationFactories.Object
+                MockIOrganizationFactories.Object,
+                MockIResponseFactory.Object
+
             );
 
             var result = (StatusCodeResult) organizationController.AddNewOrganization (invalidOrganization);
@@ -166,9 +174,9 @@ namespace Smart_Accounting.API.NUnitTest.Organizatios {
         public void UpdateOrganization_204_Successful_Test () {
             UpdatedOrganizationModel updatedOrganization = new UpdatedOrganizationModel () {
                 id = 1,
-                name = "AppDiv Updated",
-                location = "A.A",
-                tin = "1234567890"
+                Name = "AppDiv Updated",
+                Location = "A.A",
+                Tin = "1234567890"
 
             };
 
@@ -177,7 +185,8 @@ namespace Smart_Accounting.API.NUnitTest.Organizatios {
             organizationController = new OrganizationController (
                 MockIOrganizationCommand.Object,
                 MockIOrganizationQuerys.Object,
-                MockIOrganizationFactories.Object
+                MockIOrganizationFactories.Object,
+                MockIResponseFactory.Object
             );
 
             var result = (StatusCodeResult) organizationController.UpdateOrganization (1, updatedOrganization);
@@ -194,9 +203,9 @@ namespace Smart_Accounting.API.NUnitTest.Organizatios {
         public void UpdateOrganization_404_NoFound_Test () {
             UpdatedOrganizationModel updatedOrganization = new UpdatedOrganizationModel () {
                 id = 1,
-                name = "AppDiv Updated",
-                location = "A.A",
-                tin = "1234567890"
+                Name = "AppDiv Updated",
+                Location = "A.A",
+                Tin = "1234567890"
 
             };
 
@@ -205,7 +214,8 @@ namespace Smart_Accounting.API.NUnitTest.Organizatios {
             organizationController = new OrganizationController (
                 MockIOrganizationCommand.Object,
                 MockIOrganizationQuerys.Object,
-                MockIOrganizationFactories.Object
+                MockIOrganizationFactories.Object,
+                MockIResponseFactory.Object
             );
 
             var result = (StatusCodeResult) organizationController.UpdateOrganization (2, updatedOrganization);
@@ -222,15 +232,15 @@ namespace Smart_Accounting.API.NUnitTest.Organizatios {
         public void UpdateOrganization_422_Unprocessable_Entity_Test () {
             UpdatedOrganizationModel updatedOrganization = new UpdatedOrganizationModel () {
                 id = 1,
-                name = "AppDiv Updated",
-                location = "A.A",
-                tin = "1234567890"
+                Name = "AppDiv Updated",
+                Location = "A.A",
+                Tin = "1234567890"
 
             };
 
             UpdatedOrganizationModel invalidOrganization = new UpdatedOrganizationModel () {
 
-                tin = "1234567890"
+                Tin = "1234567890"
             };
 
             MockIOrganizationCommand.Setup (cmd => cmd.UpdateOrganization (organization, updatedOrganization)).Returns (true);
@@ -238,7 +248,8 @@ namespace Smart_Accounting.API.NUnitTest.Organizatios {
             organizationController = new OrganizationController (
                 MockIOrganizationCommand.Object,
                 MockIOrganizationQuerys.Object,
-                MockIOrganizationFactories.Object
+                MockIOrganizationFactories.Object,
+                MockIResponseFactory.Object
             );
 
             var result = (StatusCodeResult) organizationController.UpdateOrganization (1, invalidOrganization);
@@ -258,7 +269,8 @@ namespace Smart_Accounting.API.NUnitTest.Organizatios {
             organizationController = new OrganizationController (
                 MockIOrganizationCommand.Object,
                 MockIOrganizationQuerys.Object,
-                MockIOrganizationFactories.Object
+                MockIOrganizationFactories.Object,
+                MockIResponseFactory.Object
             );
 
             var result = (StatusCodeResult) organizationController.DeleteOrganization (1);
@@ -276,7 +288,8 @@ namespace Smart_Accounting.API.NUnitTest.Organizatios {
             organizationController = new OrganizationController (
                 MockIOrganizationCommand.Object,
                 MockIOrganizationQuerys.Object,
-                MockIOrganizationFactories.Object
+                MockIOrganizationFactories.Object,
+                MockIResponseFactory.Object
             );
 
             var result = (StatusCodeResult) organizationController.DeleteOrganization (4);

@@ -6,11 +6,12 @@
  * @Last Modified Time: Aug 31, 2018 1:03 PM
  * @Description: Modify Here, Please 
  */
+using System.ComponentModel.DataAnnotations;
+
 namespace Smart_Accounting.Application.Organizations.Models {
-    public class UpdatedOrganizationModel {
-        public uint id;
-        public string name;
-        public string location;
-        public string tin;
+    public class UpdatedOrganizationModel : OrganizationModelDto {
+        [Required]
+        public uint id { get; set; }
     }
+
 }
