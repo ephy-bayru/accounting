@@ -10,8 +10,9 @@
     <button ejs-button id="toggle" #togglebtn cssClass="e-flat" iconCss="e-icons burg-icon" isToggle="true" (click)="btnClick()"
       content="Open">
     </button>
+    <div id="maincontent" class="content">
+        <router-outlet></router-outlet>
   </div>
-  <div id="maincontent" class="content">
-      <router-outlet></router-outlet>
-</div>
+  </div>
+ 
   </div>

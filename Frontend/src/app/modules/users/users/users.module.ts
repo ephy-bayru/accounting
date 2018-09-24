@@ -24,7 +24,7 @@ import { PageService,
         PdfExportService,
         ReorderService,
         CommandColumnService,
-        ToolbarService, FreezeService, SelectionService } from '@syncfusion/ej2-ng-grids';
+        ToolbarService, FreezeService, SelectionService, CommandModel } from '@syncfusion/ej2-ng-grids';
 
 
 @NgModule({

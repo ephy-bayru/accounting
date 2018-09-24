@@ -11,9 +11,10 @@
         <div class="col-2">
           <ejs-switch [checked]="true" formControlName="active"></ejs-switch>`
         </div>
-        <div class="col-2">
+        <div class="btns">
           <button type="button" ejs-button class="e-round e-info e-small " iconCss="e-icons e-plus-icon" [disabled]="!last || calanders.invalid" (click)="addPeriod()">Add</button>
-          <button type="button" ejs-button class="e-round e-danger e-small e-icons e-times-icon" (click)="calanders.removeAt(i)">Delete</button>
+          &nbsp;
+          <button type="button" ejs-button class="e-round e-danger e-small e-icons e-times-icon" (click)="calanders.removeAt(i)">Del</button>
         </div>
       </div>
       <div class="row">

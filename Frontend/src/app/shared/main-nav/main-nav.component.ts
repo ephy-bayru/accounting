@@ -47,17 +47,7 @@ export class MainNavComponent {
     },
     {
       id: '02', name: 'ACCOUNTS',
-      subChild: [
-        {
-          id: '02-01', name: 'sample',
-        },
-        {
-          id: '02-02', name: 'sample',
-        },
-        {
-          id: '02-03', name: 'sample',
-        },
-      ]
+      subChild: []
     },
     {
       id: '03', name: 'REPORTS',

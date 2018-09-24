@@ -1,61 +1,30 @@
-<div class="e-card" id="title">
-<h4>Users Data</h4>
-</div>
 <div class="e-card">
-<div  class='cont'>
-
-<ejs-grid [dataSource]='data' #grid id='employee' [rowHeight]='30' height='100%' width='100%'
-[toolbar]='toolbarOptions'
-
-[allowFiltering]="true"
-[filterSettings]="filterOptions"
-allowFiltering='true'
-
-[allowPaging]="true"
-[pageSettings]='pageSettings'
-[allowSorting]="true"
-
-[allowExcelExport]="true"
-allowpdfExport='true'
-
-gridLines='Both'
-
-[EditService]="true"
-[editSettings]='editSettings'
-
-[allowGrouping]="true"
-[groupSettings]='groupOptions'
-allowTextWrap='true'
-[textWrapSettings]='wrapSettings'
-
-[DetailRowService]="true"
-[SearchService]="true"
+  <div class='cont'>
+    <div class="title">
+      <h5>Users Data</h5>
+    </div>
+    <ejs-grid [dataSource]='data' #grid id='employee' [rowHeight]='30' height='100%' width='100%' [toolbar]='toolbar'
+      [allowSorting]="true" allowPaging='true' [pageSettings]='initialPage' allowResizing='true' allowGrouping='true'
+      [groupSettings]='groupOptions' allowFiltering='true' [filterSettings]='filterSettings' [allowSelection]='true'
+      [selectionSettings]='selectOptions' [enableHover]="false" [editSettings]='editSettings' (toolbarClick)='toolbarClick($event)'
+      [allowExcelExport]='true' [allowPdfExport]='true' [editSettings]='editSettings' allowTextWrap='true'
+      [textWrapSettings]='wrapSettings' >
 
 
-[CommandColumnService]="true"
-[ReorderService]="true"
+      <e-columns>
+        <e-column type='checkbox' width='50'></e-column>
+        <e-column field='id' [allowFiltering]="false" headerText='User ID' textAlign='Center' width=90 isPrimaryKey='true'></e-column>
+        <e-column field='First_Name' type="string" editType="textbox" headerText='First Name' textAlign='Center' width=90></e-column>
+        <e-column field='Last_Name' type="string" editType="textbox" headerText='Last Name' textAlign='Center' width=90></e-column>
+        <e-column field='Account_Id' type="number" editType="textbox" headerText='Account Id' textAlign='Center' width=90></e-column>
+        <e-column field='Gender' type="string" editType="title" headerText='Gender' textAlign='Center' width=90></e-column>
+        <e-column field='Birth_Date' type="date" editType="date" headerText='Birth Date' textAlign='Center' format='yMd' width=90></e-column>
+        <e-column field='Date_Added' type="date" editType="date" headerText='Date Added' textAlign='Center' format='yMd' width=90></e-column>
+        <e-column field='Date_Updated' type="date" editType="date" headerText='Date Updated' textAlign='Center' format='yMd' width=90></e-column>
+        <e-column headerText='Manage Records' width='90' [commands]='commands'></e-column>
+      </e-columns>
+    </ejs-grid>
+  </div>
 
-(toolbarClick)='toolbarClick($event)'
-
-
->
-
-
-<e-columns>
-  <e-column type='checkbox' width='50'></e-column>
-  <e-column field='id' [allowFiltering]="false"  headerText='User ID' textAlign='Center' width=90 isPrimaryKey='true'></e-column>
-  <e-column field='First_Name' type="string" editType="textbox" headerText='First Name' textAlign='Center' width=90></e-column>
-  <e-column field='Last_Name' type="string"  editType="textbox" headerText='Last Name' textAlign='Center' width=90></e-column>
-  <e-column field='Account_Id' type="number"  editType="textbox" headerText='Account Id' textAlign='Center' width=90></e-column>
-  <e-column field='Gender' type="string" editType="title"  headerText='Gender' textAlign='Center' width=90></e-column>
-  <e-column field='Birth_Date' type="date" editType="date" headerText='Birth Date' textAlign='Center' format='yMd' width=90></e-column>
-  <e-column field='Date_Added' type="date" editType="date" headerText='Date Added' textAlign='Center' format='yMd' width=90></e-column>
-  <e-column field='Date_Updated' type="date" editType="date" headerText='Date Updated' textAlign='Center' format='yMd' width=90></e-column>
-</e-columns>
-  </ejs-grid>
 </div>
-</div>
-
-
- <!-- ConfirmDelete -->
-
+<!-- (queryCellInfo)='tooltip($event)' -->
