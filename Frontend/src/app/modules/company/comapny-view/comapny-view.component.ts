@@ -12,6 +12,7 @@ import {
 import { Router } from '@angular/router';
 import { WebApiAdaptor, DataManager, Query, ReturnOption, ODataV4Adaptor, JsonAdaptor, UrlAdaptor } from '@syncfusion/ej2-data';
 import { CompanyService } from '../company.service';
+import { SmartAppConfigService } from '../../../smart-app-config.service';
 
 @Component({
   selector: 'app-company-view',
@@ -36,7 +37,7 @@ export class CompanyViewComponent implements OnInit {
   public filterOptions: FilterSettingsModel;
   public commands: CommandModel[];
 
-  constructor(private router: Router, private companyService: CompanyService) {
+  constructor(private router: Router, private companyService: CompanyService, private appConfig: SmartAppConfigService) {
     this.commands = [
     { type: 'Delete', buttonOption: { cssClass: 'e-flat', iconCss: 'e-delete e-icons' } }];
   }
@@ -81,7 +82,7 @@ export class CompanyViewComponent implements OnInit {
     if (args.item.id === 'organization_pdfexport') {
       this.grid.pdfExport();                            // when pdf export call grid prdfexport function
     } else if (args.item.id === 'organization_excelexport') {
-      this.grid.excelExport();        // when excel export call grid excelexport function
+      this.grid.excelExport(this.appConfig.EXCEL_EXPORT_PROPERTY);        // when excel export call grid excelexport function
     } else if (args.item.id === 'organization_add') {
       this.router.navigate(['add/organization']);   // when user click add route to the organization form
     } else if (args.item.id === 'organization_edit') {

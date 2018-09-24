@@ -4,12 +4,13 @@ import { GridComponent } from '@syncfusion/ej2-ng-grids';
 import { DataManager, WebApiAdaptor, UrlAdaptor } from '@syncfusion/ej2-data';
 import {
   GroupSettingsModel, FilterSettingsModel, ToolbarItems,
-  TextWrapSettingsModel, EditSettingsModel, SelectionSettingsModel, PageSettingsModel, CommandModel
+  TextWrapSettingsModel, EditSettingsModel, SelectionSettingsModel, PageSettingsModel, CommandModel, ExcelExportProperties
 } from '@syncfusion/ej2-grids';
 import { Router } from '@angular/router';
 
 import { CalanderService, CalanderPeriod } from '../calander.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { SmartAppConfigService } from '../../../smart-app-config.service';
 
 @Component({
   selector: 'app-calander-view',
@@ -23,6 +24,7 @@ export class CalanderViewComponent implements OnInit {
   @ViewChild('grid')
   public grid: GridComponent;
   public data: DataManager;
+  public excelExportProperties: ExcelExportProperties;
   public groupOptions: GroupSettingsModel;
   public filterSettings: FilterSettingsModel;
   public toolbarOptions: ToolbarItems[];
@@ -33,7 +35,7 @@ export class CalanderViewComponent implements OnInit {
   public pageSettings: PageSettingsModel;
   public filterOptions: FilterSettingsModel;
   public commands: CommandModel[];
-  constructor(private router: Router, private calanderService: CalanderService) { }
+  constructor(private router: Router, private calanderService: CalanderService, private appConfig: SmartAppConfigService) { }
 
   ngOnInit() {
     this.data = new DataManager({
@@ -57,9 +59,9 @@ export class CalanderViewComponent implements OnInit {
       'Search'
     ];
     this.commands = [
-    { type: 'Delete', buttonOption: { cssClass: 'e-flat', iconCss: 'e-delete e-icons' } }];
+      { type: 'Delete', buttonOption: { cssClass: 'e-flat', iconCss: 'e-delete e-icons' } }];
     this.pageSettings = { pageSize: 5 };  // initial page row size for the grid
-    this.editSettings = {showDeleteConfirmDialog: true, allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Dialog' };
+    this.editSettings = { showDeleteConfirmDialog: true, allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Dialog' };
   }
 
   handleError(error: HttpErrorResponse) {
@@ -71,7 +73,7 @@ export class CalanderViewComponent implements OnInit {
     if (args.item.id === 'calander_pdfexport') {
       this.grid.pdfExport();                            // when pdf export call grid prdfexport function
     } else if (args.item.id === 'calander_excelexport') {
-      this.grid.excelExport();        // when excel export call grid excelexport function
+      this.grid.excelExport(this.appConfig.EXCEL_EXPORT_PROPERTY);        // when excel export call grid excelexport function
     } else if (args.item.id === 'calander_add') {
       this.router.navigate(['calanders/new']);   // when user click add route to the calander form
     } else if (args.item.id === 'calander_edit') {
