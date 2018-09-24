@@ -79,7 +79,7 @@ export class UserGridComponent implements OnInit {
 
     switch (args.item.text) {
       case 'PDF Export':
-        this.grid.pdfExport();
+        this.grid.pdfExport(this.appConfig.PDF_EXPORT_PROPERTY);
         break;
       case 'Excel Export':
         this.grid.excelExport(this.appConfig.EXCEL_EXPORT_PROPERTY);

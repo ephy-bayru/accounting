@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ExcelExportProperties } from '@syncfusion/ej2-grids';
+import { ExcelExportProperties, PdfExportProperties } from '@syncfusion/ej2-grids';
 
 @Injectable()
 export class SmartAppConfigService {
@@ -80,6 +80,39 @@ export class SmartAppConfigService {
         }
       ]
     },
+  };
+
+  public PDF_EXPORT_PROPERTY: PdfExportProperties = {
+    pageOrientation: 'Portrait',
+    exportType: 'AllPages',
+    fileName: 'SmartAccounting.pdf',
+    includeHiddenColumn: false,
+    header: {
+      fromTop: 0,
+      height: 130,
+      contents: [
+        {
+          type: 'Text',
+          value: 'AppDiv Smart Accounting',
+          position: { x: 0, y: 50 },
+          style: { textBrushColor: '#000000', fontSize: 13 }
+        },
+
+      ]
+    },
+    footer: {
+      fromBottom: 160,
+      height: 150,
+      contents: [
+        {
+          type: 'PageNumber',
+          pageNumberType: 'Arabic',
+          format: 'Page {$current} of {$total}',
+          position: { x: 0, y: 25 },
+          style: { textBrushColor: '#000000', fontSize: 15 }
+        }
+      ]
+    }
   };
   constructor() { }
 }
