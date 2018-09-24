@@ -29,7 +29,7 @@ export class MainNavComponent {
         ]
         },
         {
-          id: '01-02', name: 'USER', tooltip: 'users data', navigateUrl: 'users'
+          id: '01-02', name: 'USER', tooltip: 'users data', navigateUrl: 'employees'
         },
         {
           id: '01-03', name: 'CUSTOMER'

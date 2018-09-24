@@ -3,7 +3,6 @@ import { UsersService } from './../users.service';
 import { ClickEventArgs } from '@syncfusion/ej2-ng-navigations';
 import { DataManager, WebApiAdaptor, Adaptor } from '@syncfusion/ej2-data';
 import { Router } from '@angular/router';
-
 import { Users } from '../users';
 import { Tooltip } from '@syncfusion/ej2-popups';
 import {
@@ -77,28 +76,27 @@ export class UserGridComponent implements OnInit {
   }
   toolbarClick(args: ClickEventArgs): void {
 
-    switch (args.item.text) {
-        case 'PDF Export':
-            this.grid.pdfExport();
-            break;
-        case 'Excel Export':
-            this.grid.excelExport();
-            break;
-        case 'beginEdit':
-           this.router.navigate(['users']);
-           break;
+    // switch (args.item.text) {
+    //     case 'PDF Export':
+    //         this.grid.pdfExport();
+    //         break;
+    //     case 'Excel Export':
+    //         this.grid.excelExport();
+    //         break;
+    //     case 'beginEdit':
+    //        this.router.navigate(['users']);
+    //        break;
 
-
-      // if (args.item.id === 'add-user') {
-      //   this.router.navigate(['add/user']);
-      // } else if (args.item.id === 'edit-user') {
-      //   const selecteduser: Object = this.grid.getSelectedRecords();
-      //   this.router.navigate(['update/user/id'], selecteduser);
-      // } else if (args.item.id === 'employee_pdfexport') {
-      //   this.grid.pdfExport();
-      // } else if (args.item.id === 'employee_excelexport') {
-      //   this.grid.excelExport();
-      // }
+      if (args.item.id === 'employee_add') {
+        this.router.navigate(['add/employee']);
+      } else if (args.item.id === 'employee_edit') {
+        const selectedemp: Object = this.grid.getSelectedRecords();
+        this.router.navigate(['update/employee', selectedemp[0]['id']]);
+      } else if (args.item.id === 'employee_pdfexport') {
+        this.grid.pdfExport();
+      } else if (args.item.id === 'employee_excelexport') {
+        this.grid.excelExport();
+      }
     }
   }
-}
+

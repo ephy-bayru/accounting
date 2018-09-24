@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
+import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Users } from './../users';
 import { UsersService } from './../users.service';
@@ -16,7 +17,6 @@ import { DialogComponent } from '@syncfusion/ej2-angular-popups';
 export class UsersComponent implements OnInit {
   public readonly: true;
   public disable: false;
-  public gender: 'Select Gender';
   public dateValue: Date = new Date();
   userForm: FormGroup;
   user: Users;
@@ -30,7 +30,8 @@ export class UsersComponent implements OnInit {
     private usersService: UsersService,
     private fb: FormBuilder,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private location: Location
   ) {
     this.usersForm();
   }
@@ -118,7 +119,8 @@ export class UsersComponent implements OnInit {
         .updateUser(data, this.id)
         .subscribe(success => {
           this.statusCode = success;
-          this.router.navigate(['users']);
+          // this.router.navigate(['employees']);
+          this.location.back();
         }, errorCode => this.statusCode = errorCode);
     } else {
       this
@@ -126,9 +128,7 @@ export class UsersComponent implements OnInit {
         .addUser(data)
         .subscribe(success => {
           this.statusCode = success;
-          this
-            .router
-            .navigate(['users']);
+        this.location.back();
         }, errorCode => this.statusCode = errorCode);
     }
   }
@@ -137,8 +137,7 @@ export class UsersComponent implements OnInit {
   }
   // cancel button function
   onCancel() {
-    this.userForm.reset();
-    this.router.navigate(['user-grid']);
+    this.location.back();
   }
   // delete function
   onDelete(id: number) {

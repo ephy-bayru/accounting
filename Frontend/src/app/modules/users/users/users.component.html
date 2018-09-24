@@ -9,7 +9,7 @@
           <div class="row">
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
               <div class="form-group template">
-                <div class="e-float-input" >
+                <div class="e-float-input" [ngClass]="{'e-error': userForm.controls.First_Name.invalid}">
                   <input type="text" id="First_Name" name="First_Name" class="required" formControlName="First_Name"
                     required>
                   <span class="e-float-line"></span>
@@ -115,11 +115,11 @@
         </div>
         </div>
         <div class="btn">
-          <button type="submit" ejs-button cssClass="e-success" type="submit"  >
+          <button ejs-button cssClass="e-success" type="submit"  >
             SUBMIT
           </button>
           &nbsp;
-          <button type="button" ejs-button cssClass="e-primary" >
+          <button ejs-button cssClass="e-primary" type="button" (click)="onCancel()" >
             CANCEL
           </button>
         </div>
@@ -128,6 +128,6 @@
       </div>
       </div>
 
-  <h5>Form Status : {{userForm.status}}</h5>
+  <!-- <h5>Form Status : {{userForm.status}}</h5>
   <h6>form value</h6>
-  <pre>{{userForm.value | json}}</pre>
+  <pre>{{userForm.value | json}}</pre> -->
