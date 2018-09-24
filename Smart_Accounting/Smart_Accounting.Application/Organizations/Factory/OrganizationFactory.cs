@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Sep 4, 2018 12:50 PM
+ * @Last Modified Time: Sep 24, 2018 9:23 AM
  * @Description: OrganizationFactory, Provides Different Functions that 
  *  create or convert one kind of organization object to another type
  */
@@ -44,9 +44,9 @@ namespace Smart_Accounting.Application.Organizations.Factory {
         /// <param name="updatedOrganization">UpdatedOrganizationModel</param>
         /// <returns>Organization</returns>
         public Organization OrganizationForUpdate (Organization organization, UpdatedOrganizationModel org) {
-            organization.Name = org.name;
-            organization.Location = org.location;
-            organization.Tin = org.tin;
+            organization.Name = org.Name;
+            organization.Location = org.Location;
+            organization.Tin = org.Tin;
             
             return organization;
         }

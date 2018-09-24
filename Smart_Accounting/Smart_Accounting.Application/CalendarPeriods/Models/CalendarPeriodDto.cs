@@ -1,3 +1,11 @@
+/*
+ * @CreateTime: Sep 24, 2018 9:24 AM
+ * @Author:  Mikael Araya
+ * @Contact: MikaelAraya12@gmail.com
+ * @Last Modified By:  Mikael Araya
+ * @Last Modified Time: Sep 24, 2018 9:24 AM
+ * @Description: Modify Here, Please 
+ */
 using System;
 using System.ComponentModel.DataAnnotations;
 
