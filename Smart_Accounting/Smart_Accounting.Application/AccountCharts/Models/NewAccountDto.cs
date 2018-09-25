@@ -1,8 +1,7 @@
 namespace Smart_Accounting.Application.AccountCharts.Models
 {
-    public class NewAccountTypeModel
+    public class NewAccountModel: AccountChartDto
     {
-        public string Name;
-        
+
     }
 }

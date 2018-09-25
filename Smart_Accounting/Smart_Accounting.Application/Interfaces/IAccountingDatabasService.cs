@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Smart_Accounting.Domain.Employe;
 using Smart_Accounting.Domain.AccountCharts;
-using Smart_Accounting.Domain.AccountCharts.AccountTypes;
 using Smart_Accounting.Domain.BankAccount;
 using Smart_Accounting.Domain.CalendarPeriods;
 using Smart_Accounting.Domain.Currencies;
@@ -20,7 +19,6 @@ namespace Smart_Accounting.Application.Interfaces
     public interface IAccountingDatabaseService
     {
         DbSet<AccountChart> AccountChart { get; set; }
-        DbSet<AccountType> AccountType { get; set; }
         DbSet<BankAccounts> BankAccounts { get; set; }
         DbSet<CalendarPeriod> CalendarPeriod { get; set; }
         DbSet<Currency> Currency { get; set; }

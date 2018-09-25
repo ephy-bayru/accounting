@@ -1,7 +1,6 @@
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
 using Smart_Accounting.Domain.AccountCharts;
 
 namespace Smart_Accounting.Persistance.AccountCharts {
@@ -15,9 +14,6 @@ namespace Smart_Accounting.Persistance.AccountCharts {
                 .HasName ("account_code_UNIQUE")
                 .IsUnique ();
 
-            builder.HasIndex (e => e.AccountType)
-                .HasName ("fk_account_chart_type_idx");
-
             builder.HasIndex (e => e.OrganizationId)
                 .HasName ("fk_account_chart_organization_idx");
 
@@ -26,16 +22,10 @@ namespace Smart_Accounting.Persistance.AccountCharts {
 
             builder.Property (e => e.AccountId).HasColumnName ("ACCOUNT_ID");
 
-            builder.Property (e => e.AccountCategoryAccCatId)
-                .HasColumnName ("account_category_acc_cat_id")
-                .HasColumnType ("int(11)");
-
             builder.Property (e => e.AccountCode)
                 .IsRequired ()
                 .HasColumnName ("account_code")
                 .HasColumnType ("varchar(30)");
-
-            builder.Property (e => e.AccountType).HasColumnName ("account_type");
 
             builder.Property (e => e.Active)
                 .HasColumnName ("active")
@@ -52,12 +42,6 @@ namespace Smart_Accounting.Persistance.AccountCharts {
             builder.Property (e => e.SubAccountCode)
                 .HasColumnName ("sub_account_code")
                 .HasColumnType ("varchar(45)");
-
-            builder.HasOne (d => d.AccountTypeNavigation)
-                .WithMany (p => p.AccountChart)
-                .HasForeignKey (d => d.AccountType)
-                .OnDelete (DeleteBehavior.ClientSetNull)
-                .HasConstraintName ("fk_account_chart_type");
 
             builder.HasOne (d => d.Organization)
                 .WithMany (p => p.AccountChart)
