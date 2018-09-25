@@ -15,8 +15,9 @@
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="First_Name">First Name</label>
                 </div>
-                <app-field-error-display>
-                </app-field-error-display>
+                <div class="text-danger" *ngIf="First_Name?.invalid && (First_Name.dirty || First_Name.touched)">
+
+                </div>
               </div>
             </div>
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
