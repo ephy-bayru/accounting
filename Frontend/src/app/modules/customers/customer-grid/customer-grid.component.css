@@ -1,0 +1,41 @@
+
+
+#inline { width:80%;
+    height:auto;
+    display:flex;
+}
+.e-float-input e-input-group {
+    width:40%;
+    height:100px;
+    /* display: inline-block; */
+    float: left;
+}
+.e-grid .e-altrow {
+    background-color: #fafafa;
+}
+.cont {
+    /* resize: both; */
+    overflow: auto;
+    /* border: 1px solid red; */
+    padding: 2%;
+    min-height: 550px;
+    min-width: 250px;
+
+}
+
+.title {
+    align-content: center;
+    align-items: center;
+}
+.e-grid .e-altrow {
+    background-color: #fafafa;
+}
+.e-card {
+    width: 95%;
+    min-height: 100%;
+    margin-left: 3%;
+    /* padding-left: 1%;
+    padding-right: 1%; */
+    /* padding-bottom: 1%; */
+    margin-top: 2%;
+}

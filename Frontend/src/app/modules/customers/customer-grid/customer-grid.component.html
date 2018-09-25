@@ -1,0 +1,34 @@
+<div class="e-card">
+  <div class='cont'>
+    <div class="title">
+      <h5>Customers Data</h5>
+    </div>
+    <ejs-grid [dataSource]='data' #grid id='customer' [rowHeight]='30' height='100%' width='100%' [toolbar]='toolbar'
+      [allowSorting]="true" allowPaging='true' [pageSettings]='initialPage' allowResizing='true' allowGrouping='true'
+      [groupSettings]='groupOptions' allowFiltering='true' [filterSettings]='filterSettings' [allowSelection]='true'
+      [selectionSettings]='selectOptions' [enableHover]="false" [editSettings]='editSettings' (toolbarClick)='toolbarClick($event)'
+      [allowExcelExport]='true' [allowPdfExport]='true' [editSettings]='editSettings' allowTextWrap='true'
+      [textWrapSettings]='wrapSettings' >
+
+
+      <e-columns>
+        <e-column type='checkbox' width='50'></e-column>
+        <e-column field='id' [allowFiltering]="false" headerText='Customer ID' textAlign='Center' width=90 isPrimaryKey='true'></e-column>
+        <e-column field='Full_Name' type="string" editType="textbox" headerText='Full Name' textAlign='Center' width=90></e-column>
+        <e-column field='Account_Number' type="string" editType="textbox" headerText='Account Number' textAlign='Center' width=90></e-column>
+        <e-column field='Email' type="string" editType="textbox" headerText='Email' textAlign='Center' width=90></e-column>
+        <e-column field='Phone_No' type="string" editType="textbox" headerText='Phone_No' textAlign='Center' width=90></e-column>
+        <e-column field='Country' type="string" editType="textbox" headerText='Country' textAlign='Center' width=90></e-column>
+        <e-column field='City' type="string" editType="textbox" headerText='City' textAlign='Center' width=90></e-column>
+        <e-column field='SubCity' type="string" editType="textbox" headerText='SubCity' textAlign='Center' width=90></e-column>
+        <e-column field='House_No' type="string" editType="textbox" headerText='House No' textAlign='Center' width=90></e-column>
+        <e-column field='Postal_Code' type="string" editType="textbox" headerText='Postal Code' textAlign='Center' width=90></e-column>
+        <e-column field='Date_Added' type="date" editType="date" headerText='Date Added' textAlign='Center' format='yMd' width=90></e-column>
+        <e-column field='Date_Updated' type="date" editType="date" headerText='Date Updated' textAlign='Center' format='' width=90></e-column>
+        <e-column headerText='Manage Records' width='90' [commands]='commands'></e-column>
+      </e-columns>
+    </ejs-grid>
+  </div>
+
+</div>
+<!-- (queryCellInfo)='tooltip($event)' -->
