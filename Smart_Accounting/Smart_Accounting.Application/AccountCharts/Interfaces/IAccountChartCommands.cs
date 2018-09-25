@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using Smart_Accounting.Application.AccountCharts.Models;
+using Smart_Accounting.Domain.AccountCharts;
 
 namespace Smart_Accounting.Application.AccountCharts.Interfaces {
     public interface IAccountChartCommands {
-        void createAccount (IEnumerable<NewAccountModel> newAccount);
-        void updateAccount(IEnumerable<UpdatedAccountModel> updatedAccount);
-        void delete ();
+        IEnumerable<AccountChart> createAccount (IEnumerable<AccountChart> newAccount);
+        bool updateAccount(IEnumerable<AccountChart> updatedAccount);
+        bool delete ();
     }
 }

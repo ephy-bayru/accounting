@@ -12,7 +12,7 @@ namespace Smart_Accounting.Application.AccountCharts.Models {
     public abstract class AccountChartDto {
         [Required]
         public string AccountCode { get; set; }
-        [Required]
+    
         public string SubAccountCode { get; set; }
         [Required]
         public string Name { get; set; }

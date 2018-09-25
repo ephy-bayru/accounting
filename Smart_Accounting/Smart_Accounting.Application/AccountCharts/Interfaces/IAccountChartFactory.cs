@@ -11,9 +11,9 @@ using Smart_Accounting.Application.AccountCharts.Models;
 using Smart_Accounting.Domain.AccountCharts;
 
 namespace Smart_Accounting.Application.AccountCharts.Interfaces {
-    public interface IAccountChartCommandsFactory {
-        AccountChart NewAccount (IEnumerable<NewAccountModel> newType);
-        AccountChart UpdatedAccount (IEnumerable<UpdatedAccountModel> newModel);
+    public interface IAccountChartFactory {
+        IEnumerable<AccountChart> NewAccount (IEnumerable<NewAccountModel> newType);
+        bool UpdatedAccount (IEnumerable<UpdatedAccountModel> newModel);
 
     }
 }
