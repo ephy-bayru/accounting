@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Smart_Accounting.Domain.AccountCharts.AccountTypes;
 using Smart_Accounting.Domain.BankAccount;
 using Smart_Accounting.Domain.Customers;
 using Smart_Accounting.Domain.Employe;
@@ -12,15 +11,16 @@ using Smart_Accounting.Domain.Taxes;
 
 namespace Smart_Accounting.Domain.AccountCharts {
     public class AccountChart {
-        public AccountChart () {
-            BankAccounts = new HashSet<BankAccounts> ();
-            Customer = new HashSet<Customer> ();
-            Employees = new HashSet<Employees> ();
-            InverseSubAccountCodeNavigation = new HashSet<AccountChart> ();
-            Jornal = new HashSet<Jornal> ();
-            OpeningBalance = new HashSet<OpeningBalance> ();
-            Suppliers = new HashSet<Suppliers> ();
-            Tax = new HashSet<Tax> ();
+               public AccountChart()
+        {
+            BankAccounts = new HashSet<BankAccounts>();
+            Customer = new HashSet<Customer>();
+            Employees = new HashSet<Employees>();
+            InverseSubAccountCodeNavigation = new HashSet<AccountChart>();
+            Jornal = new HashSet<Jornal>();
+            OpeningBalance = new HashSet<OpeningBalance>();
+            Suppliers = new HashSet<Suppliers>();
+            Tax = new HashSet<Tax>();
         }
 
         public string AccountCode { get; set; }
@@ -28,9 +28,8 @@ namespace Smart_Accounting.Domain.AccountCharts {
         public string Name { get; set; }
         public sbyte Active { get; set; }
         public uint AccountId { get; set; }
-        public uint AccountType { get; set; }
         public uint OrganizationId { get; set; }
-        public AccountType AccountTypeNavigation { get; set; }
+
         public Organization Organization { get; set; }
         public AccountChart SubAccountCodeNavigation { get; set; }
         public ICollection<BankAccounts> BankAccounts { get; set; }

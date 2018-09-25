@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Smart_Accounting.Application.AccountCharts.Interfaces;
 using Smart_Accounting.Application.AccountCharts.Models;
 using Smart_Accounting.Application.Interfaces;
@@ -14,27 +15,19 @@ namespace Smart_Accounting.Application.AccountCharts.Command {
             _accountCommandFactory = accountCmdFactory;
         }
 
-        public void creatAccountType (NewAccountModel newType) {
-
-            var accountType = _accountCommandFactory.NewAccountType (newType);
-            _database.AccountType.Add (accountType);
-            _database.Save ();
-
-        }
-
         public void delete () {
             //TODO Define account deletion Functionality
 
             throw new System.NotImplementedException ();
         }
 
-        public void createAccount(NewAccountModel newAccount)
+        public void createAccount(IEnumerable<NewAccountModel> newAccount)
         {
             throw new System.NotImplementedException();
         }
 
         
-        public void updateAccount(UpdatedAccountModel updatedAccount)
+        public void updateAccount(IEnumerable<UpdatedAccountModel> updatedAccount)
         {
             //TODO Create function that will be used for updateing acounts
             throw new System.NotImplementedException();

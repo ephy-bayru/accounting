@@ -10,9 +10,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Smart_Accounting.Application.Organizations.Models {
     public class OrganizationModelDto {
+
         [Required]
         public string Name { get; set; }
-
         [Required]
         public string Location { get; set; }
         [Required]

@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Sep 25, 2018 11:44 AM
+ * @Last Modified Time: Sep 25, 2018 12:12 PM
  * @Description: Modify Here, Please 
  */
 using Microsoft.AspNetCore.Mvc;
@@ -23,22 +23,5 @@ namespace Smart_Accounting.API.Controllers.Accountss
             _accountQuery = accountQry;
         }
 
-        [HttpGet("types")]
-        [ProducesResponseType(200)]
-        [ProducesResponseType(500)]
-        public IActionResult GetAllAccountTypes() {
-            var accounts = _accountQuery.GetAllAccountTypes();
-            return Ok(accounts);
-        }
-
-        [HttpPost("types")]
-        [ProducesResponseType(201)]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(422)]
-        public IActionResult CreatAccountType([FromBody] NewAccountModel newType) {
-            _accountCommand.creatAccountType(newType);
-            return StatusCode(201, newType);
-        }
-               
     }
 }

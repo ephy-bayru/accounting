@@ -8,7 +8,7 @@
  */
 using NUnit.Framework;
 using Smart_Accounting.Domain.AccountCharts;
-using Smart_Accounting.Domain.AccountCharts.AccountTypes;
+
 
 namespace Smart_Accounting.Domain.NUnitTest.Account {
 
@@ -26,7 +26,6 @@ namespace Smart_Accounting.Domain.NUnitTest.Account {
                 AccountCode = "2",
                 Name = "Cash",
                 SubAccountCode = "3",
-                AccountTypeNavigation = new AccountType ()
             };
 
         }
@@ -41,23 +40,5 @@ namespace Smart_Accounting.Domain.NUnitTest.Account {
             Assert.That (account.AccountCode, Is.EqualTo ("2"));
 
         }
-
-        // Test if Account Type is Initialized Correctly
-        [Test]
-        public void AccountChartAccountTypeInitializationTest () {
-
-            AccountType type = new AccountType ();
-
-            type.AccTypeId = 1;
-            type.Name = "Asset";
-            type.Active = "1";
-
-            account.AccountTypeNavigation = type;
-
-            Assert.That (account.AccountTypeNavigation.Name, Is.EqualTo ("Asset"));
-            Assert.That (account.AccountTypeNavigation.AccTypeId, Is.EqualTo (1));
-            Assert.That (account.AccountType, Is.EqualTo (0));
-        }
-
     }
 }

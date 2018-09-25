@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Smart_Accounting.Application.Interfaces;
 using Smart_Accounting.Domain.AccountCharts;
-using Smart_Accounting.Domain.AccountCharts.AccountTypes;
 using Smart_Accounting.Domain.BankAccount;
 using Smart_Accounting.Domain.CalendarPeriods;
 using Smart_Accounting.Domain.Currencies;
@@ -18,7 +17,6 @@ using Smart_Accounting.Domain.Supplier;
 using Smart_Accounting.Domain.SystemDefault;
 using Smart_Accounting.Domain.Taxes;
 using Smart_Accounting.Persistance.AccountCharts;
-using Smart_Accounting.Persistance.AccountCharts.AccountTypes;
 using Smart_Accounting.Persistance.BankAccount;
 using Smart_Accounting.Persistance.CalendarPeriods;
 using Smart_Accounting.Persistance.Currencys;
@@ -42,7 +40,6 @@ namespace Smart_Accounting.Persistance {
         }
 
         public DbSet<AccountChart> AccountChart { get; set; }
-        public DbSet<AccountType> AccountType { get; set; }
         public DbSet<BankAccounts> BankAccounts { get; set; }
         public DbSet<CalendarPeriod> CalendarPeriod { get; set; }
         public DbSet<Currency> Currency { get; set; }
@@ -71,7 +68,6 @@ namespace Smart_Accounting.Persistance {
             modelBuilder.ApplyConfiguration (new EmployeeConfiguration ());
             modelBuilder.ApplyConfiguration (new CalendarPeriodsConfiguration ());
             modelBuilder.ApplyConfiguration (new AccountsChartsConfiguration ());
-            modelBuilder.ApplyConfiguration (new AccountTypesConfiguration ());
             modelBuilder.ApplyConfiguration (new LedgersConfiguration ());
             modelBuilder.ApplyConfiguration (new JornalsConfiguration ());
             modelBuilder.ApplyConfiguration (new ExchangeRatesConfiguration ());
