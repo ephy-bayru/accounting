@@ -150,14 +150,16 @@ namespace Smart_Accounting.API.NUnitTest.Employees
                 Account_Id = 123456,
                 Birth_Date = DateTime.Now,
             };
-            newEmployee  = new NewEmployeeModel()
-            {
-                First_Name = "ephrem",
-                Email = "e@g.com",
-                Phone_No = "0920208549",
-                Gender = "male",
-                Password = "123456",
-            };
+            // newEmployee falseModel = new NewEmployeeModel()
+            // {
+            //     First_Name = "ephrem",
+            //     Email = "e@g.com",
+            //     Phone_No = "0920208549",
+            //     Gender = "male",
+            //     Password = "123456",
+            // };
+        var result = (ObjectResult)EmployeesController.CreateNewEmployee(newEmployee);
+        result.Value.GetType().Should().Be(typeof(EmployeeViewModel));
         }
         [Test]
         public void UpdateEmployee_Test()
