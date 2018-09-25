@@ -8,7 +8,7 @@ namespace Smart_Accounting.Application.AccountCharts.Commands
 {
     public class AccountChartCommandsFactory : IAccountChartCommandsFactory
     {
-        public AccountType NewAccountType(NewAccountTypeModel newType)
+        public AccountType NewAccountType(NewAccountModel newType)
         {
             throw new System.NotImplementedException();
         }

@@ -14,7 +14,7 @@ namespace Smart_Accounting.Application.AccountCharts.Command {
             _accountCommandFactory = accountCmdFactory;
         }
 
-        public void creatAccountType (NewAccountTypeModel newType) {
+        public void creatAccountType (NewAccountModel newType) {
 
             var accountType = _accountCommandFactory.NewAccountType (newType);
             _database.AccountType.Add (accountType);

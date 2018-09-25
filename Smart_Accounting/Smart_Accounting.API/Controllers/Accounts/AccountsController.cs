@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Sep 24, 2018 11:43 AM
+ * @Last Modified Time: Sep 25, 2018 11:44 AM
  * @Description: Modify Here, Please 
  */
 using Microsoft.AspNetCore.Mvc;
@@ -35,7 +35,7 @@ namespace Smart_Accounting.API.Controllers.Accountss
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
         [ProducesResponseType(422)]
-        public IActionResult CreatAccountType([FromBody] NewAccountTypeModel newType) {
+        public IActionResult CreatAccountType([FromBody] NewAccountModel newType) {
             _accountCommand.creatAccountType(newType);
             return StatusCode(201, newType);
         }

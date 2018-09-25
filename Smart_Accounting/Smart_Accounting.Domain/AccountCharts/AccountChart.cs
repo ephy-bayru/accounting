@@ -29,9 +29,7 @@ namespace Smart_Accounting.Domain.AccountCharts {
         public sbyte Active { get; set; }
         public uint AccountId { get; set; }
         public uint AccountType { get; set; }
-        public int AccountCategoryAccCatId { get; set; }
         public uint OrganizationId { get; set; }
-
         public AccountType AccountTypeNavigation { get; set; }
         public Organization Organization { get; set; }
         public AccountChart SubAccountCodeNavigation { get; set; }

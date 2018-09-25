@@ -26,10 +26,6 @@ namespace Smart_Accounting.Persistance.AccountCharts {
 
             builder.Property (e => e.AccountId).HasColumnName ("ACCOUNT_ID");
 
-            builder.Property (e => e.AccountCategoryAccCatId)
-                .HasColumnName ("account_category_acc_cat_id")
-                .HasColumnType ("int(11)");
-
             builder.Property (e => e.AccountCode)
                 .IsRequired ()
                 .HasColumnName ("account_code")

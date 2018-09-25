@@ -4,7 +4,7 @@ using Smart_Accounting.Domain.AccountCharts.AccountTypes;
 
 namespace Smart_Accounting.Application.AccountCharts.Interfaces {
     public interface IAccountChartCommandsFactory {
-        AccountType NewAccountType (NewAccountTypeModel newType);
+        AccountType NewAccountType (NewAccountModel newType);
         AccountChart UpdatedAccountType (NewAccountModel newModel);
 
     }
