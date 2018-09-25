@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { AccountsComponent } from './modules/accounts/accounts/accounts.component';
 import { BanksComponent } from './modules/banks/banks/banks.component';
 import { CurrencyComponent } from './modules/currency/currency/currency.component';
-import { CustomerComponent } from './modules/customers/customer/customer.component';
 import { LedgerComponent } from './modules/ledgers/ledger/ledger.component';
 import { LoginComponent } from './modules/login/login/login.component';
 import { SuppliersComponent } from './modules/suppliers/suppliers/suppliers.component';
@@ -30,6 +29,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { CompareDirective } from './shared/compare.directive';
 import { CalanderModule } from './modules/calander/calander.module';
 import { SmartAppConfigService } from './smart-app-config.service';
+import { CustomerModule } from './modules/customers/customer/customer.module';
 
 
 @NgModule({
@@ -39,7 +39,6 @@ import { SmartAppConfigService } from './smart-app-config.service';
 
     BanksComponent,
     CurrencyComponent,
-    CustomerComponent,
     LedgerComponent,
     LoginComponent,
     SuppliersComponent,
@@ -64,6 +63,7 @@ import { SmartAppConfigService } from './smart-app-config.service';
     CommonModule,
     CompanyModule,
     CalanderModule,
+    CustomerModule,
     // sincfussion modules
     ButtonModule,
     GridModule,
