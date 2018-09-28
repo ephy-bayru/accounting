@@ -11,16 +11,15 @@ using Smart_Accounting.Domain.Taxes;
 
 namespace Smart_Accounting.Domain.AccountCharts {
     public class AccountChart {
-               public AccountChart()
-        {
-            BankAccounts = new HashSet<BankAccounts>();
-            Customer = new HashSet<Customer>();
-            Employees = new HashSet<Employees>();
-            InverseSubAccountCodeNavigation = new HashSet<AccountChart>();
-            Jornal = new HashSet<Jornal>();
-            OpeningBalance = new HashSet<OpeningBalance>();
-            Suppliers = new HashSet<Suppliers>();
-            Tax = new HashSet<Tax>();
+        public AccountChart () {
+            BankAccounts = new HashSet<BankAccounts> ();
+            Customer = new HashSet<Customer> ();
+            Employees = new HashSet<Employees> ();
+            InverseSubAccountCodeNavigation = new HashSet<AccountChart> ();
+            Jornal = new HashSet<Jornal> ();
+            OpeningBalance = new HashSet<OpeningBalance> ();
+            Suppliers = new HashSet<Suppliers> ();
+            Tax = new HashSet<Tax> ();
         }
 
         public string AccountCode { get; set; }
@@ -29,6 +28,7 @@ namespace Smart_Accounting.Domain.AccountCharts {
         public sbyte Active { get; set; }
         public uint AccountId { get; set; }
         public uint OrganizationId { get; set; }
+        public string AccountType { get; set; }
 
         public Organization Organization { get; set; }
         public AccountChart SubAccountCodeNavigation { get; set; }

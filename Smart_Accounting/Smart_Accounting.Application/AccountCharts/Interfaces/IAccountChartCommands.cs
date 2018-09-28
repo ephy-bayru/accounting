@@ -6,6 +6,6 @@ namespace Smart_Accounting.Application.AccountCharts.Interfaces {
     public interface IAccountChartCommands {
         IEnumerable<AccountChart> createAccount (IEnumerable<AccountChart> newAccount);
         bool updateAccount(IEnumerable<AccountChart> updatedAccount);
-        bool delete ();
+        bool deleteAccount (AccountChart account);
     }
 }

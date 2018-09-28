@@ -13,10 +13,13 @@ namespace Smart_Accounting.Application.AccountCharts.Queries {
 
         }
 
-        public IEnumerable<AccountChart> GetAll () {
-            return _database.AccountChart.ToList ();
+        public IEnumerable<AccountChart> GetAllAccounts (string type = "ALL") {
+            if (type == "ALL") {
+                return _database.AccountChart.ToList ();
+            }
+            return _database.AccountChart.Where (account => account.AccountType == type.ToUpper ());
         }
-        public AccountChart GetById (uint accountId) {
+        public AccountChart GetAccountById (uint accountId) {
 
             return _database.AccountChart.Find (accountId);
 

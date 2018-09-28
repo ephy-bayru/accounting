@@ -35,8 +35,19 @@ namespace Smart_Accounting.Application.AccountCharts.Factories {
             return account;
         }
 
-        public bool UpdatedAccount (IEnumerable<UpdatedAccountModel> newModel) {
-            throw new System.NotImplementedException ();
+        public AccountChart UpdatedAccount (UpdatedAccountModel newModel) {
+            AccountChart account = new  AccountChart () {
+                    Name = newModel.Name,
+                        AccountCode = newModel.AccountCode,
+                        SubAccountCode = newModel.SubAccountCode,
+                        OrganizationId = newModel.OrganizationId,
+                        Active = newModel.Active
+
+                };
+        
+
+        return account;
+
         }
 
     }
