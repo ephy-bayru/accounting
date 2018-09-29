@@ -23,7 +23,9 @@ export class CustomerComponent implements OnInit {
     private fb: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private location: Location
-  ) {}
+  ) {
+    this.customersForm();
+  }
 
   ngOnInit(): void {
     this.id = + this.activatedRoute.snapshot.paramMap.get('id');
