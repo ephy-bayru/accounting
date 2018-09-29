@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Smart_Accounting.API.Commons.Models;
 using Smart_Accounting.Application.CalendarPeriods.Models;
+using Smart_Accounting.Application.Customers.Models;
 using Smart_Accounting.Application.Employee.Models;
 using Smart_Accounting.Application.Organizations.Models;
 using Smart_Accounting.Domain.CalendarPeriods;
@@ -19,6 +20,11 @@ namespace Smart_Accounting.API.Commons.Factories
             };
 
             return format;
+        }
+
+        public ResponseFormat CreateCustomerResonse(List<CustomerViewModel> customer)
+        {
+            throw new System.NotImplementedException();
         }
 
         public ResponseFormat CreateEmployeeResponse(List<EmployeeViewModel> employee)

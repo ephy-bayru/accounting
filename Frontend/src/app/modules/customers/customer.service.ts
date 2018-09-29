@@ -4,7 +4,6 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 // import { RequestOptions } from '@angular/http';
 import { Customer } from './customer';
 import { map, catchError } from 'rxjs/operators';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -17,7 +16,7 @@ export class CustomerService {
   constructor(
     private httpClient: HttpClient
   ) { }
-
+///
   getCustomers(): Observable<Customer[]> {
     const options = { headers: this._header };
     return this.httpClient.get<Customer[]>(`${this.Url}`, options);
@@ -61,7 +60,7 @@ export class CustomerService {
     customer.set('SubCity', userForm.SubCity);
     customer.set('House_No', userForm.House_No);
     customer.set('Postal_Code', userForm.Postal_Code);
-    customer.set('Date_Added', userForm.Date_Added.toISOString());
+    customer.set('Date_Added', userForm.Date_Created.toISOString());
     customer.set('Date_Updated', userForm.Date_Updated.toISOString());
     return customer;
   }

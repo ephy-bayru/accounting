@@ -6,7 +6,7 @@ namespace Smart_Accounting.Application.Customers.Interfaces
 {
     public interface ICustomerQuery
     {
-        Customer GetById(uint customerId);
+        Customer GetById(uint id);
          IEnumerable<Customer> GetAll();
     }
 }

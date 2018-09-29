@@ -9,6 +9,6 @@ export class Customer {
     SubCity: string;
     House_No: string;
     Postal_Code: string;
-    Date_Added: Date;
+    Date_Created: Date;
     Date_Updated: Date;
 }

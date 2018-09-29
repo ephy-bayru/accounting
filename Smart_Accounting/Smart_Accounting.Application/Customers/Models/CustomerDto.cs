@@ -1,24 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using Smart_Accounting.Domain.AccountCharts;
+using System;
+using System.ComponentModel.DataAnnotations;
 
-namespace Smart_Accounting.Domain.Customers
+namespace Smart_Accounting.Application.Customers.Models
 {
-    public partial class Customer
+    public abstract class CustomerDto
     {
-        public uint Id { get; set; }
         public string FullName { get; set; }
         public uint AccountId { get; set; }
         public Int32 AccountNumber { get; set; }
-        public string PhoneNo { get; set; }
         public string Email { get; set; }
+        public string Phone_No { get; set; }
         public string Country { get; set; }
         public string City { get; set; }
         public string SubCity { get; set; }
         public string HouseNo { get; set; }
         public string PostalCode { get; set; }
-        public DateTime DateCreated { get; set; }
-        public DateTime DateUpdated { get; set;}
-        public AccountChart Account { get; set; }
+
     }
 }
