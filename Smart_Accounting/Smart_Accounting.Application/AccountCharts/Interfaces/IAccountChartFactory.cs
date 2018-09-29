@@ -13,7 +13,7 @@ using Smart_Accounting.Domain.AccountCharts;
 namespace Smart_Accounting.Application.AccountCharts.Interfaces {
     public interface IAccountChartFactory {
         IEnumerable<AccountChart> NewAccount (IEnumerable<NewAccountModel> newType);
-        bool UpdatedAccount (IEnumerable<UpdatedAccountModel> newModel);
+        AccountChart UpdatedAccount (UpdatedAccountModel newModel);
 
     }
 }

@@ -13,22 +13,22 @@ namespace Smart_Accounting.Application.AccountCharts.Command {
             _database = database;
         }
 
-        public bool delete () {
-            //TODO Define account deletion Functionality
-
-            throw new System.NotImplementedException ();
+        public bool deleteAccount (AccountChart account) {
+            _database.AccountChart.Remove(account);
+            return true;
         }
 
         public IEnumerable<AccountChart> createAccount (IEnumerable<AccountChart> newAccount) {
             _database.AccountChart.AddRange (newAccount);
-            _database.Save();
+            _database.Save ();
             return newAccount;
 
         }
 
-        public bool updateAccount(IEnumerable<AccountChart> updatedAccount)
-        {
-            throw new System.NotImplementedException();
+        public bool updateAccount (IEnumerable<AccountChart> updatedAccount) {
+            _database.AccountChart.UpdateRange (updatedAccount);
+            _database.Save ();
+            return true;
         }
     }
 }
