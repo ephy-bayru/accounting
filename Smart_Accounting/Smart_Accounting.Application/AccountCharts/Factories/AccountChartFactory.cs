@@ -12,20 +12,30 @@ using Smart_Accounting.Application.AccountCharts.Models;
 using Smart_Accounting.Domain.AccountCharts;
 
 namespace Smart_Accounting.Application.AccountCharts.Factories {
-    public class AccountChartFactory : IAccountChartCommandsFactory {
+    public class AccountChartFactory : IAccountChartFactory {
 
         public AccountChartFactory () {
 
         }
 
-        public AccountChart NewAccount (IEnumerable<NewAccountModel> newType) {
-            AccountChart account = new AccountChart ();
+        public IEnumerable<AccountChart> NewAccount (IEnumerable<NewAccountModel> newType) {
+            List<AccountChart> account = new List<AccountChart> ();
 
-      
-            throw new System.NotImplementedException ();
+            foreach (var item in newType) {
+                account.Add (new AccountChart () {
+                    Name = item.Name,
+                        AccountCode = item.AccountCode,
+                        SubAccountCode = item.SubAccountCode,
+                        OrganizationId = item.OrganizationId,
+                        Active = item.Active
+
+                });
+            }
+
+            return account;
         }
 
-        public AccountChart UpdatedAccount (IEnumerable<UpdatedAccountModel> newModel) {
+        public bool UpdatedAccount (IEnumerable<UpdatedAccountModel> newModel) {
             throw new System.NotImplementedException ();
         }
 

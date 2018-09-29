@@ -11,7 +11,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Serialization;
 using Smart_Accounting.Application.AccountCharts.Command;
-using Smart_Accounting.Application.AccountCharts.Commands;
 using Smart_Accounting.Application.AccountCharts.Interfaces;
 using Smart_Accounting.Application.AccountCharts.Queries;
 using Smart_Accounting.Application.CalendarPeriods.Commands;
@@ -36,6 +35,7 @@ using Smart_Accounting.Application.Supplier.Queries;
 using Smart_Accounting.API.Commons.Factories;
 using Smart_Accounting.Persistance;
 using Smart_Accounting.Application.Employee.Factories;
+using Smart_Accounting.Application.AccountCharts.Factories;
 
 namespace Smart_Accounting.API {
     public class Startup {
@@ -50,7 +50,7 @@ namespace Smart_Accounting.API {
             services.AddScoped<IAccountingDatabaseService, AccountingDatabaseService> ();
 
             services.AddScoped<IAccountChartCommands, AccountChartCommands> ();
-            services.AddScoped<IAccountChartCommandsFactory, AccountChartCommandsFactory> ();
+            services.AddScoped<IAccountChartFactory, AccountChartFactory> ();
             services.AddScoped<IAccountChartQueries, AccountChartQuery> ();
             services.AddScoped<IOrganizationsQuery, OrganizationQuery> ();
             services.AddScoped<IOrganizationCommands, OrganizationCommand> ();
