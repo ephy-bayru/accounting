@@ -2,17 +2,19 @@
   <form [formGroup]="calanderForm" novalidate (ngSubmit)="onSubmit()" name="calanderForm">
 
     <div formArrayName="calanders" class="content-wrapper">
-      <div *ngFor="let calander of calanders.controls; let i=index; let last=last"  class="row" [formGroup]="calander">
+      <div *ngFor="let calander of calanders.controls; let i=index; let last=last" class="row" [formGroup]="calander">
         <div class="col-8">
-          <ejs-daterangepicker (change)="dateChanged($event)"  (select)="dateSelected($event)" [minDays]="minDays" cssClass="customWeekEnds" placeholder="Select Period Range" [maxDays]="maxDays" [firstDayOfWeek]="firstDay"
-           [format]="format" formControlName="order" [attr.name]="'calanderPeriod'+i" [attr.id]="'calanderPeriod'+i">
+          <ejs-daterangepicker (change)="dateChanged($event)" (select)="dateSelected($event)" [minDays]="minDays"
+            cssClass="customWeekEnds" placeholder="Select Period Range" [maxDays]="maxDays" [firstDayOfWeek]="firstDay"
+            [format]="format" formControlName="order" [attr.name]="'calanderPeriod'+i" [attr.id]="'calanderPeriod'+i">
           </ejs-daterangepicker>
         </div>
         <div class="col-2">
           <ejs-switch [checked]="true" formControlName="active"></ejs-switch>`
         </div>
         <div class="btns">
-          <button type="button" ejs-button class="e-round e-info e-small " iconCss="e-icons e-plus-icon" [disabled]="!last || calanders.invalid" (click)="addPeriod()">Add</button>
+          <button type="button" ejs-button class="e-round e-info e-small " iconCss="e-icons e-plus-icon" [disabled]="!last || calanders.invalid"
+            (click)="addPeriod()">Add</button>
           &nbsp;
           <button type="button" ejs-button class="e-round e-danger e-small e-icons e-times-icon" (click)="calanders.removeAt(i)">Del</button>
         </div>
@@ -26,9 +28,9 @@
     </div>
 
     <p>
-        Form: <code>
-            {{calanderForm.value | json}}
-          </code>
+      Form: <code>
+        {{calanderForm.value | json}}
+      </code>
     </p>
     <p>
     </p>

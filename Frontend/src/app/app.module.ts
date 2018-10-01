@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ModuleWithProviders, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { AccountsComponent } from './modules/accounts/accounts/accounts.component';
+
 import { BanksComponent } from './modules/banks/banks/banks.component';
 import { CurrencyComponent } from './modules/currency/currency/currency.component';
 import { LedgerComponent } from './modules/ledgers/ledger/ledger.component';
@@ -30,17 +30,18 @@ import { CalanderModule } from './modules/calander/calander.module';
 import { SmartAppConfigService } from './smart-app-config.service';
 import { CustomerModule } from './modules/customers/customer/customer.module';
 import { SuppliersModule } from './modules/suppliers/suppliers/suppliers.module';
+import { AccountsModule } from './modules/accounts/accounts/accounts.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AccountsComponent,
 
     BanksComponent,
     CurrencyComponent,
     LedgerComponent,
     LoginComponent,
+
     DashboardComponent,
     AccountPayableComponent,
     AccountReceivableComponent,
@@ -64,6 +65,7 @@ import { SuppliersModule } from './modules/suppliers/suppliers/suppliers.module'
     CalanderModule,
     CustomerModule,
     SuppliersModule,
+    AccountsModule,
     // sincfussion modules
     ButtonModule,
     GridModule,

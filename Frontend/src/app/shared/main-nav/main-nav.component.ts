@@ -46,8 +46,7 @@ export class MainNavComponent {
       ],
     },
     {
-      id: '02', name: 'ACCOUNTS',
-      subChild: []
+      id: '02', name: 'ACCOUNTS', navigateUrl: 'accounts'
     },
     {
       id: '03', name: 'REPORTS',

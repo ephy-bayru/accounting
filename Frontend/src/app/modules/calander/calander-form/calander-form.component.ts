@@ -3,9 +3,6 @@ import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@ang
 import { ButtonComponent } from '@syncfusion/ej2-ng-buttons';
 import { RangeEventArgs } from '@syncfusion/ej2-calendars';
 import { CalanderPeriod, CalanderService } from '../calander.service';
-import { forEach } from '@angular/router/src/utils/collection';
-import { element } from 'protractor';
-
 @Component({
   selector: 'app-calander-form',
   templateUrl: './calander-form.component.html',
