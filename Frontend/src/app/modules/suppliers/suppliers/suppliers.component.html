@@ -1,3 +1,131 @@
-<p>
-  suppliers works!
-</p>
+<div class="e-card">
+  <div class="col-lg-12 control-section e-input-section">
+    <div class="col-lg-12">
+      <h4 class="form-title">Supplier Form</h4>
+    </div>
+    <div>
+      <form id="reactive" [formGroup]="suppliersForm" (ngSubmit)="onSubmit()">
+        <div class="content-wrapper">
+          <div class="row">
+            <!-- full name field -->
+            <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+              <div class="form-group template">
+                <div class="e-float-input">
+                  <input type="text" id="Full_Name" name="Full_Name" class="required" formControlName="Full_Name"
+                    required>
+                  <span class="e-float-line"></span>
+                  <label class="e-float-text" for="Full_Name">Full Name</label>
+                </div>
+              </div>
+            </div>
+            <!-- Account number field -->
+            <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+              <div class="form-group template">
+                <div class="e-float-input">
+                  <input type="text" id="Account_Number" name="Account_Number" class="required" formControlName="Account_Number"
+                    required>
+                  <span class="e-float-line"></span>
+                  <label class="e-float-text" for="Account_Number">Account Number</label>
+                </div>
+               
+              </div>
+            </div>
+
+          </div>
+
+            <div class="row">
+              <!-- email field -->
+              <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                <div class="form-group template">
+                  <div id="mobile-no" class="e-float-input">
+                    <input type="text" id="email" name="email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                      class="required" formControlName="Email">
+                    <span class="e-float-line"></span>
+                    <label class="e-float-text" for="Email">Email</label>
+                  </div>
+                  
+                </div>
+              </div>
+              <!-- Phone number field -->
+              <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                <div class="form-group template">
+                  <div class="e-float-input">
+                    <input type="number" name="phone"  required class="required" formControlName="Phone_No">
+                    <span class="e-float-line"></span>
+                    <label class="e-float-text" for="Phone_No">Phone No</label>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <!-- country field -->
+              <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                <div class="form-group template">
+                  <div class="e-float-input">
+                    <input type="text" id="cntry" name="Country" class="required" formControlName="Country" required>
+                    <span class="e-float-line"></span>
+                    <label class="e-float-text" for="cntry">Country</label>
+                  </div>
+                </div>
+              </div>
+              <!-- city field -->
+              <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                <div class="form-group template">
+                  <div class="e-float-input">
+                    <input type="text" id="City" name="City" formControlName="City" required>
+                    <span class="e-float-line"></span>
+                    <label class="e-float-text" for="City">City</label>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <!-- subcity field -->
+              <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                <div class="form-group template">
+                  <div class="e-float-input">
+                    <input type="text" id="Subcity" name="Subcity" class="required" formControlName="Subcity" required>
+                    <span class="e-float-line"></span>
+                    <label class="e-float-text" for="Subcity">Subcity</label>
+                  </div>
+                </div>
+              </div>
+              <!-- house number field -->
+              <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                <div class="form-group template">
+                  <div class="e-float-input">
+                    <input type="text" id="House_No" name="House_No" formControlName="House_No" required>
+                    <span class="e-float-line"></span>
+                    <label class="e-float-text" for="House_No">House Number</label>
+                  </div>
+                </div>
+              </div>
+              <!-- postal code field -->
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                <div class="form-group template">
+                  <div class="e-float-input">
+                    <input type="text" id="Postal_Code" name="Postal_Code" class="required" formControlName="Postal_code"
+                      required>
+                    <span class="e-float-line"></span>
+                    <label class="e-float-text" for="Postal_Code">Postal Code</label>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        <div class="btn">
+          <button ejs-button cssClass="e-success" type="submit">
+            SUBMIT
+          </button>
+          &nbsp;
+          <button ejs-button cssClass="e-primary" type="button" (click)="onCancel()">
+            CANCEL
+          </button>
+        </div>
+      </form>
+    </div>
