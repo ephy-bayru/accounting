@@ -1,0 +1,31 @@
+.e-card {
+    width: 90%;
+    min-height: 100%;
+    margin-left: 5%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 1%;
+    margin-top: 1%;
+}
+.form-title {
+    text-align: center;
+}
+
+.btn {
+    padding-left: 60%;
+    margin-left: 15%;
+  }
+
+#inline { width:90%;
+    height:auto;
+    display:flex;
+}
+.e-float-input e-input-group {
+    width:40%;
+    height:100px;
+    /* display: inline-block; */
+    float: left;
+}
+#control_wrapper {
+    margin: 25px auto;
+}

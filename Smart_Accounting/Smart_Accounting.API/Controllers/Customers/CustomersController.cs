@@ -123,7 +123,7 @@ namespace Smart_Accounting.API.Controllers.Customers
                 {
                     return NotFound();
                 }
-                _customerCommands.update(currentCustomer, updateCustomer);
+                _customerCommands.Update(currentCustomer, updateCustomer);
                 return StatusCode(204);
 
             }
@@ -147,7 +147,7 @@ namespace Smart_Accounting.API.Controllers.Customers
                     _logger.LogError($"customer with id: {id}, not found.");
                     return NotFound();
                 }
-                _customerCommands.delete(cstmr);
+                _customerCommands.Delete(cstmr);
                 return NoContent();
 
             }

@@ -7,7 +7,6 @@ import { BanksComponent } from './modules/banks/banks/banks.component';
 import { CurrencyComponent } from './modules/currency/currency/currency.component';
 import { LedgerComponent } from './modules/ledgers/ledger/ledger.component';
 import { LoginComponent } from './modules/login/login/login.component';
-import { SuppliersComponent } from './modules/suppliers/suppliers/suppliers.component';
 import { DashboardComponent } from './modules/dashboard/dashboard/dashboard.component';
 import { AccountPayableComponent } from './modules/reports/account_payable/account-payable/account-payable.component';
 import { AccountReceivableComponent } from './modules/reports/account_receivable/account-receivable/account-receivable.component';
@@ -30,6 +29,7 @@ import { CompareDirective } from './shared/compare.directive';
 import { CalanderModule } from './modules/calander/calander.module';
 import { SmartAppConfigService } from './smart-app-config.service';
 import { CustomerModule } from './modules/customers/customer/customer.module';
+import { SuppliersModule } from './modules/suppliers/suppliers/suppliers.module';
 
 
 @NgModule({
@@ -41,7 +41,6 @@ import { CustomerModule } from './modules/customers/customer/customer.module';
     CurrencyComponent,
     LedgerComponent,
     LoginComponent,
-    SuppliersComponent,
     DashboardComponent,
     AccountPayableComponent,
     AccountReceivableComponent,
@@ -64,6 +63,7 @@ import { CustomerModule } from './modules/customers/customer/customer.module';
     CompanyModule,
     CalanderModule,
     CustomerModule,
+    SuppliersModule,
     // sincfussion modules
     ButtonModule,
     GridModule,

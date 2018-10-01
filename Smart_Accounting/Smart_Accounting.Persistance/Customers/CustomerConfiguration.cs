@@ -14,9 +14,7 @@ namespace Smart_Accounting.Persistance.Customers {
 
             builder.Property (e => e.AccountId).HasColumnName ("ACCOUNT_ID");
 
-            builder.Property (e => e.CreditLimit).HasColumnName ("credit_limit");
-
-            builder.Property (e => e.DateAdded)
+            builder.Property (e => e.DateCreated)
                 .HasColumnName ("date_added")
                 .HasColumnType ("datetime")
                 .HasDefaultValueSql ("'CURRENT_TIMESTAMP'");
@@ -25,7 +23,7 @@ namespace Smart_Accounting.Persistance.Customers {
                 .HasColumnName ("date_updated")
                 .HasColumnType ("datetime");
 
-            builder.Property (e => e.Name)
+            builder.Property (e => e.FullName)
                 .IsRequired ()
                 .HasColumnName ("name")
                 .HasColumnType ("varchar(45)");

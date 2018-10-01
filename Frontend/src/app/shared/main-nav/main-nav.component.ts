@@ -35,7 +35,7 @@ export class MainNavComponent {
           id: '01-03', name: 'CUSTOMER', tooltip: 'customers data', navigateUrl: 'customers'
         },
         {
-          id: '01-04', name: 'SUPPLIER'
+          id: '01-04', name: 'SUPPLIER',  navigateUrl: 'suppliers'
         },
         {
           id: '01-05', name: 'BANK'
