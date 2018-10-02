@@ -16,7 +16,11 @@ namespace Smart_Accounting.Domain.NUnitTest.Customers
             customer = new Customer();
             customer.Id = 1;
             customer.FullName = "Microsoft";
+<<<<<<< HEAD
             customer.AccountId = "123456";
+=======
+            customer.AccountId = 123456;
+>>>>>>> 9ef68da30792e6e31c5afc6f3505b4fd316ec997
             customer.PhoneNo = "0920208549";
             customer.Email = "email";
             customer.Country = "Ethiopia";

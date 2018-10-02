@@ -1,7 +1,7 @@
 export class Customer {
     id: number;
     Full_Name: string;
-    Account_Number: string;
+    Account_ID: string;
     Email: string;
     Phone_No: string;
     Country: string;

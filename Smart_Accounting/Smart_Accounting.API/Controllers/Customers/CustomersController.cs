@@ -41,10 +41,10 @@ namespace Smart_Accounting.API.Controllers.Customers
         [ProducesResponseType(200)]
         public IActionResult GetAllCustomers()
         {
-        var customers = _customerQuery.GetAll();
-        var customerView = _customerFactory.createCustomerView(customers);
-        var response = _response.CreateCustomerResonse(customerView);
-        return StatusCode(200, response);
+            var customers = _customerQuery.GetAll();
+            var customerView = _customerFactory.createCustomerView(customers);
+            var response = _response.CreateCustomerResonse(customerView);
+            return StatusCode(200, response);
 
         }
 
