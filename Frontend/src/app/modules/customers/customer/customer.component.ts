@@ -39,7 +39,7 @@ export class CustomerComponent implements OnInit {
     this.customerForm = this
       .fb.group({
         Full_Name: [(customer.Full_Name) ? customer.Full_Name : '', Validators.required],
-        Account_Number: [(customer.Account_Number) ? customer.Account_Number : '', Validators.required],
+        Account_ID: [(customer.Account_ID) ? customer.Account_ID : '', Validators.required],
         Email: [(customer.Email) ? customer.Email : '', Validators.required],
         Phone_No: [(customer.Phone_No) ? customer.Phone_No : '', Validators.required],
         Country: [(customer.Country) ? customer.Country : '', Validators.required],
@@ -57,7 +57,7 @@ export class CustomerComponent implements OnInit {
     const customerData = {
       id: this.id ? this.id : 0,
       Full_Name: formModel.Full_Name ? formModel.Full_Name : '',
-      Account_Number: formModel.Account_Number ? formModel.Account_Number : '',
+      Account_ID: formModel.Account_ID ? formModel.Account_ID : '',
       Email: formModel.Email ? formModel.Email : '',
       Phone_No : formModel.Phone_No ? formModel.Phone_No : '',
       Country : formModel.Country ? formModel.Country : '',

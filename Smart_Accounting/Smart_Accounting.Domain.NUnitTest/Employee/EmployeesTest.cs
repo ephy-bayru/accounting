@@ -6,26 +6,26 @@ namespace Smart_Accounting.Domain.NUnitTest.Employee
 {
 
     [TestFixture]
-    public class EmployeessTest
+    public class EmployeesTest
     {
         private Employees employee;
 
         [OneTimeSetUp]
-        public void Cust()
+        public void emp()
         {
             employee = new Employees();
             employee.Id = 1;
             employee.FirstName = "ephrem";
             employee.LastName = "bayru";
             employee.AccountId = 123456;
-            employee.PhoneNo = 0920208549;
+            employee.PhoneNo = "0920208549";
             employee.Email = "email";
             employee.Password = "123456";
 
         }
 
         [Test]
-        public void CustomerTest()
+        public void EmployeeTest()
         {
             Assert.That(employee.Id, Is.EqualTo(1));
             Assert.That(employee.FirstName, Is.EqualTo("ephrem"));

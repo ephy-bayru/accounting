@@ -23,7 +23,6 @@ namespace Smart_Accounting.Application.Customers.Commands.Factories
             return customer;
         }
 
-
          public CustomerViewModel CustomerView(Customer customer) {
              var customers = new CustomerViewModel();
 

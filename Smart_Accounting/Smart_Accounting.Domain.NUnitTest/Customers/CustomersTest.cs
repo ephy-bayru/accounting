@@ -17,13 +17,13 @@ namespace Smart_Accounting.Domain.NUnitTest.Customers
             customer.Id = 1;
             customer.FullName = "Microsoft";
             customer.AccountId = 123456;
-            customer.PhoneNo = 0920208549;
+            customer.PhoneNo = "0920208549";
             customer.Email = "email";
             customer.Country = "Ethiopia";
             customer.City = "Dessie";
             customer.SubCity = "gtz";
             customer.HouseNo = "123456";
-            customer.PostalCode = 123456;
+            customer.PostalCode = "123456";
 
         }
         [Test]

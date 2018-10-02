@@ -29,5 +29,6 @@ namespace Smart_Accounting.Application.Customers.Queries
             var customer = _database.Customer.Find(id);
             return customer;
         }
+       
     }
 }
