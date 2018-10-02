@@ -25,7 +25,6 @@ namespace Smart_Accounting.Application.AccountCharts.Factories {
                 account.Add (new AccountChart () {
                     Name = item.Name,
                         AccountCode = item.AccountCode,
-                        SubAccountCode = item.SubAccountCode,
                         OrganizationId = item.OrganizationId,
                         Active = item.Active
 
@@ -39,7 +38,6 @@ namespace Smart_Accounting.Application.AccountCharts.Factories {
             AccountChart account = new  AccountChart () {
                     Name = newModel.Name,
                         AccountCode = newModel.AccountCode,
-                        SubAccountCode = newModel.SubAccountCode,
                         OrganizationId = newModel.OrganizationId,
                         Active = newModel.Active
 

@@ -6,7 +6,7 @@ using Smart_Accounting.Domain.CalendarPeriods;
 namespace Smart_Accounting.Domain.OpeningBalances {
     public partial class OpeningBalance {
         public uint Id { get; set; }
-        public uint AccountId { get; set; }
+        public string AccountId { get; set; }
         public uint PeriodId { get; set; }
         public double Credit { get; set; }
         public double Debit { get; set; }

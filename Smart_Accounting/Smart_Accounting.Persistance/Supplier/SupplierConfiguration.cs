@@ -16,7 +16,10 @@ namespace Smart_Accounting.Persistance.Supplier {
                 .HasColumnName ("SUPPLIER_ID")
                 .HasColumnType ("int(11)");
 
-            builder.Property (e => e.AccountId).HasColumnName ("ACCOUNT_ID");
+            builder.Property (e => e.AccountId)
+                .IsRequired ()
+                .HasColumnName ("ACCOUNT_ID")
+                .HasColumnType ("varchar(30)");
 
             builder.Property (e => e.Active)
                 .HasColumnName ("active")

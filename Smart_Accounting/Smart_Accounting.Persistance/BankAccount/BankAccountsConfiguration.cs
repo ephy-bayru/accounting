@@ -12,11 +12,14 @@ namespace Smart_Accounting.Persistance.BankAccount {
             builder.ToTable ("bank_accounts");
 
             builder.HasIndex (e => e.AccountId)
-                .HasName ("fk_bank_accounts_ID_idx");
+                .HasName ("fk_bank_accounts_account_idx");
 
             builder.Property (e => e.BankId).HasColumnName ("BANK_ID");
 
-            builder.Property (e => e.AccountId).HasColumnName ("ACCOUNT_ID");
+            builder.Property (e => e.AccountId)
+                .IsRequired ()
+                .HasColumnName ("ACCOUNT_ID")
+                .HasColumnType ("varchar(30)");
 
             builder.Property (e => e.BankAccountCode)
                 .HasColumnName ("bank_account_code")
@@ -50,7 +53,7 @@ namespace Smart_Accounting.Persistance.BankAccount {
                 .WithMany (p => p.BankAccounts)
                 .HasForeignKey (d => d.AccountId)
                 .OnDelete (DeleteBehavior.ClientSetNull)
-                .HasConstraintName ("fk_bank_accounts_ID");
+                .HasConstraintName ("fk_bank_accounts_account");
         }
     }
 }

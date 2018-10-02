@@ -1,17 +1,13 @@
 using Smart_Accounting.Application.Customers.Models;
 using Smart_Accounting.Domain.Customers;
 
-namespace Smart_Accounting.Application.Customers.Commands.Factories
-{
-    public class CustomerCommandsFactory : ICustomerCommandsFactory
-    {
-        public Customer NewCustomer(NewCustomerModel newCustomer)
-        {
-            var customer = new  Customer();
+namespace Smart_Accounting.Application.Customers.Commands.Factories {
+    public class CustomerCommandsFactory : ICustomerCommandsFactory {
+        public Customer NewCustomer (NewCustomerModel newCustomer) {
+            var customer = new Customer ();
 
             customer.FullName = newCustomer.FullName;
             customer.AccountId = newCustomer.AccountId;
-            customer.AccountNumber = newCustomer.AccountNumber;
             customer.Email = newCustomer.Email;
             customer.PhoneNo = newCustomer.Phone_No;
             customer.Country = newCustomer.Country;
@@ -23,14 +19,12 @@ namespace Smart_Accounting.Application.Customers.Commands.Factories
             return customer;
         }
 
-
-         public CustomerViewModel CustomerView(Customer customer) {
-             var customers = new CustomerViewModel();
+        public CustomerViewModel CustomerView (Customer customer) {
+            var customers = new CustomerViewModel ();
 
             customer.Id = customer.Id;
             customer.FullName = customer.FullName;
             customer.AccountId = customer.AccountId;
-            customer.AccountNumber = customer.AccountNumber;
             customer.Email = customer.Email;
             customer.PhoneNo = customer.PhoneNo;
             customer.Country = customer.Country;
@@ -41,13 +35,11 @@ namespace Smart_Accounting.Application.Customers.Commands.Factories
 
             return customers;
 
-         }
+        }
 
-        public Customer UpdatesCustomer(Customer currentCustomer, UpdateCustomerModel updateCustomer)
-        {
+        public Customer UpdatesCustomer (Customer currentCustomer, UpdateCustomerModel updateCustomer) {
             currentCustomer.FullName = currentCustomer.FullName;
             currentCustomer.AccountId = currentCustomer.AccountId;
-            currentCustomer.AccountNumber = currentCustomer.AccountNumber;
             currentCustomer.Email = currentCustomer.Email;
             currentCustomer.PhoneNo = currentCustomer.PhoneNo;
             currentCustomer.Country = currentCustomer.Country;

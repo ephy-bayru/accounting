@@ -1,0 +1,27 @@
+<div class="e-card">
+
+
+  <ejs-grid [dataSource]='data' #grid height="300px" [allowExcelExport]="true" id='accounts' [toolbar]='toolbarOptions'
+    [allowPaging]="true" [pageSettings]='pageSettings' [allowFiltering]="true" [allowSorting]="true" [allowGrouping]="true"
+    [allowResizing]='true' [selectionSettings]='selectionOptions' [groupSettings]='groupOptions' allowFiltering='true'
+    allowTextWrap='true' [textWrapSettings]='wrapSettings' gridLines='Both' [editSettings]='editSettings'
+    [selectionSettings]='selectionOptions' [allowPdfExport]='true' (toolbarClick)='toolbarClick($event)'
+    [filterSettings]="filterOptions">
+    <e-columns>
+      <e-column field="AccountId" headerText="ID" isPrimaryKey="true" type="number" width='30' editable="false" filterable="false"
+        groupable="false">
+      </e-column>
+      <e-column field="AccountCode" headerText="Code" isPrimaryKey="false" type="string" editType="textbox"
+        filterable="true" editable="true" groupable="false" format="yMd" width='100'></e-column>
+      <e-column field="parent" headerText="Parent" isPrimaryKey="false" type="string" editType="textbox" filterable="true"
+        editable="true" groupable="false" format="yMd" width='100'></e-column>
+      <e-column field="Active" headerText="Active" isPrimaryKey="false" type="bool" editType="booleanedit" filterable="true"
+        editable="true" groupable="true" width='50'></e-column>
+      <e-column field="AccountType" headerText="TYPE" isPrimaryKey="false" type="string" editType="textbox" filterable="true"
+        editable="true" groupable="true" width='50'></e-column>
+        <e-column headerText='Remove'  width=20 [commands]='commands'></e-column>
+    </e-columns>
+
+  </ejs-grid>
+
+</div>

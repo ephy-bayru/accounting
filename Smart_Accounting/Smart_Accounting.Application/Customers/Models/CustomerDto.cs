@@ -6,8 +6,7 @@ namespace Smart_Accounting.Application.Customers.Models
     public abstract class CustomerDto
     {
         public string FullName { get; set; }
-        public uint AccountId { get; set; }
-        public Int32 AccountNumber { get; set; }
+        public string AccountId { get; set; }
         public string Email { get; set; }
         public string Phone_No { get; set; }
         public string Country { get; set; }

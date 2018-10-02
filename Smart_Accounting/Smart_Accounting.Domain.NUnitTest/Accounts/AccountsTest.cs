@@ -21,11 +21,10 @@ namespace Smart_Accounting.Domain.NUnitTest.Account {
         [SetUp] //Initialize Basic Account Chart Data
         public void Init () {
             account = new AccountChart () {
-                AccountId = 1,
+                AccountId = "AC-001",
                 Active = 0,
                 AccountCode = "2",
-                Name = "Cash",
-                SubAccountCode = "3",
+                Name = "Cash"
             };
 
         }
@@ -34,7 +33,6 @@ namespace Smart_Accounting.Domain.NUnitTest.Account {
         public void AccountChartInitializationTEST () {
 
             Assert.That (account.Name, Is.EqualTo ("Cash"));
-            Assert.That (account.SubAccountCode, Is.EqualTo ("3"));
             Assert.That (account.AccountId, Is.EqualTo (1));
             Assert.That (account.Active, Is.EqualTo (0));
             Assert.That (account.AccountCode, Is.EqualTo ("2"));

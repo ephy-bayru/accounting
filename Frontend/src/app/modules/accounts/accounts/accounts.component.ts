@@ -23,8 +23,8 @@ export class AccountsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.accountQuery = new Query().select(['code', 'id']);
-    this.accountFields = { text: 'accountId', value: 'accountCode' };
+    this.accountQuery = new Query().select(['AccountCode', 'AccountId']);
+    this.accountFields = { text: 'AccountId', value: 'AccountId' };
     const dm: DataManager = new DataManager(
       { url: 'http://localhost:53267/api/accounts', adaptor: new WebApiAdaptor, offline: true },
       new Query().take(8)
@@ -51,7 +51,7 @@ export class AccountsComponent implements OnInit {
 
   addPeriod() {
     this.accounts.push(this.formBuilder.group({
-      accountCode: [[new Date(), new Date()], Validators.required],
+      accountCode: ['', Validators.required],
       accountName: '',
       parent: '',
       active: [false]

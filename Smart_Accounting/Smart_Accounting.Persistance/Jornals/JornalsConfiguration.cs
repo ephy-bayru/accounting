@@ -18,7 +18,10 @@ namespace Smart_Accounting.Persistance.Jornals {
 
             builder.Property (e => e.JornalId).HasColumnName ("JORNAL_ID");
 
-            builder.Property (e => e.AccountId).HasColumnName ("ACCOUNT_ID");
+            builder.Property (e => e.AccountId)
+                .IsRequired ()
+                .HasColumnName ("ACCOUNT_ID")
+                .HasColumnType ("varchar(30)");
 
             builder.Property (e => e.Credit).HasColumnName ("credit");
 

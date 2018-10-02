@@ -9,7 +9,7 @@ namespace Smart_Accounting.Domain.BankAccount {
         public string BankAccountCode { get; set; }
         public string BankCreditAccount { get; set; }
         public string BankDebitAccount { get; set; }
-        public uint AccountId { get; set; }
+        public string AccountId { get; set; }
         public DateTime? DateAdded { get; set; }
         public DateTime? DateUpdated { get; set; }
 

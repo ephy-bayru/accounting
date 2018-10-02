@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { AccountsComponent } from '../accounts/accounts.component';
+import { AccountsViewComponent } from '../accounts-view/accounts-view.component';
 
 const routes: Routes = [
-  { path: 'accounts', component: AccountsComponent }
+  { path: 'accounts', component: AccountsViewComponent },
+  { path: 'accounts/new', component: AccountsComponent }
 ];
 
 @NgModule({

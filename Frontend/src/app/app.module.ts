@@ -31,6 +31,7 @@ import { SmartAppConfigService } from './smart-app-config.service';
 import { CustomerModule } from './modules/customers/customer/customer.module';
 import { SuppliersModule } from './modules/suppliers/suppliers/suppliers.module';
 import { AccountsModule } from './modules/accounts/accounts/accounts.module';
+import { AccountsViewComponent } from './modules/accounts/accounts-view/accounts-view.component';
 
 
 @NgModule({
@@ -54,7 +55,7 @@ import { AccountsModule } from './modules/accounts/accounts/accounts.module';
     MainNavComponent,
     SideNavComponent,
     // syncfusion
-    TreeViewComponent, ToolbarComponent, CompareDirective
+    TreeViewComponent, ToolbarComponent, CompareDirective, AccountsViewComponent
   ],
   imports: [
     BrowserModule,

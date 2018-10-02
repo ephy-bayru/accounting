@@ -15,7 +15,7 @@ namespace Smart_Accounting.Application.Employee.Models {
 
         [Required]
         public string Gender { get; set; }
-        public uint? Account_Id { get; set; }
+        public string Account_Id { get; set; }
         public string Password { get; set; }
         public DateTime Birth_Date { get; set; }
 

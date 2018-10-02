@@ -8,7 +8,7 @@ namespace Smart_Accounting.Domain.Jornals {
     public partial class Jornal {
         public uint JornalId { get; set; }
         public double Credit { get; set; }
-        public uint AccountId { get; set; }
+        public string AccountId { get; set; }
         public DateTime? DateAdded { get; set; }
         public DateTime? DateUpdated { get; set; }
         public sbyte? Reconcied { get; set; }

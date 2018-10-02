@@ -19,7 +19,6 @@ namespace Smart_Accounting.Application.Customers.Factories
                     id = item.Id,
                     FullName = item.FullName,
                     AccountId = item.AccountId,
-                    AccountNumber = item.AccountNumber,
                     Email = item.Email,
                     PhoneNo = item.PhoneNo,
                     Country = item.Country,

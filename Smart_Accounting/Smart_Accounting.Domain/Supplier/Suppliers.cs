@@ -11,7 +11,7 @@ namespace Smart_Accounting.Domain.Supplier {
         public int? CreditLimit { get; set; }
         public string BankAccount { get; set; }
         public sbyte Active { get; set; }
-        public uint AccountId { get; set; }
+        public string AccountId { get; set; }
 
         public AccountChart Account { get; set; }
     }

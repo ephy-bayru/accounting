@@ -13,7 +13,6 @@ namespace Smart_Accounting.Domain.ExchangeRates {
         public float BuyRate { get; set; }
         public float SaleRate { get; set; }
         public DateTime Date { get; set; }
-
         public ICollection<Currency> Currency { get; set; }
     }
 }

@@ -5,8 +5,9 @@ using Smart_Accounting.Domain.Jornals;
 
 namespace Smart_Accounting.Domain.Currencies {
     public partial class Currency {
-        public Currency () {
-            Jornal = new HashSet<Jornal> ();
+        public Currency()
+        {
+            Jornal = new HashSet<Jornal>();
         }
 
         public uint CurrencyId { get; set; }

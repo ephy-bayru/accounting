@@ -5,9 +5,10 @@ using Smart_Accounting.Domain.OpeningBalances;
 
 namespace Smart_Accounting.Domain.CalendarPeriods {
     public class CalendarPeriod {
-        public CalendarPeriod () {
-            Ledger = new HashSet<Ledger> ();
-            OpeningBalance = new HashSet<OpeningBalance> ();
+        public CalendarPeriod()
+        {
+            Ledger = new HashSet<Ledger>();
+            OpeningBalance = new HashSet<OpeningBalance>();
         }
 
         public uint Id { get; set; }

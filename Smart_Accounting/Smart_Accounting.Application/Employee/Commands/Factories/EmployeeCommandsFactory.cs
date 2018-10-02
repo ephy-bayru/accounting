@@ -33,7 +33,7 @@ namespace Smart_Accounting.Application.Employee.Commands.Factories
              employees.Phone_No = employee.PhoneNo;
              employees.Birth_Date = employee.BirthDate;
              employees.Gender = employee.Gender;
-             employees.Account_Id = (uint) employee.AccountId;
+             employees.Account_Id = employee.AccountId;
              employees.Date_Created = employee.DateCreated;
              employees.Date_Updated = employee.DateUpdated;
 
