@@ -6,7 +6,7 @@ namespace Smart_Accounting.Domain.Supplier
 {
     public partial class Suppliers
     {
-        public uint Id { get; set; }
+        public int Id { get; set; }
         public string FullName { get; set; }
         public string Email { get; set; }
         public string PhoneNo { get; set; }
@@ -18,6 +18,7 @@ namespace Smart_Accounting.Domain.Supplier
         public string PostalCode { get; set; }
         public DateTime? DateCreated { get; set; }
         public DateTime? DateUpdated { get; set; }
+
         public AccountChart Account { get; set; }
     }
 }

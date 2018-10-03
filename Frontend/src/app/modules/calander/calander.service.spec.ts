@@ -71,7 +71,7 @@ describe('UpdateCalanderPeriod', () => {
     httpClient.put.and.returnValue(of(true));
     let updated = false;
     const updatedComp = { id: 1,  startDate: '2018-11-11',  endDate: '2018-12-11', active: false  };
-    calanderService.updateCalanderPeriod(1, updatedComp).subscribe(
+    calanderService.updateCalanderPeriod(1, updatedCal).subscribe(
       response => updated = response
     );
 

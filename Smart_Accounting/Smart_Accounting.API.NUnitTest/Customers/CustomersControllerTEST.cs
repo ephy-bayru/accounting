@@ -6,13 +6,13 @@ using Smart_Accounting.API.Controllers.Customers;
 using Smart_Accounting.API.Commons.Factories;
 using Smart_Accounting.Domain.Customers;
 using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using FluentAssertions;
 using System.Net.Http;
 using NUnit.Framework;
 using Moq;
+using System.Collections.Generic;
 
 namespace Smart_Accounting.API.NUnitTest.Customers
 {
