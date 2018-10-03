@@ -1,22 +1,44 @@
 using Smart_Accounting.Application.Supplier.Interfaces;
+using Smart_Accounting.Application.Supplier.Commands.Factories;
+using Smart_Accounting.Application.Supplier.Models;
+using Smart_Accounting.Application.Interfaces;
+using Smart_Accounting.Domain.Supplier;
 
 namespace Smart_Accounting.Application.Supplier.Commands
 {
-    public class SupplierCommandes : ISupplierCommandes
+    public class SupplierCommand : ISupplierCommandes
     {
-        public void Create()
+        private readonly IAccountingDatabaseService _database;
+        private ISupplierCommandsFactory supplierCommandFactory;
+        public SupplierCommand(
+            IAccountingDatabaseService database,
+            ISupplierCommandsFactory SupplierCommandFactory
+            )
         {
-            throw new System.NotImplementedException();
+            _database = database;
+            supplierCommandFactory = SupplierCommandFactory;
+        }
+        public void Create(NewSupplierModel newSupplier)
+        {
+            var supplier = supplierCommandFactory.NewSupplier(newSupplier);
+
+            _database.Suppliers.Add(supplier);
+            _database.Save();
+
         }
 
-        public void Delete()
+        public void Delete(Suppliers suppliers)
         {
-            throw new System.NotImplementedException();
+            _database.Suppliers.Remove(suppliers);
+            _database.Save();
         }
 
-        public void Update()
+        public void Update(Suppliers suppliers, UpdateSupplierModel updateSupplier)
         {
-            throw new System.NotImplementedException();
+            var supplier = supplierCommandFactory.UpdateSuppliers(suppliers, updateSupplier);
+            _database.Suppliers.Update(supplier);
+            _database.Save();
         }
+
     }
 }
