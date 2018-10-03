@@ -7,6 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AccountsRoutingModule } from '../accounts-routing/accounts-routing.module';
 import { AccountsComponent } from './accounts.component';
 import { SwitchModule, ButtonModule } from '@syncfusion/ej2-ng-buttons';
+import { AccountsService } from '../accounts.service';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { SwitchModule, ButtonModule } from '@syncfusion/ej2-ng-buttons';
     SwitchModule,
     AccountsRoutingModule
   ],
-  declarations: [AccountsComponent]
+  declarations: [AccountsComponent],
+  providers: [AccountsService]
 })
 export class AccountsModule { }

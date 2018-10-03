@@ -19,7 +19,7 @@ namespace Smart_Accounting.Application.AccountCharts.Queries {
             }
             return _database.AccountChart.Where (account => account.AccountType == type.ToUpper ());
         }
-        public AccountChart GetAccountById (uint accountId) {
+        public AccountChart GetAccountById (string accountId) {
 
             return _database.AccountChart.Find (accountId);
 

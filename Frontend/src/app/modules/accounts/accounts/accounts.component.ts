@@ -13,9 +13,13 @@ import { DataManager, WebApiAdaptor, ReturnOption, Query } from '@syncfusion/ej2
 
 export class AccountsComponent implements OnInit {
   public accountList: Object[];
+  public organizationList: Object[];
   public accountForm: FormGroup;
   public accountQuery: Query;
   public accountFields: Object;
+  public organizationQuery: Query;
+  public organizationFields: Object;
+  public accountTypes: Object = ['ASSET', 'LIABLITY', 'REVENUE', 'EXPENSE', 'INCOME'];
   @ViewChild('statusBtn') statusBtn: ButtonComponent;
 
   constructor(private formBuilder: FormBuilder, private account: AccountsService) {
@@ -25,6 +29,15 @@ export class AccountsComponent implements OnInit {
   ngOnInit() {
     this.accountQuery = new Query().select(['AccountCode', 'AccountId']);
     this.accountFields = { text: 'AccountId', value: 'AccountId' };
+    this.organizationQuery = new Query().select(['name', 'id']);
+    this.organizationFields = {text: 'name', value: 'id'};
+
+    const orgDm: DataManager = new DataManager(
+      {url: 'http://localhost:53267/api/organizations', adaptor: new WebApiAdaptor, offline: true},
+      new Query().take(5)
+    );
+    orgDm.ready.then((e: ReturnOption) => this.organizationList = <Object[]>e.result).catch((e) => true);
+
     const dm: DataManager = new DataManager(
       { url: 'http://localhost:53267/api/accounts', adaptor: new WebApiAdaptor, offline: true },
       new Query().take(8)
@@ -41,9 +54,12 @@ export class AccountsComponent implements OnInit {
       accounts: this.formBuilder.array([
         this.formBuilder.group({
           accountCode: ['', Validators.required],
-          parent: '',
-          accountName: '',
-          active: [false]
+          AccountId: '',
+          accountType: ['', Validators.required],
+          Name: ['', Validators.required],
+          active: [false],
+          OpeningBalance: 0,
+          organizationId: ['', Validators]
         })])
 
     });
@@ -52,9 +68,12 @@ export class AccountsComponent implements OnInit {
   addPeriod() {
     this.accounts.push(this.formBuilder.group({
       accountCode: ['', Validators.required],
-      accountName: '',
-      parent: '',
-      active: [false]
+      accountId: '',
+      Name: ['', Validators.required],
+      active: [false],
+      accountType: ['', Validators.required],
+      OpeningBalance: 0,
+      organizationId: ['', Validators.required]
     }));
   }
 
@@ -63,8 +82,9 @@ export class AccountsComponent implements OnInit {
   }
 
   onSubmit() {
-
+    this.account.createAccountPeriod(this.accountForm.value['accounts']).subscribe(result => console.log(result));
   }
+
   btnClick() {
     if (this.statusBtn.element.classList.contains('e-active')) {
       this.statusBtn.content = 'Deactiveated';

@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Sep 25, 2018 12:12 PM
+ * @Last Modified Time: Oct 3, 2018 10:09 AM
  * @Description: Modify Here, Please 
  */
 using System.Collections.Generic;
@@ -43,7 +43,7 @@ namespace Smart_Accounting.API.Controllers.Accountss {
         [ProducesResponseType (200, Type = typeof (AccountChart))]
         [ProducesResponseType (404)]
         [ProducesResponseType (500)]
-        public IActionResult GetAccountById (uint id) {
+        public IActionResult GetAccountById (string id) {
             var account = _accountQuery.GetAccountById (id);
 
             if (account == null) {
@@ -65,7 +65,7 @@ namespace Smart_Accounting.API.Controllers.Accountss {
             }
 
             if (!ModelState.IsValid) {
-                return StatusCode (422);
+                return StatusCode (422, ModelState);
             }
 
             var accounts = _factory.NewAccount (newAcounts);
@@ -106,7 +106,7 @@ namespace Smart_Accounting.API.Controllers.Accountss {
         [ProducesResponseType (204)]
         [ProducesResponseType (404)]
         [ProducesResponseType (500)]
-        public IActionResult DeleteAccount (uint id) {
+        public IActionResult DeleteAccount (string id) {
             var account = _accountQuery.GetAccountById (id);
 
             if (account == null) {

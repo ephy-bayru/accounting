@@ -23,10 +23,12 @@ namespace Smart_Accounting.Application.AccountCharts.Factories {
 
             foreach (var item in newType) {
                 account.Add (new AccountChart () {
+                    AccountId = item.AccountId,
                     Name = item.Name,
                         AccountCode = item.AccountCode,
                         OrganizationId = item.OrganizationId,
-                        Active = item.Active
+                        Active = item.Active,
+                        AccountType = item.AccountType
 
                 });
             }
