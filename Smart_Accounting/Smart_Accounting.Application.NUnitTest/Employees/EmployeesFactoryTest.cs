@@ -25,7 +25,7 @@ namespace Smart_Accounting.Application.NUnitTest.Employees.Factories
 
             newEmployeeModel.First_Name = "ephrem";
             newEmployeeModel.Last_Name = "bayru";
-            newEmployeeModel.Account_Id = 123456;
+            newEmployeeModel.Account_Id = "123456";
             newEmployeeModel.Phone_No = "0920208549";
             newEmployeeModel.Email = "email";
             newEmployeeModel.Password = "123456";
@@ -34,7 +34,7 @@ namespace Smart_Accounting.Application.NUnitTest.Employees.Factories
             updateEmployee.id = 2;
             updateEmployee.First_Name = "ephy";
             updateEmployee.Last_Name = "bayru";
-            updateEmployee.Account_Id = 123456;
+            updateEmployee.Account_Id = "123456";
             updateEmployee.Phone_No = "0920208549";
             updateEmployee.Email = "mail";
             updateEmployee.Password = "123456";

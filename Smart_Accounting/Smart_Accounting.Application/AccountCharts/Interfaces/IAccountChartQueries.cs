@@ -13,7 +13,7 @@ using Smart_Accounting.Domain.AccountCharts;
 
 namespace Smart_Accounting.Application.AccountCharts.Interfaces {
     public interface IAccountChartQueries {
-        AccountChart GetAccountById (uint accountId);
+        AccountChart GetAccountById (string accountId);
         IEnumerable<AccountChart> GetAllAccounts (string type);
     }
 }

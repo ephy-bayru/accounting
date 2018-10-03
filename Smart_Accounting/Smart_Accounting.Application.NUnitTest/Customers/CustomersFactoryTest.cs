@@ -24,7 +24,7 @@ namespace Smart_Accounting.Application.NUnitTest.Customers.Factories
             customersCommandFactory = new CustomerCommandsFactory();
 
             newCustomerModel.FullName = "Microsoft";
-            newCustomerModel.AccountId = 123456;
+            newCustomerModel.AccountId = "123456";
             newCustomerModel.Phone_No = "0920208549";
             newCustomerModel.Email = "email";
             newCustomerModel.Country = "Ethiopia";
@@ -36,7 +36,7 @@ namespace Smart_Accounting.Application.NUnitTest.Customers.Factories
             // Update customer model
             updateCustomersModel.id = 2;
             updateCustomersModel.FullName = "Microsoft";
-            updateCustomersModel.AccountId = 123456;
+            updateCustomersModel.AccountId = "123456";
             updateCustomersModel.Phone_No = "0920208549";
             updateCustomersModel.Email = "email";
             updateCustomersModel.Country = "Ethiopia";
@@ -70,7 +70,7 @@ namespace Smart_Accounting.Application.NUnitTest.Customers.Factories
             {
                 Id = 2,
                 FullName = "Microsoft",
-                AccountId = 123456,
+                AccountId = "123456",
                 PhoneNo = "0920208549",
                 Email = "email",
                 Country = "Ethiopia",
@@ -99,7 +99,7 @@ namespace Smart_Accounting.Application.NUnitTest.Customers.Factories
             {
                 Id = 2,
                 FullName = "Microsoft",
-                AccountId = 123456,
+                AccountId = "123456",
                 PhoneNo = "0920208549",
                 Email = "email",
                 Country = "Ethiopia",
