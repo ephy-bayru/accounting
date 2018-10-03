@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Smart_Accounting.Domain;
 using Smart_Accounting.Domain.Customers;
 
 namespace Smart_Accounting.Application.Customers.Interfaces

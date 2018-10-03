@@ -1,8 +1,8 @@
 using System;
 
-namespace Smart_Accounting.Application.Customers.Models
+namespace Smart_Accounting.Application.Supplier.Models
 {
-    public class CustomerViewModel
+    public class SupplierViewModel
     {
         public uint id { get; set; }
         public string FullName { get; set; }

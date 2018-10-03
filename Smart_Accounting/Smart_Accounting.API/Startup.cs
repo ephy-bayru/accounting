@@ -36,6 +36,8 @@ using Smart_Accounting.API.Commons.Factories;
 using Smart_Accounting.Persistance;
 using Smart_Accounting.Application.Employee.Factories;
 using Smart_Accounting.Application.AccountCharts.Factories;
+using Smart_Accounting.Application.Customers.Commands.Factories;
+using Smart_Accounting.Application.Customers.Factories;
 
 namespace Smart_Accounting.API {
     public class Startup {
@@ -62,12 +64,14 @@ namespace Smart_Accounting.API {
             services.AddScoped<IEmployeeCommands, EmployeeCommand> ();
             services.AddScoped<IEmployeesQueries, EmployeesQuery> ();
             services.AddScoped<IEmployeeCommandsFactory, EmployeeCommandsFactory> ();
-            services.AddScoped<ISupplierCommandes, SupplierCommandes> ();
+            services.AddScoped<ISupplierCommandes, SupplierCommand> ();
             services.AddScoped<ISuppliersQuery, SuppliersQuery> ();
             services.AddScoped<ICustomerCommands, CustomerCommand> ();
+            services.AddScoped<ICustomerCommandsFactory, CustomerCommandsFactory>();
             services.AddScoped<ICustomerQuery, CustomerQuery> ();
             services.AddScoped<IResponseFactory, ResponseFactory> ();
             services.AddScoped<IEmployeeFactory, EmployeeFactory> ();
+            services.AddScoped<ICustomerFactory, CustomerFactory> ();
             services.AddCors (options => {
                 options.AddPolicy ("AllowSpecificOrigin",
                     builder1 => builder1.AllowAnyOrigin ().AllowAnyHeader ().AllowAnyMethod ());

@@ -1,18 +1,19 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 
-namespace Smart_Accounting.Application.Customers.Models
+namespace Smart_Accounting.Application.Supplier.Models
 {
-    public class CustomerViewModel
+    public abstract class SupplierDto
     {
-        public uint id { get; set; }
         public string FullName { get; set; }
         public string AccountId { get; set; }
         public string Email { get; set; }
-        public string PhoneNo { get; set; }
+        public string Phone_No { get; set; }
         public string Country { get; set; }
         public string City { get; set; }
         public string SubCity { get; set; }
+        public string HouseNo { get; set; }
         public string PostalCode { get; set; }
-        
+
     }
 }
