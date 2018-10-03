@@ -3,7 +3,7 @@ import { DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
 import {
   GridComponent, ExcelExportProperties, GroupSettingsModel,
   FilterSettingsModel, ToolbarItems, TextWrapSettingsModel, EditSettingsModel,
-  SelectionSettingsModel, PageSettingsModel, CommandModel
+  SelectionSettingsModel, PageSettingsModel, CommandModel, RowSelectEventArgs
 } from '@syncfusion/ej2-ng-grids';
 import { Router } from '@angular/router';
 import { AccountsService } from '../accounts.service';
@@ -65,6 +65,10 @@ export class AccountsViewComponent implements OnInit {
 
   handleError(error: HttpErrorResponse) {
     console.log(error);
+  }
+
+  rowSelected(args: any) {
+    console.log(args);
   }
 
   // Click handler for when the toolbar is cliked

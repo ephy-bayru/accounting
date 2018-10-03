@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { AccountsService } from '../accounts.service';
 import { ButtonComponent } from '@syncfusion/ej2-ng-buttons';
 import { DataManager, WebApiAdaptor, ReturnOption, Query } from '@syncfusion/ej2-data';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-accounts',
@@ -19,10 +20,10 @@ export class AccountsComponent implements OnInit {
   public accountFields: Object;
   public organizationQuery: Query;
   public organizationFields: Object;
-  public accountTypes: Object = ['ASSET', 'LIABLITY', 'REVENUE', 'EXPENSE', 'INCOME'];
+  public accountTypes: Object = ['ASSET', 'LIABILITY', 'REVENUE', 'EXPENCE', 'INCOME'];
   @ViewChild('statusBtn') statusBtn: ButtonComponent;
 
-  constructor(private formBuilder: FormBuilder, private account: AccountsService) {
+  constructor(private formBuilder: FormBuilder, private account: AccountsService, private location: Location) {
     this.createForm();
   }
 
@@ -82,7 +83,10 @@ export class AccountsComponent implements OnInit {
   }
 
   onSubmit() {
-    this.account.createAccountPeriod(this.accountForm.value['accounts']).subscribe(result => console.log(result));
+    this.account.createAccount(this.accountForm.value['accounts']).subscribe((success) => {
+      this.location.back();
+      alert('Account Created Successfully');
+    });
   }
 
   btnClick() {

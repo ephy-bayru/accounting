@@ -1,10 +1,10 @@
 <div class="e-card">
 
 
-  <ejs-grid [dataSource]='data' #grid height="300px" [allowExcelExport]="true" id='accounts' [toolbar]='toolbarOptions'
+  <ejs-grid [dataSource]='data' #grid height="200px" [allowExcelExport]="true" id='accounts' [toolbar]='toolbarOptions'
     [allowPaging]="true" [pageSettings]='pageSettings' [allowFiltering]="true" [allowSorting]="true" [allowGrouping]="true"
     [allowResizing]='true' [selectionSettings]='selectionOptions' [groupSettings]='groupOptions' allowFiltering='true'
-    allowTextWrap='true' [editSettings]='editSettings'
+    allowTextWrap='true'  [editSettings]='editSettings'
     [selectionSettings]='selectionOptions' [allowPdfExport]='true' (toolbarClick)='toolbarClick($event)'
     [filterSettings]="filterOptions">
     <e-columns>

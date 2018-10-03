@@ -17,9 +17,9 @@ describe('CalanderService', () => {
 
     calander = new CalanderPeriod();
     calander.id = 1;
-    calander.startDate = '2018-08-10';
-    calander.endDate = '2018-09-11';
-    calander.active = false;
+    calander.Start = '2018-08-10';
+    calander.End = '2018-09-11';
+    calander.Active = false;
 
   });
 
@@ -37,9 +37,9 @@ describe('CalanderService', () => {
   describe('GetAllCalanderPeriod', () => {
 
     it('Should Return array of Calander Periods', () => {
-      calanderPeriods = [{ id: 1,  startDate: '2018-09-10', endDate: '2018-11-10', active: false
+      calanderPeriods = [{ id: 1,  Start: '2018-09-10', End: '2018-11-10', Active: false
     },
-      {  id: 2,  startDate: '2018-09-10', endDate: '2018-11-10', active: true }
+      {  id: 2,  Start: '2018-09-10', End: '2018-11-10', Active: true }
       ];
     httpClient.get.and.returnValue(of(calanderPeriods));
     calanderService.getCalanderPeriodsList().subscribe(
@@ -54,7 +54,7 @@ describe('CalanderService', () => {
 describe('CreateCalanderPeriod', () => {
   it('Should Return A Single Company', () => {
     httpClient.post.and.returnValue(of(calander));
-    const newCal = { startDate: '2018-11-11',  endDate: '2018-12-11', active: false };
+    const newCal = { Start: '2018-11-11',  End: '2018-12-11', Active: false };
     calanderService.createCalanderPeriod(newCal).subscribe(
       cals => returned = cals
     );
