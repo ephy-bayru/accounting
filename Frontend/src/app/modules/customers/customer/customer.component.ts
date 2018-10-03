@@ -74,9 +74,9 @@ export class CustomerComponent implements OnInit {
   onSubmit() {
 
     const data = this.customerForm.value;
-    if (this.customerForm.invalid) {
-      return; // Validation failed, exit from method.
-    }
+    // if (this.customerForm.invalid) {
+    //   return; // Validation failed, exit from method.
+    // }
     // Form is valid, now perform create or update
     if (this.id) {
       this

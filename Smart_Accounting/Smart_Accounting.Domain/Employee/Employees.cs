@@ -2,7 +2,7 @@ using System;
 using Smart_Accounting.Domain.AccountCharts;
 
 namespace Smart_Accounting.Domain.Employe {
-    public class Employees {
+    public partial class Employees {
         public uint Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

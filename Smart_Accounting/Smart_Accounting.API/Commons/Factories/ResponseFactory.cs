@@ -24,7 +24,12 @@ namespace Smart_Accounting.API.Commons.Factories
 
         public ResponseFormat CreateCustomerResonse(List<CustomerViewModel> customer)
         {
-            throw new System.NotImplementedException();
+            ResponseFormat format = new ResponseFormat() {
+                Items = customer,
+                Count = customer.Count
+            };
+
+            return format;
         }
 
         public ResponseFormat CreateEmployeeResponse(List<EmployeeViewModel> employee)

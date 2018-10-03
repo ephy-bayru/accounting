@@ -4,30 +4,36 @@ using Smart_Accounting.Application.Employee.Models;
 using Smart_Accounting.Application.Interfaces;
 using Smart_Accounting.Domain.Employe;
 
-namespace Smart_Accounting.Application.Employee.Commands {
-    public class EmployeeCommand : IEmployeeCommands {
+namespace Smart_Accounting.Application.Employee.Commands
+{
+    public class EmployeeCommand : IEmployeeCommands
+    {
 
         private readonly IAccountingDatabaseService _database;
         private IEmployeeCommandsFactory _employeeCmdFactory;
         public EmployeeCommand(IAccountingDatabaseService database,
-                                IEmployeeCommandsFactory employeeCmdFactory) {
+                                IEmployeeCommandsFactory employeeCmdFactory)
+        {
             _database = database;
             _employeeCmdFactory = employeeCmdFactory;
         }
-        public void Create (NewEmployeeModel newEmployee) {
+        public void Create(NewEmployeeModel newEmployee)
+        {
             var employee = _employeeCmdFactory.NewEmployee(newEmployee);
 
             _database.Employees.Add(employee);
             _database.Save();
-            
+
         }
 
-        public void Delete (Employees employee) {
+        public void Delete(Employees employee)
+        {
             _database.Employees.Remove(employee);
             _database.Save();
         }
 
-        public void Update (Employees employee, UpdatedEmployeeDto updatedEmployee ) {
+        public void Update(Employees employee, UpdatedEmployeeDto updatedEmployee)
+        {
             var emp = _employeeCmdFactory.UpdatesEmployee(employee, updatedEmployee);
             _database.Employees.Update(emp);
             _database.Save();
