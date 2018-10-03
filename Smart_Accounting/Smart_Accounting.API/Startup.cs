@@ -64,7 +64,7 @@ namespace Smart_Accounting.API {
             services.AddScoped<IEmployeeCommands, EmployeeCommand> ();
             services.AddScoped<IEmployeesQueries, EmployeesQuery> ();
             services.AddScoped<IEmployeeCommandsFactory, EmployeeCommandsFactory> ();
-            services.AddScoped<ISupplierCommandes, SupplierCommandes> ();
+            services.AddScoped<ISupplierCommandes, SupplierCommand> ();
             services.AddScoped<ISuppliersQuery, SuppliersQuery> ();
             services.AddScoped<ICustomerCommands, CustomerCommand> ();
             services.AddScoped<ICustomerCommandsFactory, CustomerCommandsFactory>();
