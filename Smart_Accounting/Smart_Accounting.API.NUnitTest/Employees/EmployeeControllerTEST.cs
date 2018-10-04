@@ -37,6 +37,7 @@ namespace Smart_Accounting.API.NUnitTest.Employee
         private Mock<IEmployeesQueries> MockIEmployeeQuery;
         private Mock<IResponseFactory> MockIResponseFactory;
         private Mock<ILoggerFactory> MockLoggerFactory;
+        private EmployeesController employeeController;
         private Mock<HttpContext> MockHttpContext;
         private uint id;
 
@@ -91,13 +92,13 @@ namespace Smart_Accounting.API.NUnitTest.Employee
             MockIEmployeeFactory = new Mock<IEmployeeFactory>();
             MockIEmployeeQuery = new Mock<IEmployeesQueries>();
             MockIResponseFactory = new Mock<IResponseFactory>();
-            MockLoggerFactory = new Mock<ILoggerFactory>();
+            // MockLoggerFactory = new Mock<ILoggerFactory>();
             // MockHttpContext = new Mock<HttpContext>();
             MockIEmployeeFactory.Setup(factory => factory.createEmployeeView(employee)).Returns(employeeView);
             MockIEmployeeQuery.Setup(query => query.GetById(id)).Returns(emply);
             MockLoggerFactory.Setup(p => p.CreateLogger(It.IsAny<string>())).Returns(Mock.Of<ILogger>());
 
-            // EmployeesController = new EmployeesController (
+            // var EmployeesController = new EmployeesController (
             //     MockIEmployeeCommand.Object,
             //     MockIEmployeeFactory.Object,
             //     MockIEmployeeQuery.Object,
