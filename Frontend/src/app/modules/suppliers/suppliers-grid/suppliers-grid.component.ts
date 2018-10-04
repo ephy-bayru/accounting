@@ -65,7 +65,6 @@ export class SuppliersGridComponent implements OnInit {
     this.selectionOptions = { mode: 'Both', type: 'Single' };
     this.commands = [
       { type: 'Delete', buttonOption: { iconCss: 'e-icons e-delete', cssClass: 'e-flat' } },
-      { type: 'Edit', buttonOption: { iconCss: ' e-icons e-edit', cssClass: 'e-flat' } },
     ];
 
   }
