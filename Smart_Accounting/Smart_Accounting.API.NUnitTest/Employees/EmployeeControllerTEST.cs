@@ -21,7 +21,7 @@ using Smart_Accounting.API.Commons.Factories;
 using Smart_Accounting.API.Controllers.Employee;
 using Smart_Accounting.Domain.Employe;
 
-namespace Smart_Accounting.API.NUnitTest.Employees {
+namespace Smart_Accounting.API.NUnitTest.Employes {
     [TestFixture]
     public class EmployeeControllerTEST {
         private Employees employee;
@@ -43,12 +43,12 @@ namespace Smart_Accounting.API.NUnitTest.Employees {
                 FirstName = "ephrem",
                 LastName = "bayru",
                 Email = "e@g.com",
-                PhoneNo = 0920208549,
+                PhoneNo = "0920208549",
                 Gender = "male",
-                Password = 123456,
+                Password = "123456",
                 BirthDate = DateTime.Now,
                 DateCreated = DateTime.Now,
-                AccountId = 123456,
+                AccountId = "123456",
                 DateUpdated = DateTime.Now
             };
             employeeView = new EmployeeViewModel () {
