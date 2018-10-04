@@ -38,6 +38,9 @@ using Smart_Accounting.Application.Employee.Factories;
 using Smart_Accounting.Application.AccountCharts.Factories;
 using Smart_Accounting.Application.Customers.Commands.Factories;
 using Smart_Accounting.Application.Customers.Factories;
+using Smart_Accounting.Application.Supplier.Commands.Factories;
+using Smart_Accounting.Application.Supplier.Factories;
+
 
 namespace Smart_Accounting.API {
     public class Startup {
@@ -61,17 +64,21 @@ namespace Smart_Accounting.API {
             services.AddScoped<ICalendarPeriodsCommands, CalendarPeriodsCommands> ();
             services.AddScoped<ICalendarPeriodsCommandsFactory, CalendarPeriodCommandsFactorys> ();
 
+            services.AddScoped<IResponseFactory, ResponseFactory> ();
             services.AddScoped<IEmployeeCommands, EmployeeCommand> ();
             services.AddScoped<IEmployeesQueries, EmployeesQuery> ();
             services.AddScoped<IEmployeeCommandsFactory, EmployeeCommandsFactory> ();
-            services.AddScoped<ISupplierCommandes, SupplierCommand> ();
-            services.AddScoped<ISuppliersQuery, SuppliersQuery> ();
+            services.AddScoped<IEmployeeFactory, EmployeeFactory> ();
             services.AddScoped<ICustomerCommands, CustomerCommand> ();
             services.AddScoped<ICustomerCommandsFactory, CustomerCommandsFactory>();
             services.AddScoped<ICustomerQuery, CustomerQuery> ();
-            services.AddScoped<IResponseFactory, ResponseFactory> ();
-            services.AddScoped<IEmployeeFactory, EmployeeFactory> ();
             services.AddScoped<ICustomerFactory, CustomerFactory> ();
+            services.AddScoped<ISupplierCommandes, SupplierCommand> ();
+            services.AddScoped<ISuppliersQuery, SuppliersQuery> ();
+            services.AddScoped<ISupplierCommandsFactory, SupplierCommandsFactory>();
+            services.AddScoped<ISuppliersFactory, SupplierFactory>();
+
+
             services.AddCors (options => {
                 options.AddPolicy ("AllowSpecificOrigin",
                     builder1 => builder1.AllowAnyOrigin ().AllowAnyHeader ().AllowAnyMethod ());
