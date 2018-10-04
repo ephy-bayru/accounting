@@ -108,7 +108,7 @@ namespace Smart_Accounting.Application.NUnitTest.AccountCharts.Commands {
                 AccountType = "LIABILITY",
                 AccountId = "ACC-003",
                 OrganizationId = 11
-                })).Returns(true);
+                }));
             MockIAccountingDatabaseService.Setup (database => database.Save ());
 
         }
@@ -130,12 +130,23 @@ namespace Smart_Accounting.Application.NUnitTest.AccountCharts.Commands {
 
             var result = account_command.updateAccount (updatedAccounts);
 
-            Assert.That (result.Equals (updatedAccounts));
+            Assert.That (result.Equals (true));
         }
 
         [Test]
         public void AccountCommand_DeleteAccount_VALID_DATA_TEST () {
+            AccountChartCommands account_command = new AccountChartCommands (MockIAccountingDatabaseService.Object);
 
+            var result = account_command.deleteAccount (new AccountChart () {
+                AccountCode = "ACC-006",
+                Name = "Fourth Account",
+                Active = 1,
+                AccountType = "LIABILITY",
+                AccountId = "ACC-003",
+                OrganizationId = 11
+                });
+
+            Assert.That (result.Equals (true));
         }
 
     }

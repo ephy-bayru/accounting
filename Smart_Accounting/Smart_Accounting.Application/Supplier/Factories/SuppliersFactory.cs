@@ -16,11 +16,7 @@ namespace Smart_Accounting.Application.Supplier.Factories
             {
                 SupplierViewModel view = new SupplierViewModel()
                 {
-<<<<<<< HEAD
-                    id = (uint) item.Id,
-=======
                     id = (uint)item.Id,
->>>>>>> 7eeb66b8a61329fc56599aef553e038cede0b212
                     FullName = item.FullName,
                     AccountId = item.AccountId,
                     Email = item.Email,
