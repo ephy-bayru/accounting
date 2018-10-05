@@ -6,7 +6,7 @@ namespace Smart_Accounting.Domain.Supplier
 {
     public partial class Suppliers
     {
-        public int Id { get; set; }
+        public uint Id { get; set; }
         public string FullName { get; set; }
         public string Email { get; set; }
         public string PhoneNo { get; set; }

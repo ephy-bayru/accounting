@@ -13,7 +13,7 @@ namespace Smart_Accounting.Persistance.Supplier {
 
             builder.Property (e => e.Id)
                 .HasColumnName ("ID")
-                .HasColumnType ("int(10)");
+                .HasColumnType ("uint(10)");
 
             builder.Property (e => e.AccountId)
                 .HasColumnName ("ACCOUNT_ID")

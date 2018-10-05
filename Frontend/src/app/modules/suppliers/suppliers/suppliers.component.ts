@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Location } from '@angular/common';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup, FormControl} from '@angular/forms';
 import { SuppliersService } from './../suppliers.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Suppliers } from './../suppliers';
@@ -50,28 +50,34 @@ export class SuppliersComponent implements OnInit {
     this.suppplierForm = this
       .fb
       .group({
-        Full_Name: [(Supplier.Full_Name) ? Supplier.Full_Name : '', Validators.required]
-        ,
-        Email: [(Supplier.Email) ? Supplier.Email : '', Validators.required]
-        ,
-        Phone_No: [(Supplier.Phone_No) ? Supplier.Phone_No : '', Validators.required]
-        ,
-        Account_Number: [(Supplier.Account_Number) ? Supplier.Account_Number : '', Validators.required]
-        ,
-        Account_id: [(Supplier.Account_id) ? Supplier.Account_id : '', Validators.required]
-        ,
-        Country: [(Supplier.Country) ? Supplier.Country : '', Validators.required]
-        ,
-        City: [(Supplier.City) ? Supplier.City : '', Validators.required]
-        ,
-        SubCity: [(Supplier.SubCity) ? Supplier.SubCity : '', Validators.required]
-        ,
-        House_No: [(Supplier.House_No) ? Supplier.House_No : '', Validators.required]
-        ,
-        Postal_Code: [(Supplier.Postal_Code) ? Supplier.Postal_Code : '', Validators.maxLength(5)]
-        ,
+        Full_Name: new FormControl('', [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(64)
+        ]),
+        Email: new FormControl('', [
+          Validators.required,
+          Validators.email,
+          Validators.maxLength(256)
+        ]),
+        Phone_No: new FormControl('', [
+          Validators.required,
+          Validators.minLength(9),
+          Validators.maxLength(32)
+        ]),
+        Account_Number: new FormControl('', [
+          Validators.required,
+          Validators.minLength(9)
+        ]),
+        Account_id: new FormControl('', [Validators.required]),
+        Country: new FormControl('', [Validators.required]),
+        City: new FormControl('', [Validators.required]),
+        SubCity: new FormControl('', [Validators.required]),
+        House_No: new FormControl('', [Validators.required]),
+        Postal_Code: new FormControl('', [Validators.maxLength(5)]),
       });
   }
+
   supplierModel(): any {
     const formModel = this.suppplierForm.value;
 
