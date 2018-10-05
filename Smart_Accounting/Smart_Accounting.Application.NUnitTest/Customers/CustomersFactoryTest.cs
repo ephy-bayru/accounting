@@ -53,8 +53,8 @@ namespace Smart_Accounting.Application.NUnitTest.Customers.Factories
 
             Assert.That(customer.Id, Is.EqualTo(1));
             Assert.That(customer.FullName, Is.EqualTo("Microsoft"));
-            Assert.That(customer.AccountId, Is.EqualTo(123456));
-            Assert.That(customer.PhoneNo, Is.EqualTo(0920208549));
+            Assert.That(customer.AccountId, Is.EqualTo("123456"));
+            Assert.That(customer.PhoneNo, Is.EqualTo("0920208549"));
             Assert.That(customer.Email, Is.EqualTo("mail"));
             Assert.That(customer.Country, Is.EqualTo("Ethiopia"));
             Assert.That(customer.City, Is.EqualTo("Adis"));
