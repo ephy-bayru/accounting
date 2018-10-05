@@ -50,31 +50,23 @@ export class SuppliersComponent implements OnInit {
     this.suppplierForm = this
       .fb
       .group({
-        Full_Name: new FormControl('', [
-          Validators.required,
+        Full_Name: ['', [Validators.required,
           Validators.minLength(2),
-          Validators.maxLength(64)
-        ]),
-        Email: new FormControl('', [
-          Validators.required,
+          Validators.maxLength(64)]],
+        Email: ['', [Validators.required,
           Validators.email,
-          Validators.maxLength(256)
-        ]),
-        Phone_No: new FormControl('', [
-          Validators.required,
+          Validators.maxLength(256)]],
+        Phone_No: ['', [Validators.required,
           Validators.minLength(9),
-          Validators.maxLength(32)
-        ]),
-        Account_Number: new FormControl('', [
-          Validators.required,
-          Validators.minLength(9)
-        ]),
-        Account_id: new FormControl('', [Validators.required]),
-        Country: new FormControl('', [Validators.required]),
-        City: new FormControl('', [Validators.required]),
-        SubCity: new FormControl('', [Validators.required]),
-        House_No: new FormControl('', [Validators.required]),
-        Postal_Code: new FormControl('', [Validators.maxLength(5)]),
+          Validators.maxLength(32)]],
+        Account_Number: ['', [Validators.required,
+          Validators.minLength(9)]],
+        Account_id: ['', Validators.required],
+        Country:  ['', Validators.required],
+        City:  ['', Validators.required],
+        SubCity:  ['', Validators.required],
+        House_No:  ['', Validators.required],
+        Postal_Code:  ['', Validators.required]
       });
   }
 

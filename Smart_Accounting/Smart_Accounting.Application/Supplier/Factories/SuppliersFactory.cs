@@ -30,5 +30,15 @@ namespace Smart_Accounting.Application.Supplier.Factories
             }
             return supplierViews;
         }
+
+        public Suppliers CreateNewSupplier(NewSupplierModel supplier)
+        {
+            return new Suppliers() {
+
+                FullName = supplier.FullName,
+                PhoneNo = supplier.Phone_No,
+                Email = supplier.Email
+            };
+        }
     }
 }

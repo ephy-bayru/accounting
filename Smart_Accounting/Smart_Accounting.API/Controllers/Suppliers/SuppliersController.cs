@@ -82,8 +82,7 @@ namespace Smart_Accounting.API.Controllers.Suppliers
         [ProducesResponseType(typeof(string), 200)]
         public IActionResult CreateNewSupplierr([FromBody] NewSupplierModel newSupplier)
         {
-            try
-            {
+         
                 if (newSupplier == null)
                 {
                     // _logger.LogError("Empty supplier data");
@@ -91,21 +90,17 @@ namespace Smart_Accounting.API.Controllers.Suppliers
                 }
                 if (!ModelState.IsValid)
                 {
-                    // _logger.LogError("invalid data sent from users");
-                    ModelState.AddModelError("Registration error", "Invalid Suppliers form Data");
+                    // // _logger.LogError("invalid data sent from users");
+                    // ModelState.AddModelError("Registration error", "Invalid Suppliers form Data");
                     return StatusCode(422, "Invalid supplier data model sent from users");
                 }
-
-                _supplierCommands.Create(newSupplier);
+        var supp = _supplierFactory.CreateNewSupplier(newSupplier);
+                _supplierCommands.Create(supp);
                 // _logger.LogInformation("successfully registered new supplier!");
-                return StatusCode(201, newSupplier);
+                return StatusCode(201, supp);
 
-            }
-            catch (Exception x)
-            {
-                // _logger.LogError($"something went wrong: {x.Message}");
-                return StatusCode(500, $"something went wrong: {x.Message}");
-            }
+            
+           
         }
 
 
