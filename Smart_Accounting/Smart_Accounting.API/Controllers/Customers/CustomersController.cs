@@ -50,6 +50,7 @@ namespace Smart_Accounting.API.Controllers.Customers
 
 
         [HttpGet("{id}")]
+        [ProducesResponseType(typeof(string), 200)]
         public IActionResult GetCustomerById(uint id)
         {
             try
@@ -58,8 +59,7 @@ namespace Smart_Accounting.API.Controllers.Customers
 
                 if (customers == null)
                 {
-                    _logger.LogError($"customer with id: {id}, hasn't been found.");
-                    return NotFound();
+                    return NotFound($"customer with id: {id}, hasn't been found.");
                 }
                 else
                 {
@@ -69,26 +69,24 @@ namespace Smart_Accounting.API.Controllers.Customers
             }
             catch (Exception x)
             {
-                _logger.LogError($"sonething went wrong: {x.Message}");
-                return StatusCode(500, "internal serve error");
+                return StatusCode(500, $"sonething went wrong: {x.Message}");
             }
         }
 
 
         [HttpPost]
+        [ProducesResponseType(typeof(string), 200)]
         public IActionResult CreateNewCustomer([FromBody] NewCustomerModel newCustomer)
         {
             try
             {
                 if (newCustomer == null)
                 {
-                    _logger.LogError("Empty customers data");
-                    return BadRequest("data is empty");
+                    return BadRequest("Empty customers data");
                 }
                 if (!ModelState.IsValid)
                 {
-                    _logger.LogError("invalid data sent from users");
-                    return StatusCode(422, "Invalid customer model");
+                    return StatusCode(422, "Invalid customer data model sent from users");
                 }
 
                 _customerCommands.Create(newCustomer);
@@ -98,13 +96,13 @@ namespace Smart_Accounting.API.Controllers.Customers
             }
             catch (Exception x)
             {
-                _logger.LogError($"something went wrong: {x.Message}");
-                return StatusCode(500, "internal server error");
+                return StatusCode(500, $"internal server error: {x.Message}");
             }
         }
 
 
         [HttpPut("{id}")]
+        [ProducesResponseType(typeof(string), 200)]
         public IActionResult UpdateCustomer(uint id, [FromBody] UpdateCustomerModel updateCustomer)
         {
             try
@@ -129,14 +127,14 @@ namespace Smart_Accounting.API.Controllers.Customers
             }
             catch (Exception x)
             {
-                _logger.LogError($"something went wrong: {x.Message}");
-                return StatusCode(500, "internal server error");
+                return StatusCode(500, $"internal server error: {x.Message}");
 
             }
         }
 
 
         [HttpDelete("{id}")]
+        [ProducesResponseType(typeof(string), 200)]
         public IActionResult DeleteCustomer(uint id)
         {
             try
@@ -153,8 +151,7 @@ namespace Smart_Accounting.API.Controllers.Customers
             }
             catch (Exception x)
             {
-                _logger.LogError($"Something went wrong: {x.Message}");
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, $"Internal server error: {x.Message}");
             }
 
         }

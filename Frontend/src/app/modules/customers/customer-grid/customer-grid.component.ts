@@ -72,8 +72,8 @@ export class CustomerGridComponent implements OnInit {
     if (args.item.id === 'customer_add') {
       this.router.navigate(['add/customer']);
     } else if (args.item.id === 'customer_edit') {
-      const selectedemp: Object = this.grid.getSelectedRecords();
-      this.router.navigate(['update/customer', selectedemp[0]['id']]);
+      const selectedcust: Object = this.grid.getSelectedRecords();
+      this.router.navigate(['update/customer', selectedcust[0]['id']]);
     } else if (args.item.id === 'customer_pdfexport') {
       this.grid.pdfExport();
     } else if (args.item.id === 'customer_excelexport') {

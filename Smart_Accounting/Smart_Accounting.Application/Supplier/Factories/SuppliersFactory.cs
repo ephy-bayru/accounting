@@ -16,7 +16,7 @@ namespace Smart_Accounting.Application.Supplier.Factories
             {
                 SupplierViewModel view = new SupplierViewModel()
                 {
-                    id = (uint)item.Id,
+                    id = item.Id,
                     FullName = item.FullName,
                     AccountId = item.AccountId,
                     Email = item.Email,
@@ -29,6 +29,16 @@ namespace Smart_Accounting.Application.Supplier.Factories
                 supplierViews.Add(view);
             }
             return supplierViews;
+        }
+
+        public Suppliers CreateNewSupplier(NewSupplierModel supplier)
+        {
+            return new Suppliers() {
+
+                FullName = supplier.FullName,
+                PhoneNo = supplier.Phone_No,
+                Email = supplier.Email
+            };
         }
     }
 }

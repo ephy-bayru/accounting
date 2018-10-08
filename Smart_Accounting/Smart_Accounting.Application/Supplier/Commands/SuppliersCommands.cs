@@ -18,11 +18,11 @@ namespace Smart_Accounting.Application.Supplier.Commands
             _database = database;
             supplierCommandFactory = SupplierCommandFactory;
         }
-        public void Create(NewSupplierModel newSupplier)
+        public void Create(Suppliers newSupplier)
         {
-            var supplier = supplierCommandFactory.NewSupplier(newSupplier);
 
-            _database.Suppliers.Add(supplier);
+
+            _database.Suppliers.Add(newSupplier);
             _database.Save();
 
         }

@@ -72,8 +72,8 @@ export class SuppliersGridComponent implements OnInit {
     if (args.item.id === 'supplier_add') {
       this.router.navigate(['add/supplier']);
     } else if (args.item.id === 'supplier_edit') {
-      const selectedemp: Object = this.grid.getSelectedRecords();
-      this.router.navigate(['update/supplier', selectedemp[0]['id']]);
+      const selectedsup: Object = this.grid.getSelectedRecords();
+      this.router.navigate(['update/supplier', selectedsup[0]['id']]);
     } else if (args.item.id === 'supplier_pdfexport') {
       this.grid.pdfExport();
     } else if (args.item.id === 'supplier_excelexport') {

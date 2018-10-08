@@ -7,5 +7,7 @@ namespace Smart_Accounting.Application.Supplier.Interfaces
     public interface ISuppliersFactory
     {
         List<SupplierViewModel> createSupplierView(IEnumerable<Suppliers> supplier);
+
+         Suppliers CreateNewSupplier(NewSupplierModel supplier);
     }
 }
