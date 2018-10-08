@@ -20,7 +20,6 @@ namespace Smart_Accounting.Domain.Customers {
         public string PostalCode { get; set; }
         public DateTime? DateCreated { get; set; }
         public DateTime? DateUpdated { get; set; }
-
         public ICollection<CustomerAccount> CustomerAccount { get; set; }
     }
 }
