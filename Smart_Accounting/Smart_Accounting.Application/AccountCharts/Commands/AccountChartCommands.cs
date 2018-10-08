@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Smart_Accounting.Application.AccountCharts.Interfaces;
 using Smart_Accounting.Application.AccountCharts.Models;
+
 using Smart_Accounting.Application.Interfaces;
 using Smart_Accounting.Domain.AccountCharts;
 
@@ -9,7 +10,7 @@ namespace Smart_Accounting.Application.AccountCharts.Command {
 
         private readonly IAccountingDatabaseService _database;
 
-        public AccountChartCommands (IAccountingDatabaseService database) {
+        public AccountChartCommands (IAccountingDatabaseService database ) {
             _database = database;
         }
 

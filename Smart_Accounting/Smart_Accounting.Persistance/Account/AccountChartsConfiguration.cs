@@ -6,8 +6,9 @@ using Smart_Accounting.Domain.AccountCharts;
 namespace Smart_Accounting.Persistance.AccountCharts {
     public class AccountsChartsConfiguration : IEntityTypeConfiguration<AccountChart> {
         public void Configure (EntityTypeBuilder<AccountChart> builder) {
-            builder.ToTable ("account_chart");
             builder.HasKey (e => e.AccountId);
+
+            builder.ToTable ("account_chart");
 
             builder.HasIndex (e => e.AccountId)
                 .HasName ("ACCOUNT_ID_UNIQUE")
@@ -22,10 +23,6 @@ namespace Smart_Accounting.Persistance.AccountCharts {
 
             builder.Property (e => e.AccountCode)
                 .HasColumnName ("account_code")
-                .HasColumnType ("varchar(30)");
-
-            builder.Property (e => e.AccountType)
-                .HasColumnName ("account_type")
                 .HasColumnType ("varchar(30)");
 
             builder.Property (e => e.Active)

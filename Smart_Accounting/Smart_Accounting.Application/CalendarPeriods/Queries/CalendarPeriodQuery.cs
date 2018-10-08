@@ -15,6 +15,11 @@ namespace Smart_Accounting.Application.CalendarPeriods.Queries {
             _database = database;
         }
 
+        public CalendarPeriod getActivePeriod()
+        {
+            return _database.CalendarPeriod.Where(period => period.Active == 1).FirstOrDefault();
+        }
+
         public IEnumerable<CalendarPeriod> GetAll () {
             return _database.CalendarPeriod.ToList ();
         }

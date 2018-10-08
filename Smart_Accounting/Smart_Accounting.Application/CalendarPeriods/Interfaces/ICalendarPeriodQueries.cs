@@ -13,5 +13,7 @@ namespace Smart_Accounting.Application.CalendarPeriods.Interfaces
         IEnumerable<CalendarPeriod> GetAll();
          bool IsStartDateOveraped(DateTime startDate);
         bool IsEndDateOveraped(DateTime endDate);
+
+        CalendarPeriod getActivePeriod();
     }
 }

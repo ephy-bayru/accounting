@@ -7,13 +7,7 @@ namespace Smart_Accounting.Persistance.Customers {
         public void Configure (EntityTypeBuilder<Customer> builder) {
             builder.ToTable ("customer");
 
-            builder.HasIndex (e => e.AccountId)
-                .HasName ("fk_customer_account_idx");
-
-
-            builder.Property (e => e.AccountId)
-                .HasColumnName ("ACCOUNT_ID")
-                .HasColumnType ("varchar(30)");
+            builder.Property (e => e.Id).HasColumnName ("ID");
 
             builder.Property (e => e.City)
                 .HasColumnName ("CITY")
@@ -60,11 +54,6 @@ namespace Smart_Accounting.Persistance.Customers {
             builder.Property (e => e.SubCity)
                 .HasColumnName ("SUB_CITY")
                 .HasColumnType ("varchar(45)");
-
-            builder.HasOne (d => d.Account)
-                .WithMany (p => p.Customer)
-                .HasForeignKey (d => d.AccountId)
-                .HasConstraintName ("fk_customer_account");
         }
     }
 }
