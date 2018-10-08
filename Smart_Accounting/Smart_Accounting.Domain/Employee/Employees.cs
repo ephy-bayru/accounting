@@ -12,9 +12,7 @@ namespace Smart_Accounting.Domain.Employe {
         public string Password { get; set; }
         public DateTime BirthDate { get; set; }
         public DateTime? DateCreated { get; set; }
-        public string AccountId { get; set; }
         public DateTime? DateUpdated { get; set; }
 
-        public AccountChart Account { get; set; }
     }
 }

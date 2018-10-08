@@ -13,11 +13,8 @@ namespace Smart_Accounting.Domain.AccountCharts {
     public class AccountChart {
         public AccountChart () {
             BankAccounts = new HashSet<BankAccounts> ();
-            Customer = new HashSet<Customer> ();
-            Employees = new HashSet<Employees> ();
             Jornal = new HashSet<Jornal> ();
-            OpeningBalance = new HashSet<OpeningBalance> ();
-            Suppliers = new HashSet<Suppliers> ();
+            OpeningBalance = new List<OpeningBalance> ();
             Tax = new HashSet<Tax> ();
         }
 
@@ -32,11 +29,8 @@ namespace Smart_Accounting.Domain.AccountCharts {
 
         public Organization Organization { get; set; }
         public ICollection<BankAccounts> BankAccounts { get; set; }
-        public ICollection<Customer> Customer { get; set; }
-        public ICollection<Employees> Employees { get; set; }
         public ICollection<Jornal> Jornal { get; set; }
-        public ICollection<OpeningBalance> OpeningBalance { get; set; }
-        public ICollection<Suppliers> Suppliers { get; set; }
+        public List<OpeningBalance> OpeningBalance { get; set; } 
         public ICollection<Tax> Tax { get; set; }
     }
 

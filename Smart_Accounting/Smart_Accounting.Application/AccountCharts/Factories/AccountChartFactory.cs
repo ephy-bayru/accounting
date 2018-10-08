@@ -9,27 +9,40 @@
 using System.Collections.Generic;
 using Smart_Accounting.Application.AccountCharts.Interfaces;
 using Smart_Accounting.Application.AccountCharts.Models;
+using Smart_Accounting.Application.CalendarPeriods.Interfaces;
 using Smart_Accounting.Domain.AccountCharts;
+using Smart_Accounting.Domain.OpeningBalances;
 
 namespace Smart_Accounting.Application.AccountCharts.Factories {
     public class AccountChartFactory : IAccountChartFactory {
+        private readonly ICalendarPeriodQueries _period;
 
-        public AccountChartFactory () {
-
+        public AccountChartFactory (ICalendarPeriodQueries period) {
+            _period = period;
         }
 
         public IEnumerable<AccountChart> NewAccount (IEnumerable<NewAccountModel> newType) {
             List<AccountChart> account = new List<AccountChart> ();
-
+    var active = _period.getActivePeriod();
             foreach (var item in newType) {
+                OpeningBalance ob = new OpeningBalance(){
+                    Credit = item.OpeningBalance
+                };
                 account.Add (new AccountChart () {
                     AccountId = item.AccountId,
                     Name = item.Name,
                         AccountCode = item.AccountCode,
                         OrganizationId = item.OrganizationId,
                         Active = item.Active,
-                        AccountType = item.AccountType
-
+                        AccountType = item.AccountType,
+                        OpeningBalance = new List<OpeningBalance>(){
+                            new OpeningBalance() {
+                                AccountId = item.AccountId,
+                                Credit =  item.OpeningBalance,
+                                PeriodId = active.Id
+                            }
+                        }
+                        
                 });
             }
 

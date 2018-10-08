@@ -8,16 +8,7 @@ namespace Smart_Accounting.Persistance.Supplier {
 
             builder.ToTable ("suppliers");
 
-            builder.HasIndex (e => e.AccountId)
-                .HasName ("fk_customer_account_idx");
-
-            builder.Property (e => e.Id)
-                .HasColumnName ("ID")
-                .HasColumnType ("int(10)");
-
-            builder.Property (e => e.AccountId)
-                .HasColumnName ("ACCOUNT_ID")
-                .HasColumnType ("varchar(45)");
+            builder.Property (e => e.Id).HasColumnName ("ID");
 
             builder.Property (e => e.City)
                 .HasColumnName ("CITY")
@@ -65,10 +56,6 @@ namespace Smart_Accounting.Persistance.Supplier {
                 .HasColumnName ("SUB_CITY")
                 .HasColumnType ("varchar(30)");
 
-            builder.HasOne (d => d.Account)
-                .WithMany (p => p.Suppliers)
-                .HasForeignKey (d => d.AccountId)
-                .HasConstraintName ("fk_supplier_account");
         }
     }
 }
