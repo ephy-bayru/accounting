@@ -23,7 +23,6 @@ namespace Smart_Accounting.API.Controllers.Employee
     {
         private IEmployeesQueries _employeesQuery;
         private IEmployeeCommands _employeeCommands;
-        private readonly ILogger<EmployeesController> _logger;
         private readonly IEmployeeFactory _employeeFactory;
         private readonly IResponseFactory _response;
 
@@ -35,7 +34,6 @@ namespace Smart_Accounting.API.Controllers.Employee
         {
             _employeesQuery = employeeQuery;
             _employeeCommands = employeeCommand;
-            _logger = logger;
             _employeeFactory = employeeFactory;
             _response = response;
         }
@@ -46,16 +44,14 @@ namespace Smart_Accounting.API.Controllers.Employee
         {
 
             var employees = _employeesQuery.GetAll();
-            _logger.LogInformation($"Returned all employees from database.");
             var view = _employeeFactory.createEmployeeView(employees);
-
             var response = _response.CreateEmployeeResponse(view);
             return StatusCode(200, response);
 
         }
 
         [HttpGet("{id}")]
-        [ProducesResponseType(200)]
+        [ProducesResponseType(typeof(string), 200)]
         [ProducesResponseType(404)]
         public IActionResult GetEmployeeById(uint id)
         {
@@ -66,19 +62,16 @@ namespace Smart_Accounting.API.Controllers.Employee
 
                 if (employees == null)
                 {
-                    _logger.LogError($"employee with id: {id}, hasn't been found.");
-                    return NotFound();
+                    return NotFound($"employee with id: {id}, hasn't been found.");
                 }
                 else
                 {
-                    _logger.LogInformation($"Returned employee with id: {id}");
                     return Ok(employees);
                 }
             }
             catch (Exception x)
             {
-                _logger.LogError($"sonething went wrong: {x.Message}");
-                return StatusCode(500, "internal serve error");
+                return StatusCode(500, $"internal serve error: {x.Message}");
             }
         }
 
@@ -89,31 +82,19 @@ namespace Smart_Accounting.API.Controllers.Employee
         public IActionResult CreateNewEmployee([FromBody] NewEmployeeModel newEmployee)
         {
 
-            try
-            {
+            
                 if (newEmployee == null)
                 {
-                    _logger.LogError("Empty users data");
-                    return BadRequest("user data is empty");
+                    return BadRequest("Empty user data!");
                 }
                 if (!ModelState.IsValid)
                 {
-                    _logger.LogError("invalid data sent from users");
-                    return StatusCode(422, "Invalid user model");
+                    return StatusCode(422, "Invalid data sent from users");
                 }
-
                 _employeeCommands.Create(newEmployee);
-                _logger.LogInformation("successfully registered new employee!");
                 return StatusCode(201, newEmployee);
-
             }
-            catch (Exception x)
-            {
-                _logger.LogError($"something went wrong: {x.Message}");
-                return StatusCode(500, "internal server error");
-            }
-
-        }
+           
 
         [HttpPut("{id}")]
         [ProducesResponseType(204)]
@@ -143,8 +124,7 @@ namespace Smart_Accounting.API.Controllers.Employee
             }
             catch (Exception x)
             {
-                _logger.LogError($"something went wrong: {x.Message}");
-                return StatusCode(500, "internal server error");
+                return StatusCode(500, $"internal server error: {x.Message}");
 
             }
         }
@@ -160,7 +140,6 @@ namespace Smart_Accounting.API.Controllers.Employee
                 var emp = _employeesQuery.GetById(id);
                 if (emp == null)
                 {
-                    _logger.LogError($"employee with id: {id}, not found.");
                     return NotFound();
                 }
                 _employeeCommands.Delete(emp);
@@ -169,8 +148,7 @@ namespace Smart_Accounting.API.Controllers.Employee
             }
             catch (Exception x)
             {
-                _logger.LogError($"Something went wrong: {x.Message}");
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, $"Internal server error: {x.Message}");
             }
 
         }
