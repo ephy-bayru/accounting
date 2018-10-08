@@ -69,7 +69,7 @@ namespace Smart_Accounting.API.Controllers.Customers
             }
             catch (Exception x)
             {
-                return StatusCode(500, $"sonething went wrong: {x.Message}");
+                return StatusCode(500, $"something went wrong: {x.Message}");
             }
         }
 
