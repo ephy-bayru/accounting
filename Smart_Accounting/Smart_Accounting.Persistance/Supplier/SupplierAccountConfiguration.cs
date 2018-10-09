@@ -1,21 +1,14 @@
-<<<<<<< HEAD
 /*
  * @CreateTime: Oct 9, 2018 9:32 AM
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Oct 9, 2018 9:32 AM
+ * @Last Modified Time: Oct 9, 2018 9:58 AM
  * @Description: Modify Here, Please 
  */
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Smart_Accounting.Domain.Supplier;
-=======
-using Smart_Accounting.Domain.Supplier;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
->>>>>>> 18287ffbe8867e779275ad3af9cd44b40c09d4e4
 
 namespace Smart_Accounting.Persistance.Supplier {
     public class SupplierAccountConfiguration : IEntityTypeConfiguration<SupplierAccount> {
