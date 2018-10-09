@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Oct 9, 2018 12:00 PM
+ * @Last Modified Time: Oct 9, 2018 4:17 PM
  * @Description: Modify Here, Please 
  */
 using System.Collections.Generic;
@@ -45,13 +45,36 @@ namespace Smart_Accounting.Application.Supplier.Factories {
             };
 
             foreach (var account in supplier.Accounts) {
-                    newSupplier.SupplierAccount.Add(new SupplierAccount() {
-                        BankName = account.BankName,
+                newSupplier.SupplierAccount.Add (new SupplierAccount () {
+                    BankName = account.BankName,
                         AccountNumber = account.AccountNumber
-                    });
+                });
             }
 
             return newSupplier;
+        }
+
+        public Suppliers UpdatedSupplier (UpdateSupplierModel updatedSupplier) {
+            Suppliers supplier = new Suppliers () {
+                Id = updatedSupplier.id,
+                FullName = updatedSupplier.FullName,
+                Email = updatedSupplier.Email,
+                PhoneNo = updatedSupplier.Phone_No,
+                Country = updatedSupplier.Country,
+                City = updatedSupplier.City,
+                SubCity = updatedSupplier.SubCity,
+                PostalCode = updatedSupplier.PostalCode
+            };
+
+            foreach (var account in updatedSupplier.Accounts) {
+                supplier.SupplierAccount.Add (new SupplierAccount () {
+                    Id = account.Id,
+                        BankName = account.BankName,
+                        AccountNumber = account.AccountNumber,
+                        SupplierId = updatedSupplier.id
+                });
+            }
+            return supplier;
         }
     }
 }

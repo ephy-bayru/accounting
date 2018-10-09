@@ -4,7 +4,7 @@ using Smart_Accounting.Domain.Supplier;
 namespace Smart_Accounting.Application.Supplier.Interfaces {
     public interface ISupplierCommandes {
         Suppliers Create (Suppliers newSupplier);
-        bool Update (Suppliers suppliers, UpdateSupplierModel updateSupplier);
+        bool Update (Suppliers supplier);
         bool Delete (Suppliers suppliers);
     }
 }

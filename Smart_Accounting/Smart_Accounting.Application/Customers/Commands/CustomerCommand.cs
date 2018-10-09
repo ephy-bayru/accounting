@@ -3,9 +3,10 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Oct 9, 2018 10:45 AM
+ * @Last Modified Time: Oct 9, 2018 3:34 PM
  * @Description: Modify Here, Please 
  */
+using Microsoft.EntityFrameworkCore;
 using Smart_Accounting.Application.Customers.Commands.Factories;
 using Smart_Accounting.Application.Customers.Interfaces;
 using Smart_Accounting.Application.Customers.Models;
@@ -30,23 +31,14 @@ namespace Smart_Accounting.Application.Customers.Commands {
 
         }
 
-        public void Delete (Customer customer) {
-            _database.Customer.Remove (customer);
+        public bool Delete (Customer customer) {
+            _database.Customer.Remove(customer);
+            return true;
+        }
+        public bool Update (Customer customer) {
+            _database.Customer.Update (customer).State = EntityState.Modified;
             _database.Save ();
-        }
-
-        public void delete (Customer customer) {
-            throw new System.NotImplementedException ();
-        }
-
-        public void Update (Customer customer, UpdateCustomerModel updatecustomer) {
-            var cstmr = customerCommandFactory.UpdatesCustomer (customer, updatecustomer);
-            _database.Customer.Update (cstmr);
-            _database.Save ();
-        }
-
-        public void update (UpdateCustomerModel updateCustomer, Customer customer) {
-            throw new System.NotImplementedException ();
+            return true;
         }
 
     }
