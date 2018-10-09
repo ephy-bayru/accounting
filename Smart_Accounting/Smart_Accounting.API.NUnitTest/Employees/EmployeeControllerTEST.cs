@@ -80,7 +80,7 @@ namespace Smart_Accounting.API.NUnitTest.Employee
                 Email = "e@g.com",
                 Phone_No = "0920208549",
                 Gender = "male",
-                Account_Id = "123456",
+                Account_Number = "123456",
                 Birth_Date = DateTime.Now,
                 Date_Created = DateTime.Now,
                 Date_Updated = DateTime.Now

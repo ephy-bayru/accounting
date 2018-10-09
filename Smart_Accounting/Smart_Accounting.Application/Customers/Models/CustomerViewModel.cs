@@ -13,6 +13,7 @@ namespace Smart_Accounting.Application.Customers.Models
         public string City { get; set; }
         public string SubCity { get; set; }
         public string PostalCode { get; set; }
+        public string CustomerAccount {get; set; }
         
     }
 }

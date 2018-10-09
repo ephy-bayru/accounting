@@ -40,6 +40,10 @@ namespace Smart_Accounting.API.NUnitTest.Customers
             {
                 Id = 1,
                 FullName = "Microsoft",
+<<<<<<< HEAD
+=======
+                Account_Number = "123456",
+>>>>>>> 18287ffbe8867e779275ad3af9cd44b40c09d4e4
                 Email = "e@g.com",
                 PhoneNo = "0920208549",
                 Country = "Ethiopia",
@@ -55,6 +59,10 @@ namespace Smart_Accounting.API.NUnitTest.Customers
             {
                 Id = 1,
                 FullName = "Microsoft",
+<<<<<<< HEAD
+=======
+                Account_Number = "123456",
+>>>>>>> 18287ffbe8867e779275ad3af9cd44b40c09d4e4
                 Email = "e@g.com",
                 PhoneNo = "0920208549",
                 Country = "Ethiopia",
@@ -71,6 +79,10 @@ namespace Smart_Accounting.API.NUnitTest.Customers
             {
                 id = 1,
                 FullName = "Microsoft",
+<<<<<<< HEAD
+=======
+                Account_Number = "123456",
+>>>>>>> 18287ffbe8867e779275ad3af9cd44b40c09d4e4
                 Email = "e@g.com",
                 PhoneNo = "0920208549",
                 Country = "Ethiopia",
@@ -129,6 +141,10 @@ namespace Smart_Accounting.API.NUnitTest.Customers
             newCustomer = new NewCustomerModel()
             {
                 FullName = "Microsoft",
+<<<<<<< HEAD
+=======
+                Account_Number = "123456",
+>>>>>>> 18287ffbe8867e779275ad3af9cd44b40c09d4e4
                 Email = "e@g.com",
                 Phone_No = "0920208549",
                 Country = "Ethiopia",
@@ -154,6 +170,10 @@ namespace Smart_Accounting.API.NUnitTest.Customers
             newCustomer = new NewCustomerModel()
             {
                 FullName = "Microsoft",
+<<<<<<< HEAD
+=======
+                Account_Number = "123456",
+>>>>>>> 18287ffbe8867e779275ad3af9cd44b40c09d4e4
                 Email = "e@g.com",
                 Phone_No = "0920208549",
                 Country = "Ethiopia",
@@ -179,6 +199,10 @@ namespace Smart_Accounting.API.NUnitTest.Customers
             UpdateCustomerModel updateCustomer = new UpdateCustomerModel()
             {
                 FullName = "Microsoft",
+<<<<<<< HEAD
+=======
+                Account_Number = "123456",
+>>>>>>> 18287ffbe8867e779275ad3af9cd44b40c09d4e4
                 Email = "e@g.com",
                 Phone_No = "0920208549",
                 Country = "Ethiopia",
@@ -202,6 +226,10 @@ namespace Smart_Accounting.API.NUnitTest.Customers
             UpdateCustomerModel updateCustomer = new UpdateCustomerModel()
             {
                 FullName = "Microsoft",
+<<<<<<< HEAD
+=======
+                Account_Number = "123456",
+>>>>>>> 18287ffbe8867e779275ad3af9cd44b40c09d4e4
                 Email = "e@g.com",
                 Phone_No = "0920208549",
                 Country = "Ethiopia",
