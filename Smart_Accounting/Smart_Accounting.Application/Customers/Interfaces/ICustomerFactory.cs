@@ -7,5 +7,6 @@ namespace Smart_Accounting.Application.Customers.Interfaces
     public interface ICustomerFactory
     {
         List<CustomerViewModel> createCustomerView(IEnumerable<Customer> customer);
+        Customer NewCustomerAccount(NewCustomerModel customer);
     }
 }

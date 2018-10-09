@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Oct 9, 2018 9:59 AM
+ * @Last Modified Time: Oct 9, 2018 11:18 AM
  * @Description: Modify Here, Please 
  */
 using System;
@@ -145,7 +145,7 @@ namespace Smart_Accounting.API.NUnitTest.Customers
                 HouseNo = "123456",
                 PostalCode = "123456",
             };
-            MockICustomerCommand.Setup(cstmr => cstmr.Create(newCustomer));
+       //     MockICustomerCommand.Setup(cstmr => cstmr.Create(newCustomer));
 
             // customersController = new CustomersController(
             //     MockIResponseFactory.Object

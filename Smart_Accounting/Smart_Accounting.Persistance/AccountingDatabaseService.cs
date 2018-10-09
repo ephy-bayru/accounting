@@ -44,6 +44,8 @@ namespace Smart_Accounting.Persistance {
         public DbSet<CalendarPeriod> CalendarPeriod { get; set; }
         public DbSet<Currency> Currency { get; set; }
         public DbSet<Customer> Customer { get; set; }
+
+        public DbSet<CustomerAccount> CustomerAccount { get; set; }
         public DbSet<Employees> Employees { get; set; }
         public DbSet<ExchangeRate> ExchangeRate { get; set; }
         public DbSet<Jornal> Jornal { get; set; }
@@ -51,6 +53,7 @@ namespace Smart_Accounting.Persistance {
         public DbSet<OpeningBalance> OpeningBalance { get; set; }
         public DbSet<Organization> Organization { get; set; }
         public DbSet<Suppliers> Suppliers { get; set; }
+        public DbSet<SupplierAccount> SupplierAccount { get; set; }
         public DbSet<SystemDefaults> SystemDefaults { get; set; }
         public DbSet<Tax> Tax { get; set; }
         public DbSet<Customer> Customers { get; set; }
@@ -77,6 +80,8 @@ namespace Smart_Accounting.Persistance {
             modelBuilder.ApplyConfiguration (new SuppliersConfiguration ());
             modelBuilder.ApplyConfiguration (new SystemDefaultConfiguration ());
             modelBuilder.ApplyConfiguration (new BankAccountsConfiguration ());
+            modelBuilder.ApplyConfiguration (new CustomerAccountConfiguration() );
+            modelBuilder.ApplyConfiguration (new SupplierAccountConfiguration() );
         }
 
         public void Save () {

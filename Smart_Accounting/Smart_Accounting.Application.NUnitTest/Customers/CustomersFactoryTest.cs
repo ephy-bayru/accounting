@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Oct 9, 2018 9:41 AM
+ * @Last Modified Time: Oct 9, 2018 11:18 AM
  * @Description: Modify Here, Please 
  */
 using System;
@@ -41,7 +41,7 @@ namespace Smart_Accounting.Application.NUnitTest.Customers.Factories
             newCustomerModel.PostalCode = "123456";
 
             // Update customer model
-            updateCustomersModel.id = 2;
+            
             updateCustomersModel.FullName = "Microsoft";
             updateCustomersModel.Phone_No = "0920208549";
             updateCustomersModel.Email = "email";
