@@ -8,8 +8,6 @@ namespace Smart_Accounting.Application.Supplier.Models
         [Required]
         public string FullName { get; set; }
         [Required]
-        public string AccountId { get; set; }
-        [Required]
         public string Email { get; set; }
         [Required]
         public string Phone_No { get; set; }

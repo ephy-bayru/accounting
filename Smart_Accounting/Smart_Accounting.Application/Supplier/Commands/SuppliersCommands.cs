@@ -18,26 +18,30 @@ namespace Smart_Accounting.Application.Supplier.Commands
             _database = database;
             supplierCommandFactory = SupplierCommandFactory;
         }
-        public void Create(Suppliers newSupplier)
+        public Suppliers Create(Suppliers newSupplier)
         {
 
 
             _database.Suppliers.Add(newSupplier);
             _database.Save();
 
+            return newSupplier;
+
         }
 
-        public void Delete(Suppliers suppliers)
+        public bool Delete(Suppliers suppliers)
         {
             _database.Suppliers.Remove(suppliers);
             _database.Save();
+            return true;
         }
 
-        public void Update(Suppliers suppliers, UpdateSupplierModel updateSupplier)
+        public bool Update(Suppliers suppliers, UpdateSupplierModel updateSupplier)
         {
             var supplier = supplierCommandFactory.UpdateSuppliers(suppliers, updateSupplier);
             _database.Suppliers.Update(supplier);
             _database.Save();
+            return true;
         }
 
     }

@@ -263,6 +263,7 @@ Smart_Accounting/Smart_Accounting.Commons.NUnitTest/obj/
 Smart_Accounting/Smart_Accounting.Domain.NUnitTest/obj/
 Smart_Accounting/Smart_Accounting.Persistance.NUnitTest/obj/
 Smart_Accounting/Smart_Accounting.Application.NUnitTest/obj/
+Smart_Accounting/Smart_Accounting.API.NUnitTest/obj/
 node_modules/
 Smart_Accounting/Smart_Accounting.Infrastructure/bin/
 Smart_Accounting/Smart_Accounting.API/bin
