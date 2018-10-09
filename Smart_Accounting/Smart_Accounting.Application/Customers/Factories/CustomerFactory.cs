@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Oct 9, 2018 10:43 AM
+ * @Last Modified Time: Oct 9, 2018 3:36 PM
  * @Description: Modify Here, Please 
  */
 using System.Collections.Generic;
@@ -57,19 +57,26 @@ namespace Smart_Accounting.Application.Customers.Factories {
             return newCustomer;
         }
 
-        public Customer updateCustomers (UpdateCustomerModel update) {
+        public Customer UpdatedCustomer (UpdateCustomerModel update) {
             Customer customer = new Customer () {
+                Id = update.id,
                 FullName = update.FullName,
                 Email = update.Email,
                 PhoneNo = update.Phone_No,
                 Country = update.Country,
                 City = update.City,
                 SubCity = update.SubCity,
-                PostalCode = update.PostalCode,
-                CustomerAccount = new List<CustomerAccount> () {
-                new CustomerAccount () { }
-                }
+                PostalCode = update.PostalCode
             };
+
+            foreach (var account in update.BankAccounts) {
+                customer.CustomerAccount.Add(new CustomerAccount() {
+                    Id = account.Id,
+                    BankName = account.BankName,
+                    AccountNumber = account.AccountNumber,
+                    CustomerId = update.id
+                });
+            }
             return customer;
         }
     }

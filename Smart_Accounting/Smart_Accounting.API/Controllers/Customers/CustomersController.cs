@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Oct 9, 2018 11:15 AM
+ * @Last Modified Time: Oct 9, 2018 3:36 PM
  * @Description: Modify Here, Please 
  */
 using System;
@@ -104,8 +104,14 @@ namespace Smart_Accounting.API.Controllers.Customers {
                 if (currentCustomer == null) {
                     return NotFound ();
                 }
-                _customerCommands.Update (currentCustomer, updateCustomer);
-                return StatusCode (204);
+                updateCustomer.id = id;
+                var customer = _customerFactory.UpdatedCustomer(updateCustomer);
+                var result = _customerCommands.Update(customer);
+                if(result == true) {
+                return StatusCode (204);    
+                } else {
+                    return  StatusCode (500, $"internal server error");
+                }
 
             } catch (Exception x) {
                 return StatusCode (500, $"internal server error: {x.Message}");
