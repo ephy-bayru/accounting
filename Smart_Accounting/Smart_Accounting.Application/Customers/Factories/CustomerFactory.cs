@@ -1,11 +1,3 @@
-/*
- * @CreateTime: Oct 9, 2018 9:38 AM
- * @Author:  Mikael Araya
- * @Contact: MikaelAraya12@gmail.com
- * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Oct 9, 2018 9:41 AM
- * @Description: Modify Here, Please 
- */
 using System.Collections.Generic;
 using Smart_Accounting.Application.Customers.Interfaces;
 using Smart_Accounting.Application.Customers.Models;
@@ -19,6 +11,8 @@ namespace Smart_Accounting.Application.Customers.Factories
         {
 
             List<CustomerViewModel> customerViews = new List<CustomerViewModel>();
+            List<NewCustomerModel> newCustomers = new List<NewCustomerModel>();
+            List<UpdateCustomerModel> updateCustomers = new List<UpdateCustomerModel> ();
 
             foreach (var item in customer)
             {
@@ -31,11 +25,28 @@ namespace Smart_Accounting.Application.Customers.Factories
                     Country = item.Country,
                     City = item.City,
                     SubCity = item.SubCity,
-                    PostalCode = item.PostalCode
+                    PostalCode = item.PostalCode,
+                    
                 };
                 customerViews.Add(view);
             }
             return customerViews;
+        }
+        public Customer updateCustomers (UpdateCustomerModel update) {
+            Customer customer = new Customer() {
+                FullName = update.FullName,
+                Email = update.Email,
+                PhoneNo = update.Phone_No,
+                Country = update.Country,
+                City = update.City,
+                SubCity = update.SubCity,
+                PostalCode = update.PostalCode,
+                CustomerAccount = new List<CustomerAccount>() {
+                    new CustomerAccount() {
+                    }
+                }
+            };
+            return customer;
         }
     }
 }
