@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Location } from '@angular/common';
-import { Validators, FormBuilder, FormGroup, FormControl, FormArray } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { Customer, CustomerAccount } from './../customer';
 import { CustomerService } from './../customer.service';
 import { ActivatedRoute } from '@angular/router';

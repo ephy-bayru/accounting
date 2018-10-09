@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Location } from '@angular/common';
-import { Validators, FormBuilder, FormGroup, FormControl} from '@angular/forms';
+import { Validators, FormBuilder, FormGroup, FormControl, FormArray } from '@angular/forms';
 import { SuppliersService } from './../suppliers.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Suppliers } from './../suppliers';
+import { Suppliers, SupplierAccount } from './../suppliers';
 
 
 @Component({
@@ -16,12 +16,13 @@ import { Suppliers } from './../suppliers';
 export class SuppliersComponent implements OnInit {
   public readonly: true;
   public disable: false;
-  suppplierForm: FormGroup;
+  supplierForm: FormGroup;
   supplier: Suppliers;
   id: number;
   id_no: number;
   statusCode: any;
   userUpdate = null;
+  show: false;
 
   constructor(
     private suppliersService: SuppliersService,
@@ -47,72 +48,57 @@ export class SuppliersComponent implements OnInit {
     }
   }
   suppliersForm(Supplier: any = '') {
-    this.suppplierForm = this
+    this.supplierForm = this
       .fb
       .group({
         Full_Name: ['', [Validators.required,
-          Validators.minLength(2),
-          Validators.maxLength(64)]],
+        Validators.minLength(2),
+        Validators.maxLength(64)]],
         Email: ['', [Validators.required,
-          Validators.email,
-          Validators.maxLength(256)]],
+        Validators.email,
+        Validators.maxLength(256)]],
         Phone_No: ['', [Validators.required,
-          Validators.minLength(9),
-          Validators.maxLength(32)]],
-        Account_Number: ['', [Validators.required,
-          Validators.minLength(9)]],
-        Account_id: ['', Validators.required],
-        Country:  ['', Validators.required],
-        City:  ['', Validators.required],
-        SubCity:  ['', Validators.required],
-        House_No:  ['', Validators.required],
-        Postal_Code:  ['', Validators.required]
+        Validators.minLength(9),
+        Validators.maxLength(32)]],
+        Country: ['', Validators.required],
+        City: ['', Validators.required],
+        SubCity: ['', Validators.required],
+        HouseNo: ['', Validators.required],
+        PostalCode: ['', Validators.required],
+        BankAccounts: this.fb.array([
+        ]),
       });
   }
+phoneNumber(): FormControl {
+  return this.supplierForm.get('Phone_No') as FormControl;
+}
 
-  supplierModel(): any {
-    const formModel = this.suppplierForm.value;
+  prepareFormData(form: FormGroup): Suppliers {
+    const data = form.value;
+    const supplierData: Suppliers = new Suppliers();
+    supplierData.FullName = data.Full_Name;
+    supplierData.Email = data.Email;
+    supplierData.Phone_No = data.Phone_No;
+    supplierData.Country = data.Country;
+    supplierData.City = data.City;
+    supplierData.SubCity = data.SubCity;
+    supplierData.HouseNo = data.House_No;
+    supplierData.PostalCode = data.Postal_Code;
 
-    const supplierData = {
-      id: this.id
-        ? this.id
-        : 0,
-      Full_Name: formModel.Full_Name
-        ? formModel.Full_Name
-        : '',
-      Email: formModel.Email
-        ? formModel.Email
-        : '',
-      Phone_No: formModel.Phone_No
-        ? formModel.Phone_No
-        : '',
-      Account_Number: formModel.Account_Number
-        ? formModel.Account_Number
-        : '',
-      Account_id: formModel.Account_id
-        ? formModel.Account_id
-        : '',
-      Country: formModel.Country
-        ? formModel.Country
-        : '',
-      City: formModel.City
-        ? formModel.City
-        : '',
-      SubCity: formModel.SubCity
-        ? formModel.SubCity
-        : '',
-      House_No: formModel.House_No
-        ? formModel.House_No
-        : '',
-      Postal_Code: formModel.Postal_Code
-        ? formModel.Postal_Code
-        : '',
-    };
+    this.BankAccounts.controls.forEach(element => {
+      const account: SupplierAccount = new SupplierAccount();
+      const accountData = element.value;
+      account.AccountNumber = accountData.AccountNumber;
+      account.BankName = accountData.BankName;
+
+      supplierData.BankAccounts.push(account);
+    });
     return supplierData;
   }
 
+
   onSubmit() {
-    const supplier = this.suppplierForm.value;
+    const supplier = this.prepareFormData(this.supplierForm);
     if (this.id) {
       this
         .suppliersService
@@ -134,6 +120,18 @@ export class SuppliersComponent implements OnInit {
   // cancel button function
   onCancel() {
     this.location.back();
+  }
+  get BankAccounts(): FormArray {
+    return this.supplierForm.get('BankAccounts') as FormArray;
+  }
+  addAccount() {
+    this.BankAccounts.push(this.fb.group({
+      BankName: ['', [Validators.required]],
+      AccountNumber: ['', [Validators.required]]
+    }));
+  }
+  removeAccount(i) {
+    this.BankAccounts.removeAt(i);
   }
 
 }

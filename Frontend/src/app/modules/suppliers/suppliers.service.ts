@@ -49,16 +49,14 @@ export class SuppliersService {
 
   supplierData(supplierForm: Suppliers): URLSearchParams {
     const supplier = new URLSearchParams();
-    supplier.set('Full_Name', supplierForm.Full_Name);
-    supplier.set('Account_Number', supplierForm.Account_Number);
+    supplier.set('Full_Name', supplierForm.FullName);
     supplier.set('Email', supplierForm.Email);
     supplier.set('Phone_No', supplierForm.Phone_No);
-    supplier.set('Account_Id', supplierForm.Account_id);
     supplier.set('Country', supplierForm.Country);
     supplier.set('City', supplierForm.City);
     supplier.set('SubCity', supplierForm.SubCity);
-    supplier.set('House_No', supplierForm.House_No);
-    supplier.set('Postal_Code', supplierForm.Postal_Code);
+    supplier.set('House_No', supplierForm.HouseNo);
+    supplier.set('Postal_Code', supplierForm.PostalCode);
 
     return supplier;
   }

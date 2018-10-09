@@ -38,95 +38,97 @@
 
           </div>
 
-      
-            <div class="row">
 
-              <!-- Phone number field -->
-              <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
-                <div class="form-group template">
-                  <div class="e-float-input">
-                    <input type="number" name="phone" minlength="6" required class="required" formControlName="Phone_No">
-                    <span class="e-float-line"></span>
-                    <label class="e-float-text" for="Phone_No">Phone No</label>
-                  </div>
-                  <div class="text-danger" *ngIf="Phone_No?.invalid && (Phone_No.dirty || Phone_No.touched)">
-                    *Phone Number required!
-                  </div>
+          <div class="row">
+
+            <!-- Phone number field -->
+            <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+              <div class="form-group template">
+                <div class="e-float-input">
+                  <input type="number" name="phone" minlength="6" required class="required" formControlName="Phone_No">
+                  <span class="e-float-line"></span>
+                  <label class="e-float-text" for="Phone_No">Phone No</label>
                 </div>
-              </div>
-              <!-- country field -->
-              <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
-                <div class="form-group template">
-                  <div class="e-float-input">
-                    <input type="text" id="Country" name="Country" class="required" formControlName="Country" required>
-                    <span class="e-float-line"></span>
-                    <label class="e-float-text" for="Country">Country</label>
-                  </div>
+                <div class="text-danger" *ngIf="Phone_No?.invalid && (Phone_No.dirty || Phone_No.touched)">
+                  *Phone Number required!
                 </div>
               </div>
             </div>
-            <div class="row">
-
-              <!-- city field -->
-              <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
-                <div class="form-group template">
-                  <div class="e-float-input">
-                    <input type="text" id="Account_Number" name="City" formControlName="City" required>
-                    <span class="e-float-line"></span>
-                    <label class="e-float-text" for="Account_Number">City</label>
-                  </div>
+            <!-- country field -->
+            <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+              <div class="form-group template">
+                <div class="e-float-input">
+                  <input type="text" id="Country" name="Country" class="required" formControlName="Country" required>
+                  <span class="e-float-line"></span>
+                  <label class="e-float-text" for="Country">Country</label>
                 </div>
               </div>
-              <!-- subcity field -->
-              <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
-                <div class="form-group template">
-                  <div class="e-float-input">
-                    <input type="text" id="Subcity" name="Subcity" class="required" formControlName="Subcity" required>
-                    <span class="e-float-line"></span>
-                    <label class="e-float-text" for="Subcity">Subcity</label>
-                  </div>
-                </div>
-              </div>
-
             </div>
-            <div class="row">
+          </div>
+          <div class="row">
 
-              <!-- house number field -->
-              <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
-                <div class="form-group template">
-                  <div class="e-float-input">
-                    <input type="text" id="House_No" name="House_No" formControlName="HouseNo" required>
-                    <span class="e-float-line"></span>
-                    <label class="e-float-text" for="House_No">House Number</label>
-                  </div>
+            <!-- city field -->
+            <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+              <div class="form-group template">
+                <div class="e-float-input">
+                  <input type="text" id="Account_Number" name="City" formControlName="City" required>
+                  <span class="e-float-line"></span>
+                  <label class="e-float-text" for="Account_Number">City</label>
                 </div>
               </div>
-
-              <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
-                <div class="form-group template">
-                  <div class="e-float-input">
-                    <input type="text" id="Postal_Code" name="Postal_Code" class="required" formControlName="Postalcode"
-                      required>
-                    <span class="e-float-line"></span>
-                    <label class="e-float-text" for="Postal_Code">Postal Code</label>
-                  </div>
+            </div>
+            <!-- subcity field -->
+            <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+              <div class="form-group template">
+                <div class="e-float-input">
+                  <input type="text" id="Subcity" name="Subcity" class="required" formControlName="Subcity" required>
+                  <span class="e-float-line"></span>
+                  <label class="e-float-text" for="Subcity">Subcity</label>
                 </div>
               </div>
+            </div>
 
+          </div>
+          <div class="row">
+
+            <!-- house number field -->
+            <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+              <div class="form-group template">
+                <div class="e-float-input">
+                  <input type="text" id="House_No" name="House_No" formControlName="HouseNo" required>
+                  <span class="e-float-line"></span>
+                  <label class="e-float-text" for="House_No">House Number</label>
+                </div>
+              </div>
             </div>
-            <div class="add" [hidden]="BankAccounts.controls.length > 0">
-              <label>Customer Account</label>
-              &nbsp;
-              {{show}}
-              <button type="button" ejs-button class="e-info " (click)="addAccount();">add</button>
+
+            <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+              <div class="form-group template">
+                <div class="e-float-input">
+                  <input type="text" id="Postal_Code" name="Postal_Code" class="required" formControlName="Postalcode"
+                    required>
+                  <span class="e-float-line"></span>
+                  <label class="e-float-text" for="Postal_Code">Postal Code</label>
+                </div>
+              </div>
             </div>
-            <div   *ngIf="BankAccounts.controls.length > 0" formArrayName="CustomerAccount" >
-<section class="row" *ngFor="let account of BankAccounts.controls; let index=index; let last=last;" [formGroup]="account">
+
+          </div>
+          <div class="add" [hidden]="BankAccounts.controls.length > 0">
+            <label>Customer Account</label>
+            &nbsp;
+            {{show}}
+            <button type="button" ejs-button class="e-info " (click)="addAccount();">add</button>
+          </div>
+          <div *ngIf="BankAccounts.controls.length > 0" formArrayName="CustomerAccount">
+            <section class="row" *ngFor="let account of BankAccounts.controls; let index=index; let last=last;"
+              [formGroup]="account">
               <!-- Bank Name field -->
               <div class="col-xs-6 col-sm-5 col-lg-5 col-md-5">
                 <div class="form-group template">
                   <div class="e-float-input">
-                    <input type="text" id="Bank_Name" formControlName="BankName" name="Bank_Name" class="required" required>
+                    <input type="text" id="Bank_Name" formControlName="BankName" name="Bank_Name" class="required"
+                      required>
                     <span class="e-float-line"></span>
                     <label class="e-float-text" for="Bank_Name">Bank Name</label>
                   </div>
@@ -139,7 +141,8 @@
               <div class="col-xs-6 col-sm-5 col-lg-5 col-md-5">
                 <div class="form-group template">
                   <div class="e-float-input">
-                    <input type="text" id="Account_Number" name="Account_Number" formControlName="AccountNumber" class="required" required>
+                    <input type="text" id="Account_Number" name="Account_Number" formControlName="AccountNumber" class="required"
+                      required>
                     <span class="e-float-line"></span>
                     <label class="e-float-text" for="Account_Number">Account Number</label>
                   </div>
@@ -156,8 +159,8 @@
                   prefixIcon="e-icon e-delete"></button>
               </div>
             </section>
-            </div>
-          
+          </div>
+
         </div>
         <div class="btn">
           <button ejs-button cssClass="e-success" type="submit">
