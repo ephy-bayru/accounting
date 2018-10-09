@@ -10,7 +10,6 @@ namespace Smart_Accounting.Application.Supplier.Commands.Factories
             var supplier = new Suppliers();
 
             supplier.FullName = newSupplier.FullName;
-            supplier.AccountId = newSupplier.AccountId;
             supplier.Email = newSupplier.Email;
             supplier.PhoneNo = newSupplier.Phone_No;
             supplier.Country = newSupplier.Country;
@@ -43,7 +42,6 @@ namespace Smart_Accounting.Application.Supplier.Commands.Factories
         public Suppliers UpdateSupplier(Suppliers currentSupplier, UpdateSupplierModel updateSupplier)
         {
             currentSupplier.FullName = currentSupplier.FullName;
-            currentSupplier.AccountId = currentSupplier.AccountId;
             currentSupplier.Email = currentSupplier.Email;
             currentSupplier.PhoneNo = currentSupplier.PhoneNo;
             currentSupplier.Country = currentSupplier.Country;

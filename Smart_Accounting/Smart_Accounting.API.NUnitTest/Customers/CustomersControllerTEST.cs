@@ -40,7 +40,6 @@ namespace Smart_Accounting.API.NUnitTest.Customers
             {
                 Id = 1,
                 FullName = "Microsoft",
-                AccountId = "123456",
                 Email = "e@g.com",
                 PhoneNo = "0920208549",
                 Country = "Ethiopia",
@@ -56,7 +55,6 @@ namespace Smart_Accounting.API.NUnitTest.Customers
             {
                 Id = 1,
                 FullName = "Microsoft",
-                AccountId = "123456",
                 Email = "e@g.com",
                 PhoneNo = "0920208549",
                 Country = "Ethiopia",
@@ -73,7 +71,6 @@ namespace Smart_Accounting.API.NUnitTest.Customers
             {
                 id = 1,
                 FullName = "Microsoft",
-                AccountId = "123456",
                 Email = "e@g.com",
                 PhoneNo = "0920208549",
                 Country = "Ethiopia",
@@ -132,7 +129,6 @@ namespace Smart_Accounting.API.NUnitTest.Customers
             newCustomer = new NewCustomerModel()
             {
                 FullName = "Microsoft",
-                AccountId = "123456",
                 Email = "e@g.com",
                 Phone_No = "0920208549",
                 Country = "Ethiopia",
@@ -158,7 +154,6 @@ namespace Smart_Accounting.API.NUnitTest.Customers
             newCustomer = new NewCustomerModel()
             {
                 FullName = "Microsoft",
-                AccountId = "123456",
                 Email = "e@g.com",
                 Phone_No = "0920208549",
                 Country = "Ethiopia",
@@ -184,7 +179,6 @@ namespace Smart_Accounting.API.NUnitTest.Customers
             UpdateCustomerModel updateCustomer = new UpdateCustomerModel()
             {
                 FullName = "Microsoft",
-                AccountId = "123456",
                 Email = "e@g.com",
                 Phone_No = "0920208549",
                 Country = "Ethiopia",
@@ -208,7 +202,6 @@ namespace Smart_Accounting.API.NUnitTest.Customers
             UpdateCustomerModel updateCustomer = new UpdateCustomerModel()
             {
                 FullName = "Microsoft",
-                AccountId = "123456",
                 Email = "e@g.com",
                 Phone_No = "0920208549",
                 Country = "Ethiopia",

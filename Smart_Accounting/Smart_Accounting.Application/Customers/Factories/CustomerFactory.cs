@@ -1,3 +1,11 @@
+/*
+ * @CreateTime: Oct 9, 2018 9:38 AM
+ * @Author:  Mikael Araya
+ * @Contact: MikaelAraya12@gmail.com
+ * @Last Modified By:  Mikael Araya
+ * @Last Modified Time: Oct 9, 2018 9:38 AM
+ * @Description: Modify Here, Please 
+ */
 using System.Collections.Generic;
 using Smart_Accounting.Application.Customers.Interfaces;
 using Smart_Accounting.Application.Customers.Models;
@@ -18,7 +26,6 @@ namespace Smart_Accounting.Application.Customers.Factories
                 {
                     id = item.Id,
                     FullName = item.FullName,
-                    AccountId = item.AccountId,
                     Email = item.Email,
                     PhoneNo = item.PhoneNo,
                     Country = item.Country,

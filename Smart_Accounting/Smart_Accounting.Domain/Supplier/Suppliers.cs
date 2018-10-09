@@ -10,13 +10,10 @@ using System;
 using System.Collections.Generic;
 using Smart_Accounting.Domain.AccountCharts;
 
-namespace Smart_Accounting.Domain.Supplier
-{
-    public partial class Suppliers
-    {
-        public Suppliers()
-        {
-            SupplierAccount = new HashSet<SupplierAccount>();
+namespace Smart_Accounting.Domain.Supplier {
+    public partial class Suppliers {
+        public Suppliers () {
+            SupplierAccount = new HashSet<SupplierAccount> ();
         }
 
         public uint Id { get; set; }

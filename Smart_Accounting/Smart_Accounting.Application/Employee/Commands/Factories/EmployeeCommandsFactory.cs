@@ -1,19 +1,23 @@
+/*
+ * @CreateTime: Oct 9, 2018 9:38 AM
+ * @Author:  Mikael Araya
+ * @Contact: MikaelAraya12@gmail.com
+ * @Last Modified By:  Mikael Araya
+ * @Last Modified Time: Oct 9, 2018 9:38 AM
+ * @Description: Modify Here, Please 
+ */
 using Smart_Accounting.Application.Employee.Models;
 using Smart_Accounting.Domain.Employe;
 
-namespace Smart_Accounting.Application.Employee.Commands.Factories
-{
-    public class EmployeeCommandsFactory : IEmployeeCommandsFactory
-    {
-        public Employees NewEmployee(NewEmployeeModel newEmp)
-        {
-            var employee = new  Employees();
+namespace Smart_Accounting.Application.Employee.Commands.Factories {
+    public class EmployeeCommandsFactory : IEmployeeCommandsFactory {
+        public Employees NewEmployee (NewEmployeeModel newEmp) {
+            var employee = new Employees ();
 
             employee.FirstName = newEmp.First_Name;
             employee.LastName = newEmp.Last_Name;
             employee.Email = newEmp.Email;
             employee.PhoneNo = newEmp.Phone_No;
-            employee.AccountId = newEmp.Account_Id;
             employee.Gender = newEmp.Gender;
             employee.Password = newEmp.Password;
             employee.BirthDate = newEmp.Birth_Date;
@@ -21,35 +25,31 @@ namespace Smart_Accounting.Application.Employee.Commands.Factories
             return employee;
         }
 
-
         // throw new System.NotImplementedException();
-         public EmployeeViewModel EmployeeView(Employees employee) {
-             var employees = new EmployeeViewModel();
-             
-             employees.id = employee.Id;
-             employees.First_Name = employee.FirstName;
-             employees.Last_Name = employee.FirstName;
-             employees.Email = employees.Email;
-             employees.Phone_No = employee.PhoneNo;
-             employees.Birth_Date = employee.BirthDate;
-             employees.Gender = employee.Gender;
-             employees.Account_Id = employee.AccountId;
-             employees.Date_Created = employee.DateCreated;
-             employees.Date_Updated = employee.DateUpdated;
+        public EmployeeViewModel EmployeeView (Employees employee) {
+            var employees = new EmployeeViewModel ();
 
-             return employees;
+            employees.id = employee.Id;
+            employees.First_Name = employee.FirstName;
+            employees.Last_Name = employee.FirstName;
+            employees.Email = employees.Email;
+            employees.Phone_No = employee.PhoneNo;
+            employees.Birth_Date = employee.BirthDate;
+            employees.Gender = employee.Gender;
+            employees.Date_Created = employee.DateCreated;
+            employees.Date_Updated = employee.DateUpdated;
 
-         }
+            return employees;
 
-        public Employees UpdatesEmployee(Employees currentEmployee, UpdatedEmployeeDto updateEmployee)
-        {
+        }
+
+        public Employees UpdatesEmployee (Employees currentEmployee, UpdatedEmployeeDto updateEmployee) {
             currentEmployee.FirstName = updateEmployee.First_Name;
             currentEmployee.LastName = updateEmployee.Last_Name;
             currentEmployee.Email = updateEmployee.Email;
             currentEmployee.PhoneNo = updateEmployee.Phone_No;
             currentEmployee.BirthDate = updateEmployee.Birth_Date;
             currentEmployee.Gender = updateEmployee.Gender;
-            currentEmployee.AccountId = updateEmployee.Account_Id;
             currentEmployee.Password = updateEmployee.Password;
 
             return currentEmployee;

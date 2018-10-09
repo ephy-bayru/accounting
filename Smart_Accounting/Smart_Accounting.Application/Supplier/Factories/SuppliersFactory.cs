@@ -18,7 +18,6 @@ namespace Smart_Accounting.Application.Supplier.Factories
                 {
                     id = item.Id,
                     FullName = item.FullName,
-                    AccountId = item.AccountId,
                     Email = item.Email,
                     PhoneNo = item.PhoneNo,
                     Country = item.Country,

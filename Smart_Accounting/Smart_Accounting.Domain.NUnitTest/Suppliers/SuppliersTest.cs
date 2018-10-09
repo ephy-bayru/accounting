@@ -16,7 +16,6 @@ namespace Smart_Accounting.Domain.NUnitTest.Supplier
             suppliers = new Suppliers();
             suppliers.Id = 1;
             suppliers.FullName = "Dventus";
-            suppliers.AccountId = "4458914336";
             suppliers.PhoneNo = "0913568265";
             suppliers.Email = "d@gmail.com";
             suppliers.Country = "Ethiopia";
@@ -31,7 +30,6 @@ namespace Smart_Accounting.Domain.NUnitTest.Supplier
         {
             Assert.That(suppliers.Id, Is.EqualTo(1));
             Assert.That(suppliers.FullName, Is.EqualTo("Dventus"));
-            Assert.That(suppliers.AccountId, Is.EqualTo("4458914336"));
             Assert.That(suppliers.PhoneNo, Is.EqualTo("0913568265"));
             Assert.That(suppliers.Email, Is.EqualTo("d@gmail.com"));
             Assert.That(suppliers.Country, Is.EqualTo("Ethiopia"));

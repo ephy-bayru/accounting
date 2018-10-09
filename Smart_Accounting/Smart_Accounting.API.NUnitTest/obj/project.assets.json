@@ -7234,7 +7234,7 @@
       ]
     },
     "Microsoft.Extensions.PlatformAbstractions/1.1.0": {
-      "sha512": "UMlN++q5qqzQ2HH+uOrKxN5fmBXMQDhrYkSaPJxhmyzfJaFPirrVr1raim/Ocq1psAZoB9+7JSAf0GDAX35wUg==",
+      "sha512": "H6ZsQzxYw/6k2DfEQRXdC+vQ6obd6Uba3uGJrnJ2vG4PRXjQZ7seB13JdCfE72abp8E6Fk3gGgDzfJiLZi5ZpQ==",
       "type": "package",
       "path": "microsoft.extensions.platformabstractions/1.1.0",
       "files": [
@@ -12379,7 +12379,7 @@
       ]
     },
     "System.Security.Cryptography.Xml/4.4.2": {
-      "sha512": "1m+fKVrApgKYMRuE0MF0vGjqy4XqAp1rCtyAzMXhJajMDDytMh/rHk9hp4M7KKk3QQZoWJUvyUY7xcw74w+JiQ==",
+      "sha512": "q9Dren/YP5jhRCkDvLfuaPpMTQzP97ANvzq/OoGgwK8YdLRSTABS9oW5/23OKoM2DRCuBrh4qaecD2YNhPtuzQ==",
       "type": "package",
       "path": "system.security.cryptography.xml/4.4.2",
       "files": [
@@ -13638,23 +13638,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\AppDiv\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/home/appdiv/.nuget/packages/": {},
+    "/usr/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\work\\SmartAccounting\\Smart_Accounting\\Smart_Accounting.API.NUnitTest\\Smart_Accounting.API.NUnitTest.csproj",
+      "projectUniqueName": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.API.NUnitTest/Smart_Accounting.API.NUnitTest.csproj",
       "projectName": "Smart_Accounting.API.NUnitTest",
-      "projectPath": "d:\\work\\SmartAccounting\\Smart_Accounting\\Smart_Accounting.API.NUnitTest\\Smart_Accounting.API.NUnitTest.csproj",
-      "packagesPath": "C:\\Users\\AppDiv\\.nuget\\packages\\",
-      "outputPath": "d:\\work\\SmartAccounting\\Smart_Accounting\\Smart_Accounting.API.NUnitTest\\obj\\",
+      "projectPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.API.NUnitTest/Smart_Accounting.API.NUnitTest.csproj",
+      "packagesPath": "/home/appdiv/.nuget/packages/",
+      "outputPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.API.NUnitTest/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "/usr/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\AppDiv\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/home/appdiv/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
@@ -13665,14 +13665,14 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "d:\\work\\SmartAccounting\\Smart_Accounting\\Smart_Accounting.API\\Smart_Accounting.API.csproj": {
-              "projectPath": "d:\\work\\SmartAccounting\\Smart_Accounting\\Smart_Accounting.API\\Smart_Accounting.API.csproj"
+            "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.API/Smart_Accounting.API.csproj": {
+              "projectPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.API/Smart_Accounting.API.csproj"
             },
-            "d:\\work\\SmartAccounting\\Smart_Accounting\\Smart_Accounting.Application\\Smart_Accounting.Application.csproj": {
-              "projectPath": "d:\\work\\SmartAccounting\\Smart_Accounting\\Smart_Accounting.Application\\Smart_Accounting.Application.csproj"
+            "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Application/Smart_Accounting.Application.csproj": {
+              "projectPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Application/Smart_Accounting.Application.csproj"
             },
-            "d:\\work\\SmartAccounting\\Smart_Accounting\\Smart_Accounting.Domain\\Smart_Accounting.Domain.csproj": {
-              "projectPath": "d:\\work\\SmartAccounting\\Smart_Accounting\\Smart_Accounting.Domain\\Smart_Accounting.Domain.csproj"
+            "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Domain/Smart_Accounting.Domain.csproj": {
+              "projectPath": "/var/www/html/SmartAccounting/Smart_Accounting/Smart_Accounting.Domain/Smart_Accounting.Domain.csproj"
             }
           }
         }

@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Oct 3, 2018 9:44 AM
+ * @Last Modified Time: Oct 9, 2018 9:39 AM
  * @Description: Modify Here, Please 
  */
 using System;
@@ -56,7 +56,6 @@ namespace Smart_Accounting.API.NUnitTest.Employee
                 Password = "123456",
                 BirthDate = DateTime.Now,
                 DateCreated = DateTime.Now,
-                AccountId = "123456",
                 DateUpdated = DateTime.Now
             });
             emply = new Employees()
@@ -70,7 +69,6 @@ namespace Smart_Accounting.API.NUnitTest.Employee
                 Password = "123456",
                 BirthDate = DateTime.Now,
                 DateCreated = DateTime.Now,
-                AccountId = "123456",
                 DateUpdated = DateTime.Now
             };
             employeeView = new List<EmployeeViewModel>();

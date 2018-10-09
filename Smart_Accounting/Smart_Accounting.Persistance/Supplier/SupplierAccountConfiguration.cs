@@ -1,6 +1,18 @@
+/*
+ * @CreateTime: Oct 9, 2018 9:32 AM
+ * @Author:  Mikael Araya
+ * @Contact: MikaelAraya12@gmail.com
+ * @Last Modified By:  Mikael Araya
+ * @Last Modified Time: Oct 9, 2018 9:32 AM
+ * @Description: Modify Here, Please 
+ */
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Smart_Accounting.Domain.Supplier;
+
 namespace Smart_Accounting.Persistance.Supplier {
-    public class SupplierAccountConfiguration : IEntityTypeConfiguration<Suppliers> {
-        public void Configure (EntityTypeBuilder<Suppliers> builder) {
+    public class SupplierAccountConfiguration : IEntityTypeConfiguration<SupplierAccount> {
+        public void Configure (EntityTypeBuilder<SupplierAccount> builder) {
             builder.ToTable ("supplier_account");
 
             builder.HasIndex (e => e.SupplierId)

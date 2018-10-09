@@ -5,7 +5,7 @@ using Smart_Accounting.Domain.Employe;
 namespace Smart_Accounting.Persistance.Employee {
     public class EmployeeConfiguration : IEntityTypeConfiguration<Employees> {
 
-        public void Configure (EntityTypeBuilder<Employees> entity) {
+        public void Configure (EntityTypeBuilder<Employees> builder) {
 
             builder.ToTable ("employees");
 
