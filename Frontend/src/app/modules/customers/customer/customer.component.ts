@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 import { Location } from '@angular/common';
-import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { Customer } from './../customer';
+import { Validators, FormBuilder, FormGroup, FormControl, FormArray } from '@angular/forms';
+import { Customer, CustomerAccount } from './../customer';
 import { CustomerService } from './../customer.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -17,6 +17,9 @@ export class CustomerComponent implements OnInit {
   id: number;
   id_no: number;
   statusCode: any;
+  show: false;
+  delicon: any;
+  imageonly: any;
 
   constructor(
     private customerService: CustomerService,
@@ -25,6 +28,8 @@ export class CustomerComponent implements OnInit {
     private location: Location
   ) {
     this.customersForm();
+    this.delicon = 'e-icon e-delete';
+    this.imageonly = 'imageonly';
   }
 
   ngOnInit(): void {
@@ -38,46 +43,25 @@ export class CustomerComponent implements OnInit {
   customersForm(customer: any = '') {
     this.customerForm = this
       .fb.group({
-        Full_Name: [(customer.Full_Name) ? customer.Full_Name : '', Validators.required],
-        Account_Number: [(customer.Account_Number) ? customer.Account_Number : '', Validators.required],
+        FullName: [(customer.Full_Name) ? customer.Full_Name : '', Validators.required],
         Email: [(customer.Email) ? customer.Email : '', Validators.required],
         Phone_No: [(customer.Phone_No) ? customer.Phone_No : '', Validators.required],
         Country: [(customer.Country) ? customer.Country : '', Validators.required],
         City: [(customer.City) ? customer.City : '', Validators.required],
         Subcity: [(customer.Subcity) ? customer.Subcity : '', Validators.required],
-        House_No: [(customer.House_No) ? customer.House_No : '', Validators.required],
-        Postal_code: [(customer.Postal_code) ? customer.Postal_code : '', Validators.required],
-        Date_Added: [(customer.Date_Added) ? customer.Date_Added : '', Validators.required],
-        Date_Updated: [(customer.Date_Updated) ? customer.Date_Updated : '', Validators.required]
+        HouseNo: [(customer.House_No) ? customer.House_No : '', Validators.required],
+        Postalcode: [(customer.Postal_code) ? customer.Postal_code : '', Validators.required],
+        BankAccounts: this.fb.array ([
+        ]),
+
       });
   }
   // customer model
-  customerModel(): any {
-    const formModel = this.customerForm.value;
-    const customerData = {
-      id: this.id ? this.id : 0,
-      Full_Name: formModel.Full_Name ? formModel.Full_Name : '',
-      Account_Number: formModel.Account_Number ? formModel.Account_Number : '',
-      Email: formModel.Email ? formModel.Email : '',
-      Phone_No : formModel.Phone_No ? formModel.Phone_No : '',
-      Country : formModel.Country ? formModel.Country : '',
-      City : formModel.City ? formModel.City : '',
-      SubCity : formModel.SubCity ? formModel.SubCity : '',
-      House_No : formModel.House_No ? formModel.House_No : '',
-      Postal_Code : formModel.Postal_code ? formModel.Postal_code : '',
-      Date_Added : formModel.Date_Added ? formModel.Date_Added : '',
-      Date_Updated : formModel.Date_Updated ? formModel.Date_Updated : ''
-    };
-    return customerData;
-  }
+
 // this function is called when submit button is clicked
   onSubmit() {
 
-    const data = this.customerForm.value;
-    // if (this.customerForm.invalid) {
-    //   return; // Validation failed, exit from method.
-    // }
-    // Form is valid, now perform create or update
+    const data = this.prepareFormData(this.customerForm);
     if (this.id) {
       this
         .customerService
@@ -96,9 +80,45 @@ export class CustomerComponent implements OnInit {
         }, errorCode => this.statusCode = errorCode);
     }
   }
-
+get BankAccounts(): FormArray {
+return this.customerForm.get('BankAccounts') as FormArray;
+}
 // this function is called when cancel button is clicked
   onCancel() {
     this.location.back();
   }
+
+  prepareFormData(form: FormGroup): Customer {
+      const data = form.value;
+      const customerData: Customer = new Customer();
+
+      customerData.FullName = data.FullName;
+      customerData.City = data.City;
+      customerData.Country = data.Country;
+      customerData.SubCity = data.SubCity;
+      customerData.Email = data.Email;
+      customerData.Phone_No = data.Phone_No;
+      customerData.PostalCode = data.Postal_code;
+
+      this.BankAccounts.controls.forEach(element  => {
+       const account: CustomerAccount = new CustomerAccount();
+       const accountData = element.value;
+        account.AccountNumber = accountData.AccountNumber;
+        account.BankName = accountData.BankName;
+
+        customerData.BankAccounts.push(account);
+      });
+return customerData;
+  }
+
+addAccount() {
+  this.BankAccounts.push( this.fb.group ({
+    BankName: ['', [Validators.required]],
+    AccountNumber: ['', [Validators.required]]
+}));
+}
+removeAccount(i) {
+  this.BankAccounts.removeAt(i);
+}
+
 }

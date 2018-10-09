@@ -51,17 +51,14 @@ export class CustomerService {
 
   CustomerData(userForm: Customer): URLSearchParams {
     const customer = new URLSearchParams();
-    customer.set('Full_Name', userForm.Full_Name);
-    customer.set('Account_Number', userForm.Account_Number);
+    customer.set('FullName', userForm.FullName);
     customer.set('Email', userForm.Email);
     customer.set('Phone_No', userForm.Phone_No);
     customer.set('Country', userForm.Country);
     customer.set('City', userForm.City);
     customer.set('SubCity', userForm.SubCity);
-    customer.set('House_No', userForm.House_No);
-    customer.set('Postal_Code', userForm.Postal_Code);
-    customer.set('Date_Added', userForm.Date_Created.toISOString());
-    customer.set('Date_Updated', userForm.Date_Updated.toISOString());
+    customer.set('HouseNo', userForm.HouseNo);
+    customer.set('PostalCode', userForm.PostalCode);
     return customer;
   }
 
