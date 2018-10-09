@@ -1,6 +1,10 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Smart_Accounting.Domain.Customers;
+
 namespace Smart_Accounting.Persistance.Customers {
-    public class CustomerAccountConfiguration : IEntityTypeConfiguration<Customer> {
-        public void Configure (EntityTypeBuilder<Customer> builder) {
+    public class CustomerAccountConfiguration : IEntityTypeConfiguration<CustomerAccount> {
+        public void Configure (EntityTypeBuilder<CustomerAccount> builder) {
             builder.ToTable ("customer_account");
 
             builder.HasIndex (e => e.CustomerId)

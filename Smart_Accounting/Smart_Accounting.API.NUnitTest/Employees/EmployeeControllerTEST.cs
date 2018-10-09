@@ -56,7 +56,6 @@ namespace Smart_Accounting.API.NUnitTest.Employee
                 Password = "123456",
                 BirthDate = DateTime.Now,
                 DateCreated = DateTime.Now,
-                AccountId = "123456",
                 DateUpdated = DateTime.Now
             });
             emply = new Employees()
@@ -70,7 +69,6 @@ namespace Smart_Accounting.API.NUnitTest.Employee
                 Password = "123456",
                 BirthDate = DateTime.Now,
                 DateCreated = DateTime.Now,
-                AccountId = "123456",
                 DateUpdated = DateTime.Now
             };
             employeeView = new List<EmployeeViewModel>();
@@ -82,7 +80,7 @@ namespace Smart_Accounting.API.NUnitTest.Employee
                 Email = "e@g.com",
                 Phone_No = "0920208549",
                 Gender = "male",
-                Account_Id = "123456",
+                Account_Number = "123456",
                 Birth_Date = DateTime.Now,
                 Date_Created = DateTime.Now,
                 Date_Updated = DateTime.Now

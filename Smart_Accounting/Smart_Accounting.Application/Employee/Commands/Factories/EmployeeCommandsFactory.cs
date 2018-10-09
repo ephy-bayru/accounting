@@ -13,7 +13,6 @@ namespace Smart_Accounting.Application.Employee.Commands.Factories
             employee.LastName = newEmp.Last_Name;
             employee.Email = newEmp.Email;
             employee.PhoneNo = newEmp.Phone_No;
-            employee.AccountId = newEmp.Account_Id;
             employee.Gender = newEmp.Gender;
             employee.Password = newEmp.Password;
             employee.BirthDate = newEmp.Birth_Date;
@@ -33,7 +32,6 @@ namespace Smart_Accounting.Application.Employee.Commands.Factories
              employees.Phone_No = employee.PhoneNo;
              employees.Birth_Date = employee.BirthDate;
              employees.Gender = employee.Gender;
-             employees.Account_Id = employee.AccountId;
              employees.Date_Created = employee.DateCreated;
              employees.Date_Updated = employee.DateUpdated;
 
@@ -49,7 +47,6 @@ namespace Smart_Accounting.Application.Employee.Commands.Factories
             currentEmployee.PhoneNo = updateEmployee.Phone_No;
             currentEmployee.BirthDate = updateEmployee.Birth_Date;
             currentEmployee.Gender = updateEmployee.Gender;
-            currentEmployee.AccountId = updateEmployee.Account_Id;
             currentEmployee.Password = updateEmployee.Password;
 
             return currentEmployee;

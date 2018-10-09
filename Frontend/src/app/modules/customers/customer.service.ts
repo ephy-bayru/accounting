@@ -52,7 +52,7 @@ export class CustomerService {
   CustomerData(userForm: Customer): URLSearchParams {
     const customer = new URLSearchParams();
     customer.set('Full_Name', userForm.Full_Name);
-    customer.set('Account_ID', userForm.Account_ID);
+    customer.set('Account_Number', userForm.Account_Number);
     customer.set('Email', userForm.Email);
     customer.set('Phone_No', userForm.Phone_No);
     customer.set('Country', userForm.Country);

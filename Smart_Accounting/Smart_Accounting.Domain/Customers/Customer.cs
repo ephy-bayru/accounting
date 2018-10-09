@@ -13,10 +13,6 @@ namespace Smart_Accounting.Domain.Customers {
         public string FullName { get; set; }
         public string Email { get; set; }
         public string PhoneNo { get; set; }
-<<<<<<< HEAD
-        public string Account_Number { get; set; }
-=======
->>>>>>> f886edf8d36efeea40cf0292fdc5a8fff5227560
         public string Country { get; set; }
         public string City { get; set; }
         public string SubCity { get; set; }
