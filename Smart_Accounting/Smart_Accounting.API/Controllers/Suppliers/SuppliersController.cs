@@ -99,8 +99,18 @@ namespace Smart_Accounting.API.Controllers.Suppliers {
                 if (currentSupplier == null) {
                     return NotFound ();
                 }
-                _supplierCommands.Update (currentSupplier, updateSupplier);
-                return StatusCode (204);
+
+                updateSupplier.id = id;
+                var supplier = _supplierFactory.UpdatedSupplier(updateSupplier);
+                var result = _supplierCommands.Update(supplier);
+
+                if(result == true) {
+                        return StatusCode (204);
+                } else{
+                return StatusCode (500, $"something went wrong");    
+                }
+                
+                
 
             } catch (Exception x) {
                 // _logger.LogError($"something went wrong: {x.Message}");

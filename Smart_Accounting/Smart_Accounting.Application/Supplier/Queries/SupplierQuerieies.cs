@@ -28,7 +28,7 @@ namespace Smart_Accounting.Application.Supplier.Queries
 
         public Suppliers GetById(uint id)
         {
-            var supplier = _database.Suppliers.Find(id);
+            var supplier = _database.Suppliers.AsNoTracking().Where(sup => sup.Id == id).FirstOrDefault();
             return supplier;
         }
     }
