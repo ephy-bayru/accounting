@@ -8,7 +8,7 @@ namespace Smart_Accounting.Application.Supplier.Models
     {
         public uint id { get; set; }
 
-        public IEnumerable<UpdatedSupplierAccountDto> Accounts {get; set;}
+        public IEnumerable<UpdatedSupplierAccountDto> BankAccounts {get; set;}
         = new List<UpdatedSupplierAccountDto>();
     }
 }

@@ -68,6 +68,7 @@ export class SuppliersGridComponent implements OnInit {
     ];
 
   }
+
   toolbarClick(args: ClickEventArgs): void {
     if (args.item.id === 'supplier_add') {
       this.router.navigate(['add/supplier']);
@@ -80,6 +81,8 @@ export class SuppliersGridComponent implements OnInit {
       this.grid.excelExport(this.appConfig.EXCEL_EXPORT_PROPERTY);
     }
 
+  }
+  edit() {
   }
 }
 

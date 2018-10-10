@@ -3,12 +3,14 @@ import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Suppliers } from './suppliers';
 import { map, catchError } from 'rxjs/operators';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SuppliersService {
   Url = 'suppliers';
+  supp = new Subject<Suppliers[]>();
   private _header = new HttpHeaders()
     .set(
       'Content-Type', 'application/json'
@@ -51,7 +53,7 @@ export class SuppliersService {
     const supplier = new URLSearchParams();
     supplier.set('Full_Name', supplierForm.FullName);
     supplier.set('Email', supplierForm.Email);
-    supplier.set('Phone_No', supplierForm.Phone_No);
+    supplier.set('Phone_No', supplierForm.PhoneNo);
     supplier.set('Country', supplierForm.Country);
     supplier.set('City', supplierForm.City);
     supplier.set('SubCity', supplierForm.SubCity);

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Location } from '@angular/common';
 import { Validators, FormBuilder, FormGroup, FormControl, FormArray } from '@angular/forms';
 import { SuppliersService } from './../suppliers.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Suppliers, SupplierAccount } from './../suppliers';
 
 
@@ -23,6 +23,7 @@ export class SuppliersComponent implements OnInit {
   statusCode: any;
   userUpdate = null;
   show: false;
+  update: false;
 
   constructor(
     private suppliersService: SuppliersService,
@@ -34,6 +35,15 @@ export class SuppliersComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.activatedRoute.params
+      .subscribe(
+        (params: Params) => {
+          this.id = +params['id'];
+          this.update = params['id'] = null;
+          this.suppliersForm();
+
+        }
+      );
     this.id = +this
       .activatedRoute
       .snapshot
@@ -51,13 +61,13 @@ export class SuppliersComponent implements OnInit {
     this.supplierForm = this
       .fb
       .group({
-        Full_Name: ['', [Validators.required,
+        FullName: ['', [Validators.required,
         Validators.minLength(2),
         Validators.maxLength(64)]],
         Email: ['', [Validators.required,
         Validators.email,
         Validators.maxLength(256)]],
-        Phone_No: ['', [Validators.required,
+        PhoneNo: ['', [Validators.required,
         Validators.minLength(9),
         Validators.maxLength(32)]],
         Country: ['', Validators.required],
@@ -76,9 +86,9 @@ phoneNumber(): FormControl {
   prepareFormData(form: FormGroup): Suppliers {
     const data = form.value;
     const supplierData: Suppliers = new Suppliers();
-    supplierData.FullName = data.Full_Name;
+    supplierData.FullName = data.FullName;
     supplierData.Email = data.Email;
-    supplierData.Phone_No = data.Phone_No;
+    supplierData.PhoneNo = data.PhoneNo;
     supplierData.Country = data.Country;
     supplierData.City = data.City;
     supplierData.SubCity = data.SubCity;

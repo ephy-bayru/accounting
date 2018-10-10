@@ -68,6 +68,7 @@ export class CustomerGridComponent implements OnInit {
     ];
 
   }
+
   toolbarClick(args: ClickEventArgs): void {
     if (args.item.id === 'customer_add') {
       this.router.navigate(['add/customer']);

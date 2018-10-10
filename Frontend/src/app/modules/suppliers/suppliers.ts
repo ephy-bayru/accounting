@@ -2,7 +2,7 @@ export class Suppliers {
     id: number;
     FullName: string;
     Email: string;
-    Phone_No: string;
+    PhoneNo: string;
     Country: string;
     City: string;
     SubCity: string;

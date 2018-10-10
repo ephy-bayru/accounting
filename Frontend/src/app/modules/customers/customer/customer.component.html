@@ -120,7 +120,7 @@
             {{show}}
             <button type="button" ejs-button class="e-info " (click)="addAccount();">add</button>
           </div>
-          <div *ngIf="BankAccounts.controls.length > 0" formArrayName="CustomerAccount">
+          <div *ngIf="BankAccounts.controls.length > 0" formArrayName="BankAccounts">
             <section class="row" *ngFor="let account of BankAccounts.controls; let index=index; let last=last;"
               [formGroup]="account">
               <!-- Bank Name field -->
