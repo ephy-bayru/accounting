@@ -13,6 +13,7 @@ using Smart_Accounting.Domain.Oranizations;
 using Smart_Accounting.Domain.Supplier;
 using Smart_Accounting.Domain.SystemDefault;
 using Smart_Accounting.Domain.Taxes;
+using System.Collections.Generic;
 
 namespace Smart_Accounting.Application.Interfaces
 {
@@ -23,6 +24,7 @@ namespace Smart_Accounting.Application.Interfaces
         DbSet<CalendarPeriod> CalendarPeriod { get; set; }
         DbSet<Currency> Currency { get; set; }
         DbSet<Customer> Customer { get; set; }
+        DbSet<CustomerAccount> CustomerAccounts { get; set; }
         DbSet<Employees> Employees { get; set; }
         DbSet<ExchangeRate> ExchangeRate { get; set; }
         DbSet<Jornal> Jornal { get; set; }
@@ -30,8 +32,10 @@ namespace Smart_Accounting.Application.Interfaces
         DbSet<OpeningBalance> OpeningBalance { get; set; }
         DbSet<Organization> Organization { get; set; }
         DbSet<Suppliers> Suppliers { get; set; }
+        DbSet<SupplierAccount> SupplierAccounts { get; set; }
         DbSet<SystemDefaults> SystemDefaults { get; set; }
         DbSet<Tax> Tax { get; set; }
+
 
         void Save();
         
