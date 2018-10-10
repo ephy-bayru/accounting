@@ -44,7 +44,6 @@ namespace Smart_Accounting.Persistance {
         public DbSet<CalendarPeriod> CalendarPeriod { get; set; }
         public DbSet<Currency> Currency { get; set; }
         public DbSet<Customer> Customer { get; set; }
-
         public DbSet<CustomerAccount> CustomerAccount { get; set; }
         public DbSet<Employees> Employees { get; set; }
         public DbSet<ExchangeRate> ExchangeRate { get; set; }
