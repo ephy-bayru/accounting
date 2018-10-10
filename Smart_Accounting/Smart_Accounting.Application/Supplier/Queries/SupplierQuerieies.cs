@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Oct 10, 2018 10:57 AM
+ * @Last Modified Time: Oct 10, 2018 11:43 AM
  * @Description: Modify Here, Please 
  */
 using System.Collections.Generic;
@@ -21,11 +21,9 @@ namespace Smart_Accounting.Application.Supplier.Queries {
         public ISupplierCommandsFactory _factory;
 
         public SuppliersQuery (
-            IAccountingDatabaseService database,
-            ISupplierCommandsFactory factory
+            IAccountingDatabaseService database
         ) {
             _database = database;
-            _factory = factory;
         }
         public IEnumerable<Suppliers> GetAll () {
             return _database.Suppliers.Select (vendor => new Suppliers () {

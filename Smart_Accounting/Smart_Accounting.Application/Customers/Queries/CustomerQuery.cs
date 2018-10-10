@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Oct 10, 2018 11:11 AM
+ * @Last Modified Time: Oct 10, 2018 11:43 AM
  * @Description: Modify Here, Please 
  */
 using System.Collections.Generic;
@@ -20,11 +20,9 @@ namespace Smart_Accounting.Application.Customers.Queries {
         public ICustomerCommandsFactory _factory;
 
         public CustomerQuery (
-            IAccountingDatabaseService database,
-            ICustomerCommandsFactory factory
+            IAccountingDatabaseService database
         ) {
             _database = database;
-            _factory = factory;
         }
         public IEnumerable<Customer> GetAll () {
             return _database.Customer.Select (customer => new Customer () {
