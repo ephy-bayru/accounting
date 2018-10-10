@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Oct 9, 2018 3:39 PM
+ * @Last Modified Time: Oct 10, 2018 11:43 AM
  * @Description: Modify Here, Please 
  */
 using System.Collections.Generic;
@@ -20,20 +20,66 @@ namespace Smart_Accounting.Application.Customers.Queries {
         public ICustomerCommandsFactory _factory;
 
         public CustomerQuery (
-            IAccountingDatabaseService database,
-            ICustomerCommandsFactory factory
+            IAccountingDatabaseService database
         ) {
             _database = database;
-            _factory = factory;
         }
         public IEnumerable<Customer> GetAll () {
-            return _database.Customer.AsNoTracking ().ToList ();
+            return _database.Customer.Select (customer => new Customer () {
+                    FullName = customer.FullName,
+                    Email = customer.Email,
+                    City = customer.City,
+                    Country = customer.Country,
+                    PostalCode = customer.PostalCode,
+                    PhoneNo = customer.PhoneNo,
+                    HouseNo = customer.HouseNo,
+                    Id = customer.Id,
+                    SubCity = customer.SubCity,
+                    DateCreated = customer.DateCreated,
+                    DateUpdated = customer.DateUpdated
+            }).ToList ();
+        }
+
+        public IEnumerable<CustomerAccount> GetAllCustomerAccounts () {
+            return _database.CustomerAccounts.Select (account => new CustomerAccount () {
+                AccountNumber = account.AccountNumber,
+                    BankName = account.BankName,
+                    CustomerId = account.CustomerId,
+                    Id = account.Id
+            }).ToList ();
         }
 
         public Customer GetById (uint id) {
-            var customer = _database.Customer.AsNoTracking ().Where (cus => cus.Id == id).FirstOrDefault ();
-            return customer;
+            return _database.Customer.Where (cus => cus.Id == id)
+                .Select (customer => new Customer () {
+                    FullName = customer.FullName,
+                        Email = customer.Email,
+                        City = customer.City,
+                        Country = customer.Country,
+                        PostalCode = customer.PostalCode,
+                        PhoneNo = customer.PhoneNo,
+                        HouseNo = customer.HouseNo,
+                        Id = customer.Id,
+                        SubCity = customer.SubCity,
+                        DateCreated = customer.DateCreated,
+                        DateUpdated = customer.DateUpdated,
+                        CustomerAccount = customer.CustomerAccount.Select (account => new CustomerAccount () {
+                            AccountNumber = account.AccountNumber,
+                                BankName = account.BankName,
+                                CustomerId = account.CustomerId,
+                                Id = account.Id
+                        }).ToList ()
+                }).FirstOrDefault ();
         }
 
+        public CustomerAccount GetCustomerAccountById (uint id) {
+            return _database.CustomerAccounts.Where (cusAccount => cusAccount.Id == id)
+                .Select (account => new CustomerAccount () {
+                    AccountNumber = account.AccountNumber,
+                        BankName = account.BankName,
+                        CustomerId = account.CustomerId,
+                        Id = account.Id
+                }).FirstOrDefault ();
+        }
     }
 }

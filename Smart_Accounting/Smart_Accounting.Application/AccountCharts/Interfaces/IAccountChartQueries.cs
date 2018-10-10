@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Sep 25, 2018 12:12 PM
+ * @Last Modified Time: Oct 10, 2018 11:54 AM
  * @Description: Modify Here, Please 
  */
 using System.Collections.Generic;
@@ -15,5 +15,9 @@ namespace Smart_Accounting.Application.AccountCharts.Interfaces {
     public interface IAccountChartQueries {
         AccountChart GetAccountById (string accountId);
         IEnumerable<AccountChart> GetAllAccounts (string type);
+
+        IEnumerable<AccountChart> GetAccountByType (string type);
+
+        IEnumerable<AccountChart> GetAllOrganizationAccount (uint organizationId);
     }
 }
