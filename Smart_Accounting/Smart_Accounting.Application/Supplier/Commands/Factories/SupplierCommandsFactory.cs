@@ -27,7 +27,6 @@ namespace Smart_Accounting.Application.Supplier.Commands.Factories
 
             supplier.id = supplier.id;
             supplier.FullName = supplier.FullName;
-            supplier.AccountId = supplier.AccountId;
             supplier.Email = supplier.Email;
             supplier.PhoneNo = supplier.PhoneNo;
             supplier.Country = supplier.Country;

@@ -39,9 +39,8 @@ export class SuppliersComponent implements OnInit {
       .subscribe(
         (params: Params) => {
           this.id = +params['id'];
-          this.update = params['id'] = null;
           this.suppliersForm();
-
+          this.addAccount();
         }
       );
     this.id = +this
@@ -67,7 +66,7 @@ export class SuppliersComponent implements OnInit {
         Email: ['', [Validators.required,
         Validators.email,
         Validators.maxLength(256)]],
-        PhoneNo: ['', [Validators.required,
+        Phone_No: ['', [Validators.required,
         Validators.minLength(9),
         Validators.maxLength(32)]],
         Country: ['', Validators.required],
@@ -88,7 +87,7 @@ phoneNumber(): FormControl {
     const supplierData: Suppliers = new Suppliers();
     supplierData.FullName = data.FullName;
     supplierData.Email = data.Email;
-    supplierData.PhoneNo = data.PhoneNo;
+    supplierData.Phone_No = data.Phone_No;
     supplierData.Country = data.Country;
     supplierData.City = data.City;
     supplierData.SubCity = data.SubCity;

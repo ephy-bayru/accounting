@@ -35,7 +35,7 @@ namespace Smart_Accounting.Persistance.Supplier {
             builder.HasOne (d => d.Supplier)
                 .WithMany (p => p.SupplierAccount)
                 .HasForeignKey (d => d.SupplierId)
-                .OnDelete (DeleteBehavior.ClientSetNull)
+                .OnDelete (DeleteBehavior.Cascade)
                 .HasConstraintName ("fk_supplier_account");
         }
     }

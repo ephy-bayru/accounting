@@ -98,7 +98,7 @@ namespace Smart_Accounting.API.Controllers.Customers {
                 }
 
                 if (!ModelState.IsValid) {
-                    return StatusCode (422);
+                    return StatusCode (422, ModelState);
                 }
                 var currentCustomer = _customerQuery.GetById (id);
                 if (currentCustomer == null) {

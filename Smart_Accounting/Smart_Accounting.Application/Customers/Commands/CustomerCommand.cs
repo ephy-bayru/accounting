@@ -33,6 +33,7 @@ namespace Smart_Accounting.Application.Customers.Commands {
 
         public bool Delete (Customer customer) {
             _database.Customer.Remove(customer);
+            _database.Save();
             return true;
         }
         public bool Update (Customer customer) {

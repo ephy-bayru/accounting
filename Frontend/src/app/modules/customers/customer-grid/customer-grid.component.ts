@@ -52,7 +52,7 @@ export class CustomerGridComponent implements OnInit {
   ngOnInit() {
     this.data = new DataManager({
       url: 'http://localhost:53267/api/customers',
-      adaptor: new WebApiAdaptor
+      adaptor: new WebApiAdaptor,
     });
     this.initialPage = { pageCount: 5, pageSizes: true };
     this.groupOptions = { showGroupedColumn: true };

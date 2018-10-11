@@ -33,6 +33,7 @@ export class CustomerComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.addAccount();
     this.id = + this.activatedRoute.snapshot.paramMap.get('id');
     if (this.id) {
       this.customerService.getCustomer(this.id).subscribe((customer: Customer) => this.customersForm(customer));
@@ -43,22 +44,20 @@ export class CustomerComponent implements OnInit {
   customersForm(customer: any = '') {
     this.customerForm = this
       .fb.group({
-        FullName: [(customer.Full_Name) ? customer.Full_Name : '', Validators.required],
+        FullName: [(customer.FullName) ? customer.FullName : '', Validators.required],
         Email: [(customer.Email) ? customer.Email : '', Validators.required],
         Phone_No: [(customer.Phone_No) ? customer.Phone_No : '', Validators.required],
         Country: [(customer.Country) ? customer.Country : '', Validators.required],
         City: [(customer.City) ? customer.City : '', Validators.required],
         Subcity: [(customer.Subcity) ? customer.Subcity : '', Validators.required],
-        HouseNo: [(customer.House_No) ? customer.House_No : '', Validators.required],
-        Postalcode: [(customer.Postal_code) ? customer.Postal_code : '', Validators.required],
-        BankAccounts: this.fb.array ([
-        ]),
-
+        HouseNo: [(customer.HouseNo) ? customer.HouseNo : '', Validators.required],
+        Postalcode: [(customer.PostalCode) ? customer.PostalCode : '', Validators.required],
+        BankAccounts: this.fb.array([]),
       });
   }
   // customer model
 
-// this function is called when submit button is clicked
+  // this function is called when submit button is clicked
   onSubmit() {
 
     const data = this.prepareFormData(this.customerForm);
@@ -80,45 +79,45 @@ export class CustomerComponent implements OnInit {
         }, errorCode => this.statusCode = errorCode);
     }
   }
-get BankAccounts(): FormArray {
-return this.customerForm.get('BankAccounts') as FormArray;
-}
-// this function is called when cancel button is clicked
+  get BankAccounts(): FormArray {
+    return this.customerForm.get('BankAccounts') as FormArray;
+  }
+  // this function is called when cancel button is clicked
   onCancel() {
     this.location.back();
   }
 
   prepareFormData(form: FormGroup): Customer {
-      const data = form.value;
-      const customerData: Customer = new Customer();
+    const data = form.value;
+    const customerData: Customer = new Customer();
 
-      customerData.FullName = data.FullName;
-      customerData.City = data.City;
-      customerData.Country = data.Country;
-      customerData.SubCity = data.SubCity;
-      customerData.Email = data.Email;
-      customerData.Phone_No = data.Phone_No;
-      customerData.PostalCode = data.Postal_code;
+    customerData.FullName = data.FullName;
+    customerData.City = data.City;
+    customerData.Country = data.Country;
+    customerData.SubCity = data.SubCity;
+    customerData.Email = data.Email;
+    customerData.Phone_No = data.Phone_No;
+    customerData.PostalCode = data.Postal_code;
 
-      this.BankAccounts.controls.forEach(element  => {
-       const account: CustomerAccount = new CustomerAccount();
-       const accountData = element.value;
-        account.AccountNumber = accountData.AccountNumber;
-        account.BankName = accountData.BankName;
+    this.BankAccounts.controls.forEach(element => {
+      const account: CustomerAccount = new CustomerAccount();
+      const accountData = element.value;
+      account.AccountNumber = accountData.AccountNumber;
+      account.BankName = accountData.BankName;
 
-        customerData.BankAccounts.push(account);
-      });
-return customerData;
+      customerData.BankAccounts.push(account);
+    });
+    return customerData;
   }
 
-addAccount() {
-  this.BankAccounts.push( this.fb.group ({
-    BankName: ['', [Validators.required]],
-    AccountNumber: ['', [Validators.required]]
-}));
-}
-removeAccount(i) {
-  this.BankAccounts.removeAt(i);
-}
+  addAccount() {
+    this.BankAccounts.push(this.fb.group({
+      BankName: ['', [Validators.required]],
+      AccountNumber: ['', [Validators.required]]
+    }));
+  }
+  removeAccount(i) {
+    this.BankAccounts.removeAt(i);
+  }
 
 }

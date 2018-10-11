@@ -52,7 +52,7 @@ export class SuppliersGridComponent implements OnInit {
     // });
     this.data = new DataManager({
       url: 'http://localhost:53267/api/suppliers',
-      adaptor: new WebApiAdaptor
+      adaptor: new WebApiAdaptor,
     });
     this.initialPage = { pageCount: 5, pageSizes: true };
     this.groupOptions = { showGroupedColumn: true };
