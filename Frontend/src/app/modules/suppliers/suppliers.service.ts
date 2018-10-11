@@ -53,7 +53,7 @@ export class SuppliersService {
     const supplier = new URLSearchParams();
     supplier.set('Full_Name', supplierForm.FullName);
     supplier.set('Email', supplierForm.Email);
-    supplier.set('Phone_No', supplierForm.PhoneNo);
+    supplier.set('Phone_No', supplierForm.Phone_No);
     supplier.set('Country', supplierForm.Country);
     supplier.set('City', supplierForm.City);
     supplier.set('SubCity', supplierForm.SubCity);
