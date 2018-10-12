@@ -12,7 +12,7 @@ using Smart_Accounting.Domain.Customers;
 namespace Smart_Accounting.Application.Customers.Interfaces {
     public interface ICustomerCommands {
         Customer Create (Customer newCustomer);
-        bool Update (Customer customer);
+        bool Update (Customer customer, UpdateCustomerModel updateCustomer);
         bool Delete (Customer customer);
     }
 }
