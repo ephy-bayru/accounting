@@ -31,6 +31,11 @@ namespace Smart_Accounting.Application.Customers.Commands {
 
         }
 
+        public Customer Create(NewCustomerModel newCustomer)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public bool Delete (Customer customer) {
             _database.Customer.Remove(customer);
             _database.Save();

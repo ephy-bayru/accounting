@@ -120,7 +120,7 @@ namespace Smart_Accounting.API.NUnitTest.Customers
         }
 // TEST
 // ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── I ──────────
-//   :::::: G E T   A L L   C U S T O M E S   T E S T   T H E   W I L L   R E T U R N   2 0 0 : :  :   :    :     :        :          :
+//   :::::: G E T   A L L   C U S T O M E S   T E S T   T H A T   W I L L   R E T U R N   2 0 0 : :  :   :    :     :        :          :
 // ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 //
 
@@ -180,9 +180,8 @@ namespace Smart_Accounting.API.NUnitTest.Customers
                 SubCity = "bole",
                 HouseNo = "123456",
                 PostalCode = "123456",
-                BankAccounts = { }
             };
-            // MockICustomerCommand.Setup(cstmr => cstmr.Create(newCustomer);
+            MockICustomerCommand.Setup(cs => cs.Create(newCustomer));
 
             var CustomersController = new CustomersController(
                 MockICustomerQuery.Object,
@@ -217,6 +216,7 @@ namespace Smart_Accounting.API.NUnitTest.Customers
                 HouseNo = "123456",
                 PostalCode = "123456",
             };
+            MockICustomerCommand.Setup(cs => cs.Create(newCustomer));
             var CustomersController = new CustomersController(
                 MockICustomerQuery.Object,
                 MockICustomerCommand.Object,
