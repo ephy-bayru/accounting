@@ -6,7 +6,6 @@ export class Users {
     Phone_No: number;
     Password: string ;
     Confirm_Password: string ;
-    Account_Id: string ;
     Gender: string;
     Birth_Date: Date;
 }

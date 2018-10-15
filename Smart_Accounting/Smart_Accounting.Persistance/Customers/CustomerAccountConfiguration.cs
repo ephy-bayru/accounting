@@ -27,7 +27,7 @@ namespace Smart_Accounting.Persistance.Customers {
                 builder.HasOne(d => d.Customer)
                     .WithMany(p => p.CustomerAccount)
                     .HasForeignKey(d => d.CustomerId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("fk_customer_account");
         }
     }

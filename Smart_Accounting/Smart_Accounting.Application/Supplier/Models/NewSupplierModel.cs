@@ -4,6 +4,6 @@ using Smart_Accounting.Application.Supplier.Models.Accounts;
 
 namespace Smart_Accounting.Application.Supplier.Models {
     public class NewSupplierModel : SupplierDto {
-        public IEnumerable<NewSupplierAccountDto> Accounts { get; set; } = new List<NewSupplierAccountDto> ();
+        public IEnumerable<NewSupplierAccountDto> BankAccounts { get; set; } = new List<NewSupplierAccountDto> ();
     }
 }

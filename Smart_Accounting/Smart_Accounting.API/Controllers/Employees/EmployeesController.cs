@@ -28,7 +28,6 @@ namespace Smart_Accounting.API.Controllers.Employee
 
         public EmployeesController(IEmployeesQueries employeeQuery,
             IEmployeeCommands employeeCommand,
-            ILogger<EmployeesController> logger,
             IEmployeeFactory employeeFactory,
             IResponseFactory response)
         {
@@ -71,7 +70,7 @@ namespace Smart_Accounting.API.Controllers.Employee
             }
             catch (Exception x)
             {
-                return StatusCode(500, $"internal serve error: {x.Message}");
+                return StatusCode(500, $"internal server error: {x.Message}");
             }
         }
 

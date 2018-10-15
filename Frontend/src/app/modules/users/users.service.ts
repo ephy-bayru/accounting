@@ -57,7 +57,6 @@ export class UsersService {
       user.set('Email', userForm.Email);
       user.set('Password', userForm.Password);
       user.set('Confirm_Password', userForm.Confirm_Password);
-      user.set('Account_Id', userForm.Account_Id);
       user.set('Gender', userForm.Gender);
       user.set('Birth_Date', userForm.Birth_Date.toISOString());
     return user;

@@ -36,7 +36,6 @@ namespace Smart_Accounting.API.NUnitTest.Employee
         private Mock<IEmployeeFactory> MockIEmployeeFactory;
         private Mock<IEmployeesQueries> MockIEmployeeQuery;
         private Mock<IResponseFactory> MockIResponseFactory;
-        private Mock<ILoggerFactory> MockLoggerFactory;
         private EmployeesController employeeController;
         private Mock<HttpContext> MockHttpContext;
         private uint id;
@@ -94,14 +93,13 @@ namespace Smart_Accounting.API.NUnitTest.Employee
             // MockHttpContext = new Mock<HttpContext>();
             MockIEmployeeFactory.Setup(factory => factory.createEmployeeView(employee)).Returns(employeeView);
             MockIEmployeeQuery.Setup(query => query.GetById(id)).Returns(emply);
-            MockLoggerFactory.Setup(p => p.CreateLogger(It.IsAny<string>())).Returns(Mock.Of<ILogger>());
 
-            // var EmployeesController = new EmployeesController (
-            //     MockIEmployeeCommand.Object,
-            //     MockIEmployeeFactory.Object,
-            //     MockIEmployeeQuery.Object,
-            //     MockIResponseFactory.Object
-            // );
+            var EmployeesController = new EmployeesController (
+                MockIEmployeeQuery.Object,
+                MockIEmployeeCommand.Object,
+                MockIEmployeeFactory.Object,
+                MockIResponseFactory.Object
+            );
             EmployeesController.ControllerContext = new ControllerContext()
             {
                 HttpContext = MockHttpContext.Object
@@ -152,12 +150,12 @@ namespace Smart_Accounting.API.NUnitTest.Employee
             };
             MockIEmployeeCommand.Setup(emp => emp.Create(newEmployee));
 
-            // EmployeesController = new EmployeesController (
-            //     MockIEmployeeCommand.Object,
-            //     MockIEmployeeFactory.Object,
-            //     MockIEmployeeQuery.Object,
-            //     MockIResponseFactory.Object
-            // );
+            EmployeesController = new EmployeesController (
+                MockIEmployeeQuery.Object,
+                MockIEmployeeCommand.Object,
+                MockIEmployeeFactory.Object,
+                MockIResponseFactory.Object
+            );
             var result = (ObjectResult)EmployeesController.CreateNewEmployee(newEmployee);
 
             result.StatusCode.Should().Be(201);
@@ -205,12 +203,12 @@ namespace Smart_Accounting.API.NUnitTest.Employee
                 Birth_Date = DateTime.Now,
             };
             MockIEmployeeCommand.Setup(cmd => cmd.Update(emply, updateEmployee));
-            // EmployeesController = new EmployeesController (
-            //     MockIEmployeeCommand.Object,
-            //     MockIEmployeeFactory.Object,
-            //     MockIEmployeeQuery.Object,
-            //     MockIResponseFactory.Object
-            // );
+            EmployeesController = new EmployeesController (
+                MockIEmployeeQuery.Object,
+                MockIEmployeeCommand.Object,
+                MockIEmployeeFactory.Object,
+                MockIResponseFactory.Object
+            );
 
             var result = (StatusCodeResult)EmployeesController.UpdateEmployee(1, updateEmployee);
 
@@ -222,12 +220,12 @@ namespace Smart_Accounting.API.NUnitTest.Employee
         {
             MockIEmployeeCommand.Setup(cmd => cmd.Delete(emply));
 
-            // EmployeesController = new EmployeesController (
-            //     MockIEmployeeCommand.Object,
-            //     MockIEmployeeFactory.Object,
-            //     MockIEmployeeQuery.Object,
-            //     MockIResponseFactory.Object
-            // );
+            EmployeesController = new EmployeesController (
+                MockIEmployeeQuery.Object,
+                MockIEmployeeCommand.Object,
+                MockIEmployeeFactory.Object,
+                MockIResponseFactory.Object
+            );
 
             var result = (StatusCodeResult)EmployeesController.DeleteEmployee(1);
             result.StatusCode.Should().Be(204);
@@ -238,12 +236,12 @@ namespace Smart_Accounting.API.NUnitTest.Employee
         {
             MockIEmployeeCommand.Setup(cmd => cmd.Delete(emply));
 
-            // EmployeesController = new EmployeesController (
-            //     MockIEmployeeCommand.Object,
-            //     MockIEmployeeFactory.Object,
-            //     MockIEmployeeQuery.Object,
-            //     MockIResponseFactory.Object
-            // );
+            EmployeesController = new EmployeesController (
+                MockIEmployeeQuery.Object,
+                MockIEmployeeCommand.Object,
+                MockIEmployeeFactory.Object,
+                MockIResponseFactory.Object
+            );
 
             var result = (StatusCodeResult)EmployeesController.DeleteEmployee(2);
             result.StatusCode.Equals(404);

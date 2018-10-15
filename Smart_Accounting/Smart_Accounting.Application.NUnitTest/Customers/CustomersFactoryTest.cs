@@ -59,7 +59,7 @@ namespace Smart_Accounting.Application.NUnitTest.Customers.Factories
 
             Assert.That(customer.Id, Is.EqualTo(1));
             Assert.That(customer.FullName, Is.EqualTo("Microsoft"));
-            Assert.That(customer.PhoneNo, Is.EqualTo("0920208549"));
+            Assert.That(customer.Phone_No, Is.EqualTo("0920208549"));
             Assert.That(customer.Email, Is.EqualTo("mail"));
             Assert.That(customer.Country, Is.EqualTo("Ethiopia"));
             Assert.That(customer.City, Is.EqualTo("Adis"));
@@ -75,7 +75,7 @@ namespace Smart_Accounting.Application.NUnitTest.Customers.Factories
             {
                 Id = 2,
                 FullName = "Microsoft",
-                PhoneNo = "0920208549",
+                Phone_No = "0920208549",
                 Email = "email",
                 Country = "Ethiopia",
                 City = "Dessie",
@@ -86,7 +86,7 @@ namespace Smart_Accounting.Application.NUnitTest.Customers.Factories
             Customer customer = customersCommandFactory.UpdatesCustomer(currentCustomer, updateCustomersModel);
             Assert.That(customer.Id, Is.EqualTo(1));
             Assert.That(customer.FullName, Is.EqualTo("Microsoft"));
-            Assert.That(customer.PhoneNo, Is.EqualTo(0920208549));
+            Assert.That(customer.Phone_No, Is.EqualTo(0920208549));
             Assert.That(customer.Email, Is.EqualTo("email"));
             Assert.That(customer.Country, Is.EqualTo("Ethiopia"));
             Assert.That(customer.City, Is.EqualTo("Dessie"));
@@ -102,7 +102,7 @@ namespace Smart_Accounting.Application.NUnitTest.Customers.Factories
             {
                 Id = 2,
                 FullName = "Microsoft",
-                PhoneNo = "0920208549",
+                Phone_No = "0920208549",
                 Email = "email",
                 Country = "Ethiopia",
                 City = "Dessie",
@@ -114,7 +114,7 @@ namespace Smart_Accounting.Application.NUnitTest.Customers.Factories
 
             Assert.That(customer.Id, Is.EqualTo(1));
             Assert.That(customer.FullName, Is.EqualTo(customer.FullName));
-            Assert.That(customer.PhoneNo, Is.EqualTo(customer.PhoneNo));
+            Assert.That(customer.Phone_No, Is.EqualTo(customer.Phone_No));
             Assert.That(customer.Email, Is.EqualTo(customer.Email));
             Assert.That(customer.Country, Is.EqualTo(customer.Country));
             Assert.That(customer.City, Is.EqualTo(customer.City));

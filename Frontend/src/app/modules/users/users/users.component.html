@@ -9,7 +9,7 @@
           <div class="row">
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
               <div class="form-group template">
-                <div class="e-float-input" [ngClass]="{'e-error': userForm.controls.First_Name.invalid}">
+                <div class="e-float-input" [ngClass]="{'e-success': userForm.controls.First_Name?.valid}">
                   <input type="text" id="First_Name" name="First_Name" class="required" formControlName="First_Name"
                     required>
                   <span class="e-float-line"></span>

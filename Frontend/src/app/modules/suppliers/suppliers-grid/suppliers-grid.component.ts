@@ -52,7 +52,7 @@ export class SuppliersGridComponent implements OnInit {
     // });
     this.data = new DataManager({
       url: 'http://localhost:53267/api/suppliers',
-      adaptor: new WebApiAdaptor
+      adaptor: new WebApiAdaptor,
     });
     this.initialPage = { pageCount: 5, pageSizes: true };
     this.groupOptions = { showGroupedColumn: true };
@@ -68,6 +68,7 @@ export class SuppliersGridComponent implements OnInit {
     ];
 
   }
+
   toolbarClick(args: ClickEventArgs): void {
     if (args.item.id === 'supplier_add') {
       this.router.navigate(['add/supplier']);
@@ -80,6 +81,8 @@ export class SuppliersGridComponent implements OnInit {
       this.grid.excelExport(this.appConfig.EXCEL_EXPORT_PROPERTY);
     }
 
+  }
+  edit() {
   }
 }
 

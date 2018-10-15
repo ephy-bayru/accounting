@@ -93,7 +93,7 @@ namespace Smart_Accounting.API.Controllers.Suppliers {
                 }
 
                 if (!ModelState.IsValid) {
-                    return StatusCode (422);
+                    return StatusCode (422, ModelState);
                 }
                 var currentSupplier = _supplierQuery.GetById (id);
                 if (currentSupplier == null) {
@@ -118,6 +118,7 @@ namespace Smart_Accounting.API.Controllers.Suppliers {
 
             }
         }
+        
 
         [HttpDelete ("{id}")]
         [ProducesResponseType (typeof (string), 200)]

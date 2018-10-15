@@ -22,7 +22,7 @@ namespace Smart_Accounting.API.Controllers.Customers {
 
     [Route ("api/customers")]
     public class CustomersController : Controller {
-        private readonly ILogger<CustomersController> _logger;
+        // private readonly ILogger<CustomersController> _logger;
         private readonly ICustomerFactory _customerFactory;
         private ICustomerCommands _customerCommands;
         private ICustomerQuery _customerQuery;
@@ -30,16 +30,21 @@ namespace Smart_Accounting.API.Controllers.Customers {
         public CustomersController (
             ICustomerQuery customerQuery,
             ICustomerCommands customerCommand,
-            ILogger<CustomersController> logger,
+            // ILogger<CustomersController> logger,
             ICustomerFactory customerFactory,
             IResponseFactory response
         ) {
             _customerQuery = customerQuery;
             _customerCommands = customerCommand;
-            _logger = logger;
+            // _logger = logger;
             _customerFactory = customerFactory;
             _response = response;
         }
+// HTTP GET
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── I ──────────
+//   :::::: S E N D I N G   H T T P G E T   R E Q U E S T   T O   F E E T C H   A L L   C U S T O M E R S   F R O M   D A T A B A S E : :  :   :    :     :        :          :
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+// RETRIVES ALL CUSTOMERS FROM DATABASE
 
         [HttpGet]
         [ProducesResponseType (200)]
@@ -50,6 +55,11 @@ namespace Smart_Accounting.API.Controllers.Customers {
             return StatusCode (200, response);
 
         }
+// HTTP GET
+// ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── II ──────────
+//   :::::: S E N D I N G   H T T P G E T   R E Q U E S T   T O   F E T C H   A   S I N G L E   C U S T O M E R   F R O M   D A T A B E S E : :  :   :    :     :        :          :
+// ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+// RETRIVE A SINGLE USER FROM A CUSTOMERS DATABASE
 
         [HttpGet ("{id}")]
         [ProducesResponseType (typeof (string), 200)]
@@ -60,13 +70,18 @@ namespace Smart_Accounting.API.Controllers.Customers {
                 if (customers == null) {
                     return NotFound ($"customer with id: {id}, hasn't been found.");
                 } else {
-                    _logger.LogInformation ($"Returned customer with id: {id}");
                     return Ok (customers);
                 }
             } catch (Exception x) {
                 return StatusCode (500, $"something went wrong: {x.Message}");
             }
         }
+// HTTP POST
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── III ──────────
+//   :::::: S E N D I N G   H T T P   P O S T   R E Q U E S T   T O   A D D   A   N E W   C U S T O M E R   T O   D A T A B A S E : :  :   :    :     :        :          :
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+// ADDS A NEW CUSTOMER TO THE DATABASE
+
 
         [HttpPost]
         [ProducesResponseType (typeof (string), 200)]
@@ -88,6 +103,12 @@ namespace Smart_Accounting.API.Controllers.Customers {
                 }
 
         }
+// HTTP PUT
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── IV ──────────
+//   :::::: S E N D I N G   H T T P   P U T   R E Q U E S T   T O   U P D A T E   A N   E X I S T I N G   C U S T O M E R : :  :   :    :     :        :          :
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+// UPDATES AN EXISTING CUSTOMER
+
 
         [HttpPut ("{id}")]
         [ProducesResponseType (typeof (string), 200)]
@@ -98,7 +119,7 @@ namespace Smart_Accounting.API.Controllers.Customers {
                 }
 
                 if (!ModelState.IsValid) {
-                    return StatusCode (422);
+                    return StatusCode (422, ModelState);
                 }
                 var currentCustomer = _customerQuery.GetById (id);
                 if (currentCustomer == null) {
@@ -106,7 +127,7 @@ namespace Smart_Accounting.API.Controllers.Customers {
                 }
                 updateCustomer.id = id;
                 var customer = _customerFactory.UpdatedCustomer(updateCustomer);
-                var result = _customerCommands.Update(customer);
+                var result = _customerCommands.Update(customer, updateCustomer);
                 if(result == true) {
                 return StatusCode (204);    
                 } else {
@@ -118,6 +139,11 @@ namespace Smart_Accounting.API.Controllers.Customers {
 
             }
         }
+// HTTP DELETE
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── V ──────────
+//   :::::: S E N D I N G   H T T P   D E L E T E   R E Q U E S T   T O   D E L E T E   A   S E L E C T E D   C U S T O M E R : :  :   :    :     :        :          :
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+// DELETES A SELECTED CUSTOMER BY ITS ID
 
         [HttpDelete ("{id}")]
         [ProducesResponseType (typeof (string), 200)]
@@ -125,8 +151,7 @@ namespace Smart_Accounting.API.Controllers.Customers {
             try {
                 var cstmr = _customerQuery.GetById (id);
                 if (cstmr == null) {
-                    _logger.LogError ($"customer with id: {id}, not found.");
-                    return NotFound ();
+                    return NotFound ($"customer with id: {id}, not found.");
                 }
                 _customerCommands.Delete (cstmr);
                 return NoContent ();

@@ -16,7 +16,7 @@ namespace Smart_Accounting.Application.Customers.Commands.Factories {
 
             customer.FullName = newCustomer.FullName;
             customer.Email = newCustomer.Email;
-            customer.PhoneNo = newCustomer.Phone_No;
+            customer.Phone_No = newCustomer.Phone_No;
             customer.Country = newCustomer.Country;
             customer.City = newCustomer.City;
             customer.SubCity = newCustomer.SubCity;
@@ -32,7 +32,7 @@ namespace Smart_Accounting.Application.Customers.Commands.Factories {
             customer.Id = customer.Id;
             customer.FullName = customer.FullName;
             customer.Email = customer.Email;
-            customer.PhoneNo = customer.PhoneNo;
+            customer.Phone_No = customer.Phone_No;
             customer.Country = customer.Country;
             customer.City = customer.City;
             customer.SubCity = customer.SubCity;
@@ -46,7 +46,7 @@ namespace Smart_Accounting.Application.Customers.Commands.Factories {
         public Customer UpdatesCustomer (Customer currentCustomer, UpdateCustomerModel updateCustomer) {
             currentCustomer.FullName = currentCustomer.FullName;
             currentCustomer.Email = currentCustomer.Email;
-            currentCustomer.PhoneNo = currentCustomer.PhoneNo;
+            currentCustomer.Phone_No = currentCustomer.Phone_No;
             currentCustomer.Country = currentCustomer.Country;
             currentCustomer.City = currentCustomer.City;
             currentCustomer.SubCity = currentCustomer.SubCity;

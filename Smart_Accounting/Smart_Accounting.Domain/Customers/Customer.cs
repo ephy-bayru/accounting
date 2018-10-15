@@ -12,7 +12,7 @@ namespace Smart_Accounting.Domain.Customers {
         public uint Id { get; set; }
         public string FullName { get; set; }
         public string Email { get; set; }
-        public string PhoneNo { get; set; }
+        public string Phone_No { get; set; }
         public string Country { get; set; }
         public string City { get; set; }
         public string SubCity { get; set; }

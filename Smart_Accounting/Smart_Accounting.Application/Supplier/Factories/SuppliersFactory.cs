@@ -44,7 +44,7 @@ namespace Smart_Accounting.Application.Supplier.Factories {
                 Email = supplier.Email
             };
 
-            foreach (var account in supplier.Accounts) {
+            foreach (var account in supplier.BankAccounts) {
                 newSupplier.SupplierAccount.Add (new SupplierAccount () {
                     BankName = account.BankName,
                         AccountNumber = account.AccountNumber
@@ -66,7 +66,7 @@ namespace Smart_Accounting.Application.Supplier.Factories {
                 PostalCode = updatedSupplier.PostalCode
             };
 
-            foreach (var account in updatedSupplier.Accounts) {
+            foreach (var account in updatedSupplier.BankAccounts) {
                 supplier.SupplierAccount.Add (new SupplierAccount () {
                     Id = account.Id,
                         BankName = account.BankName,
