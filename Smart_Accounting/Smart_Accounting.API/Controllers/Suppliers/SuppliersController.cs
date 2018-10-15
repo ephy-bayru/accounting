@@ -42,7 +42,7 @@ namespace Smart_Accounting.API.Controllers.Suppliers {
 
         [HttpGet]
         [ProducesResponseType (typeof (string), 200)]
-        public IActionResult GetAllCustomers () {
+        public IActionResult GetAllSuppliers () {
             var suppliers = _supplierQuery.GetAll ();
             var supplierView = _supplierFactory.createSupplierView (suppliers);
             var response = _response.CreateSupplierResponse (supplierView);
@@ -93,7 +93,7 @@ namespace Smart_Accounting.API.Controllers.Suppliers {
                 return StatusCode (422, "Invalid supplier data model sent from users");
             }
             var supp = _supplierFactory.CreateNewSupplier (newSupplier);
-            _supplierCommands.Create (supp);
+            _supplierCommands.Create (newSupplier);
             // _logger.LogInformation("successfully registered new supplier!");
             return StatusCode (201, supp);
 
@@ -122,7 +122,7 @@ namespace Smart_Accounting.API.Controllers.Suppliers {
 
                 updateSupplier.id = id;
                 var supplier = _supplierFactory.UpdatedSupplier(updateSupplier);
-                var result = _supplierCommands.Update(supplier);
+                var result = _supplierCommands.Update(supplier, updateSupplier);
 
                 if(result == true) {
                         return StatusCode (204);

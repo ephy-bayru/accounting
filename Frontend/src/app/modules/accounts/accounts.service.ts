@@ -33,7 +33,7 @@ export class AccountsService {
 
   // Update a single instance of Account record and returns a boolean depending on the success or
   // failure of the operation
-  updateAccount(id: number, updatedAccount: Accounts): Observable<boolean> {
+  updateAccount(id: string, updatedAccount: Accounts): Observable<boolean> {
     return this.httpClient.put<boolean>(`${this.url}/${id}`, updatedAccount)
       .pipe(
         catchError(this.handleError)

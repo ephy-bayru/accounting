@@ -26,8 +26,8 @@ namespace Smart_Accounting.Application.AccountCharts.Command {
 
         }
 
-        public bool updateAccount (IEnumerable<AccountChart> updatedAccount) {
-            _database.AccountChart.UpdateRange (updatedAccount);
+        public bool updateAccount (AccountChart updatedAccount) {
+            _database.AccountChart.Update (updatedAccount);
             _database.Save ();
             return true;
         }

@@ -6,7 +6,8 @@ import { AccountsViewComponent } from '../accounts-view/accounts-view.component'
 
 const routes: Routes = [
   { path: 'accounts', component: AccountsViewComponent },
-  { path: 'accounts/new', component: AccountsComponent }
+  { path: 'accounts/new', component: AccountsComponent },
+  { path: 'accounts/update/:accountId', component: AccountsComponent }
 ];
 
 @NgModule({

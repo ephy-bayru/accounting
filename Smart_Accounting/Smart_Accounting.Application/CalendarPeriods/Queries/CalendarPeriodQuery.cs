@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Smart_Accounting.Application.CalendarPeriods.Interfaces;
+using Smart_Accounting.Application.CalendarPeriods.Models;
 using Smart_Accounting.Application.Interfaces;
 using Smart_Accounting.Domain.CalendarPeriods;
 
@@ -15,20 +16,58 @@ namespace Smart_Accounting.Application.CalendarPeriods.Queries {
             _database = database;
         }
 
-        public CalendarPeriod getActivePeriod()
-        {
-            return _database.CalendarPeriod.Where(period => period.Active == 1).FirstOrDefault();
+        public CalendarPeriod getActivePeriod () {
+            return _database.CalendarPeriod
+                .Where (period => period.Active == 1)
+                .Select (calendar => new CalendarPeriod () {
+                    Id = calendar.Id,
+                        Start = calendar.Start,
+                        End = calendar.End,
+                        Active =  calendar.Active,
+                        Closed = calendar.Closed
+
+                }).FirstOrDefault ();
+
+
         }
 
         public IEnumerable<CalendarPeriod> GetAll () {
-            return _database.CalendarPeriod.ToList ();
+            return _database.CalendarPeriod.Select (calendar => new CalendarPeriod () {
+                Id = calendar.Id,
+                    Start = calendar.Start,
+                    End = calendar.End,
+           
+                    Closed = calendar.Closed
+
+            }).ToList ();
         }
 
         public CalendarPeriod GetById (uint id) {
-            var calendar = _database.CalendarPeriod.Find (id);
-            return calendar;
+            return _database.CalendarPeriod
+                .Where (period => period.Id == id)
+                .Select (calendar => new CalendarPeriod () {
+                    Id = calendar.Id,
+                        Start = calendar.Start,
+                        End = calendar.End,
+                        Active = calendar.Active,
+                        Closed = calendar.Closed
+
+                }).FirstOrDefault ();
 
         }
+
+        public IEnumerable<CalanderPeriodListView> GetOpenPeriods () {
+            return _database.CalendarPeriod
+                .Where (period => period.Closed == 0)
+                .Select (calendar => new CalanderPeriodListView () {
+                    Id = calendar.Id,
+                    Period = $"{calendar.Start} - {calendar.End}",
+                        Status = (calendar.Active == 1) ? "Active" : "Not Active",
+                        IsClosed = (calendar.Closed == 1) ? true : false
+
+                }).ToList ();
+        }
+
         public bool IsEndDateOveraped (DateTime endDate) {
             var overlaped = _database.CalendarPeriod.Where (cal => cal.End.Date >= endDate.Date)
                 .Where (cal => cal.Start.Date <= endDate.Date).ToList ();

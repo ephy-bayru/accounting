@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Sep 25, 2018 12:22 PM
+ * @Last Modified Time: Oct 10, 2018 4:04 PM
  * @Description: Modify Here, Please 
  */
 using System.Collections.Generic;
@@ -26,20 +26,20 @@ namespace Smart_Accounting.Application.AccountCharts.Factories {
     var active = _period.getActivePeriod();
             foreach (var item in newType) {
                 OpeningBalance ob = new OpeningBalance(){
-                    Credit = item.OpeningBalance
+                    Credit = item.OpeningBalance,
+                    PeriodId = item.periodId
                 };
                 account.Add (new AccountChart () {
                     AccountId = item.AccountId,
                     Name = item.Name,
                         AccountCode = item.AccountCode,
                         OrganizationId = item.OrganizationId,
-                        Active = item.Active,
+                        Active = (sbyte)item.Active,
                         AccountType = item.AccountType,
                         OpeningBalance = new List<OpeningBalance>(){
                             new OpeningBalance() {
-                                AccountId = item.AccountId,
                                 Credit =  item.OpeningBalance,
-                                PeriodId = active.Id
+                                PeriodId = item.periodId
                             }
                         }
                         
@@ -51,6 +51,8 @@ namespace Smart_Accounting.Application.AccountCharts.Factories {
 
         public AccountChart UpdatedAccount (UpdatedAccountModel newModel) {
             AccountChart account = new  AccountChart () {
+                    AccountId = newModel.AccountId,
+                    AccountType = newModel.AccountType,
                     Name = newModel.Name,
                         AccountCode = newModel.AccountCode,
                         OrganizationId = newModel.OrganizationId,

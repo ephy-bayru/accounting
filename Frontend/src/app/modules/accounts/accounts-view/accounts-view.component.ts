@@ -51,7 +51,6 @@ export class AccountsViewComponent implements OnInit {
     this.groupOptions = { showGroupedColumn: true }; // make columns used for grouping visable
     this.toolbarOptions = [
       'Add',
-      'Edit',
       'Print',
       'PdfExport',
       'ExcelExport',
@@ -67,8 +66,11 @@ export class AccountsViewComponent implements OnInit {
     console.log(error);
   }
 
-  rowSelected(args: any) {
+  rowSelected(args: RowSelectEventArgs) {
     console.log(args);
+    if (args.data['AccountId']) {
+      this.router.navigate([`accounts/update/${args.data['AccountId']}`]);
+    }
   }
 
   // Click handler for when the toolbar is cliked
