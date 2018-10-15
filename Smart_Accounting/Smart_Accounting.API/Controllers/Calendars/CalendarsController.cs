@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Sep 24, 2018 11:43 AM
+ * @Last Modified Time: Oct 13, 2018 10:48 AM
  * @Description: Modify Here, Please 
  */
 
@@ -37,10 +37,23 @@ namespace Smart_Accounting.API.Controllers.Calendarss {
 
         [HttpGet]
         [ProducesResponseType (200)]
-        public IActionResult GetAllCalendarPeriod () {
-            var calendars = _calendarQuery.GetAll ();
-            var response = _responseFactory.Create ((List<CalendarPeriod>) calendars);
-            return Ok (response);
+        public IActionResult GetAllCalendarPeriod (string type = "ALL") {
+            Object calanders;
+switch (type.ToUpper())
+{
+
+    case "ACTIVE" : calanders = _calendarQuery.getActivePeriod();
+    break;
+    case "OPEN" : calanders = _calendarQuery.GetOpenPeriods();
+    break;
+
+    
+    default: calanders = _calendarQuery.GetAll (); 
+    break;
+}
+
+        
+            return Ok (calanders);
         }
 
         [HttpGet ("{id}")]

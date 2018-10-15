@@ -13,8 +13,11 @@ namespace Smart_Accounting.Persistance.CalendarPeriods {
 
                 builder.Property(e => e.Active)
                     .HasColumnName("active")
-                    .HasColumnType("tinyint(4)");
-
+                    .HasColumnType("tinyint(1)");
+builder.Property(e => e.Closed)
+                    .HasColumnName("closed")
+                    .HasColumnType("tinyint(1)");
+                    
                 builder.Property(e => e.End)
                     .HasColumnName("end")
                     .HasColumnType("date");

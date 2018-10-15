@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Oct 10, 2018 11:54 AM
+ * @Last Modified Time: Oct 10, 2018 12:16 PM
  * @Description: Modify Here, Please 
  */
 using System.Collections.Generic;
@@ -28,13 +28,23 @@ namespace Smart_Accounting.Application.AccountCharts.Queries {
                         AccountCode = account.AccountCode,
                             AccountId = account.AccountId,
                             AccountType = account.AccountType,
+                            Active = account.Active,
                             OrganizationId = account.OrganizationId,
                             Name = account.Name,
                             DateAdded = account.DateAdded,
                             DateUpdated = account.DateUpdated,
                     }).ToList ();
             }
-            return _database.AccountChart.Where (account => account.AccountType == type.ToUpper ());
+            return _database.AccountChart.Select (account => new AccountChart () {
+                        AccountCode = account.AccountCode,
+                            AccountId = account.AccountId,
+                            AccountType = account.AccountType,
+                            Active = account.Active,
+                            OrganizationId = account.OrganizationId,
+                            Name = account.Name,
+                            DateAdded = account.DateAdded,
+                            DateUpdated = account.DateUpdated,
+                    }).Where (account => account.AccountType == type.ToUpper ());
         }
         public AccountChart GetAccountById (string accountId) {
 
@@ -43,10 +53,13 @@ namespace Smart_Accounting.Application.AccountCharts.Queries {
                     AccountCode = account.AccountCode,
                         AccountId = account.AccountId,
                         AccountType = account.AccountType,
+                        Active = account.Active,
                         OrganizationId = account.OrganizationId,
                         Name = account.Name,
                         DateAdded = account.DateAdded,
                         DateUpdated = account.DateUpdated,
+                        Organization = account.Organization,
+                        OpeningBalance = account.OpeningBalance
                 }).FirstOrDefault (account => account.AccountId == accountId);
 
         }
@@ -57,6 +70,7 @@ namespace Smart_Accounting.Application.AccountCharts.Queries {
                 .Select (account => new AccountChart () {
                     AccountCode = account.AccountCode,
                         AccountId = account.AccountId,
+                        Active = account.Active,
                         AccountType = account.AccountType,
                         OrganizationId = account.OrganizationId,
                         Name = account.Name,
@@ -71,6 +85,7 @@ namespace Smart_Accounting.Application.AccountCharts.Queries {
                 .Select (account => new AccountChart () {
                     AccountCode = account.AccountCode,
                         AccountId = account.AccountId,
+                        Active = account.Active,
                         AccountType = account.AccountType,
                         OrganizationId = account.OrganizationId,
                         Name = account.Name,

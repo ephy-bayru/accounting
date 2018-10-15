@@ -15,6 +15,7 @@ namespace Smart_Accounting.Domain.CalendarPeriods {
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
         public sbyte Active { get; set; }
+        public sbyte Closed {get; set;}
 
         public ICollection<Ledger> Ledger { get; set; }
         public ICollection<OpeningBalance> OpeningBalance { get; set; }

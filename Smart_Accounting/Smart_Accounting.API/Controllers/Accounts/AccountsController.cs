@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Oct 3, 2018 10:09 AM
+ * @Last Modified Time: Oct 10, 2018 4:06 PM
  * @Description: Modify Here, Please 
  */
 using System.Collections.Generic;
@@ -60,9 +60,9 @@ namespace Smart_Accounting.API.Controllers.Accountss {
         [ProducesResponseType (500)]
         public IActionResult CreateAccount ([FromBody] IEnumerable<NewAccountModel> newAcounts) {
 
-            if (newAcounts == null) {
-                return StatusCode (400); // Bad Request
-            }
+         //   if (newAcounts == null) {
+           //     return StatusCode (400); // Bad Request
+           // }
 
             if (!ModelState.IsValid) {
                 return StatusCode (422, ModelState);
@@ -75,25 +75,32 @@ namespace Smart_Accounting.API.Controllers.Accountss {
             return StatusCode (201, result);
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         [ProducesResponseType (204)]
         [ProducesResponseType (422)]
         [ProducesResponseType (404)]
         [ProducesResponseType (500)]
-        public IActionResult UpdateAccount ([FromBody] IEnumerable<UpdatedAccountModel> updatedAccounts) {
+        public IActionResult UpdateAccount (string id, [FromBody] UpdatedAccountModel updatedAccount) {
             List<AccountChart> accounts = new List<AccountChart> ();
 
-            foreach (var item in updatedAccounts) {
-                var account = _accountQuery.GetAccountById (item.AccountId);
-
-                if (account == null) {
-                    return StatusCode (404);
-                }
-                var update = _factory.UpdatedAccount (item);
-                accounts.Add(update);
+            if(updatedAccount == null) {
+                return StatusCode(400, ModelState);
             }
 
-            var add = _accountCommand.updateAccount (accounts);
+            if(!ModelState.IsValid) {
+                return StatusCode(422);
+            }
+
+
+            var account  = _accountQuery.GetAccountById(id);
+                if(account == null) {
+                    return StatusCode(404);
+                }
+
+                var update = _factory.UpdatedAccount(updatedAccount);
+            
+
+            var add = _accountCommand.updateAccount (update);
             if (add == false) {
                 return StatusCode (500);
             }

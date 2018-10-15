@@ -78,6 +78,7 @@ namespace Smart_Accounting.Application.NUnitTest.AccountCharts.Commands {
                 }
             };
 
+
             updatedAccounts = new List<AccountChart> () {
                 new AccountChart () {
                 AccountCode = "ACC-005",

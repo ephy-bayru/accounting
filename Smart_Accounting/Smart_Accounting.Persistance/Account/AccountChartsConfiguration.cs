@@ -21,6 +21,11 @@ namespace Smart_Accounting.Persistance.AccountCharts {
                 .HasColumnName ("ACCOUNT_ID")
                 .HasColumnType ("varchar(30)");
 
+            builder.Property (e => e.AccountType)
+                .IsRequired ()
+                .HasColumnName ("account_type")
+                .HasColumnType ("varchar(30)");
+
             builder.Property (e => e.AccountCode)
                 .HasColumnName ("account_code")
                 .HasColumnType ("varchar(30)");

@@ -3,7 +3,7 @@
 
   <ejs-grid [dataSource]='data' #grid height="200px" [allowExcelExport]="true" id='accounts' [toolbar]='toolbarOptions'
     [allowPaging]="true" [pageSettings]='pageSettings' [allowFiltering]="true" [allowSorting]="true" [allowGrouping]="true"
-    [allowResizing]='true' [selectionSettings]='selectionOptions' [groupSettings]='groupOptions' allowFiltering='true'
+    [allowResizing]='true' [selectionSettings]='selectionOptions' (rowSelected)='rowSelected($event)' [groupSettings]='groupOptions' allowFiltering='true'
     allowTextWrap='true'  [editSettings]='editSettings'
     [selectionSettings]='selectionOptions' [allowPdfExport]='true' (toolbarClick)='toolbarClick($event)'
     [filterSettings]="filterOptions">
@@ -19,7 +19,7 @@
         editable="true" groupable="true" width='30'></e-column>
       <e-column field="AccountType"  textAlign="left" headerText="TYPE" isPrimaryKey="false" type="string" editType="textbox" filterable="true"
         editable="true" groupable="true" width='30'></e-column>
-        <e-column headerText='Remove' textAlign="left"  width=30 [commands]='commands'></e-column>
+        <e-column id='commands' headerText='Remove' textAlign="left"  width=30 [commands]='commands'></e-column>
     </e-columns>
 
   </ejs-grid>
