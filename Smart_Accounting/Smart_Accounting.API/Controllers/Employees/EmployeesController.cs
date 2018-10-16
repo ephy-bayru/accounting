@@ -36,6 +36,11 @@ namespace Smart_Accounting.API.Controllers.Employee
             _employeeFactory = employeeFactory;
             _response = response;
         }
+// HTTP GET
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── I ──────────
+//   :::::: S E N D I N G   H T T P   G E T   R E Q U E S T   T O   G E T   A L L   E M P L O Y E E S   F R O M   D A T A B A S E : :  :   :    :     :        :          :
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+// RETRIVES ALL EMPLOYEES FROM DATABASE
 
         [HttpGet]
         [ProducesResponseType(200)]
@@ -48,6 +53,11 @@ namespace Smart_Accounting.API.Controllers.Employee
             return StatusCode(200, response);
 
         }
+// HTTP GET
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── II ──────────
+//   :::::: S E N D I N G   H T T P   G E T   R E Q U E S T   T O   G E T   A   S I N G L E   E M P L O Y E E : :  :   :    :     :        :          :
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+// RETEIVE A SINGLE EMPLOYEE FORM A DATABASE
 
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(string), 200)]
@@ -73,6 +83,11 @@ namespace Smart_Accounting.API.Controllers.Employee
                 return StatusCode(500, $"internal server error: {x.Message}");
             }
         }
+// HTTP POST
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── III ──────────
+//   :::::: S E N D I N G   H T T P   P O S T   T O   A D D   N E W   E M P L O Y E E   T O   A   D A T A B A S E : :  :   :    :     :        :          :
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+// ADDS NEW EMPLOYEES TO DATABASE
 
         [HttpPost]
         [ProducesResponseType(201)]
@@ -93,7 +108,11 @@ namespace Smart_Accounting.API.Controllers.Employee
                 _employeeCommands.Create(newEmployee);
                 return StatusCode(201, newEmployee);
             }
-           
+// HTTP PUT
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── IV ──────────
+//   :::::: S E N D I N G   H T T P   P U T   R E Q U E S T   T O   U P D A T E   A N   E X I S T I N G   E M P L O Y E E : :  :   :    :     :        :          :
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+// UPDATES AN EXISTING EMPLOYEE
 
         [HttpPut("{id}")]
         [ProducesResponseType(204)]
@@ -127,6 +146,11 @@ namespace Smart_Accounting.API.Controllers.Employee
 
             }
         }
+// HTTP DELETE
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── V ──────────
+//   :::::: S E N D I N G   H T T P   D E L E T E   T O   D E L E T E   A N   E M P L O Y E E : :  :   :    :     :        :          :
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+// DELETES A SPECIFIC EMPLOYEE
 
         [HttpDelete("{id}")]
         [ProducesResponseType(204)]

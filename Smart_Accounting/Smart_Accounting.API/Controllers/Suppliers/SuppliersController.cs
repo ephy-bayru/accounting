@@ -34,16 +34,26 @@ namespace Smart_Accounting.API.Controllers.Suppliers {
             _supplierFactory = supplierFactory;
             _response = response;
         }
+// HTTP GET
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── I ──────────
+//   :::::: S E N D I N G   H T T P   G E T   R E Q U E S T   T O   R E T R I V E   A L L   S U P P L I E R S : :  :   :    :     :        :          :
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+// RETRIVES ALL SUPPLIERS FROM DB
 
         [HttpGet]
         [ProducesResponseType (typeof (string), 200)]
-        public IActionResult GetAllCustomers () {
+        public IActionResult GetAllSuppliers () {
             var suppliers = _supplierQuery.GetAll ();
             var supplierView = _supplierFactory.createSupplierView (suppliers);
             var response = _response.CreateSupplierResponse (supplierView);
             return StatusCode (200, response);
 
         }
+// HTTP GET(ID)
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── II ──────────
+//   :::::: S E N D I N G   H T T P   G E T   R E Q U E S T   T O   R E T R I V E   A   S I N G L E   S U P P L I E R : :  :   :    :     :        :          :
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+// RETRIVES A SINGLE SUPPLIER
 
         [HttpGet ("{id}")]
         [ProducesResponseType (typeof (string), 200)]
@@ -63,6 +73,11 @@ namespace Smart_Accounting.API.Controllers.Suppliers {
                 return StatusCode (500, $"something went wrong: {x.Message}");
             }
         }
+// HTTP POST
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── III ──────────
+//   :::::: S E N D I N G   H T T P   P O S T   R E Q U E S T   T O   A D D   A   N E W   S U P P L I E R : :  :   :    :     :        :          :
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+// ADDS NEW SUPPLIER
 
         [HttpPost]
         [ProducesResponseType (typeof (string), 200)]
@@ -78,11 +93,16 @@ namespace Smart_Accounting.API.Controllers.Suppliers {
                 return StatusCode (422, "Invalid supplier data model sent from users");
             }
             var supp = _supplierFactory.CreateNewSupplier (newSupplier);
-            _supplierCommands.Create (supp);
+            _supplierCommands.Create (newSupplier);
             // _logger.LogInformation("successfully registered new supplier!");
             return StatusCode (201, supp);
 
         }
+// HTTP PUT(ID)
+// ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── IV ──────────
+//   :::::: S E N D I N G   H T T P   P U T   R E Q U E S T   T O   U P D A T E   A N   E X I S T I N G   S U P P L I E R   D A T A : :  :   :    :     :        :          :
+// ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+// UPDATES AN EXISTING SUPPLIER
 
         [HttpPut ("{id}")]
         [ProducesResponseType (typeof (string), 200)]
@@ -102,7 +122,7 @@ namespace Smart_Accounting.API.Controllers.Suppliers {
 
                 updateSupplier.id = id;
                 var supplier = _supplierFactory.UpdatedSupplier(updateSupplier);
-                var result = _supplierCommands.Update(supplier);
+                var result = _supplierCommands.Update(supplier, updateSupplier);
 
                 if(result == true) {
                         return StatusCode (204);
@@ -110,8 +130,6 @@ namespace Smart_Accounting.API.Controllers.Suppliers {
                 return StatusCode (500, $"something went wrong");    
                 }
                 
-                
-
             } catch (Exception x) {
                 // _logger.LogError($"something went wrong: {x.Message}");
                 return StatusCode (500, $"something went wrong: {x.Message}");
@@ -119,6 +137,11 @@ namespace Smart_Accounting.API.Controllers.Suppliers {
             }
         }
         
+// HTTP DELETE(ID)
+// ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── V ──────────
+//   :::::: S E N D I N G   H T T P   D E L E T E   R E Q U E S T   T O   D E L E T E   A N   E X I S T I N G   S U P P L I E R : :  :   :    :     :        :          :
+// ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+//
 
         [HttpDelete ("{id}")]
         [ProducesResponseType (typeof (string), 200)]

@@ -25,16 +25,25 @@ namespace Smart_Accounting.Application.Supplier.Commands {
 
         }
 
+        public Suppliers Create(NewSupplierModel newSupplier)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public bool Delete (Suppliers suppliers) {
             _database.Suppliers.Remove(suppliers);
             _database.Save();
             return true;
         }
-
         public bool Update (Suppliers supplier) {
             _database.Suppliers.Update (supplier).State = EntityState.Modified;
             _database.Save();
             return true;
+        }
+
+        public bool Update(Suppliers supplier, UpdateSupplierModel updateSupplier)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -39,10 +39,15 @@ namespace Smart_Accounting.API.NUnitTest.Employee
         private EmployeesController employeeController;
         private Mock<HttpContext> MockHttpContext;
         private uint id;
-
+//
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────  ──────────
+//   :::::: O N E   T I M E   S E T U P   F O R   E M P L O Y E E   T E S T : :  :   :    :     :        :          :
+// ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+//
         [OneTimeSetUp]
         public void TestSetup()
         {
+
             employee = new List<Employees>();
             employee.Add(new Employees()
             {
@@ -105,6 +110,11 @@ namespace Smart_Accounting.API.NUnitTest.Employee
                 HttpContext = MockHttpContext.Object
             };
         }
+// TEST
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── I ──────────
+//   :::::: G E T   A L L   E M P L O Y E E S   T E S T   T H A T   W I L L   R E T U R N   2 0 0   S T A T U S   C O D E : :  :   :    :     :        :          :
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+// RETURNS 200
 
         [Test]
         public void GetAllEmployees_Test()
@@ -115,6 +125,11 @@ namespace Smart_Accounting.API.NUnitTest.Employee
             result.StatusCode.Equals(200);
             Assert.DoesNotThrow(() => { EmployeesController.Response.StatusCode = 500; });
         }
+// TEST
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── II ──────────
+//   :::::: G E T   A   S I N G L E   E M P L O Y E E   U S I N G   T H E I R   I D   T E S T : :  :   :    :     :        :          :
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+// RETURNS 200
 
         [Test]
         public void GetEmployeesById_Test()
@@ -124,7 +139,11 @@ namespace Smart_Accounting.API.NUnitTest.Employee
             result.StatusCode.Equals(200);
             Assert.DoesNotThrow(() => { EmployeesController.Response.StatusCode = 500; });
         }
-
+// TEST
+// ──────────────────────────────────────────────────────────────────────────────────────────────────────── III ──────────
+//   :::::: G E T   A   N O N   E X I S T I N G   E M P L O Y E E   T E S T : :  :   :    :     :        :          :
+// ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+// RETURNS 404
         [Test]
         public void GetNonExistingEmployee_Test()
         {
@@ -133,7 +152,11 @@ namespace Smart_Accounting.API.NUnitTest.Employee
             var result = (StatusCodeResult)EmployeesController.GetEmployeeById(nonExistingEmployeenId);
             result.StatusCode.Equals(200);
         }
-
+// TEST
+// ────────────────────────────────────────────────────────────────────────────────────── IV ──────────
+//   :::::: A D D    N E W   E M P L O Y E E   T E S T : :  :   :    :     :        :          :
+// ────────────────────────────────────────────────────────────────────────────────────────────────
+// RETURNS 200
         [Test]
         public void AddNewEmployee_Test()
         {
@@ -161,10 +184,20 @@ namespace Smart_Accounting.API.NUnitTest.Employee
             result.StatusCode.Should().Be(201);
             result.Value.GetType().Should().Be(typeof(EmployeeViewModel));
         }
+// TEST
+// ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────── V ──────────
+//   :::::: A D D   N E W   E M P L O Y E E   W I T H   F A L S E   M O D E L   T E S T : :  :   :    :     :        :          :
+// ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+// RETURNS 422
 
         [Test]
         public void AddNewEmployeeWithFalseModel_Test()
         {
+            NewEmployeeModel employee = new NewEmployeeModel() {
+                First_Name = "ephrem",
+                Email = "e@g.com",
+                Gender = "male",
+            };
             newEmployee = new NewEmployeeModel()
             {
                 First_Name = "ephrem",
@@ -173,20 +206,24 @@ namespace Smart_Accounting.API.NUnitTest.Employee
                 Phone_No = "0920208549",
                 Gender = "male",
                 Password = "123456",
-                Account_Id = "123456",
                 Birth_Date = DateTime.Now,
             };
-            // newEmployee falseModel = new NewEmployeeModel()
-            // {
-            //     First_Name = "ephrem",
-            //     Email = "e@g.com",
-            //     Phone_No = "0920208549",
-            //     Gender = "male",
-            //     Password = "123456",
-            // };
-            var result = (ObjectResult)EmployeesController.CreateNewEmployee(newEmployee);
-            result.Value.GetType().Should().Be(typeof(EmployeeViewModel));
+            
+            MockIEmployeeCommand.Setup(emply => emply.Create(newEmployee));
+             EmployeesController = new EmployeesController (
+                MockIEmployeeQuery.Object,
+                MockIEmployeeCommand.Object,
+                MockIEmployeeFactory.Object,
+                MockIResponseFactory.Object
+            );
+            var result = (StatusCodeResult)EmployeesController.CreateNewEmployee(employee);
+            result.StatusCode.Should().Be(422);
         }
+// TEST
+// ────────────────────────────────────────────────────────────────────────────────────────────────────── VI ──────────
+//   :::::: U D A T E   A N   E X I S T I N G   E M P L O Y E E   T E S T : :  :   :    :     :        :          :
+// ────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+// RETURNS 200
 
         [Test]
         public void UpdateEmployee_Test()
@@ -214,6 +251,12 @@ namespace Smart_Accounting.API.NUnitTest.Employee
 
             result.StatusCode.Should().Be(204);
         }
+       
+//  TEST
+// ──────────────────────────────────────────────────────────────────────────────── VII ──────────
+//   :::::: D E L E T E   E M P L O Y E E   T E S T : :  :   :    :     :        :          :
+// ──────────────────────────────────────────────────────────────────────────────────────────
+// RETURNS 200
 
         [Test]
         public void DeleteEmployee_Test()
@@ -230,6 +273,11 @@ namespace Smart_Accounting.API.NUnitTest.Employee
             var result = (StatusCodeResult)EmployeesController.DeleteEmployee(1);
             result.StatusCode.Should().Be(204);
         }
+// TEST
+// ──────────────────────────────────────────────────────────────────────────────────────────────────────── VIII ──────────
+//   :::::: D E L E T E   N O N   E X I S T N G   E M P L O Y E E   T E S T : :  :   :    :     :        :          :
+// ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+// RETURNS 404
 
         [Test]
         public void DeleteNonExistingEmployee_Test()
