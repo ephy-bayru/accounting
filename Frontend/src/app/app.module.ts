@@ -33,6 +33,7 @@ import { SuppliersModule } from './modules/suppliers/suppliers/suppliers.module'
 import { AccountsModule } from './modules/accounts/accounts/accounts.module';
 import { AccountsViewComponent } from './modules/accounts/accounts-view/accounts-view.component';
 import { SupplierComponent } from './modules/suppliers/supplier/supplier.component';
+import { NotFoundComponent } from './modules/shared/not-found/not-found.component';
 
 
 @NgModule({
@@ -56,7 +57,7 @@ import { SupplierComponent } from './modules/suppliers/supplier/supplier.compone
     MainNavComponent,
     SideNavComponent,
     // syncfusion
-    TreeViewComponent, ToolbarComponent, CompareDirective, AccountsViewComponent, SupplierComponent
+    TreeViewComponent, ToolbarComponent, CompareDirective, AccountsViewComponent, SupplierComponent, NotFoundComponent
   ],
   imports: [
     BrowserModule,
