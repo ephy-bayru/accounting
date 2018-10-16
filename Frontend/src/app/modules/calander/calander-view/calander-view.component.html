@@ -8,16 +8,16 @@
     [selectionSettings]='selectionOptions' [allowPdfExport]='true' (toolbarClick)='toolbarClick($event)'
     [filterSettings]="filterOptions">
     <e-columns>
-      <e-column field="Id" headerText="ID" isPrimaryKey="true" type="number" width='30' editable="false" filterable="false"
+      <e-column field="Id" headerText="ID" isPrimaryKey="true" type="number" width='50' editable="false" filterable="false"
         groupable="false">
       </e-column>
       <e-column field="Start" headerText="Start" isPrimaryKey="false" type="datetime" editType="datepickeredit"
         filterable="true" editable="true" groupable="false" format="yMd" width='100'></e-column>
       <e-column field="End" headerText="End" isPrimaryKey="false" type="datetime" editType="datepickeredit" filterable="true"
-        editable="true" groupable="false" format="yMd" width='100'></e-column>
+        editable="true" groupable="false" format="yMd" width='150'></e-column>
       <e-column field="Active" headerText="Active" isPrimaryKey="false" type="bool" editType="booleanedit" filterable="true"
-        editable="true" groupable="true" width='50'></e-column>
-        <e-column headerText='Remove'  width=20 [commands]='commands'></e-column>
+        editable="true" groupable="true" width='100'></e-column>
+        <e-column headerText='Remove'  width="40" [commands]='commands'></e-column>
     </e-columns>
 
   </ejs-grid>

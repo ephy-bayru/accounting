@@ -1,5 +1,6 @@
 <section class="e-card">
   <form [formGroup]="calanderForm" novalidate (ngSubmit)="onSubmit()" name="calanderForm">
+    <h3 class="text-center text-info">Calander Period Form</h3>
 
     <div formArrayName="calanders" class="content-wrapper">
       <div *ngFor="let calander of calanders.controls; let i=index; let last=last" class="row" [formGroup]="calander">
@@ -12,27 +13,19 @@
         <div class="col-2">
           <ejs-switch [checked]="true" formControlName="active"></ejs-switch>`
         </div>
-        <div class="btns">
-          <button type="button" ejs-button class="e-round e-info e-small " iconCss="e-icons e-plus-icon" [disabled]="!last || calanders.invalid"
+        <div class="btns" *ngIf="!isUpdate" >
+          <button type="button" ejs-button class="e-round e-info e-small " iconCss="e-icons e-plus-icon" *ngIf="last" [disabled]="calander.invalid"
             (click)="addPeriod()">Add</button>
           &nbsp;
-          <button type="button" ejs-button class="e-round e-danger e-small e-icons e-times-icon" (click)="calanders.removeAt(i)">Del</button>
+          <button type="button" ejs-button class="e-round e-danger e-small e-icons e-times-icon"  (click)="calanders.removeAt(i)">Del</button>
         </div>
       </div>
       <div class="row">
         <div class="col submit-container">
           <button ejs-button class=" e-success" [disabled]="calanderForm.invalid" type="submit">Submit</button>
-          <button ejs-button type="button" class=" e-warning">Cancel</button>
+          <button ejs-button type="button"  (click)="cancel()" class=" e-warning">Cancel</button>
         </div>
       </div>
     </div>
-
-    <p>
-      Form: <code>
-        {{calanderForm.value | json}}
-      </code>
-    </p>
-    <p>
-    </p>
   </form>
 </section>

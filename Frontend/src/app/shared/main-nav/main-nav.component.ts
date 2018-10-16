@@ -71,6 +71,8 @@ export class MainNavComponent {
     },
 
   ];
+
+
   public field: Object = { dataSource: this.hierarchicalData, id: 'id', text: 'name', child: 'subChild' };
   btnClick() {
     if (this.togglebtn.element.classList.contains('e-active')) {
@@ -86,11 +88,7 @@ export class MainNavComponent {
   constructor(private router: Router) {}
 
   nodeSelected(args: NodeSelectEventArgs) {
-    console.log(args);
     this.router.navigate([args.node.dataset['uid']]);
-  }
-  goUsers() {
-    this.router.navigate(['users']);
   }
 
 }
