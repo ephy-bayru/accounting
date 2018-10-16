@@ -50,6 +50,9 @@ export class MainNavComponent {
       id: 'accounts', name: 'ACCOUNTS'
     },
     {
+      id: 'ledgers', name: 'General Ledger'
+    },
+    {
       id: '03', name: 'REPORTS',
       subChild: [
         {

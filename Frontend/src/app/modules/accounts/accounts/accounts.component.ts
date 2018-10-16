@@ -92,7 +92,7 @@ export class AccountsComponent implements OnInit {
   addPeriod() {
     this.accounts.push(this.formBuilder.group({
       AccountCode: [''],
-      AccountId: ['', Validators.required]],
+      AccountId: ['', Validators.required],
       periodId: '',
       Name: ['', Validators.required],
       Active: [false],
@@ -122,10 +122,10 @@ export class AccountsComponent implements OnInit {
         this.location.back();
         alert('Account Created Successfully');
       },
-      (error: HttpErrorResponse) => {
-        console.log(error);
-        alert(error.message);
-      });
+        (error: HttpErrorResponse) => {
+          console.log(error);
+          alert(error.message);
+        });
     }
   }
 
