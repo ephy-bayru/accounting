@@ -20,6 +20,8 @@
                 </div>
               </div>
             </div>
+            </div>
+            <div class="row">
             <!-- location -->
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
               <div class="form-group template">
@@ -53,7 +55,7 @@
         <div class="btn">
           <button ejs-button cssClass="e-success" type="submit"> SUBMIT </button>
           &nbsp;
-          <button ejs-button cssClass="e-primary" (submit)="onCancel"> CANCEL </button>
+          <button ejs-button cssClass="e-primary"   (click)="cancel()" > CANCEL </button>
         </div>
        </div>
       </form>
@@ -66,7 +68,7 @@
 <h6>form value</h6>
 <pre>{{organizationForm.value | json}}</pre> -->
 
-<!-- 
+<!--
 <div class="e-card">
   <div class="e-card-header">
     <div class="e-card-header-caption">

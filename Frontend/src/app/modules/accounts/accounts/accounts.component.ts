@@ -5,6 +5,7 @@ import { ButtonComponent } from '@syncfusion/ej2-ng-buttons';
 import { DataManager, WebApiAdaptor, ReturnOption, Query } from '@syncfusion/ej2-data';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-accounts',
@@ -76,8 +77,8 @@ export class AccountsComponent implements OnInit {
       accounts: this.formBuilder.array([
         this.formBuilder.group({
           periodId: '',
-          AccountCode: [data.AccountCode, Validators.required],
-          AccountId: [data.AccountId],
+          AccountCode: [data.AccountCode],
+          AccountId: [data.AccountId, Validators.required],
           AccountType: [data.AccountType, Validators.required],
           Name: [data.Name, Validators.required],
           Active: [(data.Active) ? data.Active : false],
@@ -90,8 +91,8 @@ export class AccountsComponent implements OnInit {
 
   addPeriod() {
     this.accounts.push(this.formBuilder.group({
-      AccountCode: ['', Validators.required],
-      AccountId: '',
+      AccountCode: [''],
+      AccountId: ['', Validators.required]],
       periodId: '',
       Name: ['', Validators.required],
       Active: [false],
@@ -107,14 +108,23 @@ export class AccountsComponent implements OnInit {
 
   onSubmit() {
     if (!this.accountId) {
-      this.account.createAccount(this.accounts.value).subscribe((success: Object) => {
-        this.location.back();
+      this.account.createAccount(this.accounts.value).subscribe((success) => {
         alert('Account Created Successfully');
-      });
+        this.location.back();
+
+      },
+        (error: HttpErrorResponse) => {
+          console.log(error);
+          alert(error);
+        });
     } else {
       this.account.updateAccount(this.accountId, this.accounts.value[0]).subscribe((success: Object) => {
         this.location.back();
         alert('Account Created Successfully');
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error);
+        alert(error.message);
       });
     }
   }
@@ -131,6 +141,10 @@ export class AccountsComponent implements OnInit {
       this.statusBtn.element.classList.remove('e-warning');
       this.statusBtn.element.classList.add('e-success');
     }
+  }
+
+  cancel() {
+    this.location.back();
   }
 
 }
