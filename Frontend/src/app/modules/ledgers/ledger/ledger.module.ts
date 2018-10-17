@@ -9,6 +9,7 @@ import { LedgerRoutingModule } from '../ledger-routing/ledger-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { GridModule } from '@syncfusion/ej2-ng-grids';
 import { NumericTextBoxComponent } from '@syncfusion/ej2-ng-inputs';
+import { ButtonModule } from '@syncfusion/ej2-ng-buttons';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { NumericTextBoxComponent } from '@syncfusion/ej2-ng-inputs';
     ReactiveFormsModule,
     DatePickerModule,
     DropDownListModule,
+    ButtonModule,
     LedgerRoutingModule,
     BrowserModule,
     GridModule,

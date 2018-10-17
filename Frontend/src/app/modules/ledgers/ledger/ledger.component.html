@@ -32,7 +32,7 @@
                   </ejs-numerictextbox>
                 </td>
                 <td>
-                  <ejs-numerictextbox formControlName="Credit" name="creation" id="credit" placeholder="Credit">
+                  <ejs-numerictextbox formControlName="Debit" name="debiit" id="debit" placeholder="Debit">
                   </ejs-numerictextbox>
                 </td>
                   <td>
@@ -40,15 +40,15 @@
                       <input class="e-input" name="Reference" formControlName="Reference" id="Reference" placeholder="Reference" />
                     </div>
                   </td>
-                <button ejs-button class="e-flat e-round e-small" (click)="addForm()">Add</button>
-                <button ejs-button class="e-flat e-round e-small" (click)="accounts.removeAt(i)">Remove</button>
+                <button type="button" ejs-button class="e-round e-pluse e-small" iconCss="e-icons e-plus-icon" *ngIf="last" (click)="addForm()">Add</button>
+                <button type="button" ejs-button class="e-round e-danger e-small e-icons e-times-icon" *ngIf="accounts.controls.length > 2" (click)="accounts.removeAt(i)">Remove</button>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
-
+{{ledgerForm.value | json}}
 
 
   </form>
