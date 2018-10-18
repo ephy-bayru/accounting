@@ -11,17 +11,15 @@ namespace Smart_Accounting.Application.Employee.Commands
 
         private readonly IAccountingDatabaseService _database;
         private IEmployeeCommandsFactory _employeeCmdFactory;
-        public EmployeeCommand(IAccountingDatabaseService database,
+        public EmployeeCommand( IAccountingDatabaseService database,
                                 IEmployeeCommandsFactory employeeCmdFactory)
         {
             _database = database;
             _employeeCmdFactory = employeeCmdFactory;
         }
-        public void Create(NewEmployeeModel newEmployee)
+        public void Create(Employees employees)
         {
-            var employee = _employeeCmdFactory.NewEmployee(newEmployee);
-
-            _database.Employees.Add(employee);
+            _database.Employees.Add(employees);
             _database.Save();
 
         }
@@ -38,5 +36,6 @@ namespace Smart_Accounting.Application.Employee.Commands
             _database.Employees.Update(emp);
             _database.Save();
         }
+
     }
 }

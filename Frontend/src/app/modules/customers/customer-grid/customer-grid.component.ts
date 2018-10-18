@@ -69,6 +69,7 @@ export class CustomerGridComponent implements OnInit {
 
   }
 
+// ─── THIS FUNCTION IS CALLED WHEN EVER THE TOOLBAR BUTTONS ARE CLICKED AND EXUCTED BASED ON THEIR ID
   toolbarClick(args: ClickEventArgs): void {
     if (args.item.id === 'customer_add') {
       this.router.navigate(['add/customer']);

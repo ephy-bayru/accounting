@@ -56,6 +56,8 @@ export class SuppliersComponent implements OnInit {
       this.suppliersForm();
     }
   }
+
+// ─── INITIALIZING SUPPLIERS DATA ──────────────────
   suppliersForm(Supplier: any = '') {
     this.supplierForm = this
       .fb
@@ -82,6 +84,7 @@ phoneNumber(): FormControl {
   return this.supplierForm.get('Phone_No') as FormControl;
 }
 
+// ─── SUPPLIERS DATA MODEL ───────────
   prepareFormData(form: FormGroup): Suppliers {
     const data = form.value;
     const supplierData: Suppliers = new Suppliers();
@@ -105,7 +108,7 @@ phoneNumber(): FormControl {
     return supplierData;
   }
 
-
+// ─── THIS FUNCTION IS CALLED WHEN SUBMIT BUTTON IS CLICKED ─────────────
   onSubmit() {
     const supplier = this.prepareFormData(this.supplierForm);
     if (this.id) {
@@ -126,13 +129,16 @@ phoneNumber(): FormControl {
         }, errorCode => this.statusCode = errorCode);
     }
   }
-  // cancel button function
+
+// ─── THIS METHOD IS CALLED WHEN THE CANCEL BUTTON IS CLICKED ───────────
   onCancel() {
     this.location.back();
   }
   get BankAccounts(): FormArray {
     return this.supplierForm.get('BankAccounts') as FormArray;
   }
+
+// ─── A FUNCTION TO ADD NEW ACCOUNT INFORMATION TO DB ─────────────
   addAccount() {
     this.BankAccounts.push(this.fb.group({
       BankName: ['', [Validators.required]],

@@ -30,7 +30,7 @@ namespace Smart_Accounting.API.NUnitTest.Customers
     {
         private List<Customer> customer;
         private Customer cstmr;
-        private NewCustomerModel newCustomer;
+        private Customer newCustomer;
         private List<CustomerViewModel> customerView;
         private CustomersController customersController;
         private Mock<ICustomerCommands> MockICustomerCommand;
@@ -170,7 +170,7 @@ namespace Smart_Accounting.API.NUnitTest.Customers
         [Test]
         public void AddNewCustomer_Test()
         {
-            newCustomer = new NewCustomerModel()
+            newCustomer = new Customer()
             {
                 FullName = "Microsoft",
                 Email = "e@g.com",
@@ -181,6 +181,18 @@ namespace Smart_Accounting.API.NUnitTest.Customers
                 HouseNo = "123456",
                 PostalCode = "123456",
             };
+            customer = new List<Customer>();
+            customer.Add(new Customer()
+            {
+                FullName = "Microsoft",
+                Email = "e@g.com",
+                Phone_No = "0920208549",
+                Country = "Ethiopia",
+                City = "Adis",
+                SubCity = "bole",
+                HouseNo = "123456",
+                PostalCode = "123456",
+            });
             MockICustomerCommand.Setup(cs => cs.Create(newCustomer));
 
             var CustomersController = new CustomersController(
@@ -190,7 +202,7 @@ namespace Smart_Accounting.API.NUnitTest.Customers
                 MockIResponseFactory.Object
                );
 
-            var result = (ObjectResult)customersController.CreateNewCustomer(newCustomer);
+            var result = (ObjectResult)customersController.CreateNewCustomer(customer);
 
             result.StatusCode.Should().Be(201);
             result.Value.GetType().Should().Be(typeof(CustomerViewModel));
@@ -205,7 +217,7 @@ namespace Smart_Accounting.API.NUnitTest.Customers
         [Test]
         public void AddNewCustoerWithFalseModel_Test()
         {
-            newCustomer = new NewCustomerModel()
+            newCustomer = new Customer()
             {
                 FullName = "Microsoft",
                 Email = "e@g.com",
@@ -217,14 +229,14 @@ namespace Smart_Accounting.API.NUnitTest.Customers
                 PostalCode = "123456",
             };
             MockICustomerCommand.Setup(cs => cs.Create(newCustomer));
-            var CustomersController = new CustomersController(
+            var CustomersController = new CustomersController (
                 MockICustomerQuery.Object,
                 MockICustomerCommand.Object,
                 MockICustomerFactory.Object,
                 MockIResponseFactory.Object
 
                 );
-            var result = (ObjectResult)customersController.CreateNewCustomer(newCustomer);
+            var result = (ObjectResult)customersController.CreateNewCustomer(customer);
             result.Value.GetType().Should().Be(typeof(CustomerViewModel));
         }
 // TEST

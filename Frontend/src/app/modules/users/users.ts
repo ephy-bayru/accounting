@@ -1,9 +1,9 @@
 export class Users {
     id: number;
-    First_Name: string;
-    Last_Name: string;
+    FirstName: string;
+    LastName: string;
     Email: string ;
-    Phone_No: number;
+    Phone_No: string;
     Password: string ;
     Confirm_Password: string ;
     Gender: string;

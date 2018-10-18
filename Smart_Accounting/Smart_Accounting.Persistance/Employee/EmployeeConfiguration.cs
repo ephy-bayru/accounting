@@ -51,7 +51,7 @@ namespace Smart_Accounting.Persistance.Employee {
                 .HasColumnName ("PASSWORD")
                 .HasColumnType ("varchar(45)");
 
-            builder.Property (e => e.PhoneNo)
+            builder.Property (e => e.Phone_No)
                 .IsRequired ()
                 .HasColumnName ("PHONE_NO")
                 .HasColumnType ("varchar(45)");

@@ -21,6 +21,7 @@ export class CustomerComponent implements OnInit {
   delicon: any;
   imageonly: any;
 
+// ─── CUSTOMERS CONSTRUCTOR ───────────────
   constructor(
     private customerService: CustomerService,
     private fb: FormBuilder,
@@ -32,6 +33,7 @@ export class CustomerComponent implements OnInit {
     this.imageonly = 'imageonly';
   }
 
+// ─── INITIALIZING THE CUSTOMER FORM AND CUSTOMERS ACCOUNT ─────────
   ngOnInit(): void {
     this.addAccount();
     this.id = + this.activatedRoute.snapshot.paramMap.get('id');
@@ -40,7 +42,8 @@ export class CustomerComponent implements OnInit {
       this.customersForm();
     }
   }
-  // customer form
+
+  // ─── CUSTOMERS FORM ────────────
   customersForm(customer: any = '') {
     this.customerForm = this
       .fb.group({
@@ -55,9 +58,9 @@ export class CustomerComponent implements OnInit {
         BankAccounts: this.fb.array([]),
       });
   }
-  // customer model
 
-  // this function is called when submit button is clicked
+
+  // ─── THIS FUNCTION IS CALLED WHEN SUBMIT BUTTON IS CLICKED ───────────
   onSubmit() {
 
     const data = this.prepareFormData(this.customerForm);
@@ -82,11 +85,12 @@ export class CustomerComponent implements OnInit {
   get BankAccounts(): FormArray {
     return this.customerForm.get('BankAccounts') as FormArray;
   }
-  // this function is called when cancel button is clicked
+
+  // ─── THIS FUNCTION IS CALLED WHEN CANCEL BUTTON IS CLICKED ────────────
   onCancel() {
     this.location.back();
   }
-
+// ─── CUSTOMER MODEL ──────────────────────
   prepareFormData(form: FormGroup): Customer {
     const data = form.value;
     const customerData: Customer = new Customer();
@@ -110,6 +114,7 @@ export class CustomerComponent implements OnInit {
     return customerData;
   }
 
+// ─── THIS METHOD IS CALLED WHEN THE USER WANTS TO ADD A CUSTOMER ACCOUNT ──────
   addAccount() {
     this.BankAccounts.push(this.fb.group({
       BankName: ['', [Validators.required]],

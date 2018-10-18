@@ -5,13 +5,13 @@ namespace Smart_Accounting.Application.Supplier.Commands.Factories
 {
     public class SupplierCommandsFactory : ISupplierCommandsFactory
     {
-        public Suppliers NewSupplier(NewSupplierModel newSupplier)
+        public Suppliers NewSupplier(Suppliers newSupplier)
         {
             var supplier = new Suppliers();
 
             supplier.FullName = newSupplier.FullName;
             supplier.Email = newSupplier.Email;
-            supplier.PhoneNo = newSupplier.Phone_No;
+            supplier.PhoneNo = newSupplier.PhoneNo;
             supplier.Country = newSupplier.Country;
             supplier.City = newSupplier.City;
             supplier.SubCity = newSupplier.SubCity;

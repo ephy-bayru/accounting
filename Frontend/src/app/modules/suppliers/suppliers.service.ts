@@ -20,26 +20,35 @@ export class SuppliersService {
     private httpClient: HttpClient
   ) { }
 
+// ─── GET ALL SUPPLIERS FROM BACKEND ────────────
   getSuppliers(): Observable<Suppliers[]> {
     const options = { headers: this._header };
     return this.httpClient.get<Suppliers[]>(`${this.Url}`, options);
   }
+
+// ─── GET A SINGLE SUPPLIER FROM A BACKEND USING SUPPLIER ID ───────
   getSupplier(id: number): Observable<Suppliers> {
     const options = { headers: this._header };
 
     return this.httpClient.get<Suppliers>(`${this.Url}/${id}`, options);
   }
+
+// ─── ADD A NEW SUPPLIER ───────────────
   addSupplier(newSupplier: Suppliers): Observable<Suppliers> {
     return this.httpClient.post<Suppliers>(`${this.Url}`, newSupplier)
       .pipe(
         catchError(this.handleError)
       );
   }
+
+
+// ─── UPDATE AN EXISTING SUPPLIER USING ITS ID ───────
   updateSupplier(updatesupplier: Suppliers, id: number): Observable<Suppliers> {
 
     return this.httpClient.put<Suppliers>(`${this.Url}/${id}`, updatesupplier);
   }
 
+// ─── DELETE A SUPPLIER USING ITS ID ────────
   deleteSupplier(id: number) {
     const options = { headers: this._header };
     return this.httpClient.delete(`${this.Url}/${id}`, options)
@@ -63,6 +72,7 @@ export class SuppliersService {
     return supplier;
   }
 
+// ─── ERROR HANDLING FUNCTION THAT RETURNS ERROR MESSAGE WHEN EVER ERRORS OCCURS FROM A BACKEND SERVER
   private handleError(error: Response | any) {
     if (error instanceof HttpErrorResponse) {
       console.error('backend error:', error.status);
