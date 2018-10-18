@@ -50,6 +50,10 @@ export class ComapnyFormComponent implements OnInit {
     });
 
   }
+
+  cancel() {
+    this.location.back();
+  }
   populateForm(organization: Organization) {
     console.log(organization.name);
     this.organizationForm = this.formBuilder.group({

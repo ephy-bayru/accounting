@@ -4,9 +4,10 @@ import { GridComponent } from '@syncfusion/ej2-ng-grids';
 import { DataManager, WebApiAdaptor, UrlAdaptor } from '@syncfusion/ej2-data';
 import {
   GroupSettingsModel, FilterSettingsModel, ToolbarItems,
-  TextWrapSettingsModel, EditSettingsModel, SelectionSettingsModel, PageSettingsModel, CommandModel, ExcelExportProperties
+  TextWrapSettingsModel, EditSettingsModel, SelectionSettingsModel,
+  PageSettingsModel, CommandModel, ExcelExportProperties, EditEventArgs, RowDeselectEventArgs
 } from '@syncfusion/ej2-grids';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { CalanderService, CalanderPeriod } from '../calander.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -35,15 +36,20 @@ export class CalanderViewComponent implements OnInit {
   public pageSettings: PageSettingsModel;
   public filterOptions: FilterSettingsModel;
   public commands: CommandModel[];
-  constructor(private router: Router, private calanderService: CalanderService, private appConfig: SmartAppConfigService) { }
+  public isUpdate: Boolean = false;
+
+  constructor(private router: Router,
+    private calanderService: CalanderService,
+    private appConfig: SmartAppConfigService,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+
+
     this.data = new DataManager({
       url: 'http://localhost:53267/api/calanders',
-      updateUrl: 'http://localhost:53267/api/calanders',
-      insertUrl: 'http://localhost:53267/api/calanders',
-      removeUrl: 'http://localhost:53267/api/calanders',
-      adaptor: new WebApiAdaptor
+      adaptor: new WebApiAdaptor,
+      offline: true
     });
 
 
@@ -52,18 +58,22 @@ export class CalanderViewComponent implements OnInit {
     this.groupOptions = { showGroupedColumn: true }; // make columns used for grouping visable
     this.toolbarOptions = [
       'Add',
-      'Edit',
       'Print',
       'PdfExport',
       'ExcelExport',
       'Search'
     ];
     this.commands = [
+      { type: 'Edit', buttonOption: { cssClass: 'e-flat', iconCss: 'e-edit e-icons', click: this.editCalender.bind(this) } },
       { type: 'Delete', buttonOption: { cssClass: 'e-flat', iconCss: 'e-delete e-icons' } }];
     this.pageSettings = { pageSize: 5 };  // initial page row size for the grid
-    this.editSettings = { showDeleteConfirmDialog: true, allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Dialog' };
+    this.editSettings = { showDeleteConfirmDialog: true, allowEditing: false, allowAdding: true, allowDeleting: true, mode: 'Dialog' };
   }
 
+  editCalender(data) {
+    console.log(data);
+    this.router.navigate(['calanders/update']);
+  }
   handleError(error: HttpErrorResponse) {
     console.log(error);
   }
@@ -77,7 +87,7 @@ export class CalanderViewComponent implements OnInit {
     } else if (args.item.id === 'calander_add') {
       this.router.navigate(['calanders/new']);   // when user click add route to the calander form
     } else if (args.item.id === 'calander_edit') {
-
+      this.router.navigate(['calanders/update']);
     } else if (args.item.id === 'calander_print') {
       this.grid.print();      // when the user click print print the current page
     }

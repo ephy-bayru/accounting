@@ -1,8 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { ButtonComponent } from '@syncfusion/ej2-ng-buttons';
 import { RangeEventArgs } from '@syncfusion/ej2-calendars';
 import { CalanderPeriod, CalanderService } from '../calander.service';
+import { ActivatedRoute } from '@angular/router';
+import {Location} from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-calander-form',
   templateUrl: './calander-form.component.html',
@@ -16,14 +19,22 @@ export class CalanderFormComponent implements OnInit {
   public format: String = 'yyyy-MM-dd'; // 2018-09-17
   public firstDay: Number = 1; // Monday
   public calanderList: CalanderPeriod[] = [];
+  public isUpdate: Boolean = false;
   @ViewChild('statusBtn') statusBtn: ButtonComponent;
 
-  constructor(private formBuilder: FormBuilder, private calanderPeriodAPI: CalanderService) {
+  constructor(private formBuilder: FormBuilder,
+              private calanderPeriodAPI: CalanderService,
+            private activatedRoute: ActivatedRoute,
+          private location: Location) {
     this.createForm();
 
   }
 
   ngOnInit() {
+    const action = this.activatedRoute.snapshot.data['action'];
+    if (action === 'update') {
+      this.isUpdate = true;
+    }
   }
 
   dateChanged(date: RangeEventArgs) {
@@ -61,7 +72,7 @@ export class CalanderFormComponent implements OnInit {
     this.calanderForm = this.formBuilder.group({
       calanders: this.formBuilder.array([
         this.formBuilder.group({
-          order: [[new Date(), new Date()], Validators.required],
+          order: ['', Validators.required],
           active: [false]
         })])
 
@@ -70,7 +81,7 @@ export class CalanderFormComponent implements OnInit {
 
   addPeriod() {
     this.calanders.push(this.formBuilder.group({
-      order: [[new Date(), new Date()], Validators.required],
+      order: ['', Validators.required],
       active: [false]
     }));
   }
@@ -78,7 +89,9 @@ export class CalanderFormComponent implements OnInit {
   get calanders(): FormArray {
     return this.calanderForm.get('calanders') as FormArray;
   }
-
+  cancel() {
+    this.location.back();
+  }
   btnClick() {
     if (this.statusBtn.element.classList.contains('e-active')) {
       this.statusBtn.content = 'Deactiveated';
@@ -104,6 +117,13 @@ export class CalanderFormComponent implements OnInit {
       });
     });
 
-    this.calanderPeriodAPI.createCalanderPeriod(this.calanderList).subscribe(result => console.log(result));
+    this.calanderPeriodAPI.createCalanderPeriod(this.calanderList)
+              .subscribe((result: CalanderPeriod[]) => {
+                                                  alert('Calander Periods Created Successfully');
+                                                  this.location.back();
+                                                  },
+                        (error: HttpErrorResponse) =>{
+                          alert(error);
+                        });
   }
 }

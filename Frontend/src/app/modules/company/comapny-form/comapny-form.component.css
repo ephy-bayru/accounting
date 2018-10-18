@@ -18,6 +18,7 @@
 }
 .submit-container, .submit-container button {
   margin: 10px;
+
 }
 .title {
   text-align: center;
@@ -25,6 +26,9 @@
 .btn {
   padding-left: 60%;
   margin-left: 15%;
+  text-align: left;
+  align-content: center;
+
 }
 #control_wrapper {
   margin: 25px auto;

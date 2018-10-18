@@ -33,6 +33,9 @@ import { SuppliersModule } from './modules/suppliers/suppliers/suppliers.module'
 import { AccountsModule } from './modules/accounts/accounts/accounts.module';
 import { AccountsViewComponent } from './modules/accounts/accounts-view/accounts-view.component';
 import { SupplierComponent } from './modules/suppliers/supplier/supplier.component';
+import { NotFoundComponent } from './modules/shared/not-found/not-found.component';
+import { LedgerModule } from './modules/ledgers/ledger/ledger.module';
+import { NumericTextBoxModule } from '@syncfusion/ej2-ng-inputs';
 
 
 @NgModule({
@@ -41,7 +44,6 @@ import { SupplierComponent } from './modules/suppliers/supplier/supplier.compone
 
     BanksComponent,
     CurrencyComponent,
-    LedgerComponent,
     LoginComponent,
 
     DashboardComponent,
@@ -56,7 +58,7 @@ import { SupplierComponent } from './modules/suppliers/supplier/supplier.compone
     MainNavComponent,
     SideNavComponent,
     // syncfusion
-    TreeViewComponent, ToolbarComponent, CompareDirective, AccountsViewComponent, SupplierComponent
+    TreeViewComponent, ToolbarComponent, CompareDirective, AccountsViewComponent, SupplierComponent, NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +70,7 @@ import { SupplierComponent } from './modules/suppliers/supplier/supplier.compone
     CustomerModule,
     SuppliersModule,
     AccountsModule,
+    LedgerModule,
     // sincfussion modules
     ButtonModule,
     GridModule,

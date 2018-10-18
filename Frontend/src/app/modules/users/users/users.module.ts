@@ -45,8 +45,7 @@ import { PageService,
   ],
   declarations: [
     UsersComponent,
-    UserGridComponent,
-    NumericTextBoxComponent
+    UserGridComponent
   ],
   providers: [UsersService,
     // data tPageService,

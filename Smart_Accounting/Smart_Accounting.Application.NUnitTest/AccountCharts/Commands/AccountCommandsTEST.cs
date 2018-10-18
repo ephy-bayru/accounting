@@ -16,7 +16,7 @@ namespace Smart_Accounting.Application.NUnitTest.AccountCharts.Commands {
         private Mock<AccountChartCommands> accountCommands;
         private Mock<IAccountingDatabaseService> MockIAccountingDatabaseService;
         private IEnumerable<AccountChart> accounts;
-        private IEnumerable<AccountChart> updatedAccounts;
+        private AccountChart updatedAccounts;
 
         [SetUp]
         public void Init () {
@@ -79,24 +79,14 @@ namespace Smart_Accounting.Application.NUnitTest.AccountCharts.Commands {
             };
 
 
-            updatedAccounts = new List<AccountChart> () {
-                new AccountChart () {
+            updatedAccounts = new AccountChart() {
                 AccountCode = "ACC-005",
                 Name = "Third Account",
                 Active = 1,
                 AccountType = "ASSET",
                 AccountId = "ACC-007",
                 OrganizationId = 11
-                },
-                new AccountChart () {
-                AccountCode = "ACC-006",
-                Name = "Fourth Account",
-                Active = 1,
-                AccountType = "LIABILITY",
-                AccountId = "ACC-003",
-                OrganizationId = 11
-                }
-            };
+                };
 
             accountCommands = new Mock<AccountChartCommands> ();
             MockIAccountingDatabaseService = new Mock<IAccountingDatabaseService> ();

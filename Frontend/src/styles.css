@@ -7,3 +7,8 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Roboto', sans-serif; }
+
+section.e-card {
+  margin: 15px;
+  width: 95%;
+}

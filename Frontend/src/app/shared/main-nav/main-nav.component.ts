@@ -2,6 +2,7 @@ import { Component, ViewEncapsulation, Inject, ViewChild } from '@angular/core';
 import { ButtonComponent } from '@syncfusion/ej2-ng-buttons';
 import { SidebarComponent, TreeViewComponent } from '@syncfusion/ej2-angular-navigations';
 import { Router } from '@angular/router';
+import { NodeSelectEventArgs } from '@syncfusion/ej2-navigations';
 
 
 @Component({
@@ -24,29 +25,32 @@ export class MainNavComponent {
         {
           id: '01', name: 'COMPANY',
           subChild: [
-            { id: '001', name: 'PROFILE', navigateUrl: 'organizations' },
-            { id: '002', name: 'CALENDER', navigateUrl: 'calanders' },
+            { id: 'organizations', name: 'PROFILE' },
+            { id: 'calanders', name: 'CALENDER'},
         ]
         },
         {
-          id: '01-02', name: 'USER', tooltip: 'users data', navigateUrl: 'employees'
+          id: 'employees', name: 'USER', tooltip: 'users data'
         },
         {
-          id: '01-03', name: 'CUSTOMER', tooltip: 'customers data', navigateUrl: 'customers'
+          id: 'customers', name: 'CUSTOMER', tooltip: 'customers data'
         },
         {
-          id: '01-04', name: 'SUPPLIER',  navigateUrl: 'suppliers'
+          id: 'suppliers', name: 'SUPPLIER'
         },
         {
-          id: '01-05', name: 'BANK'
+          id: 'banks', name: 'BANK'
         },
         {
-          id: '01-06', name: 'CURRENCY'
+          id: 'currencies', name: 'CURRENCY'
         }
       ],
     },
     {
-      id: '02', name: 'ACCOUNTS', navigateUrl: 'accounts'
+      id: 'accounts', name: 'ACCOUNTS'
+    },
+    {
+      id: 'ledgers', name: 'General Ledger'
     },
     {
       id: '03', name: 'REPORTS',
@@ -70,6 +74,8 @@ export class MainNavComponent {
     },
 
   ];
+
+
   public field: Object = { dataSource: this.hierarchicalData, id: 'id', text: 'name', child: 'subChild' };
   btnClick() {
     if (this.togglebtn.element.classList.contains('e-active')) {
@@ -84,8 +90,8 @@ export class MainNavComponent {
   }
   constructor(private router: Router) {}
 
-  goUsers() {
-    this.router.navigate(['users']);
+  nodeSelected(args: NodeSelectEventArgs) {
+    this.router.navigate([args.node.dataset['uid']]);
   }
 
 }
