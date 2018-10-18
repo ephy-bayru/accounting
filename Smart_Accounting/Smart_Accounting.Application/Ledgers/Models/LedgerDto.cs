@@ -10,7 +10,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Smart_Accounting.Application.Ledgers.Models {
-    public abstract class LedgerDto {
+    public  class LedgerDto {
         [Required]
         public DateTime CreatedOn {get; set;}
         [Required]

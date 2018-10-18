@@ -12,7 +12,7 @@ namespace Smart_Accounting.Application.Ledgers.Models
     {
         public float Credit {get; set;}
         public float Debit {get; set;}
-        public uint AccountId {get; set;}
+        public string AccountId {get; set;}
         public uint Reference {get; set;}
 
 

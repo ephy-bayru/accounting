@@ -11,6 +11,7 @@ using System.Collections.Generic;
 namespace Smart_Accounting.Application.Ledgers.Models {
     public class NewLedgerEntryDto : LedgerDto {
 
-        List<NewJornalEntryDto> Jornal {get; set;} = new List<NewJornalEntryDto>();
+        public List<NewJornalEntryDto> Jornal {get; set;} = new List<NewJornalEntryDto>();
     }
 }
+
