@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
-import { LedgerService } from '../ledger.service';
+import { LedgerService, Ledger } from '../ledger.service';
 import { Location } from '@angular/common';
 import { Query, DataManager, WebApiAdaptor, ReturnOption } from '@syncfusion/ej2-data';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-ledger',
@@ -20,8 +21,8 @@ export class LedgerComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private ledgerService: LedgerService,
     private location: Location) {
-      this.createForm();
-     }
+    this.createForm();
+  }
 
   ngOnInit() {
 
@@ -45,18 +46,52 @@ export class LedgerComponent implements OnInit {
           AccountId: [data.AccountId, Validators.required],
           Credit: [data.AccountType, Validators.required],
           Debit: [data.Name, Validators.required],
-          Reference: [(data.Active) ? data.Active : false],
+          Reference: [(data.Reference) ? data.Reference : ''],
         }),
         this.formBuilder.group({
           AccountId: [data.AccountId, Validators.required],
           Credit: [data.AccountType, Validators.required],
           Debit: [data.Name, Validators.required],
-          Reference: [(data.Active) ? data.Active : false],
+          Reference: [(data.Reference) ? data.Reference : ''],
         })])
 
     });
   }
 
+  onCancel() {
+    this.location.back();
+  }
+
+  onSubmit() {
+    const formData = this.prepareData(this.ledgerForm);
+    console.log(formData);
+    this.ledgerService.addLedgerEntry(formData).subscribe(
+      (data: Ledger) => {
+        alert('Ledger entry made successfully');
+        console.log(data);
+      },
+      (error: HttpErrorResponse) => console.log(error)
+    );
+
+  }
+
+  prepareData(data: FormGroup): Ledger {
+    const form = data.value;
+
+    const ledger = new Ledger();
+    ledger.createdOn = form.date;
+    ledger.description = form.description;
+
+    this.accounts.controls.forEach(element => {
+      ledger.jornal.push({
+        credit: (element.get('Credit').value) ? element.get('Credit').value : 0,
+        debit: (element.get('Debit').value) ? element.get('Debit').value : 0,
+        accountId: element.get('AccountId').value,
+        reference: (element.get('Reference').value) ? element.get('Reference').value : 0,
+      });
+    });
+    return ledger;
+  }
   get accounts(): FormArray {
     return this.ledgerForm.get('accounts') as FormArray;
   }

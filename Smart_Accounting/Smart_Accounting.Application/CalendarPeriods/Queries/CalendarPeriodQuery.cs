@@ -31,6 +31,16 @@ namespace Smart_Accounting.Application.CalendarPeriods.Queries {
 
         }
 
+        public uint getActivePeriodId () {
+            var activeId = _database.CalendarPeriod
+                .Where (period => period.Active == 1)
+                .Select (calendar => new CalendarPeriod () {
+                    Id = calendar.Id
+
+                }).FirstOrDefault ();
+
+            return activeId.Id;
+        }
         public IEnumerable<CalendarPeriod> GetAll () {
             return _database.CalendarPeriod.Select (calendar => new CalendarPeriod () {
                 Id = calendar.Id,
