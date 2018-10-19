@@ -4,7 +4,7 @@ using Smart_Accounting.Domain.CalendarPeriods;
 using Smart_Accounting.Domain.Jornals;
 
 namespace Smart_Accounting.Domain.Ledgers {
-    public partial class Ledger {
+    public class Ledger {
         public Ledger () {
             Jornal = new HashSet<Jornal> ();
         }

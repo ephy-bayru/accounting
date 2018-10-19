@@ -40,7 +40,10 @@ using Smart_Accounting.Application.Customers.Commands.Factories;
 using Smart_Accounting.Application.Customers.Factories;
 using Smart_Accounting.Application.Supplier.Commands.Factories;
 using Smart_Accounting.Application.Supplier.Factories;
-
+using Smart_Accounting.Application.Ledgers.Commands;
+using Smart_Accounting.Application.Ledgers.Interfaces;
+using Smart_Accounting.Application.Ledgers.Queries;
+using Smart_Accounting.Application.Ledgers.Factories;
 
 namespace Smart_Accounting.API {
     public class Startup {
@@ -77,6 +80,9 @@ namespace Smart_Accounting.API {
             services.AddScoped<ISuppliersQuery, SuppliersQuery> ();
             services.AddScoped<ISupplierCommandsFactory, SupplierCommandsFactory>();
             services.AddScoped<ISuppliersFactory, SupplierFactory>();
+            services.AddScoped<ILedgersCommand, LedgersCommand>();
+            services.AddScoped<ILedgersQuery, LedgersQuery>();
+            services.AddScoped<ILedgersFactory, LedgerFactories>();
 
 
             services.AddCors (options => {

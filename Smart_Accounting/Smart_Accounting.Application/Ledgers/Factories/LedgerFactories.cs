@@ -26,7 +26,6 @@ namespace Smart_Accounting.Application.Ledgers.Factories {
                         AccountId = item.AccountId,
                         Debit = item.Debit,
                         Reference = item.Reference
-
                 });
             }
 

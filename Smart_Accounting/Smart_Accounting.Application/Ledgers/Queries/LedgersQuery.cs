@@ -1,16 +1,65 @@
+/*
+ * @CreateTime: Oct 18, 2018 10:35 AM
+ * @Author:  Mikael Araya
+ * @Contact: MikaelAraya12@gmail.com
+ * @Last Modified By:  Mikael Araya
+ * @Last Modified Time: Oct 18, 2018 10:35 AM
+ * @Description: Modify Here, Please 
+ */
 using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Extensions.Logging;
+using Smart_Accounting.Application.Interfaces;
 using Smart_Accounting.Application.Ledgers.Interfaces;
-using Smart_Accounting.Domain;
+using Smart_Accounting.Domain.Jornals;
 using Smart_Accounting.Domain.Ledgers;
 
 namespace Smart_Accounting.Application.Ledgers.Queries {
     public class LedgersQuery : ILedgersQuery {
-        public IEnumerable<Ledger> GetAll () {
-            throw new System.NotImplementedException ();
+        private readonly IAccountingDatabaseService _database;
+        private readonly ILogger<LedgersQuery> _logger;
+
+        public LedgersQuery (IAccountingDatabaseService database,
+            ILogger<LedgersQuery> logger) {
+            _database = database;
+            _logger = logger;
+        }
+        public IEnumerable<Ledger> GetAllLedgerEntry () {
+            return _database.Ledger.Select (ledger => new Ledger () {
+                Id = ledger.Id,
+                    PeriodId = ledger.PeriodId,
+                    DateAdded = ledger.DateAdded,
+                    DateUpdated = ledger.DateUpdated,
+                    Discription = ledger.Discription,
+                    Jornal = ledger.Jornal.Select (jor => new Jornal () {
+                        JornalId = jor.JornalId,
+                            Credit = jor.Credit,
+                            Debit = jor.Debit,
+                            Reference = jor.Reference,
+                            AccountId = jor.AccountId,
+                            DateAdded = jor.DateAdded,
+                            DateUpdated = jor.DateUpdated,
+                            ReconcieldOn = jor.ReconcieldOn,
+                            Reconcied = jor.Reconcied,
+                    }).ToList ()
+            }).ToList ();
         }
 
-        public Ledger GetById (uint id) {
-            throw new System.NotImplementedException ();
+        public Ledger GetLedgerEntryById (uint id) {
+            return _database.Ledger.Select (ledger => new Ledger () {
+                Id = ledger.Id,
+                    PeriodId = ledger.PeriodId,
+                    DateAdded = ledger.DateAdded,
+                    DateUpdated = ledger.DateUpdated,
+                    Discription = ledger.Discription,
+                    Jornal = ledger.Jornal.Select (jor => new Jornal () {
+                        JornalId = jor.JornalId,
+                            Credit = jor.Credit,
+                            Debit = jor.Debit,
+                            Reference = jor.Reference,
+                            AccountId = jor.AccountId
+                    }).ToList ()
+            }).FirstOrDefault(ledger => ledger.Id == id);
         }
     }
 }

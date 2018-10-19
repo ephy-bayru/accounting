@@ -15,14 +15,10 @@ namespace Smart_Accounting.Application.Ledgers.Commands {
             _logger = logger;
         }
         public Ledger CreateLedger (Ledger newLedger) {
-            try {
-                _database.Ledger.Add (newLedger);
-                _database.Save ();
-                return newLedger;
-            } catch (Exception e) {
-                _logger.LogError (500, e.Message);
-                return null;
-            }
+
+            _database.Ledger.Add (newLedger);
+            _database.Save ();
+            return newLedger;
         }
 
         public bool deleteLedger (Ledger deleteLedger) {

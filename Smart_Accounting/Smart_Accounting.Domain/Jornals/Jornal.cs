@@ -5,7 +5,7 @@ using Smart_Accounting.Domain.Currencies;
 using Smart_Accounting.Domain.Ledgers;
 
 namespace Smart_Accounting.Domain.Jornals {
-    public partial class Jornal {
+    public  class Jornal {
         public uint JornalId { get; set; }
         public double Credit { get; set; }
         public string AccountId { get; set; }

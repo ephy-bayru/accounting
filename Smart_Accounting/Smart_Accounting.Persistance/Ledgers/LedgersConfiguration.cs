@@ -1,3 +1,11 @@
+/*
+ * @CreateTime: Oct 18, 2018 1:55 PM
+ * @Author:  Mikael Araya
+ * @Contact: MikaelAraya12@gmail.com
+ * @Last Modified By:  Mikael Araya
+ * @Last Modified Time: Oct 18, 2018 1:55 PM
+ * @Description: Modify Here, Please 
+ */
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Smart_Accounting.Domain.Ledgers;
