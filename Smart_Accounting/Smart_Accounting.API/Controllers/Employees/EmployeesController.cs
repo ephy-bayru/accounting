@@ -93,11 +93,10 @@ namespace Smart_Accounting.API.Controllers.Employee
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
         [ProducesResponseType(422)]
-        public IActionResult CreateNewEmployee([FromBody] NewEmployeeModel newEmployee)
+        public IActionResult CreateNewEmployee([FromBody] Employees employees)
         {
 
-            
-                if (newEmployee == null)
+                if (employees == null)
                 {
                     return BadRequest("Empty user data!");
                 }
@@ -105,8 +104,8 @@ namespace Smart_Accounting.API.Controllers.Employee
                 {
                     return StatusCode(422, "Invalid data sent from users");
                 }
-                _employeeCommands.Create(newEmployee);
-                return StatusCode(201, newEmployee);
+                _employeeCommands.Create(employees);
+                return StatusCode(201, employees);
             }
 // HTTP PUT
 // ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── IV ──────────

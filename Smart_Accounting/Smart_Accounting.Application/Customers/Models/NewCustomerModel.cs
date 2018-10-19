@@ -5,7 +5,7 @@ using Smart_Accounting.Domain.Customers;
 
 namespace Smart_Accounting.Application.Customers.Models {
     public class NewCustomerModel : CustomerDto {
-        public IEnumerable<NewCustomerAccountDto> BankAccounts { get; set; }
+        public List<NewCustomerAccountDto> BankAccounts { get; set; } = new List<NewCustomerAccountDto>();
 
     }
 }

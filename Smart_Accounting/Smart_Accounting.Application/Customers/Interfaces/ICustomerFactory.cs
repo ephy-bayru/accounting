@@ -8,7 +8,6 @@ namespace Smart_Accounting.Application.Customers.Interfaces
     {
         List<CustomerViewModel> createCustomerView(IEnumerable<Customer> customer);
         Customer NewCustomerAccount(NewCustomerModel customer);
-
         Customer UpdatedCustomer(UpdateCustomerModel customer);
     }
 }

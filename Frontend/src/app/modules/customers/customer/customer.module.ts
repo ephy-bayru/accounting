@@ -70,7 +70,6 @@ import {
     PageService,
     FreezeService,
     SelectionService,
-
             ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

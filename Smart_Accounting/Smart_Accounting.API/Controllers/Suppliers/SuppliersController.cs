@@ -93,7 +93,7 @@ namespace Smart_Accounting.API.Controllers.Suppliers {
                 return StatusCode (422, "Invalid supplier data model sent from users");
             }
             var supp = _supplierFactory.CreateNewSupplier (newSupplier);
-            _supplierCommands.Create (newSupplier);
+            _supplierCommands.Create (supp);
             // _logger.LogInformation("successfully registered new supplier!");
             return StatusCode (201, supp);
 

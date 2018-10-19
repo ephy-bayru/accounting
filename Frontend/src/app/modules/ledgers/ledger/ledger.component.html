@@ -1,54 +1,67 @@
 <section class="e-card">
   <form [formGroup]="ledgerForm" novalidate name="ledgerForm">
-
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-6">
-          <input class="e-input" name="description" formControlName="description" id="description" placeholder="Description" />
+    <div class="cont">
+      <h4>Journal Entry</h4>
+      <div class="container-fluid">
+        <div class="form-group template col-6">
+          <div class="e-float-input">
+            <input type="text" id="description" name="description" class="required" formControlName="description"
+              required>
+            <span class="e-float-line"></span>
+            <label class="e-float-text" for="description">Description</label>
+          </div>
         </div>
-        <div class="col-5"></div>
-        <ejs-datepicker formControlName="date" id="date" name="date" placeholder="Select Date"></ejs-datepicker>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <table class="table table-strip">
-            <thead>
-              <tr>
-                <th>Account</th>
-                <th>Debit</th>
-                <th>Credit</th>
-                <th>Reference</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let account of accounts.controls; let i=index; let last=last;" [formGroup]="account">
-                <td>
-                  <ejs-dropdownlist id='parentAccount' placeholder="Parent Account" name="parentAccount" [query]="accountQuery"
-                    [fields]="accountFields" formControlName="AccountId" [dataSource]='accountList'></ejs-dropdownlist>
-                </td>
-                <td>
-                  <ejs-numerictextbox formControlName="Credit" name="creation" id="credit" placeholder="Credit">
-                  </ejs-numerictextbox>
-                </td>
-                <td>
-                  <ejs-numerictextbox formControlName="Debit" name="debiit" id="debit" placeholder="Debit">
-                  </ejs-numerictextbox>
-                </td>
+
+        <div class="form-group template col-3">
+          <ejs-datepicker formControlName="date" id="date" name="date" placeholder="Select Date">
+            <div class="e-input-group">
+            </div>
+          </ejs-datepicker>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <table class="table table-strip">
+              <thead>
+                <tr>
+                  <th>Account</th>
+                  <th>Debit</th>
+                  <th>Credit</th>
+                  <th>Reference</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let account of accounts.controls; let i=index; let last=last;" [formGroup]="account">
+                  <td>
+                    <ejs-dropdownlist id='parentAccount' placeholder="Parent Account" name="parentAccount" [query]="accountQuery"
+                      [fields]="accountFields" formControlName="AccountId" [dataSource]='accountList'></ejs-dropdownlist>
+                  </td>
+                  <td>
+                    <ejs-numerictextbox formControlName="Credit" name="creation" id="credit" placeholder="Credit">
+                    </ejs-numerictextbox>
+                  </td>
+                  <td>
+                    <ejs-numerictextbox formControlName="Debit" name="debiit" id="debit" placeholder="Debit">
+                    </ejs-numerictextbox>
+                  </td>
                   <td>
                     <div class="col-6">
                       <input class="e-input" name="Reference" formControlName="Reference" id="Reference" placeholder="Reference" />
                     </div>
                   </td>
-                <button type="button" ejs-button class="e-round e-pluse e-small" iconCss="e-icons e-plus-icon" *ngIf="last" (click)="addForm()">Add</button>
-                <button type="button" ejs-button class="e-round e-danger e-small e-icons e-times-icon" *ngIf="accounts.controls.length > 2" (click)="accounts.removeAt(i)">Remove</button>
-              </tr>
-            </tbody>
-          </table>
+                  <button type="button" ejs-button class="e-round e-pluse e-info e-small" iconCss="e-icons e-plus-icon" *ngIf="last"
+                    (click)="addForm()">Add</button>
+                  <button type="button" ejs-button class="e-round e-danger e-small e-icons e-times-icon" *ngIf="accounts.controls.length > 2"
+                    (click)="accounts.removeAt(i)">Remove</button>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-{{ledgerForm.value | json}}
+    {{ledgerForm.value | json}}
 
 
   </form>

@@ -16,18 +16,21 @@ export class CustomerService {
   constructor(
     private httpClient: HttpClient
   ) { }
-///
+
+// ─── GET ALL USERS FROM BACKEND ───────────────
   getCustomers(): Observable<Customer[]> {
     const options = { headers: this._header };
     return this.httpClient.get<Customer[]>(`${this.Url}`, options);
   }
 
+// ─── GET A SINGLE CUSTOMER BY ITS ID FROM A BACKEND ──────────
   getCustomer(id: number): Observable<Customer> {
     const options = { headers: this._header };
 
     return this.httpClient.get<Customer>(`${this.Url}/${id}`, options);
   }
 
+// ─── ADDING A NEW CUSTOMER ────────────────
   addCustomer(newCustomer: Customer): Observable<Customer> {
     return this.httpClient.post<Customer>(`${this.Url}`, newCustomer)
       .pipe(
@@ -35,11 +38,13 @@ export class CustomerService {
       );
   }
 
+// ─── UPDATING AN EXISTING CUSTOMER USING THEIR ID ─────────
   updateCustomer(updatCustomer: Customer, id: number): Observable<Customer> {
 
     return this.httpClient.put<Customer>(`${this.Url}/${id}`, updatCustomer);
   }
 
+// ─── DELETING A CUSTOMER USING THEIR ID ─────────
   deleteCustomer(id: number) {
     const options = { headers: this._header };
     return this.httpClient.delete(`${this.Url}/${id}`, options)

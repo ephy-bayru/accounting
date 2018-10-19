@@ -94,7 +94,7 @@ namespace Smart_Accounting.API.Controllers.Customers {
                 }
 
                 var customer = _customerFactory.NewCustomerAccount (newCustomer);
-                var result = _customerCommands.Create (newCustomer);
+                var result = _customerCommands.Create (customer);
 
                 if (customer == null) {
                     return StatusCode (500, $"internal server error");

@@ -69,6 +69,7 @@ export class SuppliersGridComponent implements OnInit {
 
   }
 
+// ─── THIS FUNCTION IS CALLED WHEN BUTTONS ON THE TOOLBAR IS CLICKED ──────────
   toolbarClick(args: ClickEventArgs): void {
     if (args.item.id === 'supplier_add') {
       this.router.navigate(['add/supplier']);

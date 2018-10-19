@@ -43,7 +43,7 @@ namespace Smart_Accounting.Application.Customers.Factories {
                 Country = customer.Country,
                 SubCity = customer.SubCity,
                 Phone_No = customer.Phone_No,
-                PostalCode = customer.Phone_No,
+                PostalCode = customer.PostalCode,
                 Email = customer.Email,
                 HouseNo = customer.HouseNo
             };

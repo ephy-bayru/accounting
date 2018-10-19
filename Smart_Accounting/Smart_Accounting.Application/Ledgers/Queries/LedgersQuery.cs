@@ -41,7 +41,7 @@ namespace Smart_Accounting.Application.Ledgers.Queries {
                             DateUpdated = jor.DateUpdated,
                             ReconcieldOn = jor.ReconcieldOn,
                             Reconcied = jor.Reconcied,
-                    }).ToList ()
+                    }).ToList()
             }).ToList ();
         }
 

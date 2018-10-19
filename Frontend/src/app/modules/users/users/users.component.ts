@@ -4,9 +4,6 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Users } from './../users';
 import { UsersService } from './../users.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { PageSettingsModel } from '@syncfusion/ej2-ng-grids';
-import { EmitType } from '@syncfusion/ej2-base';
-import { DialogComponent } from '@syncfusion/ej2-angular-popups';
 
 @Component({
   selector: 'app-users',
@@ -52,18 +49,18 @@ export class UsersComponent implements OnInit {
     }
   }
 
-  // this function is called
+  // ─── INTIALIZING USERS FORM ─────────────
   usersForm(User: any = '') {
     this.userForm = this
       .fb
       .group({
-        First_Name: [(User.FirstName) ? User.FirstName : '', Validators.required ]
+        FirstName: [(User.FirstName) ? User.FirstName : '', Validators.required ]
           ,
-        Last_Name: [(User.LastName) ? User.LastName : '', Validators.required ]
+        LastName: [(User.LastName) ? User.LastName : '', Validators.required ]
           ,
         Email: [(User.Email) ? User.Email : '', Validators.required ]
           ,
-        Phone_No: [(User.PhoneNo) ? User.PhoneNo : '', Validators.required ]
+        Phone_No: [(User.Phone_No) ? User.Phone_No : '', Validators.required ]
           ,
         Account_Id: [(User.AccountId) ? User.AccountId : '', Validators.required ]
           ,
@@ -74,7 +71,8 @@ export class UsersComponent implements OnInit {
         Birth_Date: [ (User.BirthDate) ? new Date(User.BirthDate) : User.BirthDate , Validators.required]
       });
   }
-  // user model
+
+ // ─── USERS MODEL ─────────
   userModel(): any {
     const formModel = this.userForm.value;
 
@@ -91,6 +89,9 @@ export class UsersComponent implements OnInit {
       Email: formModel.Email
         ? formModel.Email
         : '',
+      Phone_No: formModel.Phone_No
+      ? formModel.Phone_No
+      : '',
       Password: formModel.Password
         ? formModel.Password
         : '',
@@ -106,6 +107,8 @@ export class UsersComponent implements OnInit {
     };
     return userData;
   }
+
+// ─── THIS METHOD IS CALLED WHEN SUBMIT BUTTON IS CLICKED ─────────────
   onSubmit() {
 
     const data = this.userForm.value;
@@ -135,11 +138,13 @@ export class UsersComponent implements OnInit {
   public isFieldValid(field: string) {
 
   }
-  // cancel button function
+
+// ─── THIS METHOD IS CALLED WHEN CANCEL BUTTON IS CLICKED ────────
   onCancel() {
     this.location.back();
   }
-  // delete function
+
+// ─── THIS METHOD IS CALLED WHEN DELETE BUTTON IS CALLED ─────────
   onDelete(id: number) {
     this
       .usersService

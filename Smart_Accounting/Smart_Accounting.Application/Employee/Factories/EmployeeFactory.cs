@@ -15,7 +15,7 @@ namespace Smart_Accounting.Application.Employee.Factories {
                         First_Name = item.FirstName,
                         Last_Name = item.LastName,
                         Email = item.Email,
-                        Phone_No = item.PhoneNo,
+                        Phone_No = item.Phone_No,
                         Gender = item.Gender,
                         Birth_Date = item.BirthDate,
                         Date_Created = item.DateCreated,
