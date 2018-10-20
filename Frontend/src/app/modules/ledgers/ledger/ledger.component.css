@@ -1,7 +1,33 @@
 .e-card {
-    margin-left: 1%;
+  margin-left: 1%;
 }
+
 .cont {
-    padding-left: 1%;
-    padding-right: 1%;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+tfoot tr {
+  text-align: center;
+  border: 1px solid black;
+  padding: 0;
+  background: lightgray;
+}
+tfoot tr:nth-child(2) {
+  text-align: center;
+  border: 1px solid black;
+  padding: 0;
+  background: lightgray;
+}
+tfoot tr:nth-child(2) td p {
+  margin: 0;
+}
+
+tfoot tr td, thead tr th {
+  padding: 0;
+  font-weight: bold;
+}
+
+.error-block {
+  color: red;
 }

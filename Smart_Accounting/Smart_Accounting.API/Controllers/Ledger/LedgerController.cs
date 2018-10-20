@@ -7,6 +7,7 @@
  * @Description: Modify Here, Please 
  */
 using Microsoft.AspNetCore.Mvc;
+using Smart_Accounting.Application.CalendarPeriods.Interfaces;
 using Smart_Accounting.Application.Ledgers.Interfaces;
 using Smart_Accounting.Application.Ledgers.Models;
 
@@ -16,6 +17,7 @@ namespace Smart_Accounting.API.Controllers.Ledger {
         private readonly ILedgersCommand _commands;
         private readonly ILedgersQuery _query;
         private readonly ILedgersFactory _factory;
+        private readonly ICalendarPeriodQueries _calendarQuery;
 
         public LedgerController (ILedgersCommand commands, ILedgersQuery query, ILedgersFactory factory) {
             _commands = commands;
