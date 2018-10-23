@@ -4,8 +4,6 @@ import { NgModule, ModuleWithProviders, CUSTOM_ELEMENTS_SCHEMA  } from '@angular
 import { AppComponent } from './app.component';
 
 import { BanksComponent } from './modules/banks/banks/banks.component';
-import { CurrencyComponent } from './modules/currency/currency/currency.component';
-import { LedgerComponent } from './modules/ledgers/ledger/ledger.component';
 import { LoginComponent } from './modules/login/login/login.component';
 import { DashboardComponent } from './modules/dashboard/dashboard/dashboard.component';
 import { AccountPayableComponent } from './modules/reports/account_payable/account-payable/account-payable.component';
@@ -35,7 +33,7 @@ import { AccountsViewComponent } from './modules/accounts/accounts-view/accounts
 import { SupplierComponent } from './modules/suppliers/supplier/supplier.component';
 import { NotFoundComponent } from './modules/shared/not-found/not-found.component';
 import { LedgerModule } from './modules/ledgers/ledger/ledger.module';
-import { NumericTextBoxModule } from '@syncfusion/ej2-ng-inputs';
+import { CurrencyModule } from './modules/currency/currency/currency.module';
 
 
 @NgModule({
@@ -43,7 +41,6 @@ import { NumericTextBoxModule } from '@syncfusion/ej2-ng-inputs';
     AppComponent,
 
     BanksComponent,
-    CurrencyComponent,
     LoginComponent,
 
     DashboardComponent,
@@ -71,6 +68,7 @@ import { NumericTextBoxModule } from '@syncfusion/ej2-ng-inputs';
     SuppliersModule,
     AccountsModule,
     LedgerModule,
+    CurrencyModule,
     // sincfussion modules
     ButtonModule,
     GridModule,

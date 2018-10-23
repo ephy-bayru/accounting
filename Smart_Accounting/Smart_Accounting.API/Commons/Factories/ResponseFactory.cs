@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Smart_Accounting.API.Commons.Models;
 using Smart_Accounting.Application.CalendarPeriods.Models;
+using Smart_Accounting.Application.Currencies.Models;
 using Smart_Accounting.Application.Customers.Models;
 using Smart_Accounting.Application.Employee.Models;
 using Smart_Accounting.Application.Organizations.Models;
@@ -20,6 +21,14 @@ namespace Smart_Accounting.API.Commons.Factories
                 Count = calander.Count
             };
 
+            return format;
+        }
+
+        public ResponseFormat CreateCurrencyResponse(List<CurrencyViewModel> currencies)
+        {
+            ResponseFormat format = new ResponseFormat() {
+                Items = currencies
+            };
             return format;
         }
 

@@ -9,6 +9,9 @@ using Smart_Accounting.Domain.Oranizations;
 using Smart_Accounting.Domain.Customers;
 using Smart_Accounting.Application.Customers.Models;
 using Smart_Accounting.Application.Supplier.Models;
+using Smart_Accounting.Domain.Currencies;
+using Smart_Accounting.Application.Currencies.Models;
+
 
 namespace Smart_Accounting.API.Commons.Factories {
     public interface IResponseFactory {
@@ -17,5 +20,6 @@ namespace Smart_Accounting.API.Commons.Factories {
         ResponseFormat CreateEmployeeResponse (List<EmployeeViewModel> employees);
         ResponseFormat CreateCustomerResonse (List<CustomerViewModel> customer);
         ResponseFormat CreateSupplierResponse (List<SupplierViewModel> suppliers);
+        ResponseFormat CreateCurrencyResponse (List<CurrencyViewModel> currencies);
     }
 }

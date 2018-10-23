@@ -31,6 +31,7 @@ namespace Smart_Accounting.API.NUnitTest.Customers
         private List<Customer> customer;
         private Customer cstmr;
         private Customer newCustomer;
+        private NewCustomerModel newCustomerModel;
         private List<CustomerViewModel> customerView;
         private CustomersController customersController;
         private Mock<ICustomerCommands> MockICustomerCommand;
@@ -202,7 +203,7 @@ namespace Smart_Accounting.API.NUnitTest.Customers
                 MockIResponseFactory.Object
                );
 
-            var result = (ObjectResult)customersController.CreateNewCustomer(customer);
+            var result = (ObjectResult)customersController.CreateNewCustomer(newCustomerModel);
 
             result.StatusCode.Should().Be(201);
             result.Value.GetType().Should().Be(typeof(CustomerViewModel));
@@ -236,7 +237,7 @@ namespace Smart_Accounting.API.NUnitTest.Customers
                 MockIResponseFactory.Object
 
                 );
-            var result = (ObjectResult)customersController.CreateNewCustomer(customer);
+            var result = (ObjectResult)customersController.CreateNewCustomer(newCustomerModel);
             result.Value.GetType().Should().Be(typeof(CustomerViewModel));
         }
 // TEST

@@ -11,7 +11,7 @@ namespace Smart_Accounting.Domain.NUnitTest.Supplier
         private Suppliers suppliers;
 
         [OneTimeSetUp]
-        public void Cust()
+        public void Suup()
         {
             suppliers = new Suppliers();
             suppliers.Id = 1;

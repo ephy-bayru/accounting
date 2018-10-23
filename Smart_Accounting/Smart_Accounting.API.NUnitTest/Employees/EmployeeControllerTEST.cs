@@ -171,7 +171,7 @@ namespace Smart_Accounting.API.NUnitTest.Employee
                 Account_Id = "123456",
                 Birth_Date = DateTime.Now,
             };
-            MockIEmployeeCommand.Setup(emp => emp.Create(newEmployee));
+            MockIEmployeeCommand.Setup(emp => emp.Create(emply));
 
             EmployeesController = new EmployeesController (
                 MockIEmployeeQuery.Object,
@@ -179,7 +179,7 @@ namespace Smart_Accounting.API.NUnitTest.Employee
                 MockIEmployeeFactory.Object,
                 MockIResponseFactory.Object
             );
-            var result = (ObjectResult)EmployeesController.CreateNewEmployee(newEmployee);
+            var result = (ObjectResult)EmployeesController.CreateNewEmployee(emply);
 
             result.StatusCode.Should().Be(201);
             result.Value.GetType().Should().Be(typeof(EmployeeViewModel));
@@ -209,14 +209,14 @@ namespace Smart_Accounting.API.NUnitTest.Employee
                 Birth_Date = DateTime.Now,
             };
             
-            MockIEmployeeCommand.Setup(emply => emply.Create(newEmployee));
+            MockIEmployeeCommand.Setup(empl => empl.Create(emply));
              EmployeesController = new EmployeesController (
                 MockIEmployeeQuery.Object,
                 MockIEmployeeCommand.Object,
                 MockIEmployeeFactory.Object,
                 MockIResponseFactory.Object
             );
-            var result = (StatusCodeResult)EmployeesController.CreateNewEmployee(employee);
+            var result = (StatusCodeResult)EmployeesController.CreateNewEmployee(emply);
             result.StatusCode.Should().Be(422);
         }
 // TEST
