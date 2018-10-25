@@ -7,8 +7,7 @@ namespace Smart_Accounting.Domain.ExchangeRates {
         public ExchangeRate () {
             Currency = new HashSet<Currency> ();
         }
-
-        public uint RateId { get; set; }
+        public uint Id { get; set; }
         public string CurrencyCode { get; set; }
         public float BuyRate { get; set; }
         public float SaleRate { get; set; }

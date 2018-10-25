@@ -11,6 +11,8 @@ using Smart_Accounting.Application.Customers.Models;
 using Smart_Accounting.Application.Supplier.Models;
 using Smart_Accounting.Domain.Currencies;
 using Smart_Accounting.Application.Currencies.Models;
+using Smart_Accounting.Application.ExchnageRate.Models;
+using Smart_Accounting.Domain.ExchangeRates;
 
 
 namespace Smart_Accounting.API.Commons.Factories {
@@ -21,5 +23,6 @@ namespace Smart_Accounting.API.Commons.Factories {
         ResponseFormat CreateCustomerResonse (List<CustomerViewModel> customer);
         ResponseFormat CreateSupplierResponse (List<SupplierViewModel> suppliers);
         ResponseFormat CreateCurrencyResponse (List<CurrencyViewModel> currencies);
+        ResponseFormat CreateExRateResponse (List<ExchangeRate> exchangeRates);
     }
 }

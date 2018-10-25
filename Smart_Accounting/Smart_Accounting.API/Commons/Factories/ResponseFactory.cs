@@ -8,6 +8,7 @@ using Smart_Accounting.Application.Organizations.Models;
 using Smart_Accounting.Application.Supplier.Models;
 using Smart_Accounting.Domain.CalendarPeriods;
 using Smart_Accounting.Domain.Employe;
+using Smart_Accounting.Domain.ExchangeRates;
 using Smart_Accounting.Domain.Oranizations;
 
 namespace Smart_Accounting.API.Commons.Factories
@@ -50,6 +51,11 @@ namespace Smart_Accounting.API.Commons.Factories
             };
 
             return format;
+        }
+
+        public ResponseFormat CreateExRateResponse(List<ExchangeRate> exchangeRates)
+        {
+            throw new System.NotImplementedException();
         }
 
         public ResponseFormat CreateOrganizationResponse(List<OrganizationViewModel> organizations)

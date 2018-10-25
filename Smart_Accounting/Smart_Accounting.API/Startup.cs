@@ -50,6 +50,13 @@ using Smart_Accounting.Application.Currencies.Factories;
 using Smart_Accounting.Application.Currencies.Interfaces;
 using Smart_Accounting.Application.Currencies.Models;
 using Smart_Accounting.Application.Currencies.Queries;
+using Smart_Accounting.Application.ExchnageRate.Commands;
+using Smart_Accounting.Application.ExchnageRate.Factories;
+using Smart_Accounting.Application.ExchnageRate.Interfaces;
+using Smart_Accounting.Application.ExchnageRate.Models;
+using Smart_Accounting.Application.ExchnageRate.Queries;
+using Smart_Accounting.Application.ExchnageRate.Commands.Factories;
+
 namespace Smart_Accounting.API {
     public class Startup {
         public Startup (IConfiguration configuration) {
@@ -92,6 +99,10 @@ namespace Smart_Accounting.API {
             services.AddScoped<ICurrencyFactory, CurrunciesFactory>();
             services.AddScoped<ICurrencyQueries, CurrenciesQuery>();
             services.AddScoped<ICurrenciesCommandsFactory, CurrencyCommandsFactory>();
+            services.AddScoped<IExRateCommands, ExRateCommand>();
+            services.AddScoped<IExRateFactory, ExRateFactory>();
+            services.AddScoped<IExRateQueries, ExRateQuery>();
+            services.AddScoped<IExRateCommandsFactory, ExRateCommandsFactory>();
             
 
             services.AddCors (options => {
