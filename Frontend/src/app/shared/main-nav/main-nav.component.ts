@@ -43,6 +43,9 @@ export class MainNavComponent {
         },
         {
           id: 'currencies', name: 'CURRENCY'
+        },
+        {
+          id: 'exrate', name: 'EXCAHNGE RATE'
         }
       ],
     },

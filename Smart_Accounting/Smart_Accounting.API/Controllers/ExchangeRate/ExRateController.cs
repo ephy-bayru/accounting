@@ -9,7 +9,7 @@ using Smart_Accounting.Application.ExchnageRate.Commands.Factories;
 
 namespace Smart_Accounting.API.Controllers.ExchnageRate
 {
-    [Route("api/exrate")]
+    [Route("api/xrate")]
     public class ExRateController : Controller
     {
         private IExRateQueries _rateQuery;

@@ -34,6 +34,7 @@ import { SupplierComponent } from './modules/suppliers/supplier/supplier.compone
 import { NotFoundComponent } from './modules/shared/not-found/not-found.component';
 import { LedgerModule } from './modules/ledgers/ledger/ledger.module';
 import { CurrencyModule } from './modules/currency/currency/currency.module';
+import { ExRateModule } from './modules/exchange/exchange_rate/exchange_rate.module';
 
 
 @NgModule({
@@ -69,6 +70,7 @@ import { CurrencyModule } from './modules/currency/currency/currency.module';
     AccountsModule,
     LedgerModule,
     CurrencyModule,
+    ExRateModule,
     // sincfussion modules
     ButtonModule,
     GridModule,

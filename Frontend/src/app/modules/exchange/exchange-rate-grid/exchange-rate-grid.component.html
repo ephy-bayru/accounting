@@ -1,0 +1,27 @@
+<div class="e-card">
+  <div class='cont'>
+    <div class="title">
+      <h5>Exchange Rate Data</h5>
+    </div>
+    <ejs-grid  #grid id='exrate'  [datasource] [rowHeight]='30' height='100%' width='100%' [toolbar]='toolbar'
+      [allowSorting]="true" allowPaging='true' [pageSettings]='initialPage' allowResizing='true' allowGrouping='true'
+      [groupSettings]='groupOptions' allowFiltering='true' [filterSettings]='filterSettings' [allowSelection]='true'
+      [selectionSettings]='selectOptions' [enableHover]="false" [editSettings]='editSettings' (toolbarClick)='toolbarClick($event)'
+      [allowExcelExport]='true' [allowPdfExport]='true' [editSettings]='editSettings' allowTextWrap='true'
+      [textWrapSettings]='wrapSettings'>
+
+      <e-columns>
+        <e-column type='checkbox' width='50'></e-column>
+        <e-column field='ID' [allowFiltering]="false" headerText='ID' textAlign='Center' width=90 isPrimaryKey='true'></e-column>
+        <e-column field='BuyRate' type="string" editType="textbox" headerText='Buy Rate' textAlign='Center'
+          width=90></e-column>
+        <e-column field='SaleRate' type="string" editType="textbox" headerText='Sale Rate' textAlign='Center'
+          width=90></e-column>
+        <e-column field='Date' type="string" editType="textbox" headerText='Date' textAlign='Center'
+          width=90></e-column>
+        <e-column headerText='Delete' width='60' [commands]='commands'></e-column>
+      </e-columns>
+    </ejs-grid>
+  </div>
+</div>
+<!-- [dataSource]='data' -->
