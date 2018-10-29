@@ -31,3 +31,8 @@
 .content-wrapper {
     align-content: center;
 }
+.style {
+    margin: 0 auto;
+    padding-top: 25px;
+    width: 250px;
+}

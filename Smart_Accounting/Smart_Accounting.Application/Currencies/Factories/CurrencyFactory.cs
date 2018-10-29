@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Smart_Accounting.Application.Currencies.Interfaces;
 using Smart_Accounting.Application.Currencies.Models;
 using Smart_Accounting.Domain.Currencies;
+using Smart_Accounting.Domain.ExchangeRates;
 
 namespace Smart_Accounting.Application.Currencies.Factories {
     public class CurrunciesFactory : ICurrencyFactory {
@@ -11,7 +12,7 @@ namespace Smart_Accounting.Application.Currencies.Factories {
             
             foreach (var item in currencies) {
                 CurrencyViewModel view = new CurrencyViewModel () {
-                    id = item.CurrencyId,
+                    id = item.ID,
                     name = item.Name,
                     abrevation = item.Abrevation,
                     symbols = item.Symbole,
@@ -31,16 +32,37 @@ namespace Smart_Accounting.Application.Currencies.Factories {
                 crncy.Abrevation = item.Abrevation;
                 crncy.Country = crncy.Country;
                 currency.Add(crncy);
-            }
+            };
             return currency;
         }
-        public Currency UpdateCurrency (Currency currency, UpdateCurrencyModel updateCurrency) {
+        public Currency newcrncy (NewCurrencyModel newCurrencyModel) {
+            Currency currency = new Currency() {
+                Name = newCurrencyModel.name,
+                Symbole = newCurrencyModel.symbole,
+                Abrevation = newCurrencyModel.symbole,
+                Country = newCurrencyModel.country,
+            };
+            ExchangeRate xrate = new ExchangeRate() {
+                BuyRate = newCurrencyModel.ExchangeRate.BuyRate,
+                SaleRate = newCurrencyModel.ExchangeRate.SaleRate,
+                Date = newCurrencyModel.ExchangeRate.Date,
+            };
             
-            currency.Name = updateCurrency.name;
-            currency.Symbole = updateCurrency.symbole;
-            currency.Abrevation = updateCurrency.abrevation;
-            currency.Country = updateCurrency.country;
-
+            return currency;
+        }
+        public Currency UpdateCurrency (UpdateCurrencyModel updateCurrency) {
+            Currency currency = new Currency() {
+                Name = updateCurrency.name,
+                Symbole = updateCurrency.symbole,
+                Abrevation = updateCurrency.abrevation,
+                Country = updateCurrency.country
+            };
+            // ExchangeRate uxrate = new ExchangeRate() {
+            //     BuyRate = updateCurrency.ExchangeRate.BuyRate,
+            //     SaleRate = updateCurrency.ExchangeRate.SaleRate,
+            //     Date = updateCurrency.ExchangeRate.Date
+            // };
+            
             return currency;
         }
     }

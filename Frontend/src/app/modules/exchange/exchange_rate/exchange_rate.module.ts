@@ -26,6 +26,7 @@ import {
   CommandColumnService,
   ToolbarService, FreezeService, SelectionService
 } from '@syncfusion/ej2-angular-grids';
+import { DropDownListModule } from '@syncfusion/ej2-ng-dropdowns';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import {
     RadioButtonModule,
     DatePickerModule,
     GridModule,
-    SwitchModule
+    SwitchModule,
+    DropDownListModule
   ],
   declarations: [
     ExRateGridComponent,

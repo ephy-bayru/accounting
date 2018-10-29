@@ -25,6 +25,7 @@ namespace Smart_Accounting.Application.ExchnageRate.Commands.Factories {
         public ExRateViewModel ExRateView (ExchangeRate exRate)
         {
             var exRateV = new ExRateViewModel ();
+            exRate.Id = exRateV.ID;
                 exRate.BuyRate = exRateV.BuyRate;
                 exRate.SaleRate = exRateV.SaleRate;
                 exRate.Date = exRateV.Date;

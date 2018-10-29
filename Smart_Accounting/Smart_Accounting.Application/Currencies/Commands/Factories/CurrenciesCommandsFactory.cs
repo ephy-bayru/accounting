@@ -7,7 +7,7 @@ namespace Smart_Accounting.Application.Currencies.Commands.Factories {
         public Currency NewCurrency (Currency newCurrency)
         {
             var currency = new Currency ();
-                currency.CurrencyId = newCurrency.CurrencyId;
+                currency.ID = newCurrency.ID;
                 currency.Name = newCurrency.Name;
                 currency.Abrevation = newCurrency.Abrevation;
                 currency.Symbole = newCurrency.Symbole;
@@ -16,7 +16,7 @@ namespace Smart_Accounting.Application.Currencies.Commands.Factories {
         }
         public Currency UpdatesCurrency (Currency currentCurrency, UpdateCurrencyModel currency)
         {
-            currentCurrency.CurrencyId = currency.CurrencyId;
+            currentCurrency.ID = currency.ID;
             currentCurrency.Name =currency.name;
             currentCurrency.Abrevation = currency.abrevation;
             currentCurrency.Symbole = currency.symbole;
@@ -27,7 +27,7 @@ namespace Smart_Accounting.Application.Currencies.Commands.Factories {
         public CurrencyViewModel CurrenciesView (Currency currency)
         {
             var currencies = new CurrencyViewModel ();
-                currency.CurrencyId = currencies.id;
+                currency.ID = currencies.id;
                 currency.Name = currencies.name;
                 currency.Abrevation = currencies.abrevation;
                 currency.Symbole = currencies.symbols;

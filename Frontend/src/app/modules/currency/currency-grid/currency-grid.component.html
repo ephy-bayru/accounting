@@ -12,7 +12,7 @@
 
       <e-columns>
         <e-column type='checkbox' width='50'></e-column>
-        <e-column field='CURRENCY_ID' [allowFiltering]="false" headerText='Currency ID' textAlign='Center' width=90 isPrimaryKey='true'></e-column>
+        <e-column field='ID' [allowFiltering]="false" headerText='Currency ID' textAlign='Center' width=90 isPrimaryKey='true'></e-column>
         <e-column field='name' type="string" editType="textbox" headerText='Currency Name' textAlign='Center'
           width=90></e-column>
         <e-column field='abrevation' type="string" editType="textbox" headerText='Abrevation' textAlign='Center'
@@ -20,8 +20,6 @@
         <e-column field='symbole' type="string" editType="textbox" headerText='Symbol' textAlign='Center'
           width=90></e-column>
         <e-column field='country' type="string" editType="textbox" headerText='Country' textAlign='Center'
-          width=90></e-column>
-        <e-column field='exchange_rate_RATE_ID' type="string" editType="textbox" headerText='exchange rate' textAlign='Center'
           width=90></e-column>
         <e-column headerText='Delete' width='60' [commands]='commands'></e-column>
       </e-columns>

@@ -4,6 +4,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ExchangeRateService } from '../exchange_rate.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Exchangerate } from '../exchange_rate';
+import { Query, DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
 
 @Component({
   selector: 'app-currency',
@@ -15,7 +16,8 @@ export class ExchangerateComponent implements OnInit {
   Exchangerate: Exchangerate;
   id: number;
   id_no: number;
-
+   // set the placeholder to DropDownList input element
+  public CurrencyWaterMark: 'Select Currency';
   public disable: false;
   statusCode: any;
 
@@ -25,6 +27,16 @@ export class ExchangerateComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private location: Location
   ) { }
+   // bind the DataManager instance to dataSource property
+  public data: DataManager = new DataManager({
+    url: 'http://localhost:53267/api/currency',
+    adaptor: new WebApiAdaptor,
+    crossDomain: true
+});
+ // bind the Query instance to query property
+ public query: Query = new Query().select(['name', 'ID']);
+ // maps the remote data column to fields property
+ public remoteFields: Object = { text: 'name', value: 'ID' };
 
   ngOnInit(): void {
     this.xRateForm();
@@ -43,7 +55,8 @@ export class ExchangerateComponent implements OnInit {
       .group({
         BuyRate: ['', Validators.required],
         SaleRate: ['', Validators.required],
-        Date: ['', Validators.required]
+        Date: ['', Validators.required],
+        Currency: ['', Validators.required]
       });
   }
 
@@ -54,6 +67,7 @@ export class ExchangerateComponent implements OnInit {
     xrateData.BuyRate = exrate.BuyRate;
     xrateData.SaleRate = exrate.SaleRate;
     xrateData.Date = exrate.Date;
+    xrateData.Currency = exrate.Currency;
     return xrateData;
   }
 
