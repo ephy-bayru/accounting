@@ -7,7 +7,7 @@ namespace Smart_Accounting.Application.ExchnageRate.Interfaces
     public interface IExRateFactory
     {
         List<ExRateViewModel> createExRateView(IEnumerable<ExchangeRate> exRate);
-        List<ExchangeRate> CreateNewExRate(NewExRateModel newExRate);
+        ExchangeRate CreateNewExRate(NewExRateModel newExRate);
         ExchangeRate UpdateExRate(ExchangeRate exRate, UpdateExRateModel updateExRate);
     }
 }

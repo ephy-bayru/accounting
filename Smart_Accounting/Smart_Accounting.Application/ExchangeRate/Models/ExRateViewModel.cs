@@ -10,5 +10,6 @@ namespace Smart_Accounting.Application.ExchnageRate.Models {
         public float BuyRate {get; set; }
         public float SaleRate { get; set; }
         public DateTime Date { get; set; }
+        public string Currency { get; set; }
      }
 }

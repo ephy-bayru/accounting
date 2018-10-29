@@ -7,18 +7,15 @@ namespace Smart_Accounting.Application.ExchnageRate.Factories
 {
     public class ExRateFactory : IExRateFactory
     {
-        public List<ExchangeRate> CreateNewExRate(NewExRateModel newExRate)
+        public ExchangeRate CreateNewExRate(NewExRateModel newExRate)
         {
-            List<ExchangeRate> exRate = new List<ExchangeRate>();
-            foreach (var item in exRate)
+            ExchangeRate exrate = new ExchangeRate();
             {
-                ExchangeRate exrate = new ExchangeRate();
-                exrate.SaleRate = item.SaleRate;
-                exrate.SaleRate = item.BuyRate;
-                exrate.Date = item.Date;
-                exRate.Add(exrate);
+                exrate.SaleRate = newExRate.SaleRate;
+                exrate.SaleRate = newExRate.BuyRate;
+                exrate.Date = newExRate.Date;
             }
-            return exRate;
+            return exrate;
         }
         ExchangeRate IExRateFactory.UpdateExRate(ExchangeRate exRate, UpdateExRateModel updateExRate)
         {
