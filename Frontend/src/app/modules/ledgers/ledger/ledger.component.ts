@@ -11,12 +11,9 @@ return (c: AbstractControl): {[key: string]: boolean} | null => {
   let creditSum = 0;
   let debitSum = 0;
   this.accounts.controls.forEach(element => {
-    console.log(`Credit ${element.Credit}`);
-    console.log(`Debit ${element.Debit}`);
     creditSum += element.Credit;
     debitSum += element.Debit;
   });
-alert('in');
 
   if (creditSum === debitSum) {
     return null;
@@ -51,8 +48,8 @@ public debitSum = 0;
 
   ngOnInit() {
 
-    this.accountQuery = new Query().select(['AccountCode', 'AccountId']);
-    this.accountFields = { text: 'AccountId', value: 'AccountId' };
+    this.accountQuery = new Query().select(['Name', 'AccountId']);
+    this.accountFields = { text: 'Name', value: 'AccountId' };
 
 
     const dm: DataManager = new DataManager(
@@ -72,10 +69,10 @@ public debitSum = 0;
           this.isEqual = true;
           this.accounts.clearValidators();
       } else {
-        this.accounts.setErrors({'balanceNotEqual' : true});
+        this.accounts.setErrors({'balanceNotEqual': true});
       }
+
     });
-    this.accounts.updateValueAndValidity();
   }
 logError(error) {
   console.log(error);
@@ -86,17 +83,17 @@ logError(error) {
       date: ['', Validators.required],
       accounts: this.formBuilder.array([
         this.formBuilder.group({
-          AccountId: [data.AccountId, Validators.required],
+          AccountId: [(data.AccountId) ? data.AccountId : '', Validators.required],
           Credit: [(data.Credit) ? data.Credit : 0, Validators.required],
           Debit: [(data.Debit) ? data.Debit : 0, Validators.required],
-          Reference: [(data.Reference) ? data.Reference : ''],
+          Reference: [(data.Reference) ? data.Reference : '']
         }),
         this.formBuilder.group({
-          AccountId: [data.AccountId, Validators.required],
+          AccountId: [(data.AccountId) ? data.AccountId : '', Validators.required],
           Credit: [(data.Credit) ? data.Credit : 0, Validators.required],
           Debit: [(data.Debit) ? data.Debit : 0, Validators.required],
-          Reference: [(data.Reference) ? data.Reference : ''],
-        })],  balanceChecker )
+          Reference: [(data.Reference) ? data.Reference : '']
+        })])
 
     });
   }
@@ -111,13 +108,16 @@ logError(error) {
     this.ledgerService.addLedgerEntry(formData).subscribe(
       (data: Ledger) => {
         alert('Ledger entry made successfully');
-        console.log(data);
       },
       (error: HttpErrorResponse) => console.log(error)
     );
 
   }
 
+    removeRow(index: number) {
+      this.accounts.removeAt(index);
+      this.accounts.updateValueAndValidity();
+    }
   prepareData(data: FormGroup): Ledger {
     const form = data.value;
 
@@ -145,6 +145,7 @@ logError(error) {
       Credit: [0, Validators.required],
       Debit: [0, Validators.required],
       Reference: [''],
-    }, {'balanceNotEqual' : false}));
+    }));
+    this.accounts.updateValueAndValidity();
   }
 }

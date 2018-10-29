@@ -7,9 +7,13 @@ import { LedgerComponent } from './ledger.component';
 import { LedgerService } from '../ledger.service';
 import { LedgerRoutingModule } from '../ledger-routing/ledger-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { GridModule } from '@syncfusion/ej2-ng-grids';
-import { NumericTextBoxComponent } from '@syncfusion/ej2-ng-inputs';
-import { ButtonModule } from '@syncfusion/ej2-ng-buttons';
+import {
+  GridModule, ToolbarService, SortService, FilterService, GroupService,
+  EditService, ExcelExportService, ColumnChooserService, ColumnMenuService, DetailRowService,
+  SearchService, PdfExportService, ReorderService, CommandColumnService, ResizeService
+} from '@syncfusion/ej2-ng-grids';
+import { NumericTextBoxModule } from '@syncfusion/ej2-ng-inputs';
+import { ButtonModule, SwitchModule } from '@syncfusion/ej2-ng-buttons';
 
 @NgModule({
   imports: [
@@ -20,9 +24,25 @@ import { ButtonModule } from '@syncfusion/ej2-ng-buttons';
     ButtonModule,
     LedgerRoutingModule,
     BrowserModule,
+    NumericTextBoxModule,
     GridModule,
+    SwitchModule,
   ],
-  declarations: [LedgerComponent, NumericTextBoxComponent],
-  providers: [LedgerService]
+  declarations: [LedgerComponent],
+  providers: [LedgerService,
+    SortService,
+    FilterService,
+    GroupService,
+    EditService,
+    ExcelExportService,
+    ColumnChooserService,
+    ColumnMenuService,
+    DetailRowService,
+    SearchService,
+    PdfExportService,
+    ReorderService,
+    CommandColumnService,
+    ToolbarService,
+    ResizeService]
 })
 export class LedgerModule { }

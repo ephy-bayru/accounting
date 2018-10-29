@@ -46,7 +46,7 @@ namespace Smart_Accounting.API.Controllers.Ledger {
         [ProducesResponseType (500)]
         public IActionResult GetAllLedgerEntryBy () {
 
-            var ledger = _query.GetAllLedgerEntry();
+            var ledger = _query.GetAllLedgerEntryView();
 
             if (ledger == null) {
                 return StatusCode (404);

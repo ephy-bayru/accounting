@@ -5,7 +5,7 @@
     <div class="container-fluid">
       <div class="form-group template col-6">
         <div class="e-float-input">
-          <input type="text" id="description" name="description" class="required" formControlName="description"
+          <input type="text" id="description" name="description"  formControlName="description"
             required>
           <span class="e-float-line"></span>
           <label class="e-float-text" for="description">Description</label>
@@ -34,23 +34,23 @@
             <tbody>
               <tr *ngFor="let account of accounts.controls; let i=index; let last=last;" [formGroup]="account">
                 <td>
-                  <ejs-dropdownlist id='parentAccount' placeholder="Parent Account" name="parentAccount" [query]="accountQuery"
-                    [fields]="accountFields" formControlName="AccountId" [dataSource]='accountList'></ejs-dropdownlist>
+                  <ejs-dropdownlist [attr.id]="'parentAccount'+i" placeholder="Parent Account" [attr.name]="'parentAccount'+i" [query]="accountQuery"
+                  [fields]="accountFields" formControlName="AccountId" [dataSource]='accountList'></ejs-dropdownlist>
                 </td>
                 <td>
-                  <ejs-numerictextbox formControlName="Credit" name="creation" id="credit" placeholder="Credit">
+                  <ejs-numerictextbox formControlName="Credit" [attr.name]="'creation'+i" [attr.id]="'credit'+i" placeholder="Credit">
                   </ejs-numerictextbox>
                 </td>
                 <td>
-                  <ejs-numerictextbox formControlName="Debit" name="debiit" id="debit" placeholder="Debit">
+                  <ejs-numerictextbox formControlName="Debit" [attr.name]="'debiit'+i" [attr.id]="'debit'+i" placeholder="Debit">
                   </ejs-numerictextbox>
                 </td>
                 <td>
-                    <input  name="Reference" class="e-input" formControlName="Reference" id="Reference" placeholder="Reference" />
+                    <input  [attr.name]="'Reference'+i" class="e-input" formControlName="Reference" [attr.id]="'Reference'+i" placeholder="Reference" />
                 </td>
                 <td>
                   <button type="button" ejs-button class="e-round e-danger e-small e-icons e-times-icon" *ngIf="accounts.controls.length > 2"
-                    (click)="accounts.removeAt(i)">Remove</button>
+                    (click)="removeRow(i)">Remove</button>
                 </td>
               </tr>
             </tbody>
@@ -62,9 +62,9 @@
                 <td colspan="2"> <button type="button" ejs-button class="e-pluse e-info" iconCss="e-icons e-plus-icon"
                     (click)="addForm()">Add</button></td>
               </tr>
-              <tr *ngIf="accounts.errors" class="error-block">
+              <tr *ngIf="accounts?.errors" class="error-block">
               <td colspan="5">
-              <p *ngIf="accounts.errors['balanceNotEqual']"> Credit And Debit amount are not Equal </p>
+              <p *ngIf="accounts?.errors['balanceNotEqual']"> Credit And Debit amount are not Equal </p>
               </td>
               </tr>
 
@@ -73,7 +73,7 @@
         </div>
       </div>
       <div class="btn">
-        <button ejs-button cssClass="e-success" [disabled]="ledgerForm.invalid || !accounts.valid" type="submit">
+        <button ejs-button cssClass="e-success" [disabled]="ledgerForm.invalid || accounts?.errors['balanceNotEqual'] == true" type="submit">
           SUBMIT
         </button>
         &nbsp;
@@ -82,6 +82,9 @@
         </button>
       </div>
     </div>
+    <code>{{ledgerForm.value | json}}</code>
+    <code>{{ledgerForm.valid | json}}</code>
+    <code>{{accounts.valid | json}}</code>
   </form>
 
 

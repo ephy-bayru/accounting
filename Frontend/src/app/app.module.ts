@@ -7,7 +7,6 @@ import { BanksComponent } from './modules/banks/banks/banks.component';
 import { CurrencyComponent } from './modules/currency/currency/currency.component';
 import { LedgerComponent } from './modules/ledgers/ledger/ledger.component';
 import { LoginComponent } from './modules/login/login/login.component';
-import { DashboardComponent } from './modules/dashboard/dashboard/dashboard.component';
 import { AccountPayableComponent } from './modules/reports/account_payable/account-payable/account-payable.component';
 import { AccountReceivableComponent } from './modules/reports/account_receivable/account-receivable/account-receivable.component';
 import { BalanceSheetComponent } from './modules/reports/balance_sheet/balance-sheet/balance-sheet.component';
@@ -35,7 +34,9 @@ import { AccountsViewComponent } from './modules/accounts/accounts-view/accounts
 import { SupplierComponent } from './modules/suppliers/supplier/supplier.component';
 import { NotFoundComponent } from './modules/shared/not-found/not-found.component';
 import { LedgerModule } from './modules/ledgers/ledger/ledger.module';
-import { NumericTextBoxModule } from '@syncfusion/ej2-ng-inputs';
+import { NumericTextBoxModule, NumericTextBoxComponent } from '@syncfusion/ej2-ng-inputs';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { LedgerViewComponent } from './modules/ledgers/ledger-view/ledger-view.component';
 
 
 @NgModule({
@@ -45,8 +46,6 @@ import { NumericTextBoxModule } from '@syncfusion/ej2-ng-inputs';
     BanksComponent,
     CurrencyComponent,
     LoginComponent,
-
-    DashboardComponent,
     AccountPayableComponent,
     AccountReceivableComponent,
     BalanceSheetComponent,
@@ -58,10 +57,13 @@ import { NumericTextBoxModule } from '@syncfusion/ej2-ng-inputs';
     MainNavComponent,
     SideNavComponent,
     // syncfusion
-    TreeViewComponent, ToolbarComponent, CompareDirective, AccountsViewComponent, SupplierComponent, NotFoundComponent
+    TreeViewComponent, ToolbarComponent, CompareDirective, AccountsViewComponent, SupplierComponent,
+    NotFoundComponent,
+    LedgerViewComponent
   ],
   imports: [
     BrowserModule,
+    DashboardModule,
     UsersModule,
     RouterModule,
     CommonModule,
@@ -77,6 +79,7 @@ import { NumericTextBoxModule } from '@syncfusion/ej2-ng-inputs';
     SidebarModule,
     AppRoutingModule
   ],
+  exports: [],
   providers: [
     SmartAppConfigService,
     {provide: HTTP_INTERCEPTORS, useClass: RmHeaderInterceptorService, multi: true},

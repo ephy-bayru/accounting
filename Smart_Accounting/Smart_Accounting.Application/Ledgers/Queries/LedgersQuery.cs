@@ -3,14 +3,16 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Oct 18, 2018 10:35 AM
+ * @Last Modified Time: Oct 27, 2018 11:20 AM
  * @Description: Modify Here, Please 
  */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Extensions.Logging;
 using Smart_Accounting.Application.Interfaces;
 using Smart_Accounting.Application.Ledgers.Interfaces;
+using Smart_Accounting.Application.Ledgers.Models;
 using Smart_Accounting.Domain.Jornals;
 using Smart_Accounting.Domain.Ledgers;
 
@@ -45,12 +47,27 @@ namespace Smart_Accounting.Application.Ledgers.Queries {
             }).ToList ();
         }
 
+        public IEnumerable<LedgerEntryViewModel> GetAllLedgerEntryView()
+        {
+            return _database.Ledger.Select(l => new LedgerEntryViewModel() {
+                    Id = l.Id,
+                    Description = l.Discription,
+                    CreatedOn = (DateTime) l.DateAdded,
+                    Period = $"{l.Period.Start} {l.Period.End}",
+                    Jornals = l.Jornal.Select(j => new JornalEntryViewModel(){
+                        Id = j.JornalId,
+                        Credit = (float) j.Credit,
+                        Debit = (float) j.Debit,
+                        AccountId = j.AccountId,
+                        Account = j.Account.AccountId
+                    }).ToList()
+            });
+        }
+
         public Ledger GetLedgerEntryById (uint id) {
             return _database.Ledger.Select (ledger => new Ledger () {
                 Id = ledger.Id,
                     PeriodId = ledger.PeriodId,
-                    DateAdded = ledger.DateAdded,
-                    DateUpdated = ledger.DateUpdated,
                     Discription = ledger.Discription,
                     Jornal = ledger.Jornal.Select (jor => new Jornal () {
                         JornalId = jor.JornalId,

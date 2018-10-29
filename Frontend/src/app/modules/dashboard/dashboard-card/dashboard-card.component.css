@@ -1,0 +1,9 @@
+
+.row {
+  margin-top: 2em;
+}
+
+.e-card .e-card-content {
+  font-size: 3em;
+  color: rgba(0, 0, 0, 0.54);
+}

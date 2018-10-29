@@ -56,7 +56,7 @@ export class MainNavComponent {
       id: '03', name: 'REPORTS',
       subChild: [
         {
-          id: '03-01', name: 'TRIAL BALANCE',
+          id: 'invoices', name: 'TRIAL BALANCE',
         },
         {
           id: '03-02', name: 'BALANCE SHEEET',

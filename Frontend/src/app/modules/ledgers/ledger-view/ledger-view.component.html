@@ -1,0 +1,28 @@
+<div class="e-card">
+  <div class='cont'>
+    <div class="title">
+      <h5>Customers Data</h5>
+    </div>
+    <ejs-grid [dataSource]='data' #grid id='ledger' [rowHeight]='30' height='100%' width='100%' [toolbar]='toolbar'
+      [allowSorting]="true" allowPaging='true' [pageSettings]='initialPage' allowResizing='true' allowGrouping='true'
+      [groupSettings]='groupOptions' allowFiltering='true' [filterSettings]='filterSettings' [allowSelection]='true'
+      [selectionSettings]='selectOptions' [enableHover]="false" [editSettings]='editSettings' (toolbarClick)='toolbarClick($event)'
+      [allowExcelExport]='true' [allowPdfExport]='true' [editSettings]='editSettings' allowTextWrap='true'
+      [textWrapSettings]='wrapSettings' >
+
+
+      <e-columns>
+        <e-column type='checkbox' width='50'></e-column>
+        <e-column field='id' [allowFiltering]="false" headerText='ID' textAlign='Center' width=90 isPrimaryKey='true'></e-column>
+        <e-column field='accountId' type="string" editType="textbox" headerText='Account Id' textAlign='Center' width=90></e-column>
+        <e-column field='Name' type="string" editType="textbox" headerText='Account' textAlign='Center' width=90></e-column>
+        <e-column field='Description' type="string" editType="textbox" headerText='Description' textAlign='Center' width=90></e-column>
+        <e-column field='dateAdded' type="string" editType="textbox" headerText='Added' textAlign='Center' width=90></e-column>
+        <e-column field='credit' type="string" editType="textbox" headerText='Credit' textAlign='Center' width=90></e-column>
+        <e-column field='debit' type="string" editType="textbox" headerText='Debit' textAlign='Center' width=90></e-column>
+        <e-column headerText='Delete' width='60' [commands]='commands'></e-column>
+      </e-columns>
+    </ejs-grid>
+  </div>
+
+</div>
