@@ -46,7 +46,7 @@ export class CurrencyComponent implements OnInit {
       .group({
         name: ['', [Validators.required, Validators.minLength(2)]],
         abrevation: ['', Validators.required],
-        symbol: ['', Validators.required],
+        symbole: ['', Validators.required],
         country: ['', Validators.required]
         // ExRate: this.fb.array([])
       });
@@ -61,7 +61,7 @@ export class CurrencyComponent implements OnInit {
     currencyData.id = crncy.id;
     currencyData.name = crncy.name;
     currencyData.abrevation = crncy.abrevation;
-    currencyData.symbol = crncy.symbol;
+    currencyData.symbole = crncy.symbole;
     currencyData.country = crncy.country;
     // this.ExRate.controls.forEach(element => {
     //   const rate: ExchangeRate = new ExchangeRate();

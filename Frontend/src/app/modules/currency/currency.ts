@@ -2,7 +2,7 @@ export class Currency {
     id: number;
     name: string;
     abrevation: string;
-    symbol: string;
+    symbole: string;
     country: string;
     // ExRate: ExchangeRate[] = [];
 }
