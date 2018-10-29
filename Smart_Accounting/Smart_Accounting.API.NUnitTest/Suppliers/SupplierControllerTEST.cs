@@ -108,7 +108,7 @@ namespace Smart_Accounting.API.NUnitTest.Supplier
                 Email = "e@g.com",
                 Phone_No = "0920208549",
             };
-            MockISupplierCommand.Setup(emp => emp.Create(newSupplier));
+            MockISupplierCommand.Setup(emp => emp.Create(sply));
 
             var SuppliersController = new SuppliersController(
                 MockISupplierQuery.Object,
@@ -137,7 +137,7 @@ namespace Smart_Accounting.API.NUnitTest.Supplier
                 Phone_No = "0920208549",
             };
 
-            MockISupplierCommand.Setup(emply => emply.Create(newSupplier));
+            MockISupplierCommand.Setup(emply => emply.Create(sply));
             var SuppliersController = new SuppliersController(
                 MockISupplierQuery.Object,
                 MockISupplierCommand.Object,

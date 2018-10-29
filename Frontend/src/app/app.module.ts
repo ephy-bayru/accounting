@@ -1,11 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, ModuleWithProviders, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
 import { BanksComponent } from './modules/banks/banks/banks.component';
-import { CurrencyComponent } from './modules/currency/currency/currency.component';
-import { LedgerComponent } from './modules/ledgers/ledger/ledger.component';
 import { LoginComponent } from './modules/login/login/login.component';
 import { AccountPayableComponent } from './modules/reports/account_payable/account-payable/account-payable.component';
 import { AccountReceivableComponent } from './modules/reports/account_receivable/account-receivable/account-receivable.component';
@@ -34,7 +32,7 @@ import { AccountsViewComponent } from './modules/accounts/accounts-view/accounts
 import { SupplierComponent } from './modules/suppliers/supplier/supplier.component';
 import { NotFoundComponent } from './modules/shared/not-found/not-found.component';
 import { LedgerModule } from './modules/ledgers/ledger/ledger.module';
-import { NumericTextBoxModule, NumericTextBoxComponent } from '@syncfusion/ej2-ng-inputs';
+import { CurrencyModule } from './modules/currency/currency/currency.module';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { LedgerViewComponent } from './modules/ledgers/ledger-view/ledger-view.component';
 
@@ -44,7 +42,6 @@ import { LedgerViewComponent } from './modules/ledgers/ledger-view/ledger-view.c
     AppComponent,
 
     BanksComponent,
-    CurrencyComponent,
     LoginComponent,
     AccountPayableComponent,
     AccountReceivableComponent,
@@ -73,6 +70,7 @@ import { LedgerViewComponent } from './modules/ledgers/ledger-view/ledger-view.c
     SuppliersModule,
     AccountsModule,
     LedgerModule,
+    CurrencyModule,
     // sincfussion modules
     ButtonModule,
     GridModule,
@@ -82,7 +80,7 @@ import { LedgerViewComponent } from './modules/ledgers/ledger-view/ledger-view.c
   exports: [],
   providers: [
     SmartAppConfigService,
-    {provide: HTTP_INTERCEPTORS, useClass: RmHeaderInterceptorService, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: RmHeaderInterceptorService, multi: true },
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

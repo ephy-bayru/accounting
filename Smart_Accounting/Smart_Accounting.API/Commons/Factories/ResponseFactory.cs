@@ -1,12 +1,14 @@
 using System.Collections.Generic;
 using Smart_Accounting.API.Commons.Models;
 using Smart_Accounting.Application.CalendarPeriods.Models;
+using Smart_Accounting.Application.Currencies.Models;
 using Smart_Accounting.Application.Customers.Models;
 using Smart_Accounting.Application.Employee.Models;
 using Smart_Accounting.Application.Organizations.Models;
 using Smart_Accounting.Application.Supplier.Models;
 using Smart_Accounting.Domain.CalendarPeriods;
 using Smart_Accounting.Domain.Employe;
+using Smart_Accounting.Domain.ExchangeRates;
 using Smart_Accounting.Domain.Oranizations;
 
 namespace Smart_Accounting.API.Commons.Factories
@@ -20,6 +22,14 @@ namespace Smart_Accounting.API.Commons.Factories
                 Count = calander.Count
             };
 
+            return format;
+        }
+
+        public ResponseFormat CreateCurrencyResponse(List<CurrencyViewModel> currencies)
+        {
+            ResponseFormat format = new ResponseFormat() {
+                Items = currencies
+            };
             return format;
         }
 
@@ -41,6 +51,11 @@ namespace Smart_Accounting.API.Commons.Factories
             };
 
             return format;
+        }
+
+        public ResponseFormat CreateExRateResponse(List<ExchangeRate> exchangeRates)
+        {
+            throw new System.NotImplementedException();
         }
 
         public ResponseFormat CreateOrganizationResponse(List<OrganizationViewModel> organizations)

@@ -5,11 +5,11 @@ using Smart_Accounting.Domain.ExchangeRates;
 namespace Smart_Accounting.Persistance.ExchangeRates {
     public class ExchangeRatesConfiguration : IEntityTypeConfiguration<ExchangeRate> {
         public void Configure (EntityTypeBuilder<ExchangeRate> builder) {
-            builder.HasKey (e => e.RateId);
+            builder.HasKey (e => e.Id);
 
             builder.ToTable ("exchange_rate");
 
-            builder.Property (e => e.RateId).HasColumnName ("RATE_ID");
+            builder.Property (e => e.Id).HasColumnName ("RATE_ID");
 
             builder.Property (e => e.BuyRate).HasColumnName ("buy_rate");
 

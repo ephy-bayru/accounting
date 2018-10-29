@@ -20,6 +20,8 @@ using Smart_Accounting.Application.CalendarPeriods.Queries;
 using Smart_Accounting.Application.Customers.Commands;
 using Smart_Accounting.Application.Customers.Interfaces;
 using Smart_Accounting.Application.Customers.Queries;
+using Smart_Accounting.Application.Customers.Commands.Factories;
+using Smart_Accounting.Application.Customers.Factories;
 using Smart_Accounting.Application.Employee.Commands;
 using Smart_Accounting.Application.Employee.Commands.Factories;
 using Smart_Accounting.Application.Employee.Interfaces;
@@ -36,14 +38,24 @@ using Smart_Accounting.API.Commons.Factories;
 using Smart_Accounting.Persistance;
 using Smart_Accounting.Application.Employee.Factories;
 using Smart_Accounting.Application.AccountCharts.Factories;
-using Smart_Accounting.Application.Customers.Commands.Factories;
-using Smart_Accounting.Application.Customers.Factories;
 using Smart_Accounting.Application.Supplier.Commands.Factories;
 using Smart_Accounting.Application.Supplier.Factories;
 using Smart_Accounting.Application.Ledgers.Commands;
 using Smart_Accounting.Application.Ledgers.Interfaces;
 using Smart_Accounting.Application.Ledgers.Queries;
 using Smart_Accounting.Application.Ledgers.Factories;
+using Smart_Accounting.Application.Currencies.Commands;
+using Smart_Accounting.Application.Currencies.Commands.Factories;
+using Smart_Accounting.Application.Currencies.Factories;
+using Smart_Accounting.Application.Currencies.Interfaces;
+using Smart_Accounting.Application.Currencies.Models;
+using Smart_Accounting.Application.Currencies.Queries;
+using Smart_Accounting.Application.ExchnageRate.Commands;
+using Smart_Accounting.Application.ExchnageRate.Factories;
+using Smart_Accounting.Application.ExchnageRate.Interfaces;
+using Smart_Accounting.Application.ExchnageRate.Models;
+using Smart_Accounting.Application.ExchnageRate.Queries;
+using Smart_Accounting.Application.ExchnageRate.Commands.Factories;
 
 namespace Smart_Accounting.API {
     public class Startup {
@@ -83,7 +95,15 @@ namespace Smart_Accounting.API {
             services.AddScoped<ILedgersCommand, LedgersCommand>();
             services.AddScoped<ILedgersQuery, LedgersQuery>();
             services.AddScoped<ILedgersFactory, LedgerFactories>();
-
+            services.AddScoped<ICurrencyCommands, CurrencyCommand>();
+            services.AddScoped<ICurrencyFactory, CurrunciesFactory>();
+            services.AddScoped<ICurrencyQueries, CurrenciesQuery>();
+            services.AddScoped<ICurrenciesCommandsFactory, CurrencyCommandsFactory>();
+            services.AddScoped<IExRateCommands, ExRateCommand>();
+            services.AddScoped<IExRateFactory, ExRateFactory>();
+            services.AddScoped<IExRateQueries, ExRateQuery>();
+            services.AddScoped<IExRateCommandsFactory, ExRateCommandsFactory>();
+            
 
             services.AddCors (options => {
                 options.AddPolicy ("AllowSpecificOrigin",
