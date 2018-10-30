@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup, FormControl, FormArray } from '@angular/forms';
 import { CurrencyService } from './../currency.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Currency } from './../currency';
+import { Query, DataManager, ODataAdaptor } from '@syncfusion/ej2-data';
 
 @Component({
   selector: 'app-currency',
@@ -15,7 +16,6 @@ export class CurrencyComponent implements OnInit {
   currency: Currency;
   id: number;
   id_no: number;
-
   public disable: false;
   statusCode: any;
 
@@ -26,8 +26,11 @@ export class CurrencyComponent implements OnInit {
     private location: Location
   ) { }
 
+
+
   ngOnInit(): void {
     this.curencyForm();
+    // this.AddxRate();
     this.id = +this.activatedRoute.snapshot.paramMap.get('id');
     if (this.id) {
       this.currencyService.getCurrency(this.id)
@@ -43,9 +46,13 @@ export class CurrencyComponent implements OnInit {
       .group({
         name: ['', [Validators.required, Validators.minLength(2)]],
         abrevation: ['', Validators.required],
-        symbols: ['', Validators.required],
-        country: ''
+        symbole: ['', Validators.required],
+        country: ['', Validators.required]
+        // ExRate: this.fb.array([])
       });
+  }
+  get ExRate(): FormArray {
+    return this.currencyForm.get('ExRate') as FormArray;
   }
 
   currencyModel(currencyForm: FormGroup): Currency {
@@ -54,10 +61,27 @@ export class CurrencyComponent implements OnInit {
     currencyData.id = crncy.id;
     currencyData.name = crncy.name;
     currencyData.abrevation = crncy.abrevation;
-    currencyData.symbol = crncy.symbol;
+    currencyData.symbole = crncy.symbole;
     currencyData.country = crncy.country;
+    // this.ExRate.controls.forEach(element => {
+    //   const rate: ExchangeRate = new ExchangeRate();
+    //   const xr = element.value;
+    //   rate.id = xr.id;
+    //   rate.BuyRate = xr.BuyRate;
+    //   rate.SaleRate = xr.SaleRate;
+    //   rate.Date = xr.Date;
+    //   currencyData.ExRate.push(rate);
+    // });
     return currencyData;
   }
+  AddxRate() {
+    this.ExRate.push(this.fb.group({
+      BuyRate: ['', Validators.required],
+      SaleRate: ['', Validators.required],
+      Date: ['', Validators.required]
+    }));
+  }
+
 
   onSubmit() {
     const currency = this.currencyModel(this.currencyForm);

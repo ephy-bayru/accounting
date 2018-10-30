@@ -9,7 +9,7 @@ using Smart_Accounting.Application.ExchnageRate.Commands.Factories;
 
 namespace Smart_Accounting.API.Controllers.ExchnageRate
 {
-    [Route("api/exrate")]
+    [Route("api/xrate")]
     public class ExRateController : Controller
     {
         private IExRateQueries _rateQuery;
@@ -83,8 +83,8 @@ namespace Smart_Accounting.API.Controllers.ExchnageRate
         [ProducesResponseType(422)]
         public IActionResult CreateNewExRate([FromBody] ExchangeRate exchangeRate)
         {
-            try
-            {
+            // try
+            // {
                 if (exchangeRate == null)
                 {
                     return BadRequest("Empty exchange rate data!");
@@ -95,12 +95,12 @@ namespace Smart_Accounting.API.Controllers.ExchnageRate
                 }
                 _rateCommands.Create(exchangeRate);
                 return StatusCode(201, exchangeRate);
-            }
-            catch (Exception c)
-            {
+            // }
+            // catch (Exception c)
+            // {
 
-                return StatusCode(500, $"internal server error: {c.Message}");
-            }
+            //     return StatusCode(500, $"internal server error: {c.Message}");
+            // }
 
         }
         // UPDATE A SINGLE EXCHANGE RATE IN THE DATABASE

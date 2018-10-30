@@ -9,7 +9,9 @@ namespace Smart_Accounting.Application.Currencies.Models {
         public string abrevation { get; set; }
         [Required]
         public string symbole { get; set; }
+        [Required]
         public string country { get; set; }
+        [Required]
         public string exchange_rate { get; set; }
     }
 }

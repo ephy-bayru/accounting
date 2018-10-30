@@ -17,7 +17,8 @@ namespace Smart_Accounting.Application.Customers.Commands {
     public class CustomerCommand : ICustomerCommands {
         private readonly IAccountingDatabaseService _database;
         private ICustomerCommandsFactory customerCommandFactory;
-        public CustomerCommand (IAccountingDatabaseService database,
+        public CustomerCommand (
+            IAccountingDatabaseService database,
             ICustomerCommandsFactory CustomerCommandFactory) {
             _database = database;
             customerCommandFactory = CustomerCommandFactory;

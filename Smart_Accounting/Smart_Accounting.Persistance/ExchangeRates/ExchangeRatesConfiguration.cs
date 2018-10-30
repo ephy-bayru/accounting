@@ -9,14 +9,14 @@ namespace Smart_Accounting.Persistance.ExchangeRates {
 
             builder.ToTable ("exchange_rate");
 
-            builder.Property (e => e.Id).HasColumnName ("RATE_ID");
+            builder.Property (e => e.Id).HasColumnName ("ID");
 
             builder.Property (e => e.BuyRate).HasColumnName ("buy_rate");
 
-            builder.Property (e => e.CurrencyCode)
-                .IsRequired ()
-                .HasColumnName ("CURRENCY_CODE")
-                .HasColumnType ("varchar(45)");
+            // builder.Property (e => e.CurrencyCode)
+            //     .IsRequired ()
+            //     .HasColumnName ("CURRENCY_CODE")
+            //     .HasColumnType ("varchar(45)");
 
             builder.Property (e => e.Date)
                 .HasColumnName ("date")

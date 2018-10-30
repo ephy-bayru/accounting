@@ -1,0 +1,61 @@
+<div class="e-card">
+  <div class="col-lg-12 control-section e-input-section">
+    <div class="col-lg-12">
+      <h4 class="form-title">EXCHANGE RATE</h4>
+    </div>
+    <div>
+      <form id="reactive" [formGroup]="exRateForm" (ngSubmit)="onSubmit()">
+        <div class="content-wrapper">
+          <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+            <div class="form-group template">
+              <div class="e-float-input">
+                <input type="text" id="BuyRate" name="BuyRate" class="required" formControlName="BuyRate" required>
+                <span class="e-float-line"></span>
+                <label class="e-float-text" for="BuyRate">Buy Rate</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+            <div class="form-group template">
+              <div class="e-float-input">
+                <input type="text" id="SaleRate" name="SaleRate" class="required" formControlName="SaleRate" required>
+                <span class="e-float-line"></span>
+                <label class="e-float-text" for="SaleRate">Sale Rate</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+            <ejs-datepicker [value]='dateValue' placeholder='Enter Date' formControlName="Date">
+              <div class="e-input-group">
+              </div>
+            </ejs-datepicker>
+          </div>
+        <div id='currency' class='col-lg-6' style="margin: 0 auto;padding-top: 25px;">
+            <div style="width: 250px;">
+                <ejs-dropdownlist id='currency' #currency 
+                [dataSource]='data' 
+                [fields]='remoteFields' 
+                [query]='query' 
+                [popupHeight]='height' 
+                placeholder='Select Currency' 
+                formControlName="Currency"
+                sortOrder='Ascending'></ejs-dropdownlist>
+            </div>
+        </div>
+        </div>
+
+        <div class="btn">
+          <button ejs-button cssClass="e-success" type="submit">
+            SUBMIT
+          </button>
+          &nbsp;
+          <button ejs-button cssClass="e-primary" type="button" (click)="onCancel()">
+            CANCEL
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

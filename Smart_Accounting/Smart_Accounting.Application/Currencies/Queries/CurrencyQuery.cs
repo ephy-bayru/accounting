@@ -19,7 +19,7 @@ namespace Smart_Accounting.Application.Currencies.Queries
             _database = database;
             _factory = factory;
         }
-        public IEnumerable<Currency> GetAll() => _database.Currency.AsNoTracking().ToList();
+        public IEnumerable<Currency> GetAll() => _database.Currency.AsNoTracking();
         public Currency GetById(uint id)
         {
             var currency = _database.Currency.Find(id);

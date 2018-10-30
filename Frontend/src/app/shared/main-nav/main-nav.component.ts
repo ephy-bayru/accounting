@@ -68,10 +68,8 @@ export class MainNavComponent {
         },
         {
           id: '7-04', name: 'Recievables'
-        },
-        {
-          id: '7-05', name: 'Payables'
         }
+
       ]
     },
     {
@@ -82,6 +80,7 @@ export class MainNavComponent {
         { id: 'calanders', name: 'Accounting Period' },
         { id: 'employees', name: 'USER', tooltip: 'User Managment' },
         { id: 'currencies', name: 'CURRENCY' },
+        {  id: 'exrate', name: 'Exchange Rate' }
 
       ]
     },
