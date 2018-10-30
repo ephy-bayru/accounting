@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ClickEventArgs } from '@syncfusion/ej2-ng-navigations';
-import { DataManager, WebApiAdaptor, Adaptor } from '@syncfusion/ej2-data';
+import { DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
 import { Router } from '@angular/router';
 import {
   GridComponent,

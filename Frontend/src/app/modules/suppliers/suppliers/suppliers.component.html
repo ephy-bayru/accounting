@@ -16,8 +16,8 @@
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="Full_Name">Full Name</label>
                 </div>
-                <div class="text-danger" class="invalid-tooltip)" *ngIf="(supplierForm.controls['FullName'].invalid && supplierForm.controls['FullName'].touched) || (supplierForm.controls['FullName'].invalid && showAllErrors)">
-                  Full Name is Required!
+                <div class="text-danger" *ngIf="(supplierForm.controls['FullName'].invalid && supplierForm.controls['FullName'].touched) || (supplierForm.controls['FullName'].invalid && showAllErrors)">
+                  *Full Name is Required!
                 </div>
               </div>
             </div>
@@ -31,8 +31,8 @@
                   <label class="e-float-text" for="Email">Email</label>
                 </div>
                 <div class="text-danger" *ngIf="(supplierForm.controls['Email'].invalid && supplierForm.controls['Email'].touched) || (supplierForm.controls['Email'].invalid && showAllErrors)"
-                  class="invalid-tooltip)">
-                  Email Required!
+                  >
+                  *Email Required!
                 </div>
               </div>
             </div>
@@ -47,9 +47,8 @@
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="Phone_No">Phone No</label>
                 </div>
-                <div class="text-danger" *ngIf="(supplierForm.controls['Phone_No'].invalid && supplierForm.controls['Phone_No'].touched) || (supplierForm.controls['Phone_No'].invalid && showAllErrors)"
-                  class="invalid-tooltip)">
-                  Phone Number Required!
+                <div class="text-danger" *ngIf="(supplierForm.controls['Phone_No'].invalid && supplierForm.controls['Phone_No'].touched) || (supplierForm.controls['Phone_No'].invalid && showAllErrors)">
+                  *Phone Number Required!
                 </div>
               </div>
             </div>
@@ -60,6 +59,9 @@
                   <input type="text" id="Country" name="Country" class="required" formControlName="Country" required>
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="Country">Country</label>
+                </div>
+                <div class="text-danger" *ngIf="(supplierForm.controls['Country'].invalid && supplierForm.controls['Country'].touched) || (supplierForm.controls['Country'].invalid && showAllErrors)">
+                  *Country Required!
                 </div>
               </div>
             </div>
@@ -74,6 +76,9 @@
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="City">City</label>
                 </div>
+                <div class="text-danger" *ngIf="(supplierForm.controls['City'].invalid && supplierForm.controls['City'].touched) || (supplierForm.controls['City'].invalid && showAllErrors)">
+                  *City Required!
+                </div>
               </div>
             </div>
             <!-- subcity field -->
@@ -83,6 +88,9 @@
                   <input type="text" id="Subcity" name="Subcity"  formControlName="SubCity" required>
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="Subcity">Subcity</label>
+                </div>
+                <div class="text-danger" *ngIf="(supplierForm.controls['SubCity'].invalid && supplierForm.controls['SubCity'].touched) || (supplierForm.controls['SubCity'].invalid && showAllErrors)">
+                  *Sub-City Required!
                 </div>
               </div>
             </div>
@@ -97,6 +105,9 @@
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="House_No">House Number</label>
                 </div>
+                <div class="text-danger" *ngIf="(supplierForm.controls['HouseNo'].invalid && supplierForm.controls['HouseNo'].touched) || (supplierForm.controls['HouseNo'].invalid && showAllErrors)">
+                  *House-No is Required!
+                </div>
               </div>
             </div>
             <!-- Postal code field -->
@@ -107,6 +118,9 @@
                     required>
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="Postal_Code">Postal Code</label>
+                </div>
+                <div class="text-danger" *ngIf="(supplierForm.controls['PostalCode'].invalid && supplierForm.controls['PostalCode'].touched) || (supplierForm.controls['PostalCode'].invalid && showAllErrors)">
+                  *Postal-Code is Required!
                 </div>
               </div>
             </div>
@@ -130,8 +144,8 @@
                     <span class="e-float-line"></span>
                     <label class="e-float-text" for="Bank_Name">Bank Name</label>
                   </div>
-                  <div class="text-danger" class="(invalid-tooltip)" *ngIf="(account.controls['BankName'].invalid && account.controls['BankName'].touched) || (account.controls['BankName'].invalid && showAllErrors)">
-                    Bank Name is Required!
+                  <div class="text-danger"  *ngIf="(account.controls['BankName'].invalid && account.controls['BankName'].touched) || (account.controls['BankName'].invalid && showAllErrors)">
+                    *Bank Name is Required!
                   </div>
                 </div>
               </div>
@@ -144,8 +158,8 @@
                     <span class="e-float-line"></span>
                     <label class="e-float-text" for="Account_Number">Account Number</label>
                   </div>
-                  <div class="text-danger" class="(invalid-tooltip)" *ngIf="(account.controls['AccountNumber'].invalid && account.controls['AccountNumber'].touched) || (account.controls['AccountNumber'].invalid && showAllErrors)">
-                    Account Number is Required!
+                  <div class="text-danger" *ngIf="(account.controls['AccountNumber'].invalid && account.controls['AccountNumber'].touched) || (account.controls['AccountNumber'].invalid && showAllErrors)">
+                    *Account Number is Required!
                   </div>
                 </div>
               </div>

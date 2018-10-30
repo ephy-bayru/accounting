@@ -62,8 +62,6 @@ export class UsersComponent implements OnInit {
           ,
         Phone_No: [(User.Phone_No) ? User.Phone_No : '', Validators.required ]
           ,
-        Account_Id: [(User.AccountId) ? User.AccountId : '', Validators.required ]
-          ,
         Password: ''
         ,
         Confirm_Password: '',
