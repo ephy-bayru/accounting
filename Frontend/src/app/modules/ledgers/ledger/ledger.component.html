@@ -64,7 +64,7 @@
               </tr>
               <tr *ngIf="accounts?.errors" class="error-block">
               <td colspan="5">
-              <p *ngIf="accounts?.errors['balanceNotEqual']"> Credit And Debit amount are not Equal </p>
+              <p *ngIf="accounts?.errors['balanceNotEqual'] == true"> {{accounts?.errors['balanceNotEqual']}} Credit And Debit amount are not Equal </p>
               </td>
               </tr>
 
@@ -73,7 +73,7 @@
         </div>
       </div>
       <div class="btn">
-        <button ejs-button cssClass="e-success" [disabled]="ledgerForm.invalid || accounts?.errors['balanceNotEqual'] == true" type="submit">
+        <button ejs-button cssClass="e-success" type="submit">
           SUBMIT
         </button>
         &nbsp;

@@ -7,19 +7,19 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 function balanceChecker(): ValidatorFn {
 
-return (c: AbstractControl): {[key: string]: boolean} | null => {
-  let creditSum = 0;
-  let debitSum = 0;
-  this.accounts.controls.forEach(element => {
-    creditSum += element.Credit;
-    debitSum += element.Debit;
-  });
+  return (c: AbstractControl): { [key: string]: boolean } | null => {
+    let creditSum = 0;
+    let debitSum = 0;
+    this.accounts.controls.forEach(element => {
+      creditSum += element.Credit;
+      debitSum += element.Debit;
+    });
 
-  if (creditSum === debitSum) {
-    return null;
-  }
+    if (creditSum === debitSum) {
+      return null;
+    }
 
-  return {'balanceNotEqual' : true};
+    return { 'balanceNotEqual': true };
   };
 
 }
@@ -37,8 +37,8 @@ export class LedgerComponent implements OnInit {
   public isEqual: Boolean = true;
   public accountForm: FormGroup;
   public accountQuery: Query;
-public creditSum = 0;
-public debitSum = 0;
+  public creditSum = 0;
+  public debitSum = 0;
   public accountFields: Object;
   constructor(private formBuilder: FormBuilder,
     private ledgerService: LedgerService,
@@ -66,17 +66,19 @@ public debitSum = 0;
         this.debitSum += element.Debit;
       });
       if (this.creditSum === this.debitSum) {
-          this.isEqual = true;
-          this.accounts.clearValidators();
+        this.isEqual = true;
+
+        this.accounts.controls.forEach(c => c.clearValidators());
       } else {
-        this.accounts.setErrors({'balanceNotEqual': true});
+        this.isEqual = false;
+        this.accounts.controls.forEach(c => c.setValidators(balanceChecker));
       }
 
     });
   }
-logError(error) {
-  console.log(error);
-}
+  logError(error) {
+    console.log(error);
+  }
   createForm(data: any = '') {
     this.ledgerForm = this.formBuilder.group({
       description: ['', [Validators.required]],
@@ -114,10 +116,10 @@ logError(error) {
 
   }
 
-    removeRow(index: number) {
-      this.accounts.removeAt(index);
-      this.accounts.updateValueAndValidity();
-    }
+  removeRow(index: number) {
+    this.accounts.removeAt(index);
+
+  }
   prepareData(data: FormGroup): Ledger {
     const form = data.value;
 
@@ -146,6 +148,6 @@ logError(error) {
       Debit: [0, Validators.required],
       Reference: [''],
     }));
-    this.accounts.updateValueAndValidity();
+
   }
 }

@@ -20,59 +20,85 @@ export class MainNavComponent {
   public togglebtn: ButtonComponent;
   public hierarchicalData: Object[] = [
     {
-      id: '1', name: 'ORGANIZATION',
+      id: '1', name: 'Home'
+    },
+    {
+      id: '2', name: 'General Ledger',
       subChild: [
         {
-          id: '01', name: 'COMPANY',
-          subChild: [
-            { id: 'organizations', name: 'PROFILE' },
-            { id: 'calanders', name: 'CALENDER'},
-        ]
+          id: 'ledgers', name: 'G/L Registry'
         },
         {
-          id: 'employees', name: 'USER', tooltip: 'users data'
-        },
-        {
-          id: 'customers', name: 'CUSTOMER', tooltip: 'customers data'
-        },
-        {
-          id: 'suppliers', name: 'SUPPLIER'
-        },
-        {
-          id: 'banks', name: 'BANK'
-        },
-        {
-          id: 'currencies', name: 'CURRENCY'
+          id: 'accounts', name: 'Account Chart'
         }
-      ],
-    },
-    {
-      id: 'accounts', name: 'ACCOUNTS'
-    },
-    {
-      id: 'ledgers', name: 'General Ledger'
-    },
-    {
-      id: '03', name: 'REPORTS',
-      subChild: [
-        {
-          id: 'invoices', name: 'TRIAL BALANCE',
-        },
-        {
-          id: '03-02', name: 'BALANCE SHEEET',
-        },
-        {
-          id: '03-03', name: 'INCOME STATMENT',
-        },
-        {
-          id: '03-04', name: 'ACCOUNT PAYABLE',
-        },
-        {
-          id: '03-03', name: 'ACOUNT RECEIVABLE',
-        },
       ]
     },
+    {
+      id: '3', name: 'Cash Managment',
+      subChild: [
+        { id: 'banks', name: 'Banks' }
+      ]
+    },
+    {
+      id: '4', name: 'Cash Flow'
+    },
+    {
+      id: '5', name: 'Recievables',
+      subChild: [
+        { id: 'customers', name: 'CUSTOMER', tooltip: 'customers data'  }
+      ]
+    },
+    {
+      id: '6', name: 'Payables',
+      subChild: [
+        { id: 'suppliers', name: 'Suppliers'  }
+      ]
+    },
+    {
+      id: '7', name: 'Recurring Activities',
+      subChild: [
+        {
+          id: '7-01', name: 'G/L Entry'
+        },
+        {
+          id: '7-02', name: 'VAT'
+        },
+        {
+          id: '7-03', name: 'Fiscal Year'
+        },
+        {
+          id: '7-04', name: 'Recievables'
+        },
+        {
+          id: '7-05', name: 'Payables'
+        }
+      ]
+    },
+    {
+      id: '8', name: 'Settings',
+      subChild: [
 
+        { id: 'organizations', name: 'Company Profile' },
+        { id: 'calanders', name: 'Accounting Period' },
+        { id: 'employees', name: 'USER', tooltip: 'User Managment' },
+        { id: 'currencies', name: 'CURRENCY' },
+
+      ]
+    },
+    {
+      id: '9', name: 'Reports',
+      subChild: [
+        {
+          id: 'invoices', name: 'Trial BAlance'
+        },
+        {
+          id: '9-01', name: 'Balance Sheet'
+        },
+        {
+          id: '9-02', name: 'Income Statement'
+        },
+      ]
+    }
   ];
 
 
@@ -88,7 +114,7 @@ export class MainNavComponent {
       this.sidebar.show();
     }
   }
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   nodeSelected(args: NodeSelectEventArgs) {
     this.router.navigate([args.node.dataset['uid']]);
