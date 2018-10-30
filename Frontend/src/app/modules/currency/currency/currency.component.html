@@ -14,6 +14,9 @@
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="name">Name</label>
                 </div>
+                <div class="text-danger" class="invalid-tooltip)" *ngIf="(currencyForm.controls['name'].invalid && currencyForm.controls['name'].touched) || (currencyForm.controls['name'].invalid && showAllErrors)">
+                  Name is Required!
+                </div>
               </div>
             </div>
 
@@ -24,6 +27,9 @@
                     required>
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="abrevation">Abrevation</label>
+                </div>
+                <div class="text-danger" class="invalid-tooltip)" *ngIf="(currencyForm.controls['abrevation'].invalid && currencyForm.controls['abrevation'].touched) || (currencyForm.controls['abrevation'].invalid && showAllErrors)">
+                  Abrevation is Required!
                 </div>
               </div>
             </div>
@@ -36,6 +42,9 @@
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="country">Country</label>
                 </div>
+                <div class="text-danger" class="invalid-tooltip)" *ngIf="(currencyForm.controls['country'].invalid && currencyForm.controls['country'].touched) || (currencyForm.controls['country'].invalid && showAllErrors)">
+                  Country is Required!
+                </div>
               </div>
             </div>
             <div class="col-xs-3 col-sm-3 col-lg-3 col-md-3">
@@ -44,6 +53,9 @@
                   <input type="text" id="symbol" name="symbol" class="required" formControlName="symbole" required>
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="symbol">Symbol</label>
+                </div>
+                <div class="text-danger" class="invalid-tooltip)" *ngIf="(currencyForm.controls['symbole'].invalid && currencyForm.controls['symbole'].touched) || (currencyForm.controls['symbole'].invalid && showAllErrors)">
+                  Symbol is Required!
                 </div>
               </div>
             </div>

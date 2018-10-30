@@ -15,8 +15,8 @@
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="FirstName">First Name</label>
                 </div>
-                <div class="text-danger" *ngIf="FirstName?.invalid && (FirstName.dirty || FirstName.touched)">
-
+                <div class="text-danger" *ngIf="(userForm.controls['FirstName'].invalid && userForm.controls['FirstName'].touched) || (userForm.controls['FirstName'].invalid && showAllErrors)">
+                  First Name is Required!
                 </div>
               </div>
             </div>
@@ -28,8 +28,9 @@
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="LastName">Last Name</label>
                 </div>
-                <app-field-error-display  errorMsg="* Enter your last name">
-                </app-field-error-display>
+                <div class="text-danger" *ngIf="(userForm.controls['LastName'].invalid && userForm.controls['LastName'].touched) || (userForm.controls['LastName'].invalid && showAllErrors)">
+                  Last Name is Required!
+                </div>
               </div>
             </div>
           </div>
@@ -42,7 +43,9 @@
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="Email">Email</label>
                 </div>
-
+                <div class="text-danger" *ngIf="(userForm.controls['Email'].invalid && userForm.controls['Email'].touched) || (userForm.controls['Email'].invalid && showAllErrors)">
+                  Email is Required!
+                </div>
               </div>
             </div>
 
@@ -53,7 +56,9 @@
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="Phone_No">Phone No</label>
                 </div>
-
+                <div class="text-danger" *ngIf="(userForm.controls['Phone_No'].invalid && userForm.controls['Phone_No'].touched) || (userForm.controls['Phone_No'].invalid && showAllErrors)">
+                  Phone No is Required!
+                </div>
               </div>
             </div>
           </div>
@@ -65,9 +70,9 @@
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="Password">Password</label>
                 </div>
-                <!-- <div class="text-danger">
-                  *Password is required
-                </div> -->
+                <div class="text-danger"  *ngIf="(userForm.controls['Password'].invalid && userForm.controls['Password'].touched) || (userForm.controls['Password'].invalid && showAllErrors)">
+                  Password is Required!
+                </div>
               </div>
             </div>
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
@@ -78,7 +83,9 @@
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="confirm_password">Confirm Password</label>
                 </div>
-
+                <div class="text-danger"  *ngIf="(userForm.controls['Confirm_Password'].invalid && userForm.controls['Confirm_Password'].touched) || (userForm.controls['Confirm_Password'].invalid && showAllErrors)">
+                  Confirm Password is Required!
+                </div>
               </div>
             </div>
 
@@ -91,16 +98,6 @@
               </ejs-datepicker>
             </div>
 
-            <!-- <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
-              <div class="form-group template">
-                <div class="e-float-input">
-                  <input type="number" name="Account" minlength="10" required class="required" formControlName="Account_Id">
-                  <span class="e-float-line"></span>
-                  <label class="e-float-text" for="Account_Id">Account Id</label>
-                </div>
-
-              </div>
-            </div> -->
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
               <div class="form-group template">
                 <label>Gender:</label>
@@ -108,6 +105,9 @@
                 <ejs-radiobutton label="Female" name="payment" value="female" checked="true" formControlName="Gender"></ejs-radiobutton>
                 <ejs-radiobutton label="Male" name="payment" value="male" checked="true"formControlName="Gender"></ejs-radiobutton>
             </div>
+            <div class="text-danger"  *ngIf="(userForm.controls['Gender'].invalid && userForm.controls['Gender'].touched) || (userForm.controls['Gender'].invalid && showAllErrors)">
+              Gender is Required!
+            </div>   
         </div>
           </div>
 
