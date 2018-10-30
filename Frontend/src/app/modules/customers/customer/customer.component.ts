@@ -118,7 +118,7 @@ export class CustomerComponent implements OnInit {
   addAccount() {
     this.BankAccounts.push(this.fb.group({
       BankName: ['', [Validators.required]],
-      AccountNumber: ['', [Validators.required]]
+      AccountNumber: ['', [Validators.required, Validators.minLength(10)]]
     }));
   }
   removeAccount(i) {

@@ -130,6 +130,9 @@
                     <span class="e-float-line"></span>
                     <label class="e-float-text" for="Bank_Name">Bank Name</label>
                   </div>
+                  <div class="text-danger" class="(invalid-tooltip)" *ngIf="(account.controls['BankName'].invalid && account.controls['BankName'].touched) || (account.controls['BankName'].invalid && showAllErrors)">
+                    Bank Name is Required!
+                  </div>
                 </div>
               </div>
               <!-- Account Number field -->
@@ -141,11 +144,14 @@
                     <span class="e-float-line"></span>
                     <label class="e-float-text" for="Account_Number">Account Number</label>
                   </div>
+                  <div class="text-danger" class="(invalid-tooltip)" *ngIf="(account.controls['AccountNumber'].invalid && account.controls['AccountNumber'].touched) || (account.controls['AccountNumber'].invalid && showAllErrors)">
+                    Account Number is Required!
+                  </div>
                 </div>
               </div>
               <div class="btns col-xs-12 col-sm-2">
                 <button type="button" ejs-button class="e-round e-info e-small " iconCss="e-icons e-plus-icon" (click)="addAccount()"
-                  [disabled]="SupplierAccount?.invalid" *ngIf="last"></button>
+                  [disabled]="BankAccounts?.invalid" *ngIf="last"></button>
                 &nbsp;
                 <button type="button" ejs-button class="e-round e-danger e-small e-icons e-times-icon" (click)="removeAccount(i)"></button>
               </div>

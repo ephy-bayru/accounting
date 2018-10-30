@@ -13,6 +13,9 @@
                 <span class="e-float-line"></span>
                 <label class="e-float-text" for="BuyRate">Buy Rate</label>
               </div>
+              <div class="text-danger" class="(invalid-tooltip)" *ngIf="(exRateForm.controls['BuyRate'].invalid && exRateForm.controls['BuyRate'].touched) || (exRateForm.controls['BuyRate'].invalid && showAllErrors)">
+                Buy Rate is Required!
+              </div>
             </div>
           </div>
 
@@ -23,6 +26,9 @@
                 <span class="e-float-line"></span>
                 <label class="e-float-text" for="SaleRate">Sale Rate</label>
               </div>
+              <div class="text-danger" class="(invalid-tooltip)" *ngIf="(exRateForm.controls['SaleRate'].invalid && exRateForm.controls['SaleRate'].touched) || (exRateForm.controls['SaleRate'].invalid && showAllErrors)">
+                Sale Rate is Required!
+              </div>
             </div>
           </div>
 
@@ -31,6 +37,9 @@
               <div class="e-input-group">
               </div>
             </ejs-datepicker>
+            <div class="text-danger" class="(invalid-tooltip)" *ngIf="(exRateForm.controls['Date'].invalid && exRateForm.controls['Date'].touched) || (exRateForm.controls['Date'].invalid && showAllErrors)">
+              Date is Required!
+            </div>
           </div>
         <div id='currency' class='col-lg-6' style="margin: 0 auto;padding-top: 25px;">
             <div style="width: 250px;">
@@ -42,6 +51,9 @@
                 placeholder='Select Currency' 
                 formControlName="Currency"
                 sortOrder='Ascending'></ejs-dropdownlist>
+            </div>
+            <div class="text-danger" class="(invalid-tooltip)" *ngIf="(exRateForm.controls['Currency'].invalid && exRateForm.controls['Currency'].touched) || (exRateForm.controls['Currency'].invalid && showAllErrors)">
+              Currency is Required!
             </div>
         </div>
         </div>
