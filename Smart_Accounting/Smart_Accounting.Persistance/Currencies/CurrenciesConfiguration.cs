@@ -23,7 +23,7 @@ namespace Smart_Accounting.Persistance.Currencys {
                 .HasName ("name_UNIQUE")
                 .IsUnique ();
 
-            builder.Property (e => e.ID).HasColumnName ("ID");
+            builder.Property (e => e.Id).HasColumnName ("ID");
 
             builder.Property (e => e.Abrevation)
                 .IsRequired ()

@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { CustomerService } from './../customer.service';
 import { ClickEventArgs } from '@syncfusion/ej2-ng-navigations';
-import { DataManager, WebApiAdaptor, Adaptor } from '@syncfusion/ej2-data';
+import { DataManager, WebApiAdaptor} from '@syncfusion/ej2-data';
 import { Router } from '@angular/router';
 import { Tooltip } from '@syncfusion/ej2-popups';
 import {
@@ -44,7 +43,6 @@ export class CustomerGridComponent implements OnInit {
 
 
   constructor(
-    private customersService: CustomerService,
     private router: Router,
     private appConfig: SmartAppConfigService
   ) {

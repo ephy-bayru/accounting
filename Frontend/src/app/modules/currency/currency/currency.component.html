@@ -14,7 +14,7 @@
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="name">Name</label>
                 </div>
-                <div class="text-danger" class="invalid-tooltip)" *ngIf="(currencyForm.controls['name'].invalid && currencyForm.controls['name'].touched) || (currencyForm.controls['name'].invalid && showAllErrors)">
+                <div class="text-danger"  *ngIf="(currencyForm.controls['name'].invalid && currencyForm.controls['name'].touched) || (currencyForm.controls['name'].invalid && showAllErrors)">
                   Name is Required!
                 </div>
               </div>
@@ -28,7 +28,7 @@
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="abrevation">Abrevation</label>
                 </div>
-                <div class="text-danger" class="invalid-tooltip)" *ngIf="(currencyForm.controls['abrevation'].invalid && currencyForm.controls['abrevation'].touched) || (currencyForm.controls['abrevation'].invalid && showAllErrors)">
+                <div class="text-danger" *ngIf="(currencyForm.controls['abrevation'].invalid && currencyForm.controls['abrevation'].touched) || (currencyForm.controls['abrevation'].invalid && showAllErrors)">
                   Abrevation is Required!
                 </div>
               </div>
@@ -42,7 +42,7 @@
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="country">Country</label>
                 </div>
-                <div class="text-danger" class="invalid-tooltip)" *ngIf="(currencyForm.controls['country'].invalid && currencyForm.controls['country'].touched) || (currencyForm.controls['country'].invalid && showAllErrors)">
+                <div class="text-danger" *ngIf="(currencyForm.controls['country'].invalid && currencyForm.controls['country'].touched) || (currencyForm.controls['country'].invalid && showAllErrors)">
                   Country is Required!
                 </div>
               </div>
@@ -54,8 +54,8 @@
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="symbol">Symbol</label>
                 </div>
-                <div class="text-danger" class="invalid-tooltip)" *ngIf="(currencyForm.controls['symbole'].invalid && currencyForm.controls['symbole'].touched) || (currencyForm.controls['symbole'].invalid && showAllErrors)">
-                  Symbol is Required!
+                <div class="text-danger"  *ngIf="(currencyForm.controls['symbole'].invalid && currencyForm.controls['symbole'].touched) || (currencyForm.controls['symbole'].invalid && showAllErrors)">
+                  Symbol Required!
                 </div>
               </div>
             </div>

@@ -35,11 +35,6 @@ namespace Smart_Accounting.Persistance.Taxes {
                 .HasColumnName ("name")
                 .HasColumnType ("varchar(45)");
 
-            builder.HasOne (d => d.Account)
-                .WithMany (p => p.Tax)
-                .HasForeignKey (d => d.AccountId)
-                .OnDelete (DeleteBehavior.ClientSetNull)
-                .HasConstraintName ("fk_tax_account");
         }
     }
 }
