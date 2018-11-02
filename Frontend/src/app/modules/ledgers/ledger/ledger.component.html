@@ -34,6 +34,7 @@
             <tbody>
               <tr *ngFor="let account of accounts.controls; let i=index; let last=last;" [formGroup]="account">
                 <td>
+                  {{account.errors['balanceNotEqual'] }}
                   <ejs-dropdownlist [attr.id]="'parentAccount'+i" placeholder="Parent Account" [attr.name]="'parentAccount'+i" [query]="accountQuery"
                   [fields]="accountFields" formControlName="AccountId" [dataSource]='accountList'></ejs-dropdownlist>
                 </td>

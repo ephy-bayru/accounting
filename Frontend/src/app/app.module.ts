@@ -33,12 +33,10 @@ import { SupplierComponent } from './modules/suppliers/supplier/supplier.compone
 import { NotFoundComponent } from './modules/shared/not-found/not-found.component';
 import { LedgerModule } from './modules/ledgers/ledger/ledger.module';
 import { CurrencyModule } from './modules/currency/currency/currency.module';
-<<<<<<< HEAD
-import { DashboardModule } from './modules/dashboard/dashboard.module';
-import { LedgerViewComponent } from './modules/ledgers/ledger-view/ledger-view.component';
-=======
 import { ExRateModule } from './modules/exchange/exchange_rate/exchange_rate.module';
->>>>>>> 4d9ca3fcefcca1bcb8e40036c48c79d2879a02c3
+import { LedgerViewComponent } from './modules/ledgers/ledger-view/ledger-view.component';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { DepositModule } from './modules/deposit/deposit.module';
 
 
 @NgModule({
@@ -70,6 +68,7 @@ import { ExRateModule } from './modules/exchange/exchange_rate/exchange_rate.mod
     CommonModule,
     CompanyModule,
     CalanderModule,
+    DepositModule,
     CustomerModule,
     SuppliersModule,
     AccountsModule,

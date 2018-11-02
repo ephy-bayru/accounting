@@ -36,7 +36,14 @@ export class MainNavComponent {
     {
       id: '3', name: 'Cash Managment',
       subChild: [
-        { id: 'banks', name: 'Banks' }
+        { id: 'banks', name: 'Banks' },
+        {id: '3-02', name: 'Bank Account Reconciliation'},
+        {id: '3-03', name: 'Payment Jornal'},
+        {id: '3-04', name: 'Depositl'},
+        { id: '3-05', name: 'Cash Reciept Jornal' },
+        { id: '3-06', name: 'Recievables' },
+        { id: '3-07', name: 'Payables' },
+        {id: '3-08', name: 'Bank Account Register'}
       ]
     },
     {
@@ -45,7 +52,7 @@ export class MainNavComponent {
     {
       id: '5', name: 'Recievables',
       subChild: [
-        { id: 'customers', name: 'CUSTOMER', tooltip: 'customers data'  }
+        { id: 'customers', name: 'Customers', tooltip: 'customers data'  }
       ]
     },
     {
@@ -77,9 +84,10 @@ export class MainNavComponent {
       subChild: [
 
         { id: 'organizations', name: 'Company Profile' },
+        { id: '8-2', name: 'General Ledger' },
         { id: 'calanders', name: 'Accounting Period' },
-        { id: 'employees', name: 'USER', tooltip: 'User Managment' },
-        { id: 'currencies', name: 'CURRENCY' },
+        { id: 'employees', name: 'User Management', tooltip: 'User Managment' },
+        { id: 'currencies', name: 'Currency' },
         {  id: 'exrate', name: 'Exchange Rate' }
 
       ]
