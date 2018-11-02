@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Nov 2, 2018 3:13 PM
+ * @Last Modified Time: Nov 2, 2018 3:40 PM
  * @Description: Modify Here, Please 
  */
 using System;
@@ -31,6 +31,8 @@ namespace Smart_Accounting.Domain.AccountCharts {
         public sbyte Active { get; set; }
         public string AccountType {get; set;}
         public string AccountId { get; set; }
+        public string GlType { get; set; }
+        public string Type { get; set; }
         public uint OrganizationId { get; set; }
         public DateTime? DateAdded { get; set; }
         public DateTime? DateUpdated { get; set; }

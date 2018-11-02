@@ -1,3 +1,11 @@
+/*
+ * @CreateTime: Nov 2, 2018 3:19 PM
+ * @Author:  Mikael Araya
+ * @Contact: MikaelAraya12@gmail.com
+ * @Last Modified By:  Mikael Araya
+ * @Last Modified Time: Nov 2, 2018 3:39 PM
+ * @Description: Modify Here, Please 
+ */
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -14,16 +22,25 @@ namespace Smart_Accounting.Persistance.AccountCharts {
                 .HasName ("ACCOUNT_ID_UNIQUE")
                 .IsUnique ();
 
+            builder.Property (e => e.AccountType)
+                .HasColumnName ("account_type")
+                .HasColumnType ("varchar(20)");
+            
+            builder.Property (e => e.Type)
+                .HasColumnName ("type")
+                .IsRequired()
+                .HasColumnType ("varchar(20)");
+            
+            builder.Property (e => e.GlType)
+                .IsRequired()
+                .HasColumnName ("gl_type")
+                .HasColumnType ("varchar(20)");
+
             builder.HasIndex (e => e.OrganizationId)
                 .HasName ("fk_account_chart_organization_idx");
 
             builder.Property (e => e.AccountId)
                 .HasColumnName ("ACCOUNT_ID")
-                .HasColumnType ("varchar(30)");
-
-            builder.Property (e => e.AccountType)
-                .IsRequired ()
-                .HasColumnName ("account_type")
                 .HasColumnType ("varchar(30)");
 
             builder.Property (e => e.AccountCode)
@@ -35,6 +52,11 @@ namespace Smart_Accounting.Persistance.AccountCharts {
                 .HasColumnType ("tinyint(4)")
                 .HasDefaultValueSql ("'1'");
 
+            builder.Property (e => e.Closed)
+                .HasColumnName ("closed")
+                .HasColumnType ("tinyint(4)")
+                .HasDefaultValueSql ("'0'");
+
             builder.Property (e => e.DateAdded)
                 .HasColumnName ("date_added")
                 .HasColumnType ("datetime")
@@ -45,6 +67,16 @@ namespace Smart_Accounting.Persistance.AccountCharts {
                 .HasColumnType ("datetime")
                 .HasDefaultValueSql ("'CURRENT_TIMESTAMP'")
                 .ValueGeneratedOnAddOrUpdate ();
+
+            builder.Property (e => e.DirectPositng)
+                .HasColumnName ("direct_positng")
+                .HasColumnType ("tinyint(1)")
+                .HasDefaultValueSql ("'0'");
+
+            builder.Property (e => e.IsReconcilation)
+                .HasColumnName ("is_reconcilation")
+                .HasColumnType ("tinyint(1)")
+                .HasDefaultValueSql ("'0'");
 
             builder.Property (e => e.Name)
                 .IsRequired ()

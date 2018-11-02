@@ -14,7 +14,7 @@ import { UsersModule } from './modules/users/users/users.module';
 import { SideNavComponent } from './shared/side-nav/side-nav.component';
 import { MainNavComponent } from './shared/main-nav/main-nav.component';
 import { ButtonModule } from '@syncfusion/ej2-ng-buttons';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule} from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { GridModule } from '@syncfusion/ej2-ng-grids';
 import { CompanyModule } from './modules/company/company.module';

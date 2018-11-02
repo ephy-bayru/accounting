@@ -1,3 +1,11 @@
+/*
+ * @CreateTime: Nov 2, 2018 3:35 PM
+ * @Author:  Mikael Araya
+ * @Contact: MikaelAraya12@gmail.com
+ * @Last Modified By:  Mikael Araya
+ * @Last Modified Time: Nov 2, 2018 3:41 PM
+ * @Description: Modify Here, Please 
+ */
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Smart_Accounting.Domain.Taxes;
@@ -9,6 +17,10 @@ namespace Smart_Accounting.Persistance.Taxes {
 
             builder.HasIndex (e => e.AccountId)
                 .HasName ("fk_tax_account_idx");
+
+            builder.Property (e => e.TaxType)
+                .HasColumnName ("tax_type")
+                .HasColumnType ("varchar(20)");
 
             builder.Property (e => e.Id).HasColumnName ("ID");
 
@@ -29,6 +41,11 @@ namespace Smart_Accounting.Persistance.Taxes {
                 .HasColumnType ("datetime")
                 .HasDefaultValueSql ("'CURRENT_TIMESTAMP'")
                 .ValueGeneratedOnAddOrUpdate ();
+
+            builder.Property (e => e.IncludeInPrice)
+                .HasColumnName ("include_in_price")
+                .HasColumnType ("tinyint(1)")
+                .HasDefaultValueSql ("'0'");
 
             builder.Property (e => e.Name)
                 .IsRequired ()

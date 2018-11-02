@@ -1,3 +1,11 @@
+/*
+ * @CreateTime: Nov 2, 2018 3:29 PM
+ * @Author:  Mikael Araya
+ * @Contact: MikaelAraya12@gmail.com
+ * @Last Modified By:  Mikael Araya
+ * @Last Modified Time: Nov 2, 2018 3:29 PM
+ * @Description: Modify Here, Please 
+ */
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Smart_Accounting.Domain.OpeningBalances;
