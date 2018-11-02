@@ -11,6 +11,10 @@ namespace Smart_Accounting.Persistance.Jornals {
                 .HasName ("fk_jornal_account_idx");
 
             builder.Property (e => e.JornalId).HasColumnName ("JORNAL_ID");
+        
+
+            builder.HasIndex (e => e.LedgerId)
+                .HasName ("fk_jornal_ledger_id_idx");
 
             builder.Property (e => e.AccountId)
                 .IsRequired ()

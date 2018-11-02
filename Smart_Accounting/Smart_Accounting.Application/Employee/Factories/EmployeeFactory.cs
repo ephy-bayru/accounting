@@ -1,3 +1,11 @@
+/*
+ * @CreateTime: Nov 2, 2018 3:43 PM
+ * @Author:  Mikael Araya
+ * @Contact: MikaelAraya12@gmail.com
+ * @Last Modified By:  Mikael Araya
+ * @Last Modified Time: Nov 2, 2018 3:43 PM
+ * @Description: Modify Here, Please 
+ */
 using System.Collections.Generic;
 using Smart_Accounting.Application.Employee.Interfaces;
 using Smart_Accounting.Application.Employee.Models;
@@ -15,7 +23,7 @@ namespace Smart_Accounting.Application.Employee.Factories {
                         First_Name = item.FirstName,
                         Last_Name = item.LastName,
                         Email = item.Email,
-                        Phone_No = item.Phone_No,
+                        Phone_No = item.PhoneNo,
                         Gender = item.Gender,
                         Birth_Date = item.BirthDate,
                         Date_Created = item.DateCreated,

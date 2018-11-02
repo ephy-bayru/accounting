@@ -13,6 +13,9 @@ using Smart_Accounting.Domain.Jornals;
 
 namespace Smart_Accounting.Domain.Ledgers {
     public class Ledger {
+        public Ledger () {
+            Jornal = new HashSet<Jornal> ();
+        }
         public uint Id { get; set; }
         public DateTime? DateAdded { get; set; }
         public DateTime? DateUpdated { get; set; }
@@ -22,5 +25,6 @@ namespace Smart_Accounting.Domain.Ledgers {
         public string DocumentNo { get; set; }
 
         public CalendarPeriod Period { get; set; }
+        public ICollection<Jornal> Jornal { get; set; }
     }
 }

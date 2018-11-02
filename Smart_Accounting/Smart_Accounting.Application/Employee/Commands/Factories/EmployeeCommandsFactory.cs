@@ -17,7 +17,7 @@ namespace Smart_Accounting.Application.Employee.Commands.Factories {
             employee.FirstName = newEmp.First_Name;
             employee.LastName = newEmp.Last_Name;
             employee.Email = newEmp.Email;
-            employee.Phone_No = newEmp.Phone_No;
+            employee.PhoneNo = newEmp.Phone_No;
             employee.Gender = newEmp.Gender;
             employee.Password = newEmp.Password;
             employee.BirthDate = newEmp.Birth_Date;
@@ -33,7 +33,7 @@ namespace Smart_Accounting.Application.Employee.Commands.Factories {
             employees.First_Name = employee.FirstName;
             employees.Last_Name = employee.FirstName;
             employees.Email = employees.Email;
-            employees.Phone_No = employee.Phone_No;
+            employees.Phone_No = employee.PhoneNo;
             employees.Birth_Date = employee.BirthDate;
             employees.Gender = employee.Gender;
             employees.Date_Created = employee.DateCreated;
@@ -47,7 +47,7 @@ namespace Smart_Accounting.Application.Employee.Commands.Factories {
             currentEmployee.FirstName = updateEmployee.First_Name;
             currentEmployee.LastName = updateEmployee.Last_Name;
             currentEmployee.Email = updateEmployee.Email;
-            currentEmployee.Phone_No = updateEmployee.Phone_No;
+            currentEmployee.PhoneNo = updateEmployee.Phone_No;
             currentEmployee.BirthDate = updateEmployee.Birth_Date;
             currentEmployee.Gender = updateEmployee.Gender;
             currentEmployee.Password = updateEmployee.Password;

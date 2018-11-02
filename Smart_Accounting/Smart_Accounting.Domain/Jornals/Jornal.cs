@@ -17,6 +17,7 @@ namespace Smart_Accounting.Domain.Jornals {
         public uint JornalId { get; set; }
         public double Credit { get; set; }
         public double Debit { get; set; }
+        public uint LedgerId { get; set; }
         public string AccountId { get; set; }
         public sbyte? Reconciled { get; set; }
         public string Status { get; set; }
@@ -27,5 +28,6 @@ namespace Smart_Accounting.Domain.Jornals {
         public DateTime? DateAdded { get; set; }
         public DateTime? DateUpdated { get; set; }
         public AccountChart Account { get; set; }
+        public Ledger Ledger { get; set; }
     }
 }

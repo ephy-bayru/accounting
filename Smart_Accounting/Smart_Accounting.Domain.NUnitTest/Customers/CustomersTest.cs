@@ -17,7 +17,7 @@ namespace Smart_Accounting.Domain.NUnitTest.Customers
             customer.Id = 1;
             customer.FullName = "Microsoft";
 
-            customer.Phone_No = "0920208549";
+            customer.PhoneNo = "0920208549";
             customer.Email = "email";
             customer.Country = "Ethiopia";
             customer.City = "Dessie";
@@ -31,7 +31,7 @@ namespace Smart_Accounting.Domain.NUnitTest.Customers
         {
             Assert.That(customer.Id, Is.EqualTo(1));
             Assert.That(customer.FullName, Is.EqualTo("Microsoft"));
-            Assert.That(customer.Phone_No, Is.EqualTo("0920208549"));
+            Assert.That(customer.PhoneNo, Is.EqualTo("0920208549"));
             Assert.That(customer.Email, Is.EqualTo("email"));
             Assert.That(customer.Country, Is.EqualTo("Ethiopia"));
             Assert.That(customer.City, Is.EqualTo("Dessie"));
