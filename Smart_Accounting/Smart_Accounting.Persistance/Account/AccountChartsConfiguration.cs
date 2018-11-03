@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Nov 2, 2018 3:39 PM
+ * @Last Modified Time: Nov 3, 2018 12:27 PM
  * @Description: Modify Here, Please 
  */
 using System.Linq;
@@ -70,12 +70,12 @@ namespace Smart_Accounting.Persistance.AccountCharts {
 
             builder.Property (e => e.DirectPositng)
                 .HasColumnName ("direct_positng")
-                .HasColumnType ("tinyint(1)")
+                .HasColumnType ("tinyint(4)")
                 .HasDefaultValueSql ("'0'");
 
             builder.Property (e => e.IsReconcilation)
                 .HasColumnName ("is_reconcilation")
-                .HasColumnType ("tinyint(1)")
+                .HasColumnType ("tinyint(4)")
                 .HasDefaultValueSql ("'0'");
 
             builder.Property (e => e.Name)

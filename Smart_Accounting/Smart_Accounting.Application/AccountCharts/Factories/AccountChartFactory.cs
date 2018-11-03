@@ -3,8 +3,9 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Oct 10, 2018 4:04 PM
- * @Description: Modify Here, Please 
+ * @Last Modified Time: Nov 3, 2018 12:36 PM
+ * @Description: Used to convert between Dto objects and domain object 
+ *          and implements the IAccountChartFactory
  */
 using System.Collections.Generic;
 using Smart_Accounting.Application.AccountCharts.Interfaces;
@@ -21,47 +22,43 @@ namespace Smart_Accounting.Application.AccountCharts.Factories {
             _period = period;
         }
 
-        public IEnumerable<AccountChart> NewAccount (IEnumerable<NewAccountModel> newType) {
-            List<AccountChart> account = new List<AccountChart> ();
-    var active = _period.getActivePeriod();
-            foreach (var item in newType) {
-                OpeningBalance ob = new OpeningBalance(){
-                    Credit = item.OpeningBalance,
-                    PeriodId = item.periodId
-                };
-                account.Add (new AccountChart () {
-                    AccountId = item.AccountId,
-                    Name = item.Name,
-                        AccountCode = item.AccountCode,
-                        OrganizationId = item.OrganizationId,
-                        Active = (sbyte)item.Active,
-                        AccountType = item.AccountType,
-                        OpeningBalance = new List<OpeningBalance>(){
-                            new OpeningBalance() {
-                                Credit =  item.OpeningBalance,
-                                PeriodId = item.periodId
-                            }
-                        }
-                        
-                });
-            }
+        public AccountChart NewAccount (NewAccountModel newType) {
+                var activePeriod = _period.getActivePeriod ();
 
-            return account;
+            return new AccountChart () {
+                AccountId = newType.AccountId,
+                    Name = newType.Name,
+                    AccountCode = newType.AccountCode,
+                    OrganizationId = newType.OrganizationId,
+                    Active = (newType.Active == 1) ? (sbyte)  1 : (sbyte)  0 ,
+                    AccountType = newType.AccountType,
+                    IsReconcilation = (newType.isReconciliation == 1) ? (sbyte)  1 : (sbyte)  0 ,
+                    DirectPositng = (newType.isPosting == 1) ? (sbyte)  1 : (sbyte)  0 ,
+                    GlType = newType.GlType,
+                    Type = newType.PostingType,
+                    OpeningBalance = new List<OpeningBalance> () {
+                        new OpeningBalance () {
+                        Credit = newType.OpeningBalance,
+                        PeriodId = activePeriod.Id
+                        }
+                    }
+
+            };
+
         }
 
         public AccountChart UpdatedAccount (UpdatedAccountModel newModel) {
-            AccountChart account = new  AccountChart () {
-                    AccountId = newModel.AccountId,
-                    AccountType = newModel.AccountType,
-                    Name = newModel.Name,
-                        AccountCode = newModel.AccountCode,
-                        OrganizationId = newModel.OrganizationId,
-                        Active = newModel.Active
+            AccountChart account = new AccountChart () {
+                AccountId = newModel.AccountId,
+                AccountType = newModel.AccountType,
+                Name = newModel.Name,
+                AccountCode = newModel.AccountCode,
+                OrganizationId = newModel.OrganizationId,
+                Active = newModel.Active
 
-                };
-        
+            };
 
-        return account;
+            return account;
 
         }
 
