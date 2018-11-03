@@ -1,5 +1,13 @@
+/*
+ * @CreateTime: Nov 3, 2018 10:17 AM
+ * @Author:  Mikael Araya
+ * @Contact: MikaelAraya12@gmail.com
+ * @Last Modified By:  Mikael Araya
+ * @Last Modified Time: Nov 3, 2018 10:34 AM
+ * @Description: Modify Here, Please
+ */
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { AccountsService } from '../accounts.service';
 import { ButtonComponent } from '@syncfusion/ej2-ng-buttons';
 import { DataManager, WebApiAdaptor, ReturnOption, Query } from '@syncfusion/ej2-data';
@@ -26,6 +34,8 @@ export class AccountsComponent implements OnInit {
   public calendarQuery: Query;
   public calendarFields: Object;
   public periodList: Object[];
+  public postingType: Object[];
+  public glType: Object[];
 
   public accountTypes: Object = ['ASSET', 'LIABILITY', 'REVENUE', 'EXPENCE', 'INCOME'];
   @ViewChild('statusBtn') statusBtn: ButtonComponent;
@@ -35,6 +45,8 @@ export class AccountsComponent implements OnInit {
     private location: Location,
     private activatedRoute: ActivatedRoute) {
     this.createForm();
+    this.postingType = ['Credit', 'Debit', 'Both'];
+    this.glType = ['Income Statement', 'Balance Sheet'];
   }
 
   ngOnInit() {
@@ -43,24 +55,16 @@ export class AccountsComponent implements OnInit {
     if (this.accountId != null) {
       this.account.getAccountById(this.accountId).subscribe(data => this.createForm(data));
     }
-    this.accountQuery = new Query().select(['AccountCode', 'AccountId']);
-    this.accountFields = { text: 'AccountId', value: 'AccountId' };
+    this.accountQuery = new Query().select(['Name', 'AccountId']);
+    this.accountFields = { text: 'Name', value: 'AccountId' };
     this.organizationQuery = new Query().select(['name', 'id']);
     this.organizationFields = { text: 'name', value: 'id' };
-    this.calendarQuery = new Query().select(['Period', 'Id']);
-    this.calendarFields = { text: 'Period', value: 'Id' };
 
     const orgDm: DataManager = new DataManager(
       { url: 'http://localhost:53267/api/organizations', adaptor: new WebApiAdaptor, offline: true },
       new Query().take(5)
     );
     orgDm.ready.then((e: ReturnOption) => this.organizationList = <Object[]>e.result).catch((e) => true);
-
-    const periodDm: DataManager = new DataManager(
-      { url: 'http://localhost:53267/api/calanders?type=OPEN', adaptor: new WebApiAdaptor, offline: true },
-      new Query().take(5)
-    );
-    periodDm.ready.then((e: ReturnOption) => this.periodList = <Object[]>e.result).catch((e) => true);
 
     const dm: DataManager = new DataManager(
       { url: 'http://localhost:53267/api/accounts', adaptor: new WebApiAdaptor, offline: true },
@@ -74,41 +78,25 @@ export class AccountsComponent implements OnInit {
   }
   createForm(data: any = '') {
     this.accountForm = this.formBuilder.group({
-      accounts: this.formBuilder.array([
-        this.formBuilder.group({
-          periodId: '',
-          AccountCode: [data.AccountCode],
-          AccountId: [data.AccountId, Validators.required],
-          AccountType: [data.AccountType, Validators.required],
-          Name: [data.Name, Validators.required],
-          Active: [(data.Active) ? data.Active : false],
-          OpeningBalance: [0],
-          OrganizationId: [data.OrganizationId, Validators.required]
-        })])
+      AccountCode: [data.AccountCode],
+      AccountId: [data.AccountId, Validators.required],
+      AccountType: [data.AccountType, Validators.required],
+      Name: [data.Name, Validators.required],
+      Active: [(data.Active) ? data.Active : false],
+      OpeningBalance: 0,
+      OrganizationId: [data.OrganizationId, Validators.required],
+      postingType: ['Both', Validators.required],
+      isReconciliation: [false, Validators.required],
+      isPosting: [false, Validators.required],
+      glType: ['', Validators.required]
 
     });
   }
 
-  addPeriod() {
-    this.accounts.push(this.formBuilder.group({
-      AccountCode: [''],
-      AccountId: ['', Validators.required],
-      periodId: '',
-      Name: ['', Validators.required],
-      Active: [false],
-      AccountType: ['', Validators.required],
-      OpeningBalance: [0],
-      OrganizationId: ['', Validators.required]
-    }));
-  }
-
-  get accounts(): FormArray {
-    return this.accountForm.get('accounts') as FormArray;
-  }
 
   onSubmit() {
     if (!this.accountId) {
-      this.account.createAccount(this.accounts.value).subscribe((success) => {
+      this.account.createAccount(this.accountForm.value).subscribe((success) => {
         alert('Account Created Successfully');
         this.location.back();
 
@@ -118,7 +106,7 @@ export class AccountsComponent implements OnInit {
           alert(error);
         });
     } else {
-      this.account.updateAccount(this.accountId, this.accounts.value[0]).subscribe((success: Object) => {
+      this.account.updateAccount(this.accountId, this.accountForm.value).subscribe((success: Object) => {
         this.location.back();
         alert('Account Created Successfully');
       },

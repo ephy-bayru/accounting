@@ -4,90 +4,88 @@
 
   <form [formGroup]="accountForm" novalidate (ngSubmit)="onSubmit()" name="accountForm">
 
-    <div formArrayName="accounts" class="content-wrapper">
-      <div class="row text-center">
-          <button type="button" ejs-button class="e-info  " iconCss="e-icons e-plus-icon" *ngIf="accounts.controls.length == 0"
-          (click)="addPeriod()">Add</button>  
-      </div>
-      <section *ngFor="let account of accounts.controls; let i=index; let last=last" [formGroup]="account">
-        <div class="text-right"> <button type="button" ejs-button class="e-round e-danger e-small e-icons e-times-icon"
-            (click)="accounts.removeAt(i)">Del</button>
-        </div>
-
-        <div class="row text-center" >
-          <div class="col-6">
-            <div class="e-float-input">
-              <input type="text" id="accountName" name="AccountName" class="required" formControlName="Name"
-                placeholder="Account Name" required>
+    <div class="content-wrapper" class="container-fluid">
+      <section class="row">
+        <div class="col-6 col-xs-12">
+          <div class="row">
+            <div class="col-12 e-float-input">
+              <input  type="text" id="accountId" name="accountId"  class="ejs-input e-input" placeholder="Account Id" formControlName="AccountId">
               <span class="e-float-line"></span>
-              <label class="e-float-text" for="Name"> Account Name</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 e-float-input">
+              <input type="text" id="accountName" name="AccountName" placeholder="Account Name" formControlName="Name">
+              <span class="e-float-line"></span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <ejs-dropdownlist id='accountType' name="AccountType" placeholder="Account Type" formControlName="AccountType"
+                [dataSource]='accountTypes'></ejs-dropdownlist>
+              <span class="e-float-line"></span>
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <ejs-dropdownlist id='organization' name="organization" placeholder="Company" [query]="organizationQuery"
+                [fields]="organizationFields" formControlName="OrganizationId" [dataSource]='organizationList'>
+              </ejs-dropdownlist>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <ejs-dropdownlist id='postingType' name="postingType" placeholder="Posting Type" formControlName="postingType"
+                [dataSource]='postingType'></ejs-dropdownlist>
+              <span class="e-float-line"></span>
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <ejs-dropdownlist id='glType' name="glType" placeholder="Income Statement/Balance Sheet" formControlName="glType"
+                [dataSource]='glType'></ejs-dropdownlist>
+              <span class="e-float-line"></span>
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <ejs-dropdownlist id='parentAccount' placeholder="Parent Account" name="parentAccount" [query]="accountQuery"
+                [fields]="accountFields" formControlName="AccountCode" [dataSource]='accountList'></ejs-dropdownlist>
+              <span class="e-float-line"></span>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-6">
-            <label class="e-float-text" for="AccountType"> Account Type</label>
-            <ejs-dropdownlist id='accountType' placeholder="Account Type" name="AccountType" formControlName="AccountType"
-              [dataSource]='accountTypes'></ejs-dropdownlist>
-            <span class="e-float-line"></span>
-
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-6">
-            <ejs-dropdownlist id='parentAccount' placeholder="Parent Account" name="parentAccount" [query]="accountQuery"
-              [fields]="accountFields" formControlName="AccountCode" [dataSource]='accountList'></ejs-dropdownlist>
-            <span class="e-float-line"></span>
-            <label class="e-float-text" for="Name"> Parent Account</label>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="e-float-input">
-            <input type="text" id="accountId" name="accountId" placeholder="Account Id" class="required"
-              formControlName="AccountId" required>
-            <span class="e-float-line"></span>
-            <label class="e-float-text" for="Name"> Account Id</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-6">
-            <ejs-dropdownlist id='organization' placeholder="Company" name="organization" [query]="organizationQuery"
-              [fields]="organizationFields" formControlName="OrganizationId" [dataSource]='organizationList'>
-            </ejs-dropdownlist>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-3 col-xs-12">
-            <div class="e-float-text">Add Opening Balance ?</div>
-            <ejs-switch #hasOpeningBalance name="hasOpening"></ejs-switch>`
-          </div>
-          <div class="opening-balance-section col-sm-9 col-xs-12" *ngIf="hasOpeningBalance.checked">
-            <div class="row">
-              <div class="col-12">
-                <div class="e-float-input">
-                  <input type="number" id="openingBalance" name="openingBalance" placeholder="Opening Balance" class="required"
-                    formControlName="OpeningBalance">
-                </div>
-              </div>
-              <div class="col-12">
-                <ejs-dropdownlist id='organization' placeholder="Period" placeholder="Period" name="calendarPeriod"
-                  [query]="calendarQuery" [fields]="calendarFields" formControlName="periodId" [dataSource]='periodList'>
-                </ejs-dropdownlist>
+        <div class="col-6 col-xs-12">
+          <div class="row">
+            <div class="col-12">
+              <div class="e-float-input">
+                <input type="number" id="openingBalance" name="openingBalance" class="required" formControlName="OpeningBalance">
               </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <div class="e-float-text">Active</div>
-            <ejs-switch formControlName="Active" name="status"></ejs-switch>`
+          <div class="row">
+            <div class="col-12">
+              <div>Is Reconciliation
+                <ejs-switch formControlName="isReconciliation" id="isReconciliation" name="isReconciliation"></ejs-switch>
+              </div>
+            </div>
           </div>
-          <div class="btn col-1">
-            <button type="button" ejs-button class="e-round e-info e-small " iconCss="e-icons e-plus-icon" [disabled]="accounts.invalid" *ngIf="last"
-              (click)="addPeriod()">Add</button>
-            &nbsp;
-
+          <div class="row">
+            <div class="col-12">
+              <div>Is Posting Account
+                <ejs-switch formControlName="isPosting" id="isPosting" name="isPosting"></ejs-switch>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div>Active
+                <ejs-switch formControlName="Active" name="status"></ejs-switch>
+              </div>
+            </div>
           </div>
         </div>
       </section>
