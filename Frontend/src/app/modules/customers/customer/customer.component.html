@@ -122,6 +122,51 @@
               </div>
             </div>
           </div>
+          <div class="row">
+            <!-- Balance is field -->
+            <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+              <div class="form-group template">
+                <div class="e-float-input">
+                  <input type="text" id="Balance" name="Balance" formControlName="Balance" required>
+                  <span class="e-float-line"></span>
+                  <label class="e-float-text" for="Balance">Balance</label>
+                </div>
+                <div class="text-danger" *ngIf="(customerForm.controls['Balance'].invalid && customerForm.controls['Balance'].touched) || (customerForm.controls['Balance'].invalid && showAllErrors)">
+                  *Balance is Required!
+                </div>
+              </div>
+            </div>
+            <!-- Credit Limit field -->
+            <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+              <div class="form-group template">
+                <div class="e-float-input">
+                  <input type="text" id="CreditLimit" name="CreditLimit" class="required" formControlName="CreditLimit"
+                    required>
+                  <span class="e-float-line"></span>
+                  <label class="e-float-text" for="CreditLimit">Credit Limit</label>
+                </div>
+                <div class="text-danger" *ngIf="(customerForm.controls['CreditLimit'].invalid && customerForm.controls['CreditLimit'].touched) || (customerForm.controls['CreditLimit'].invalid && showAllErrors)">
+                  *Credit Limit is Required!
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <!-- Active field -->
+          <div class="row">
+              <div class="col-xs-3 col-sm-3 col-lg-3 col-md-3">
+                <label><b>Active?</b></label>
+                &nbsp;
+                <ejs-switch formControlName="Active" name="active"></ejs-switch>
+              </div>
+              <!-- Blocked field -->
+                 <div>
+                  <label><b>Blocked?</b></label>
+                  &nbsp;
+                  <ejs-switch formControlName="Blocked" name="blocked"></ejs-switch>
+                </div>
+            </div>
+          </div>
             <!-- Customer Account field -->
           <div class="add" [hidden]="BankAccounts.controls.length > 0">
             <label>Customer Account</label>
