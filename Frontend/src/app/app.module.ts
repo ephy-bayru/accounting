@@ -20,7 +20,7 @@ import { GridModule } from '@syncfusion/ej2-ng-grids';
 import { CompanyModule } from './modules/company/company.module';
 import { RmHeaderInterceptorService } from './shared/rm-header-interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { SidebarModule, TreeViewComponent, ToolbarComponent } from '@syncfusion/ej2-angular-navigations';
+import { SidebarModule, TreeViewComponent, ToolbarModule, TabComponent, } from '@syncfusion/ej2-angular-navigations';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { CompareDirective } from './shared/compare.directive';
 import { CalanderModule } from './modules/calander/calander.module';
@@ -36,6 +36,7 @@ import { CurrencyModule } from './modules/currency/currency/currency.module';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { LedgerViewComponent } from './modules/ledgers/ledger-view/ledger-view.component';
 import { ExRateModule } from './modules/exchange/exchange_rate/exchange_rate.module';
+import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 
 
 @NgModule({
@@ -55,9 +56,10 @@ import { ExRateModule } from './modules/exchange/exchange_rate/exchange_rate.mod
     MainNavComponent,
     SideNavComponent,
     // syncfusion
-    TreeViewComponent, ToolbarComponent, CompareDirective, AccountsViewComponent, SupplierComponent,
+    TreeViewComponent, TabComponent, CompareDirective, AccountsViewComponent, SupplierComponent,
     NotFoundComponent,
-    LedgerViewComponent
+    LedgerViewComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
@@ -76,6 +78,7 @@ import { ExRateModule } from './modules/exchange/exchange_rate/exchange_rate.mod
     // sincfussion modules
     ButtonModule,
     GridModule,
+    ToolbarModule,
     SidebarModule,
     AppRoutingModule
   ],

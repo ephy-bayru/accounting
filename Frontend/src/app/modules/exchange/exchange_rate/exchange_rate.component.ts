@@ -36,7 +36,7 @@ export class ExchangerateComponent implements OnInit {
  // bind the Query instance to query property
  public query: Query = new Query().select(['name', 'ID']);
  // maps the remote data column to fields property
- public remoteFields: Object = { text: 'name', value: 'ID' };
+ public xrateFields: Object = { text: 'name', value: 'ID' };
 
   ngOnInit(): void {
     this.xRateForm();

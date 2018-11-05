@@ -19,7 +19,7 @@ namespace Smart_Accounting.Application.ExchnageRate.Queries
             _database = database;
             _factory = factory;
         }
-        public IEnumerable<ExchangeRate> GetAll() => _database.ExchangeRate.AsNoTracking();
+        public IEnumerable<ExchangeRate> GetAll() => _database.ExchangeRate.AsNoTracking().ToList();
         public ExchangeRate GetById(uint id)
         {
             var exRate = _database.ExchangeRate.Find(id);
