@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Oct 10, 2018 12:16 PM
+ * @Last Modified Time: Nov 3, 2018 12:20 PM
  * @Description: Modify Here, Please 
  */
 using System.Collections.Generic;
@@ -55,6 +55,9 @@ namespace Smart_Accounting.Application.AccountCharts.Queries {
                         AccountType = account.AccountType,
                         Active = account.Active,
                         OrganizationId = account.OrganizationId,
+                        GlType = account.GlType,
+                        DirectPositng = account.DirectPositng,
+                        Type =account.Type,
                         Name = account.Name,
                         DateAdded = account.DateAdded,
                         DateUpdated = account.DateUpdated,

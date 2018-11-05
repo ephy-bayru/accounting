@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+ * @CreateTime: Nov 2, 2018 3:04 PM
+ * @Author:  Mikael Araya
+ * @Contact: MikaelAraya12@gmail.com
+ * @Last Modified By:  Mikael Araya
+ * @Last Modified Time: Nov 2, 2018 3:04 PM
+ * @Description: Modify Here, Please 
+ */
+using System;
 using System.Collections.Generic;
 using Smart_Accounting.Domain.AccountCharts;
 

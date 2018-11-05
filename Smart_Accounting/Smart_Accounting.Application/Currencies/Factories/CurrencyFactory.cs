@@ -12,7 +12,7 @@ namespace Smart_Accounting.Application.Currencies.Factories {
             
             foreach (var item in currencies) {
                 CurrencyViewModel view = new CurrencyViewModel () {
-                    id = item.ID,
+                    id = item.Id,
                     name = item.Name,
                     abrevation = item.Abrevation,
                     symbols = item.Symbole,

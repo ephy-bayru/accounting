@@ -3,8 +3,9 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Oct 10, 2018 11:54 AM
- * @Description: Modify Here, Please 
+ * @Last Modified Time: Nov 3, 2018 12:05 PM
+ * @Description: Defines all the required database read functionalities
+ *      on account chart domain object
  */
 using System.Collections.Generic;
 using Smart_Accounting.Domain;

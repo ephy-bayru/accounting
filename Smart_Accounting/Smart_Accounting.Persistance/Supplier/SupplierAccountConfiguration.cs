@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Oct 9, 2018 9:58 AM
+ * @Last Modified Time: Nov 2, 2018 3:30 PM
  * @Description: Modify Here, Please 
  */
 using Microsoft.EntityFrameworkCore;
@@ -35,7 +35,7 @@ namespace Smart_Accounting.Persistance.Supplier {
             builder.HasOne (d => d.Supplier)
                 .WithMany (p => p.SupplierAccount)
                 .HasForeignKey (d => d.SupplierId)
-                .OnDelete (DeleteBehavior.Cascade)
+                .OnDelete (DeleteBehavior.ClientSetNull)
                 .HasConstraintName ("fk_supplier_account");
         }
     }

@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Oct 10, 2018 11:43 AM
+ * @Last Modified Time: Nov 2, 2018 3:45 PM
  * @Description: Modify Here, Please 
  */
 using System.Collections.Generic;
@@ -31,7 +31,7 @@ namespace Smart_Accounting.Application.Customers.Queries {
                     City = customer.City,
                     Country = customer.Country,
                     PostalCode = customer.PostalCode,
-                    Phone_No = customer.Phone_No,
+                    PhoneNo = customer.PhoneNo,
                     HouseNo = customer.HouseNo,
                     Id = customer.Id,
                     SubCity = customer.SubCity,
@@ -57,7 +57,7 @@ namespace Smart_Accounting.Application.Customers.Queries {
                         City = customer.City,
                         Country = customer.Country,
                         PostalCode = customer.PostalCode,
-                        Phone_No = customer.Phone_No,
+                        PhoneNo = customer.PhoneNo,
                         HouseNo = customer.HouseNo,
                         Id = customer.Id,
                         SubCity = customer.SubCity,

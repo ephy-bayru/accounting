@@ -33,7 +33,6 @@ using Smart_Accounting.Persistance.Supplier;
 namespace Smart_Accounting.Persistance {
     public class AccountingDatabaseService : DbContext, IAccountingDatabaseService {
         public AccountingDatabaseService () {
-
         }
         public AccountingDatabaseService (DbContextOptions<AccountingDatabaseService> options) : base (options) {
             //   DataBase.SetInitializer(new AccountingDatabaseInitializer());

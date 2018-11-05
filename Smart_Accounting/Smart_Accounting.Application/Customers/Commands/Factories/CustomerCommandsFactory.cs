@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Oct 9, 2018 9:43 AM
+ * @Last Modified Time: Nov 2, 2018 3:43 PM
  * @Description: Modify Here, Please 
  */
 using Smart_Accounting.Application.Customers.Models;
@@ -16,7 +16,7 @@ namespace Smart_Accounting.Application.Customers.Commands.Factories {
 
             customer.FullName = newCustomer.FullName;
             customer.Email = newCustomer.Email;
-            customer.Phone_No = newCustomer.Phone_No;
+            customer.PhoneNo = newCustomer.Phone_No;
             customer.Country = newCustomer.Country;
             customer.City = newCustomer.City;
             customer.SubCity = newCustomer.SubCity;
@@ -32,7 +32,7 @@ namespace Smart_Accounting.Application.Customers.Commands.Factories {
             customer.Id = customer.Id;
             customer.FullName = customer.FullName;
             customer.Email = customer.Email;
-            customer.Phone_No = customer.Phone_No;
+            customer.PhoneNo = customer.PhoneNo;
             customer.Country = customer.Country;
             customer.City = customer.City;
             customer.SubCity = customer.SubCity;
@@ -46,7 +46,7 @@ namespace Smart_Accounting.Application.Customers.Commands.Factories {
         public Customer UpdatesCustomer (Customer currentCustomer, UpdateCustomerModel updateCustomer) {
             currentCustomer.FullName = currentCustomer.FullName;
             currentCustomer.Email = currentCustomer.Email;
-            currentCustomer.Phone_No = currentCustomer.Phone_No;
+            currentCustomer.PhoneNo = currentCustomer.PhoneNo;
             currentCustomer.Country = currentCustomer.Country;
             currentCustomer.City = currentCustomer.City;
             currentCustomer.SubCity = currentCustomer.SubCity;

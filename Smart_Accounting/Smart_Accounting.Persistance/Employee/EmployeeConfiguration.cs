@@ -1,3 +1,11 @@
+/*
+ * @CreateTime: Nov 2, 2018 3:26 PM
+ * @Author:  Mikael Araya
+ * @Contact: MikaelAraya12@gmail.com
+ * @Last Modified By:  Mikael Araya
+ * @Last Modified Time: Nov 2, 2018 3:26 PM
+ * @Description: Modify Here, Please 
+ */
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Smart_Accounting.Domain.Employe;
@@ -51,7 +59,7 @@ namespace Smart_Accounting.Persistance.Employee {
                 .HasColumnName ("PASSWORD")
                 .HasColumnType ("varchar(45)");
 
-            builder.Property (e => e.Phone_No)
+            builder.Property (e => e.PhoneNo)
                 .IsRequired ()
                 .HasColumnName ("PHONE_NO")
                 .HasColumnType ("varchar(45)");

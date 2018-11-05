@@ -31,7 +31,7 @@ namespace Smart_Accounting.Application.Ledgers.Factories {
                     Credit = item.Credit,
                         AccountId = item.AccountId,
                         Debit = item.Debit,
-                        Reference = item.Reference
+                        Reference = item.Reference.ToString()
                 });
             }
 

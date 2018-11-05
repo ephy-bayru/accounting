@@ -1,18 +1,25 @@
-﻿using System;
+﻿/*
+ * @CreateTime: Nov 2, 2018 3:03 PM
+ * @Author:  Mikael Araya
+ * @Contact: MikaelAraya12@gmail.com
+ * @Last Modified By:  Mikael Araya
+ * @Last Modified Time: Nov 2, 2018 3:03 PM
+ * @Description: Modify Here, Please 
+ */
+using System;
 using System.Collections.Generic;
 using Smart_Accounting.Domain.AccountCharts;
 
 namespace Smart_Accounting.Domain.Customers {
     public partial class Customer {
-        public Customer()
-        {
-            CustomerAccount = new HashSet<CustomerAccount>();
+        public Customer () {
+            CustomerAccount = new HashSet<CustomerAccount> ();
         }
 
         public uint Id { get; set; }
         public string FullName { get; set; }
         public string Email { get; set; }
-        public string Phone_No { get; set; }
+        public string PhoneNo { get; set; }
         public string Country { get; set; }
         public string City { get; set; }
         public string SubCity { get; set; }
@@ -20,6 +27,9 @@ namespace Smart_Accounting.Domain.Customers {
         public string PostalCode { get; set; }
         public DateTime? DateCreated { get; set; }
         public DateTime? DateUpdated { get; set; }
+        public float? CreditLimit { get; set; }
+        public sbyte? Active { get; set; }
+
         public ICollection<CustomerAccount> CustomerAccount { get; set; }
     }
 }

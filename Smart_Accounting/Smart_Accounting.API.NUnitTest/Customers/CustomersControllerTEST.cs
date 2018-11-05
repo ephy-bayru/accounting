@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Oct 9, 2018 4:21 PM
+ * @Last Modified Time: Nov 2, 2018 3:45 PM
  * @Description: Modify Here, Please 
  */
 using System;
@@ -59,7 +59,7 @@ namespace Smart_Accounting.API.NUnitTest.Customers
                 Id = 1,
                 FullName = "Microsoft",
                 Email = "e@g.com",
-                Phone_No = "0920208549",
+                PhoneNo = "0920208549",
                 Country = "Ethiopia",
                 City = "Adis",
                 SubCity = "bole",
@@ -76,7 +76,7 @@ namespace Smart_Accounting.API.NUnitTest.Customers
                 Id = 1,
                 FullName = "Microsoft",
                 Email = "e@g.com",
-                Phone_No = "0920208549",
+                PhoneNo = "0920208549",
                 Country = "Ethiopia",
                 City = "Adis",
                 SubCity = "bole",
@@ -175,7 +175,7 @@ namespace Smart_Accounting.API.NUnitTest.Customers
             {
                 FullName = "Microsoft",
                 Email = "e@g.com",
-                Phone_No = "0920208549",
+                PhoneNo = "0920208549",
                 Country = "Ethiopia",
                 City = "Adis",
                 SubCity = "bole",
@@ -187,7 +187,7 @@ namespace Smart_Accounting.API.NUnitTest.Customers
             {
                 FullName = "Microsoft",
                 Email = "e@g.com",
-                Phone_No = "0920208549",
+                PhoneNo = "0920208549",
                 Country = "Ethiopia",
                 City = "Adis",
                 SubCity = "bole",
@@ -222,7 +222,7 @@ namespace Smart_Accounting.API.NUnitTest.Customers
             {
                 FullName = "Microsoft",
                 Email = "e@g.com",
-                Phone_No = "0920208549",
+                PhoneNo = "0920208549",
                 Country = "Ethiopia",
                 City = "Adis",
                 SubCity = "bole",

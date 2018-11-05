@@ -22,10 +22,9 @@ export class AccountsService {
 
   // Creates a new instance of Account record in the system amd returns an observable
   // of the new Account information on success
-  createAccount(newAccount: Accounts[]): Observable<Accounts[]> {
+  createAccount(newAccount: Accounts): Observable<Accounts> {
     const config = { headers: new HttpHeaders().set('Content-Type', 'application/json') };
-    return this.httpClient.post<Accounts[]>(`${this.url}`, JSON.stringify(newAccount),
-    config )
+    return this.httpClient.post<Accounts>(`${this.url}`, newAccount )
       .pipe(
         catchError(this.handleError)
       );

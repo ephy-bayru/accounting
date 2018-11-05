@@ -58,21 +58,31 @@ namespace Smart_Accounting.API.Controllers.Accountss {
         [ProducesResponseType (400)]
         [ProducesResponseType (422)]
         [ProducesResponseType (500)]
-        public IActionResult CreateAccount ([FromBody] IEnumerable<NewAccountModel> newAcounts) {
+        public IActionResult CreateAccount ([FromBody] NewAccountModel newAcounts) {  // used to create a single account 
+            
+            // if data passed from user has a bad format return 400(Bad Request)
+            if (newAcounts == null) {
+                return StatusCode (400);
+            }
 
-         //   if (newAcounts == null) {
-           //     return StatusCode (400); // Bad Request
-           // }
-
+            // if data passed is not valid return 422(Unprocessable entity) with the modelstate value in the body
             if (!ModelState.IsValid) {
                 return StatusCode (422, ModelState);
             }
-
+            //convert account DTO to domain object
             var accounts = _factory.NewAccount (newAcounts);
 
+            // save the new account domain object in the database
             var result = _accountCommand.createAccount (accounts);
+            
+            // check if database  entry was successful
+            if(result == null) {
+                return StatusCode(500, "Unknown Error Occured, Try Again!!!");
+            }
 
+            // return the newly created account
             return StatusCode (201, result);
+
         }
 
         [HttpPut("{id}")]

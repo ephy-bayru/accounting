@@ -14,7 +14,7 @@ import { UsersModule } from './modules/users/users/users.module';
 import { SideNavComponent } from './shared/side-nav/side-nav.component';
 import { MainNavComponent } from './shared/main-nav/main-nav.component';
 import { ButtonModule } from '@syncfusion/ej2-ng-buttons';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule} from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { GridModule } from '@syncfusion/ej2-ng-grids';
 import { CompanyModule } from './modules/company/company.module';
@@ -33,10 +33,14 @@ import { SupplierComponent } from './modules/suppliers/supplier/supplier.compone
 import { NotFoundComponent } from './modules/shared/not-found/not-found.component';
 import { LedgerModule } from './modules/ledgers/ledger/ledger.module';
 import { CurrencyModule } from './modules/currency/currency/currency.module';
-import { DashboardModule } from './modules/dashboard/dashboard.module';
-import { LedgerViewComponent } from './modules/ledgers/ledger-view/ledger-view.component';
 import { ExRateModule } from './modules/exchange/exchange_rate/exchange_rate.module';
+<<<<<<< HEAD
 import { ToolbarComponent } from './shared/toolbar/toolbar.component';
+=======
+import { LedgerViewComponent } from './modules/ledgers/ledger-view/ledger-view.component';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { DepositModule } from './modules/deposit/deposit.module';
+>>>>>>> ace79c5e784443015feea09629f99415f5df6152
 
 
 @NgModule({
@@ -69,6 +73,7 @@ import { ToolbarComponent } from './shared/toolbar/toolbar.component';
     CommonModule,
     CompanyModule,
     CalanderModule,
+    DepositModule,
     CustomerModule,
     SuppliersModule,
     AccountsModule,

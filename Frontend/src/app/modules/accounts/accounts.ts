@@ -5,4 +5,8 @@ export class Accounts {
   OrganizationId: number;
   OpeningBalance: number;
   Active: boolean;
+  isReconciliation: boolean;
+  isPosting: boolean;
+  directPosting: boolean;
+  glType: string;
 }

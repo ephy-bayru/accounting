@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Oct 8, 2018 3:41 PM
+ * @Last Modified Time: Nov 2, 2018 3:06 PM
  * @Description: Modify Here, Please 
  */
 using System;
@@ -11,9 +11,10 @@ using System.Collections.Generic;
 using Smart_Accounting.Domain.AccountCharts;
 
 namespace Smart_Accounting.Domain.Supplier {
-    public partial class Suppliers {
-        public Suppliers () {
-            SupplierAccount = new HashSet<SupplierAccount> ();
+    public class Suppliers {
+        public Suppliers()
+        {
+            SupplierAccount = new HashSet<SupplierAccount>();
         }
 
         public uint Id { get; set; }
