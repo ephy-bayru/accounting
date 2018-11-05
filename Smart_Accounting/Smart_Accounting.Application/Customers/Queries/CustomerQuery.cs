@@ -35,6 +35,10 @@ namespace Smart_Accounting.Application.Customers.Queries {
                     HouseNo = customer.HouseNo,
                     Id = customer.Id,
                     SubCity = customer.SubCity,
+                    CreditLimit = customer.CreditLimit,
+                    Balance = customer.Balance,
+                    Active = customer.Active,
+                    Blocked = customer.Blocked,
                     DateCreated = customer.DateCreated,
                     DateUpdated = customer.DateUpdated
             }).ToList ();
@@ -61,6 +65,10 @@ namespace Smart_Accounting.Application.Customers.Queries {
                         HouseNo = customer.HouseNo,
                         Id = customer.Id,
                         SubCity = customer.SubCity,
+                        CreditLimit = customer.CreditLimit,
+                        Balance = customer.Balance,
+                        Active = customer.Active,
+                        Blocked = customer.Blocked,
                         DateCreated = customer.DateCreated,
                         DateUpdated = customer.DateUpdated,
                         CustomerAccount = customer.CustomerAccount.Select (account => new CustomerAccount () {

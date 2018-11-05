@@ -34,13 +34,10 @@ import { NotFoundComponent } from './modules/shared/not-found/not-found.componen
 import { LedgerModule } from './modules/ledgers/ledger/ledger.module';
 import { CurrencyModule } from './modules/currency/currency/currency.module';
 import { ExRateModule } from './modules/exchange/exchange_rate/exchange_rate.module';
-<<<<<<< HEAD
 import { ToolbarComponent } from './shared/toolbar/toolbar.component';
-=======
 import { LedgerViewComponent } from './modules/ledgers/ledger-view/ledger-view.component';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { DepositModule } from './modules/deposit/deposit.module';
->>>>>>> ace79c5e784443015feea09629f99415f5df6152
 
 
 @NgModule({

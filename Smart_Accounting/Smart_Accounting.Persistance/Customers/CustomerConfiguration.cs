@@ -33,6 +33,18 @@ namespace Smart_Accounting.Persistance.Customers {
             builder.Property (e => e.CreditLimit)
                 .HasColumnName ("credit_limit")
                 .HasDefaultValueSql ("'0'");
+                
+            builder.Property (e => e.Balance)
+                .HasColumnName ("balance")
+                .HasDefaultValueSql ("'0'");
+
+            builder.Property (e => e.Active)
+                .HasColumnName ("active")
+                .HasDefaultValueSql ("'0'");
+
+            builder.Property (e => e.Blocked)
+                .HasColumnName ("blocked")
+                .HasDefaultValueSql ("'0'");
 
             builder.Property (e => e.DateCreated)
                 .HasColumnName ("DATE_CREATED")

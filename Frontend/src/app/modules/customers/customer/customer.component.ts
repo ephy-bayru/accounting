@@ -55,6 +55,10 @@ export class CustomerComponent implements OnInit {
         Subcity: [(customer.Subcity) ? customer.Subcity : '', Validators.required],
         HouseNo: [(customer.HouseNo) ? customer.HouseNo : '', Validators.required],
         Postalcode: [(customer.PostalCode) ? customer.PostalCode : '', Validators.required],
+        Balance: [(customer.Balance) ? customer.Balance : '', Validators.required],
+        CreditLimit: [(customer.CreditLimit) ? customer.CreditLimit : ''],
+        Active: [(customer.Active) ? customer.Active : true],
+        Blocked: [(customer.Blocked) ? customer.Blocked : false],
         BankAccounts: this.fb.array([]),
       });
   }
@@ -102,6 +106,10 @@ export class CustomerComponent implements OnInit {
     customerData.Email = data.Email;
     customerData.Phone_No = data.Phone_No;
     customerData.PostalCode = data.Postal_code;
+    customerData.Balance = data.Balance;
+    customerData.CreditLimit = data.CreditLimit;
+    customerData.Active = data.Active;
+    customerData.Blocked = data.blocked;
 
     this.BankAccounts.controls.forEach(element => {
       const account: CustomerAccount = new CustomerAccount();

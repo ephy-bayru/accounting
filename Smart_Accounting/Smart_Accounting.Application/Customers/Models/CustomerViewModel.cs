@@ -12,6 +12,10 @@ namespace Smart_Accounting.Application.Customers.Models
         public string City { get; set; }
         public string SubCity { get; set; }
         public string PostalCode { get; set; }
+        public float CreditLimit {get; set; }
+        public float Balance {get; set; }
+        public sbyte Active { get; set; }
+        public sbyte Blocked { get; set; }
         public string CustomerAccount {get; set; }
         
     }
