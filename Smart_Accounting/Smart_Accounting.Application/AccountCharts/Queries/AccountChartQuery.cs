@@ -20,81 +20,49 @@ namespace Smart_Accounting.Application.AccountCharts.Queries {
             _database = database;
 
         }
+        private IQueryable<AccountChart> AccountChartQuariable () {
+            return _database.AccountChart.Select (account => new AccountChart () {
+                AccountCode = account.AccountCode,
+                    AccountId = account.AccountId,
+                    AccountType = account.AccountType,
+                    Active = account.Active,
+                    Closed = account.Closed,
+                    Type = account.Type,
+                    IsReconcilation = account.IsReconcilation,
+                    DirectPositng = account.DirectPositng,
+                    GlType = account.GlType,
+                    OrganizationId = account.OrganizationId,
+                    Name = account.Name,
+                    DateAdded = account.DateAdded,
+                    DateUpdated = account.DateUpdated,
+                    OpeningBalance = account.OpeningBalance
+            });
 
+        }
         public IEnumerable<AccountChart> GetAllAccounts (string type = "ALL") {
             if (type == "ALL") {
-                return _database.AccountChart
-                    .Select (account => new AccountChart () {
-                        AccountCode = account.AccountCode,
-                            AccountId = account.AccountId,
-                            AccountType = account.AccountType,
-                            Active = account.Active,
-                            OrganizationId = account.OrganizationId,
-                            Name = account.Name,
-                            DateAdded = account.DateAdded,
-                            DateUpdated = account.DateUpdated,
-                    }).ToList ();
+                return AccountChartQuariable().ToList();
             }
-            return _database.AccountChart.Select (account => new AccountChart () {
-                        AccountCode = account.AccountCode,
-                            AccountId = account.AccountId,
-                            AccountType = account.AccountType,
-                            Active = account.Active,
-                            OrganizationId = account.OrganizationId,
-                            Name = account.Name,
-                            DateAdded = account.DateAdded,
-                            DateUpdated = account.DateUpdated,
-                    }).Where (account => account.AccountType == type.ToUpper ());
+            return AccountChartQuariable()
+                                    .Where (account => account.AccountType == type.ToUpper ());
         }
         public AccountChart GetAccountById (string accountId) {
 
-            return _database.AccountChart
-                .Select (account => new AccountChart () {
-                    AccountCode = account.AccountCode,
-                        AccountId = account.AccountId,
-                        AccountType = account.AccountType,
-                        Active = account.Active,
-                        OrganizationId = account.OrganizationId,
-                        GlType = account.GlType,
-                        DirectPositng = account.DirectPositng,
-                        Type =account.Type,
-                        Name = account.Name,
-                        DateAdded = account.DateAdded,
-                        DateUpdated = account.DateUpdated,
-                        Organization = account.Organization,
-                        OpeningBalance = account.OpeningBalance
-                }).FirstOrDefault (account => account.AccountId == accountId);
+            return AccountChartQuariable()
+                        .FirstOrDefault (account => account.AccountId == accountId);
 
         }
 
         public IEnumerable<AccountChart> GetAccountByType (string type) {
-            return _database.AccountChart
-                .Where (account => account.AccountType == type)
-                .Select (account => new AccountChart () {
-                    AccountCode = account.AccountCode,
-                        AccountId = account.AccountId,
-                        Active = account.Active,
-                        AccountType = account.AccountType,
-                        OrganizationId = account.OrganizationId,
-                        Name = account.Name,
-                        DateAdded = account.DateAdded,
-                        DateUpdated = account.DateUpdated,
-                }).ToList ();
+            return AccountChartQuariable()
+                    .Where (account => account.AccountType == type)
+                    .ToList ();
         }
 
         public IEnumerable<AccountChart> GetAllOrganizationAccount (uint organizationId) {
-            return _database.AccountChart
+            return AccountChartQuariable()
                 .Where (account => account.OrganizationId == organizationId)
-                .Select (account => new AccountChart () {
-                    AccountCode = account.AccountCode,
-                        AccountId = account.AccountId,
-                        Active = account.Active,
-                        AccountType = account.AccountType,
-                        OrganizationId = account.OrganizationId,
-                        Name = account.Name,
-                        DateAdded = account.DateAdded,
-                        DateUpdated = account.DateUpdated,
-                }).ToList ();
+                .ToList ();
         }
     }
 }

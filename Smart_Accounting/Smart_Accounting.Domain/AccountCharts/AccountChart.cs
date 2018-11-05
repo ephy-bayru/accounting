@@ -36,7 +36,7 @@ namespace Smart_Accounting.Domain.AccountCharts {
         public uint OrganizationId { get; set; }
         public DateTime? DateAdded { get; set; }
         public DateTime? DateUpdated { get; set; }
-        public bool? Closed { get; set; }
+        public sbyte? Closed { get; set; }
         public sbyte? IsReconcilation { get; set; }
         public sbyte? DirectPositng { get; set; }
 

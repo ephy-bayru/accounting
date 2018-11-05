@@ -22,15 +22,17 @@ namespace Smart_Accounting.Application.AccountCharts.Models {
         [Required]
         public uint OrganizationId { get; set; } 
 
+        public uint Type { get; set; } 
+
         [Required]
         public string GlType {get; set;} // Has value of 'Income Balance or Balance Sheet'
         [Required]
         public string PostingType {get; set;} // Has value of 'Credit' 'Debit' or 'Both'
 
         [Required]
-        public sbyte? isReconciliation {get; set;} // used to determin is account reconciliation is required for the account
+        public sbyte? IsReconcilation {get; set;} // used to determin is account reconciliation is required for the account
         [Required]
-        public sbyte? isPosting {get; set;} // used to determine if direct posting by the user is allowed for this account
+        public sbyte? IsPosting {get; set;} // used to determine if direct posting by the user is allowed for this account
 
     }
 }

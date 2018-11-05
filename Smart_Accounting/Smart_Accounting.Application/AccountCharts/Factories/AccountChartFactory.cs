@@ -32,8 +32,8 @@ namespace Smart_Accounting.Application.AccountCharts.Factories {
                     OrganizationId = newType.OrganizationId,
                     Active = (newType.Active == 1) ? (sbyte)  1 : (sbyte)  0 ,
                     AccountType = newType.AccountType,
-                    IsReconcilation = (newType.isReconciliation == 1) ? (sbyte)  1 : (sbyte)  0 ,
-                    DirectPositng = (newType.isPosting == 1) ? (sbyte)  1 : (sbyte)  0 ,
+                    IsReconcilation = (newType.IsReconcilation == 1) ? (sbyte)  1 : (sbyte)  0 ,
+                    DirectPositng = (newType.IsPosting == 1) ? (sbyte)  1 : (sbyte)  0 ,
                     GlType = newType.GlType,
                     Type = newType.PostingType,
                     OpeningBalance = new List<OpeningBalance> () {
