@@ -27,8 +27,10 @@ namespace Smart_Accounting.Domain.Customers {
         public string PostalCode { get; set; }
         public DateTime? DateCreated { get; set; }
         public DateTime? DateUpdated { get; set; }
-        public float? CreditLimit { get; set; }
-        public sbyte? Active { get; set; }
+        public float CreditLimit { get; set; }
+        public float Balance { get; set; }
+        public sbyte Active { get; set; }
+        public sbyte Blocked { get; set; }
 
         public ICollection<CustomerAccount> CustomerAccount { get; set; }
     }
