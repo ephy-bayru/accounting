@@ -33,7 +33,7 @@ namespace Smart_Accounting.Application.AccountCharts.Factories {
                     Active = (newType.Active == 1) ? (sbyte)  1 : (sbyte)  0 ,
                     AccountType = newType.AccountType,
                     IsReconcilation = (newType.IsReconcilation == 1) ? (sbyte)  1 : (sbyte)  0 ,
-                    DirectPositng = (newType.IsPosting == 1) ? (sbyte)  1 : (sbyte)  0 ,
+                    DirectPosting = (newType.IsPosting == 1) ? (sbyte)  1 : (sbyte)  0 ,
                     GlType = newType.GlType,
                     Type = newType.PostingType,
                     OpeningBalance = new List<OpeningBalance> () {
@@ -48,17 +48,18 @@ namespace Smart_Accounting.Application.AccountCharts.Factories {
         }
 
         public AccountChart UpdatedAccount (UpdatedAccountModel newModel) {
-            AccountChart account = new AccountChart () {
+            return new AccountChart () {
                 AccountId = newModel.AccountId,
                 AccountType = newModel.AccountType,
                 Name = newModel.Name,
                 AccountCode = newModel.AccountCode,
                 OrganizationId = newModel.OrganizationId,
-                Active = newModel.Active
-
+                Active = newModel.Active,
+                GlType = newModel.GlType,
+                DirectPosting = (newModel.IsPosting == 1) ? (sbyte)  1 : (sbyte)  0 ,
+                IsReconcilation = newModel.IsReconcilation,
+                Type = newModel.PostingType,
             };
-
-            return account;
 
         }
 

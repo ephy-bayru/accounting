@@ -29,7 +29,7 @@ namespace Smart_Accounting.Application.AccountCharts.Queries {
                     Closed = account.Closed,
                     Type = account.Type,
                     IsReconcilation = account.IsReconcilation,
-                    DirectPositng = account.DirectPositng,
+                    DirectPosting = account.DirectPosting,
                     GlType = account.GlType,
                     OrganizationId = account.OrganizationId,
                     Name = account.Name,

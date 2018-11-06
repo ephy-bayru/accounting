@@ -15,7 +15,7 @@ section.e-card {
 }
 
 .ng-invalid.ng-touched, .ng-invalid.ng-touched > span.e-control-wrapper {
-  border-color: red !important;
+  border-color: rgb(194, 59, 59) !important;
   border-bottom-width: unset !important;
 }
 
@@ -23,6 +23,6 @@ section.e-card {
 .ng-valid.ng-touched.e-input-focuse,
 .ng-valid.ng-touched > span.e-control-wrapper,
 .ng-valid.ng-touched > span.e-control-wrapper.e-input-focus {
-  border-color:green !important;
+  border-color:rgb(31, 255, 31) !important;
   border-bottom-width: unset !important;
 }

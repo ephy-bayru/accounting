@@ -68,7 +68,7 @@ namespace Smart_Accounting.Persistance.AccountCharts {
                 .HasDefaultValueSql ("'CURRENT_TIMESTAMP'")
                 .ValueGeneratedOnAddOrUpdate ();
 
-            builder.Property (e => e.DirectPositng)
+            builder.Property (e => e.DirectPosting)
                 .HasColumnName ("direct_positng")
                 .HasColumnType ("tinyint(4)")
                 .HasDefaultValueSql ("'0'");

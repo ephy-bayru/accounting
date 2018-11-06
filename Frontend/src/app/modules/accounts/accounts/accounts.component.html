@@ -12,7 +12,7 @@
               <input type="text" id="accountId" name="accountId" class="ejs-input e-input" placeholder="Account Id"
                 formControlName="AccountId">
               <span class="e-float-line"></span>
-              <div class="text-danger" *ngIf="AccountId.errors && AccountId.touched">
+              <div class="text-danger" *ngIf="AccountId.errors">
                 <div *ngIf="AccountId.errors['required']">*Account Id is Required</div>
               </div>
             </div>
@@ -21,7 +21,7 @@
             <div class="col-12 e-float-input">
               <input type="text" id="accountName" name="AccountName" placeholder="Account Name" formControlName="Name">
               <span class="e-float-line"></span>
-              <div class="text-danger" *ngIf="Name.errors && Name.touched">
+              <div class="text-danger" *ngIf="Name.errors">
                 <div *ngIf="Name.errors['required']">*Account Name is Required</div>
               </div>
             </div>
@@ -31,7 +31,7 @@
               <ejs-dropdownlist id='accountType' name="AccountType" placeholder="Account Type" formControlName="AccountType"
                 [dataSource]='accountTypes'></ejs-dropdownlist>
               <span class="e-float-line"></span>
-              <div class="text-danger" *ngIf="AccountType.errors && AccountType.touched">
+              <div class="text-danger" *ngIf="AccountType.errors">
                 <div *ngIf="AccountType.errors['required']">*Account Type is Required</div>
               </div>
             </div>
@@ -41,7 +41,7 @@
               <ejs-dropdownlist id='organization' name="organization" placeholder="Company" [query]="organizationQuery"
                 [fields]="organizationFields" formControlName="OrganizationId" [dataSource]='organizationList'>
               </ejs-dropdownlist>
-              <div class="text-danger" *ngIf="OrganizationId.errors && OrganizationId.touched">
+              <div class="text-danger" *ngIf="OrganizationId.errors">
                 <div *ngIf="OrganizationId.errors['required']">*Account Type is Required</div>
               </div>
             </div>
@@ -72,7 +72,7 @@
           <div class="row">
             <div class="col-12">
               <div class="e-float-input">
-                <input type="number" id="openingBalance" name="openingBalance" class="required" formControlName="OpeningBalance">
+                <input type="number" id="openingBalance" [disabled]="isUpdate"  name="openingBalance" class="required" formControlName="OpeningBalance">
               </div>
             </div>
           </div>
@@ -92,7 +92,7 @@
               <ejs-dropdownlist id='glType' name="glType" placeholder="Income Statement/Balance Sheet" formControlName="GlType"
                 [dataSource]='glType'></ejs-dropdownlist>
               <span class="e-float-line"></span>
-              <div class="text-danger" *ngIf="GlType.errors && GlType.touched">
+              <div class="text-danger" *ngIf="GlType.errors">
                 <div *ngIf="GlType.errors['required']">*General Ledger Entry Type is Required</div>
               </div>
 

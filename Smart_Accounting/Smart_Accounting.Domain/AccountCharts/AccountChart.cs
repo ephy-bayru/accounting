@@ -38,7 +38,7 @@ namespace Smart_Accounting.Domain.AccountCharts {
         public DateTime? DateUpdated { get; set; }
         public sbyte? Closed { get; set; }
         public sbyte? IsReconcilation { get; set; }
-        public sbyte? DirectPositng { get; set; }
+        public sbyte? DirectPosting { get; set; }
 
         public Organization Organization { get; set; }
         public ICollection<BankAccounts> BankAccounts { get; set; }
