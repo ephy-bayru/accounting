@@ -22,6 +22,10 @@ namespace Smart_Accounting.Application.Customers.Commands.Factories {
             customer.SubCity = newCustomer.SubCity;
             customer.HouseNo = newCustomer.HouseNo;
             customer.PostalCode = newCustomer.PostalCode;
+            customer.CreditLimit =newCustomer.CreditLimit;
+            customer.Balance = newCustomer.Balance;
+            customer.Active = newCustomer.Active;
+            customer.Blocked = newCustomer.Blocked;
 
             return customer;
         }
@@ -29,29 +33,37 @@ namespace Smart_Accounting.Application.Customers.Commands.Factories {
         public CustomerViewModel CustomerView (Customer customer) {
             var customers = new CustomerViewModel ();
 
-            customer.Id = customer.Id;
-            customer.FullName = customer.FullName;
-            customer.Email = customer.Email;
-            customer.PhoneNo = customer.PhoneNo;
-            customer.Country = customer.Country;
-            customer.City = customer.City;
-            customer.SubCity = customer.SubCity;
-            customer.HouseNo = customer.HouseNo;
-            customer.PostalCode = customer.PostalCode;
+            customer.Id = customers.id;
+            customer.FullName = customers.FullName;
+            customer.Email = customers.Email;
+            customer.PhoneNo = customers.Phone_No;
+            customer.Country = customers.Country;
+            customer.City = customers.City;
+            customer.SubCity = customers.SubCity;
+            customer.HouseNo = customers.HouseNo;
+            customer.PostalCode = customers.PostalCode;
+            customer.Balance = customers.Balance;
+            customer.CreditLimit = customers.CreditLimit;
+            customer.Active = customers.Active;
+            customer.Blocked = customers.Blocked;
 
             return customers;
 
         }
 
         public Customer UpdatesCustomer (Customer currentCustomer, UpdateCustomerModel updateCustomer) {
-            currentCustomer.FullName = currentCustomer.FullName;
-            currentCustomer.Email = currentCustomer.Email;
-            currentCustomer.PhoneNo = currentCustomer.PhoneNo;
-            currentCustomer.Country = currentCustomer.Country;
-            currentCustomer.City = currentCustomer.City;
-            currentCustomer.SubCity = currentCustomer.SubCity;
-            currentCustomer.HouseNo = currentCustomer.HouseNo;
-            currentCustomer.PostalCode = currentCustomer.PostalCode;
+            currentCustomer.FullName = updateCustomer.FullName;
+            currentCustomer.Email = updateCustomer.Email;
+            currentCustomer.PhoneNo = updateCustomer.Phone_No;
+            currentCustomer.Country = updateCustomer.Country;
+            currentCustomer.City = updateCustomer.City;
+            currentCustomer.SubCity = updateCustomer.SubCity;
+            currentCustomer.HouseNo = updateCustomer.HouseNo;
+            currentCustomer.PostalCode = updateCustomer.PostalCode;
+            currentCustomer.Balance = updateCustomer.Balance;
+            currentCustomer.CreditLimit = updateCustomer.CreditLimit;
+            currentCustomer.Active = updateCustomer.Active;
+            currentCustomer.Blocked = updateCustomer.Blocked;
 
             return currentCustomer;
         }

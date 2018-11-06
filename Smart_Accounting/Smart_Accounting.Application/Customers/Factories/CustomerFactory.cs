@@ -28,7 +28,12 @@ namespace Smart_Accounting.Application.Customers.Factories {
                     Country = item.Country,
                     City = item.City,
                     SubCity = item.SubCity,
+                    HouseNo = item.HouseNo,
                     PostalCode = item.PostalCode,
+                    Balance = item.Balance,
+                    CreditLimit = item.CreditLimit,
+                    Active = item.Active,
+                    Blocked = item.Blocked
 
                 };
                 customerViews.Add (view);
