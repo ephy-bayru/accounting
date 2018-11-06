@@ -7,7 +7,7 @@ import { CustomerService } from './../customer.service';
 import { CustomerRoutingModule } from './../customer-routing/customer-routing.module';
 import { CustomerGridComponent } from './../customer-grid/customer-grid.component';
 // syncfussion modules
-import { ButtonModule, RadioButtonModule } from '@syncfusion/ej2-ng-buttons';
+import { ButtonModule, RadioButtonModule, SwitchModule } from '@syncfusion/ej2-ng-buttons';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GridModule, ResizeService, ExcelExportService } from '@syncfusion/ej2-ng-grids';
 import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
@@ -45,7 +45,8 @@ import {
     ButtonModule,
     RadioButtonModule,
     DatePickerModule,
-    GridModule
+    GridModule,
+    SwitchModule
   ],
   declarations: [
     CustomerComponent,

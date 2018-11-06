@@ -28,7 +28,12 @@ namespace Smart_Accounting.Application.Customers.Factories {
                     Country = item.Country,
                     City = item.City,
                     SubCity = item.SubCity,
+                    HouseNo = item.HouseNo,
                     PostalCode = item.PostalCode,
+                    Balance = item.Balance,
+                    CreditLimit = item.CreditLimit,
+                    Active = item.Active,
+                    Blocked = item.Blocked
 
                 };
                 customerViews.Add (view);
@@ -45,7 +50,11 @@ namespace Smart_Accounting.Application.Customers.Factories {
                 PhoneNo = customer.Phone_No,
                 PostalCode = customer.PostalCode,
                 Email = customer.Email,
-                HouseNo = customer.HouseNo
+                HouseNo = customer.HouseNo,
+                CreditLimit = customer.CreditLimit,
+                Balance = customer.Balance,
+                Active = customer.Active,
+                Blocked = customer.Blocked
             };
 
             foreach (var account in customer.BankAccounts) {
@@ -66,7 +75,11 @@ namespace Smart_Accounting.Application.Customers.Factories {
                 Country = update.Country,
                 City = update.City,
                 SubCity = update.SubCity,
-                PostalCode = update.PostalCode
+                PostalCode = update.PostalCode,
+                CreditLimit = update.CreditLimit,
+                Balance = update.Balance,
+                Active = update.Active,
+                Blocked = update.Blocked
             };
 
             foreach (var account in update.BankAccounts) {

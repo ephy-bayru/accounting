@@ -10,6 +10,10 @@ export class Customer {
     PostalCode: string;
     Date_Created: Date;
     Date_Updated: Date;
+    CreditLimit: number;
+    Balance: number;
+    Active: number;
+    Blocked: number;
     BankAccounts: CustomerAccount[] = [];
 }
 

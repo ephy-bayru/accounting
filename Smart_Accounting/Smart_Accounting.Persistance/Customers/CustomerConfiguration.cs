@@ -19,7 +19,7 @@ namespace Smart_Accounting.Persistance.Customers {
 
             builder.Property (e => e.Active)
                 .HasColumnName ("active")
-                .HasColumnType ("tinyint(1)")
+                .HasColumnType ("tinyint(4)")
                 .HasDefaultValueSql ("'0'");
 
             builder.Property (e => e.City)
@@ -32,6 +32,17 @@ namespace Smart_Accounting.Persistance.Customers {
 
             builder.Property (e => e.CreditLimit)
                 .HasColumnName ("credit_limit")
+                .HasColumnType ("FLOAT")
+                .HasDefaultValueSql ("'0'");
+                
+            builder.Property (e => e.Balance)
+                .HasColumnName ("balance")
+                .HasColumnType ("FLOAT")
+                .HasDefaultValueSql ("'0'");
+
+            builder.Property (e => e.Blocked)
+                .HasColumnName ("blocked")
+                .HasColumnType ("tinyint(4)")
                 .HasDefaultValueSql ("'0'");
 
             builder.Property (e => e.DateCreated)
