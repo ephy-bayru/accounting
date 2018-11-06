@@ -17,7 +17,8 @@ namespace Smart_Accounting.Application.Supplier.Commands.Factories
             supplier.SubCity = newSupplier.SubCity;
             supplier.HouseNo = newSupplier.HouseNo;
             supplier.PostalCode = newSupplier.PostalCode;
-
+            supplier.Balance = newSupplier.Balance;
+            supplier.Active = newSupplier.Active;
             return supplier;
         }
 
@@ -25,14 +26,16 @@ namespace Smart_Accounting.Application.Supplier.Commands.Factories
         {
             var supplier = new SupplierViewModel();
 
-            supplier.id = supplier.id;
-            supplier.FullName = supplier.FullName;
-            supplier.Email = supplier.Email;
-            supplier.PhoneNo = supplier.PhoneNo;
-            supplier.Country = supplier.Country;
-            supplier.City = supplier.City;
-            supplier.SubCity = supplier.SubCity;
-            supplier.PostalCode = supplier.PostalCode;
+            supplier.id = suppliers.Id;
+            supplier.FullName = suppliers.FullName;
+            supplier.Email = suppliers.Email;
+            supplier.PhoneNo = suppliers.PhoneNo;
+            supplier.Country = suppliers.Country;
+            supplier.City = suppliers.City;
+            supplier.SubCity = suppliers.SubCity;
+            supplier.PostalCode = suppliers.PostalCode;
+            supplier.Balance = suppliers.Balance;
+            supplier.Active = suppliers.Active;
 
             return supplier;
 
@@ -40,14 +43,16 @@ namespace Smart_Accounting.Application.Supplier.Commands.Factories
 
         public Suppliers UpdateSupplier(Suppliers currentSupplier, UpdateSupplierModel updateSupplier)
         {
-            currentSupplier.FullName = currentSupplier.FullName;
-            currentSupplier.Email = currentSupplier.Email;
-            currentSupplier.PhoneNo = currentSupplier.PhoneNo;
-            currentSupplier.Country = currentSupplier.Country;
-            currentSupplier.City = currentSupplier.City;
-            currentSupplier.SubCity = currentSupplier.SubCity;
-            currentSupplier.HouseNo = currentSupplier.HouseNo;
-            currentSupplier.PostalCode = currentSupplier.PostalCode;
+            currentSupplier.FullName = updateSupplier.FullName;
+            currentSupplier.Email = updateSupplier.Email;
+            currentSupplier.PhoneNo = updateSupplier.Phone_No;
+            currentSupplier.Country = updateSupplier.Country;
+            currentSupplier.City = updateSupplier.City;
+            currentSupplier.SubCity = updateSupplier.SubCity;
+            currentSupplier.HouseNo = updateSupplier.HouseNo;
+            currentSupplier.PostalCode = updateSupplier.PostalCode;
+            currentSupplier.Balance = updateSupplier.Balance;
+            currentSupplier.Active = updateSupplier.Active;
 
             return currentSupplier;
         }

@@ -12,6 +12,9 @@ namespace Smart_Accounting.Application.Supplier.Models
         public string City { get; set; }
         public string SubCity { get; set; }
         public string PostalCode { get; set; }
+        public float Balance { get; set; }
+        public sbyte Active { get; set; }
+
         
     }
 }
