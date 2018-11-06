@@ -7,7 +7,7 @@
  * @Description: Modify Here, Please
  */
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AccountsService } from '../accounts.service';
 import { ButtonComponent } from '@syncfusion/ej2-ng-buttons';
 import { DataManager, WebApiAdaptor, ReturnOption, Query } from '@syncfusion/ej2-data';
@@ -45,8 +45,8 @@ export class AccountsComponent implements OnInit {
     private location: Location,
     private activatedRoute: ActivatedRoute) {
     this.createForm();
-    this.postingType = ['Credit', 'Debit', 'Both'];
-    this.glType = ['Income Statement', 'Balance Sheet'];
+    this.postingType = ['CREDIT', 'DEBIT', 'BOTH'];
+    this.glType = ['INCOME STATEMENT', 'BALANCE SHEET'];
   }
 
   ngOnInit() {
@@ -73,23 +73,45 @@ export class AccountsComponent implements OnInit {
     dm.ready.then((e: ReturnOption) => this.accountList = <Object[]>e.result).catch((e) => true);
   }
 
-  dateSelected(date: Object) {
-
+  get AccountId(): FormControl {
+    return this.accountForm.get('AccountId') as FormControl;
   }
+
+  get AccountType(): FormControl {
+    return this.accountForm.get('AccountType') as FormControl;
+  }
+
+  get Name(): FormControl {
+    return this.accountForm.get('Name') as FormControl;
+  }
+
+  get PostingType(): FormControl {
+  return this.accountForm.get('PostingType') as FormControl;
+  }
+
+  get GlType(): FormControl {
+    return this.accountForm.get('GlType') as FormControl;
+  }
+
+  get OrganizationId(): FormControl {
+    return this.accountForm.get('OrganizationId') as FormControl;
+  }
+
+
   createForm(data: any = '') {
+
     this.accountForm = this.formBuilder.group({
       AccountCode: [data.AccountCode],
       AccountId: [data.AccountId, Validators.required],
       AccountType: [data.AccountType, Validators.required],
       Name: [data.Name, Validators.required],
-      Active: [(data.Active) ? data.Active : false],
+      Active: [(data.Active === 1) ? true : false],
       OpeningBalance: 0,
       OrganizationId: [data.OrganizationId, Validators.required],
-      postingType: ['Both', Validators.required],
-      isReconciliation: [false, Validators.required],
-      isPosting: [false, Validators.required],
-      glType: ['', Validators.required]
-
+      PostingType: [(data.Type) ? data.Type : 'Both', Validators.required],
+      IsReconcilation: [(data.IsReconcilation === 0) ? false : true, Validators.required],
+      IsPosting: [(data.DirectPosting === 0) ? false : true, Validators.required],
+      GlType: [(data.GlType) ? data.GlType : null, Validators.required]
     });
   }
 
@@ -99,37 +121,21 @@ export class AccountsComponent implements OnInit {
       this.account.createAccount(this.accountForm.value).subscribe((success) => {
         alert('Account Created Successfully');
         this.location.back();
-
       },
         (error: HttpErrorResponse) => {
-          console.log(error);
-          alert(error);
+          alert(error.message);
         });
     } else {
       this.account.updateAccount(this.accountId, this.accountForm.value).subscribe((success: Object) => {
         this.location.back();
-        alert('Account Created Successfully');
+        alert('Account Updated Successfully');
       },
         (error: HttpErrorResponse) => {
-          console.log(error);
           alert(error.message);
         });
     }
   }
 
-  btnClick() {
-    if (this.statusBtn.element.classList.contains('e-active')) {
-      this.statusBtn.content = 'Deactiveated';
-      this.statusBtn.iconCss = 'e-icons e-pause-icon';
-      this.statusBtn.element.classList.remove('e-success');
-      this.statusBtn.element.classList.remove('e-warning');
-    } else {
-      this.statusBtn.content = 'Active';
-      this.statusBtn.iconCss = 'e-icons e-play-icon';
-      this.statusBtn.element.classList.remove('e-warning');
-      this.statusBtn.element.classList.add('e-success');
-    }
-  }
 
   cancel() {
     this.location.back();

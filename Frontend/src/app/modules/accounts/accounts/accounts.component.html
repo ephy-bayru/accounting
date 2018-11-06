@@ -9,14 +9,21 @@
         <div class="col-6 col-xs-12">
           <div class="row">
             <div class="col-12 e-float-input">
-              <input  type="text" id="accountId" name="accountId"  class="ejs-input e-input" placeholder="Account Id" formControlName="AccountId">
+              <input type="text" id="accountId" name="accountId" class="ejs-input e-input" placeholder="Account Id"
+                formControlName="AccountId">
               <span class="e-float-line"></span>
+              <div class="text-danger" *ngIf="AccountId.errors && AccountId.touched">
+                <div *ngIf="AccountId.errors['required']">*Account Id is Required</div>
+              </div>
             </div>
           </div>
           <div class="row">
             <div class="col-12 e-float-input">
               <input type="text" id="accountName" name="AccountName" placeholder="Account Name" formControlName="Name">
               <span class="e-float-line"></span>
+              <div class="text-danger" *ngIf="Name.errors && Name.touched">
+                <div *ngIf="Name.errors['required']">*Account Name is Required</div>
+              </div>
             </div>
           </div>
           <div class="row">
@@ -24,7 +31,9 @@
               <ejs-dropdownlist id='accountType' name="AccountType" placeholder="Account Type" formControlName="AccountType"
                 [dataSource]='accountTypes'></ejs-dropdownlist>
               <span class="e-float-line"></span>
-
+              <div class="text-danger" *ngIf="AccountType.errors && AccountType.touched">
+                <div *ngIf="AccountType.errors['required']">*Account Type is Required</div>
+              </div>
             </div>
           </div>
           <div class="row">
@@ -32,29 +41,30 @@
               <ejs-dropdownlist id='organization' name="organization" placeholder="Company" [query]="organizationQuery"
                 [fields]="organizationFields" formControlName="OrganizationId" [dataSource]='organizationList'>
               </ejs-dropdownlist>
+              <div class="text-danger" *ngIf="OrganizationId.errors && OrganizationId.touched">
+                <div *ngIf="OrganizationId.errors['required']">*Account Type is Required</div>
+              </div>
             </div>
           </div>
           <div class="row">
             <div class="col-12">
-              <ejs-dropdownlist id='postingType' name="postingType" placeholder="Posting Type" formControlName="postingType"
-                [dataSource]='postingType'></ejs-dropdownlist>
-              <span class="e-float-line"></span>
-
+              <div>Is Reconciliation
+                <ejs-switch formControlName="IsReconcilation" id="isReconciliation" name="isReconciliation"></ejs-switch>
+              </div>
             </div>
           </div>
           <div class="row">
             <div class="col-12">
-              <ejs-dropdownlist id='glType' name="glType" placeholder="Income Statement/Balance Sheet" formControlName="glType"
-                [dataSource]='glType'></ejs-dropdownlist>
-              <span class="e-float-line"></span>
-
+              <div>Is Posting Account
+                <ejs-switch formControlName="IsPosting" id="isPosting" name="isPosting"></ejs-switch>
+              </div>
             </div>
           </div>
           <div class="row">
             <div class="col-12">
-              <ejs-dropdownlist id='parentAccount' placeholder="Parent Account" name="parentAccount" [query]="accountQuery"
-                [fields]="accountFields" formControlName="AccountCode" [dataSource]='accountList'></ejs-dropdownlist>
-              <span class="e-float-line"></span>
+              <div>Active
+                <ejs-switch formControlName="Active" name="status"></ejs-switch>
+              </div>
             </div>
           </div>
         </div>
@@ -68,23 +78,31 @@
           </div>
           <div class="row">
             <div class="col-12">
-              <div>Is Reconciliation
-                <ejs-switch formControlName="isReconciliation" id="isReconciliation" name="isReconciliation"></ejs-switch>
+              <ejs-dropdownlist id='postingType' name="postingType" placeholder="Posting Type" formControlName="PostingType"
+                [dataSource]='postingType'></ejs-dropdownlist>
+              <span class="e-float-line"></span>
+              <div class="text-danger" *ngIf="PostingType.errors && PostingType.touched">
+                <div *ngIf="PostingType.errors['required']">*Account Posting Type is Required</div>
               </div>
+
             </div>
           </div>
           <div class="row">
             <div class="col-12">
-              <div>Is Posting Account
-                <ejs-switch formControlName="isPosting" id="isPosting" name="isPosting"></ejs-switch>
+              <ejs-dropdownlist id='glType' name="glType" placeholder="Income Statement/Balance Sheet" formControlName="GlType"
+                [dataSource]='glType'></ejs-dropdownlist>
+              <span class="e-float-line"></span>
+              <div class="text-danger" *ngIf="GlType.errors && GlType.touched">
+                <div *ngIf="GlType.errors['required']">*General Ledger Entry Type is Required</div>
               </div>
+
             </div>
           </div>
           <div class="row">
             <div class="col-12">
-              <div>Active
-                <ejs-switch formControlName="Active" name="status"></ejs-switch>
-              </div>
+              <ejs-dropdownlist id='parentAccount' placeholder="Parent Account" name="parentAccount" [query]="accountQuery"
+                [fields]="accountFields" formControlName="AccountCode" [dataSource]='accountList'></ejs-dropdownlist>
+              <span class="e-float-line"></span>
             </div>
           </div>
         </div>
