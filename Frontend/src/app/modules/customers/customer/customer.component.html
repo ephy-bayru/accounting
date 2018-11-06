@@ -40,12 +40,12 @@
             <!-- Phone number field -->
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
               <div class="form-group template">
-                <div class="e-float-input">
+                <div class="e-float-input" [ngClass]="{'e-success': customerForm.controls.Phone_No.valid}">
                   <input type="number" name="phone" minlength="6" required class="required" formControlName="Phone_No">
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="Phone_No">Phone No</label>
                 </div>
-                <div class="text-danger"  *ngIf="(customerForm.controls['Phone_No'].invalid && customerForm.controls['Phone_No'].touched) || (customerForm.controls['Phone_No'].invalid && showAllErrors)">
+                <div class="text-danger"  *ngIf="Phone_No.errors">
                   *Phone No is Required!
                 </div>
               </div>
@@ -53,12 +53,12 @@
             <!-- country field -->
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
               <div class="form-group template">
-                <div class="e-float-input">
+                <div class="e-float-input" [ngClass]="{'e-success': customerForm.controls.Country.valid}">
                   <input type="text" id="Country" name="Country" class="required" formControlName="Country" required>
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="Country">Country</label>
                 </div>
-                <div class="text-danger" *ngIf="(customerForm.controls['Country'].invalid && customerForm.controls['Country'].touched) || (customerForm.controls['Country'].invalid && showAllErrors)">
+                <div class="text-danger" *ngIf="Country.errors">
                   *Country is Required!
                 </div>
               </div>
@@ -68,7 +68,7 @@
             <!-- city field -->
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
               <div class="form-group template">
-                <div class="e-float-input">
+                <div class="e-float-input" [ngClass]="{'e-success': customerForm.controls.City.valid}">
                   <input type="text" id="Account_Number" name="City" formControlName="City" required>
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="Account_Number">City</label>
@@ -81,13 +81,10 @@
             <!-- subcity field -->
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
               <div class="form-group template">
-                <div class="e-float-input">
+                <div class="e-float-input" [ngClass]="{'e-success': customerForm.controls.Subcity.valid}">
                   <input type="text" id="Subcity" name="Subcity" class="required" formControlName="Subcity" required>
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="Subcity">Subcity</label>
-                </div>
-                <div class="text-danger" *ngIf="(customerForm.controls['Subcity'].invalid && customerForm.controls['Subcity'].touched) || (customerForm.controls['Subcity'].invalid && showAllErrors)">
-                  *Subcity is Required!
                 </div>
               </div>
             </div>
@@ -97,20 +94,20 @@
             <!-- house number field -->
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
               <div class="form-group template">
-                <div class="e-float-input">
+                <div class="e-float-input" [ngClass]="{'e-success': customerForm.controls.HouseNo.valid}">
                   <input type="text" id="House_No" name="House_No" formControlName="HouseNo" required>
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="House_No">House Number</label>
                 </div>
-                <div class="text-danger" *ngIf="(customerForm.controls['HouseNo'].invalid && customerForm.controls['HouseNo'].touched) || (customerForm.controls['HouseNo'].invalid && showAllErrors)">
+               <!-- <div class="text-danger" *ngIf="(customerForm.controls['HouseNo'].invalid && customerForm.controls['HouseNo'].touched) || (customerForm.controls['HouseNo'].invalid && showAllErrors)">
                   *House No is Required!
-                </div>
+                </div> -->
               </div>
             </div>
             <!-- Postal Code field -->
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
               <div class="form-group template">
-                <div class="e-float-input">
+                <div class="e-float-input" [ngClass]="{'e-success': customerForm.controls.Postalcode.valid}">
                   <input type="text" id="Postal_Code" name="Postal_Code" class="required" formControlName="Postalcode"
                     required>
                   <span class="e-float-line"></span>
@@ -126,12 +123,12 @@
             <!-- Balance is field -->
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
               <div class="form-group template">
-                <div class="e-float-input">
+                <div class="e-float-input" [ngClass]="{'e-success': customerForm.controls.Balance.valid}">
                   <input type="text" id="Balance" name="Balance" formControlName="Balance" required>
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="Balance">Balance</label>
                 </div>
-                <div class="text-danger" *ngIf="(customerForm.controls['Balance'].invalid && customerForm.controls['Balance'].touched) || (customerForm.controls['Balance'].invalid && showAllErrors)">
+                <div class="text-danger" *ngIf="Balance.errors">
                   *Balance is Required!
                 </div>
               </div>
@@ -139,14 +136,11 @@
             <!-- Credit Limit field -->
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
               <div class="form-group template">
-                <div class="e-float-input">
+                <div class="e-float-input" [ngClass]="{'e-success': customerForm.controls.CreditLimit.valid}">
                   <input type="text" id="CreditLimit" name="CreditLimit" class="required" formControlName="CreditLimit"
                     required>
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="CreditLimit">Credit Limit</label>
-                </div>
-                <div class="text-danger" *ngIf="(customerForm.controls['CreditLimit'].invalid && customerForm.controls['CreditLimit'].touched) || (customerForm.controls['CreditLimit'].invalid && showAllErrors)">
-                  *Credit Limit is Required!
                 </div>
               </div>
             </div>
