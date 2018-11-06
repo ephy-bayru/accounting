@@ -14,7 +14,7 @@ section.e-card {
   width: 95%;
 }
 
-.ng-invalid.ng-touched, .ng-invalid.ng-touched > span.e-control-wrapper {
+.ng-invalid.ng-touched.e-success, .ng-invalid.ng-touched > span.e-control-wrapper {
   border-color: rgb(194, 59, 59) !important;
   border-bottom-width: unset !important;
 }

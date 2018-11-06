@@ -7,6 +7,7 @@
     <div class="content-wrapper" class="container-fluid">
       <section class="row">
         <div class="col-6 col-xs-12">
+          <!-- Account Id Input-->
           <div class="row">
             <div class="col-12 e-float-input">
               <input type="text" id="accountId" name="accountId" class="ejs-input e-input" placeholder="Account Id"
@@ -17,6 +18,7 @@
               </div>
             </div>
           </div>
+          <!-- Account Name Input -->
           <div class="row">
             <div class="col-12 e-float-input">
               <input type="text" id="accountName" name="AccountName" placeholder="Account Name" formControlName="Name">
@@ -26,6 +28,7 @@
               </div>
             </div>
           </div>
+          <!-- Account Type-->
           <div class="row">
             <div class="col-12">
               <ejs-dropdownlist id='accountType' name="AccountType" placeholder="Account Type" formControlName="AccountType"
@@ -36,16 +39,18 @@
               </div>
             </div>
           </div>
+<!--Organization Selection Drop Box-->
           <div class="row">
             <div class="col-12">
               <ejs-dropdownlist id='organization' name="organization" placeholder="Company" [query]="organizationQuery"
                 [fields]="organizationFields" formControlName="OrganizationId" [dataSource]='organizationList'>
               </ejs-dropdownlist>
               <div class="text-danger" *ngIf="OrganizationId.errors">
-                <div *ngIf="OrganizationId.errors['required']">*Account Type is Required</div>
+                <div *ngIf="OrganizationId.errors['required']">*Yout Must Select Organization</div>
               </div>
             </div>
           </div>
+          <!-- Is Reconciliation Check box area-->
           <div class="row">
             <div class="col-12">
               <div>Is Reconciliation
@@ -53,6 +58,7 @@
               </div>
             </div>
           </div>
+          <!--Posting Account Selection area -->
           <div class="row">
             <div class="col-12">
               <div>Is Posting Account
@@ -60,6 +66,7 @@
               </div>
             </div>
           </div>
+          <!--Account Status Block Active-->
           <div class="row">
             <div class="col-12">
               <div>Active
@@ -68,14 +75,18 @@
             </div>
           </div>
         </div>
+        <!-- Second Column Starts-->
         <div class="col-6 col-xs-12">
+          <!-- Opening Balance Input Field-->
           <div class="row">
             <div class="col-12">
               <div class="e-float-input">
-                <input type="number" id="openingBalance" [disabled]="isUpdate"  name="openingBalance" class="required" formControlName="OpeningBalance">
+                <input type="number" id="openingBalance" [disabled]="isUpdate" name="openingBalance" class="required"
+                  formControlName="OpeningBalance">
               </div>
             </div>
           </div>
+          <!-- Account Posting Type Area-->
           <div class="row">
             <div class="col-12">
               <ejs-dropdownlist id='postingType' name="postingType" placeholder="Posting Type" formControlName="PostingType"
@@ -87,6 +98,7 @@
 
             </div>
           </div>
+          <!--Ledger Entry Type Selection Area-->
           <div class="row">
             <div class="col-12">
               <ejs-dropdownlist id='glType' name="glType" placeholder="Income Statement/Balance Sheet" formControlName="GlType"
@@ -98,6 +110,7 @@
 
             </div>
           </div>
+          <!--Parent Account Selection Area-->
           <div class="row">
             <div class="col-12">
               <ejs-dropdownlist id='parentAccount' placeholder="Parent Account" name="parentAccount" [query]="accountQuery"
@@ -107,6 +120,7 @@
           </div>
         </div>
       </section>
+      <!--Submit Button Area-->
       <div class="row">
         <div class="col submit-container">
           <button ejs-button class=" e-success" [disabled]="accountForm.invalid" type="submit">Submit</button>

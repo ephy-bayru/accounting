@@ -26,6 +26,11 @@ namespace Smart_Accounting.Application.AccountCharts.Command {
             _database = database;
         }
 
+        /// <summary>
+        /// Used to delete the account passed as its argument
+        /// </summary>
+        /// <param name="account"></param>
+        /// <returns></returns>
         public bool deleteAccount (AccountChart account) {
             try {
                 _database.AccountChart.Remove (account);
@@ -33,11 +38,16 @@ namespace Smart_Accounting.Application.AccountCharts.Command {
                 return true;
             } catch (Exception e) {
                 _logger.LogError (500, e.Message);
-                throw;
+                return false;
             }
 
         }
 
+        /// <summary>
+        /// Used to add new Accountt record on the database
+        /// </summary>
+        /// <param name="newAccount"></param>
+        /// <returns></returns>
         public AccountChart createAccount (AccountChart newAccount) {
             try {
                 _database.AccountChart.Add (newAccount);
@@ -47,16 +57,24 @@ namespace Smart_Accounting.Application.AccountCharts.Command {
             } catch (Exception e) {
                 _logger.LogError (500, e.Message);
                 return null;
-
-                throw;
             }
 
         }
-
+        /// <summary>
+        /// used to update single account passed on its first argument
+        /// </summary>
+        /// <param name="updatedAccount"></param>
+        /// <returns></returns>
         public bool updateAccount (AccountChart updatedAccount) {
-            _database.AccountChart.Update (updatedAccount);
-            _database.Save ();
-            return true;
+            try {
+                _database.AccountChart.Update (updatedAccount);
+                _database.Save ();
+                return true;
+            } catch (Exception e) {
+                _logger.LogError (500, e.Message);
+                return false;
+            }
+
         }
     }
 }

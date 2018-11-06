@@ -21,7 +21,11 @@ namespace Smart_Accounting.Application.AccountCharts.Factories {
         public AccountChartFactory (ICalendarPeriodQueries period) {
             _period = period;
         }
-
+        /// <summary>
+        /// Converts a NewAccount DTO to Domain Object
+        /// </summary>
+        /// <param name="newType"></param>
+        /// <returns></returns>
         public AccountChart NewAccount (NewAccountModel newType) {
                 var activePeriod = _period.getActivePeriod ();
 
@@ -46,7 +50,11 @@ namespace Smart_Accounting.Application.AccountCharts.Factories {
             };
 
         }
-
+        /// <summary>
+        /// Converts Updated Account DTO to Domain Object
+        /// </summary>
+        /// <param name="newModel"></param>
+        /// <returns></returns>
         public AccountChart UpdatedAccount (UpdatedAccountModel newModel) {
             return new AccountChart () {
                 AccountId = newModel.AccountId,
