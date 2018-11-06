@@ -26,7 +26,9 @@ namespace Smart_Accounting.Application.Supplier.Factories {
                     Country = item.Country,
                     City = item.City,
                     SubCity = item.SubCity,
-                    PostalCode = item.PostalCode
+                    PostalCode = item.PostalCode,
+                    Balance = item.Balance,
+                    Active = item.Active
                 };
                 supplierViews.Add (view);
             }
@@ -41,7 +43,9 @@ namespace Smart_Accounting.Application.Supplier.Factories {
                 PostalCode = supplier.PostalCode,
                 SubCity = supplier.SubCity,
                 PhoneNo = supplier.Phone_No,
-                Email = supplier.Email
+                Email = supplier.Email,
+                Balance = supplier.Balance,
+                Active = supplier.Active
             };
 
             foreach (var account in supplier.BankAccounts) {
@@ -63,7 +67,9 @@ namespace Smart_Accounting.Application.Supplier.Factories {
                 Country = updatedSupplier.Country,
                 City = updatedSupplier.City,
                 SubCity = updatedSupplier.SubCity,
-                PostalCode = updatedSupplier.PostalCode
+                PostalCode = updatedSupplier.PostalCode,
+                Balance = updatedSupplier.Balance,
+                Active = updatedSupplier.Active
             };
 
             foreach (var account in updatedSupplier.BankAccounts) {
