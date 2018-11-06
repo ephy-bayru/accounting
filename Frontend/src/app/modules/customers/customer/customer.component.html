@@ -10,13 +10,13 @@
             <!-- full name field -->
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
               <div class="form-group template">
-                <div class="e-float-input">
+                <div class="e-float-input" [ngClass]="{'e-success': customerForm.controls.FullName.valid}">
                   <input type="text" id="Full_Name" name="Full_Name" class="required" formControlName="FullName"
                     required>
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="Full_Name">Full Name</label>
                 </div>
-                <div class="text-danger" *ngIf="(customerForm.controls['FullName'].invalid && customerForm.controls['FullName'].touched) || (customerForm.controls['FullName'].invalid && showAllErrors)">
+                <div class="text-danger" *ngIf="FullName.errors">
                   *Full Name is Required!
                 </div>
               </div>
@@ -24,13 +24,13 @@
             <!-- email field -->
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
               <div class="form-group template">
-                <div id="mobile-no" class="e-float-input">
+                <div id="mobile-no" class="e-float-input" [ngClass]="{'e-success': customerForm.controls.Email.valid}">
                   <input type="text" id="email" name="email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
                     class="required" formControlName="Email">
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="Email">Email</label>
                 </div>
-                <div class="text-danger" *ngIf="(customerForm.controls['Email'].invalid && customerForm.controls['Email'].touched) || (customerForm.controls['Email'].invalid && showAllErrors)">
+                <div class="text-danger" *ngIf="Email.errors">
                   *Email is Required!
                 </div>
               </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Location } from '@angular/common';
-import { Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { Customer, CustomerAccount } from './../customer';
 import { CustomerService } from './../customer.service';
 import { ActivatedRoute } from '@angular/router';
@@ -132,5 +132,34 @@ export class CustomerComponent implements OnInit {
   removeAccount(i) {
     this.BankAccounts.removeAt(i);
   }
-
+  public validForm(field: string) {
+    return this.customerForm.get(field).valid && (this.customerForm.get(field).dirty || this.customerForm.get(field).touched);
+  }
+  get FullName(): FormControl {
+    return this.customerForm.get('FullName') as FormControl;
+  }
+  get City(): FormControl {
+    return this.customerForm.get('City') as FormControl;
+  }
+  get Country(): FormControl {
+    return this.customerForm.get('Country') as FormControl;
+  }
+  get SubCity(): FormControl {
+    return this.customerForm.get('SubCity') as FormControl;
+  }
+  get Phone_No(): FormControl {
+    return this.customerForm.get('Phone_No') as FormControl;
+  }
+  get PostalCode(): FormControl {
+    return this.customerForm.get('PostalCode') as FormControl;
+  }
+  get Balance(): FormControl {
+    return this.customerForm.get('Balance') as FormControl;
+  }
+  get CreditLimit(): FormControl {
+    return this.customerForm.get('CreditLimit') as FormControl;
+  }
+  get Email(): FormControl {
+    return this.customerForm.get('Email') as FormControl;
+  }
 }

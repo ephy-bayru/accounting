@@ -6,7 +6,7 @@
 @import "../node_modules/@syncfusion/ej2-angular-calendars/styles/material.css";
 @import "../node_modules/@syncfusion/ej2-angular-navigations//styles/material.css";
 
-html, body { height: 100%; }
+/* html, body { height: 100%; }
 body { margin: 0; font-family: 'Roboto', sans-serif; }
 
 section.e-card {
@@ -15,14 +15,14 @@ section.e-card {
 }
 
 .ng-invalid.ng-touched, .ng-invalid.ng-touched > span.e-control-wrapper {
-  border-color: red !important;
-  border-bottom-width: unset !important;
+  border-color: red ;
+  border-bottom-width: unset ;
 }
 
 .ng-valid.ng-touched,
 .ng-valid.ng-touched.e-input-focuse,
 .ng-valid.ng-touched > span.e-control-wrapper,
 .ng-valid.ng-touched > span.e-control-wrapper.e-input-focus {
-  border-color:green !important;
-  border-bottom-width: unset !important;
-}
+  border-color:green ;
+  border-bottom-width: unset ;
+} */
