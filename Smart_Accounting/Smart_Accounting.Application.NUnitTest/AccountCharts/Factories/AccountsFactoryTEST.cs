@@ -1,10 +1,23 @@
+/*
+ * @CreateTime: Nov 7, 2018 10:58 AM
+ * @Author:  Mikael Araya
+ * @Contact: MikaelAraya12@gmail.com
+ * @Last Modified By:  Mikael Araya
+ * @Last Modified Time: Nov 7, 2018 2:25 PM
+ * @Description: Modify Here, Please 
+ */
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using FluentAssertions;
+using Moq;
 using NUnit.Framework;
 using Smart_Accounting.Application.AccountCharts.Factories;
 using Smart_Accounting.Application.AccountCharts.Models;
+using Smart_Accounting.Application.CalendarPeriods.Interfaces;
 using Smart_Accounting.Application.CalendarPeriods.Models;
 using Smart_Accounting.Domain.AccountCharts;
+using Smart_Accounting.Domain.CalendarPeriods;
 
 namespace Smart_Accounting.Application.NUnitTest.AccountCharts.Factories {
 
@@ -12,100 +25,99 @@ namespace Smart_Accounting.Application.NUnitTest.AccountCharts.Factories {
     [TestFixture]
     public class AccountsFactoryTEST {
 
-        private IEnumerable<NewAccountModel> newAccountModel;
-        private IEnumerable<AccountChartFactory> accountChartFactory;
-        private IEnumerable<UpdatedAccountModel> updatedAccountModel;
-        private IEnumerable<AccountChart> accounts;
-        private IEnumerable<AccountChart> updatedAccounts;
+        private NewAccountModel newAccountModel;
+        private AccountChartFactory accountChartFactory;
+        private UpdatedAccountModel updatedAccountModel;
+        private AccountChart accounts;
+        private AccountChart updatedAccounts;
+        private Mock<ICalendarPeriodQueries> MockICalendarPeriodQuery;
 
         [SetUp]
         public void Init () {
-            newAccountModel = new List<NewAccountModel> () {
-                new NewAccountModel () {
+            newAccountModel = new NewAccountModel () {
                 AccountCode = "444",
                 AccountId = "555",
                 AccountType = "ASSETS",
                 Active = 1,
                 Name = "First Account",
                 OpeningBalance = 100,
-                OrganizationId = 1
-                },
-                new NewAccountModel () {
-                AccountCode = "333",
-                AccountId = "222",
-                AccountType = "ASSETS",
-                Active = 1,
-                Name = "Second Account",
-                OpeningBalance = 100,
-                OrganizationId = 1
-                }
-            };
-            updatedAccountModel = new List<UpdatedAccountModel> () {
-                new UpdatedAccountModel () {
-                AccountCode = "333",
-                AccountId = "222",
-                AccountType = "ASSETS",
-                Active = 1,
-                Name = "Second Account",
-                OrganizationId = 1
-                },
-                new UpdatedAccountModel () {
-                AccountCode = "333",
-                AccountId = "222",
-                AccountType = "ASSETS",
-                Active = 1,
-                Name = "Second Account",
-                OrganizationId = 1
-                }
+                OrganizationId = 1,
+                GlType = "Purchase",
+                IsPosting = 0,
+                IsReconcilation = 0,
             };
 
-            accounts = new List<AccountChart> () {
-                new AccountChart () {
+            updatedAccountModel = new UpdatedAccountModel () {
+                AccountCode = "333",
+                AccountId = "222",
+                AccountType = "ASSETS",
+                Active = 1,
+                Name = "Second Account",
+                OrganizationId = 1,
+                GlType = "Purchase",
+                IsPosting = 0,
+                IsReconcilation = 0,
+            };
+
+            accounts = new AccountChart () {
                 AccountCode = "444",
                 AccountId = "555",
                 AccountType = "ASSETS",
                 Active = 1,
                 Name = "First Account",
-                OrganizationId = 1
-                },
-                new AccountChart () {
+                OrganizationId = 1,
+                GlType = "Purchase",
+                DirectPosting = 0,
+                IsReconcilation = 0,
+            };
+
+            updatedAccounts = new AccountChart () {
                 AccountCode = "333",
                 AccountId = "222",
-                AccountType = "ASSETS",
-                Active = 1,
                 Name = "Second Account",
-                OrganizationId = 1
-                }
+                Active = 1,
+                AccountType = "ASSETS",
+                OrganizationId = 1,
+                GlType = "Purchase",
+                DirectPosting = 0,
+                IsReconcilation = 0,
             };
 
-            updatedAccounts = new List<AccountChart> () {
-                new AccountChart () {
-                AccountCode = "ACC-005",
-                Name = "Third Account",
-                Active = 1,
-                AccountType = "ASSET",
-                AccountId = "ACC-007",
-                OrganizationId = 11
-                },
-                new AccountChart () {
-                AccountCode = "ACC-006",
-                Name = "Fourth Account",
-                Active = 1,
-                AccountType = "LIABILITY",
-                AccountId = "ACC-003",
-                OrganizationId = 11
-                }
-            };
+            MockICalendarPeriodQuery = new Mock<ICalendarPeriodQueries> ();
+            MockICalendarPeriodQuery.Setup (p => p.getActivePeriod ())
+                .Returns (new CalendarPeriod () {
+                    Id = 1,
+                        Start = new DateTime (2018, 08, 10),
+                        End = new DateTime (2018, 10, 10),
+                        Active = 1,
+                        Closed = 0
 
-            accountChartFactory = new List<AccountChartFactory> ();
+                });
 
         }
 
         [Test]
         public void CreateAccountValidParameter_TEST () {
+            accountChartFactory = new AccountChartFactory (MockICalendarPeriodQuery.Object);
 
-                //TODO : Implement createAccountValidParameter_TEST in account factory
+            var result = accountChartFactory.NewAccount (newAccountModel);
 
+            result.Should ().NotBeNull ();
+            result.OpeningBalance.Select (o => new { o.Period }).Should ().Equal (new CalendarPeriod () {
+                Id = 1,
+                    Start = new DateTime (2018, 08, 10),
+                    End = new DateTime (2018, 10, 10),
+                    Active = 1,
+                    Closed = 0
+
+            });
+
+        }
+
+        [Test]
+        public void UpdateAccountValidParameter_TEST () {
+
+        
         }
 
     }

@@ -10,8 +10,7 @@ namespace Smart_Accounting.Application.Ledgers.Models
 {
     public abstract class JornalEntryDto
     {
-        public float Credit {get; set;}
-        public float Debit {get; set;}
+        public double Amount {get; set;}
         public string AccountId {get; set;}
         public uint Reference {get; set;}
 

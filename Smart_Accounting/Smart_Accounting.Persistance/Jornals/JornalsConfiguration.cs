@@ -24,7 +24,7 @@ namespace Smart_Accounting.Persistance.Jornals {
                 .HasColumnName ("status")
                 .HasColumnType ("varchar(10)");
 
-            builder.Property (e => e.Credit).HasColumnName ("credit");
+            builder.Property (e => e.Amount).HasColumnName ("amount");
 
             builder.Property (e => e.CurrencyCode).HasColumnName ("CURRENCY_CODE");
 
@@ -40,7 +40,7 @@ namespace Smart_Accounting.Persistance.Jornals {
                 .ValueGeneratedOnAddOrUpdate ();
 
             builder.Property (e => e.LedgerId).HasColumnName ("LEDGER_ID");
-            builder.Property (e => e.Debit).HasColumnName ("debit");
+            
 
             builder.Property (e => e.ExchangeRate).HasColumnName ("exchange_rate");
 

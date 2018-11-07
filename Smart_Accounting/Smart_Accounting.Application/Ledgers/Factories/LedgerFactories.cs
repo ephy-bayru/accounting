@@ -28,9 +28,8 @@ namespace Smart_Accounting.Application.Ledgers.Factories {
 
             foreach (var item in newLedger.Jornal) {
                 ledger.Jornal.Add (new Jornal () {
-                    Credit = item.Credit,
+                        Amount = item.Amount,
                         AccountId = item.AccountId,
-                        Debit = item.Debit,
                         Reference = item.Reference.ToString()
                 });
             }
