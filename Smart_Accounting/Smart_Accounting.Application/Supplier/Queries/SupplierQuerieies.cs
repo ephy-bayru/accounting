@@ -35,6 +35,8 @@ namespace Smart_Accounting.Application.Supplier.Queries {
                     HouseNo = vendor.HouseNo,
                     City = vendor.City,
                     Country = vendor.Country,
+                    Balance = vendor.Balance,
+                    Active = vendor.Active,
                     DateCreated = vendor.DateCreated,
                     DateUpdated = vendor.DateUpdated
             }).ToList ();
@@ -60,6 +62,8 @@ namespace Smart_Accounting.Application.Supplier.Queries {
                         HouseNo = vendor.HouseNo,
                         City = vendor.City,
                         Country = vendor.Country,
+                        Balance = vendor.Balance,
+                        Active = vendor.Active,
                         DateCreated = vendor.DateCreated,
                         DateUpdated = vendor.DateUpdated,
                         SupplierAccount = vendor.SupplierAccount.Select (account => new SupplierAccount () {

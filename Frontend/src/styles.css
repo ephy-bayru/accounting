@@ -6,7 +6,7 @@
 @import "../node_modules/@syncfusion/ej2-angular-calendars/styles/material.css";
 @import "../node_modules/@syncfusion/ej2-angular-navigations//styles/material.css";
 
-html, body { height: 100%; }
+/* html, body { height: 100%; }
 body { margin: 0; font-family: 'Roboto', sans-serif; }
 
 section.e-card {
@@ -25,4 +25,4 @@ section.e-card {
 .ng-valid.ng-touched > span.e-control-wrapper.e-input-focus {
   border-color:rgb(31, 255, 31) !important;
   border-bottom-width: unset !important;
-}
+} */

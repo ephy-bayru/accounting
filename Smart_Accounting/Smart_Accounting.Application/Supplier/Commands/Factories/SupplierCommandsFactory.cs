@@ -57,9 +57,6 @@ namespace Smart_Accounting.Application.Supplier.Commands.Factories
             return currentSupplier;
         }
 
-        public Suppliers UpdateSuppliers(Suppliers supplier, UpdateSupplierModel updateSupplier)
-        {
-            throw new System.NotImplementedException();
-        }
+       
     }
 }
