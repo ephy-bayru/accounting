@@ -64,6 +64,16 @@ namespace Smart_Accounting.Persistance.Supplier {
                 .HasColumnName ("SUB_CITY")
                 .HasColumnType ("varchar(30)");
 
+             builder.Property (e => e.Balance)
+                .HasColumnName ("balance")
+                .HasColumnType ("FLOAT")
+                .HasDefaultValueSql ("'0'");
+
+             builder.Property (e => e.Active)
+                .HasColumnName ("active")
+                .HasColumnType ("tinyint(4)")
+                .HasDefaultValueSql ("'1'");
+
         }
     }
 }
