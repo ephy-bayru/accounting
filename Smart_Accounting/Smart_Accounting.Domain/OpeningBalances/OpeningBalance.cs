@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Nov 2, 2018 3:08 PM
+ * @Last Modified Time: Nov 6, 2018 4:54 PM
  * @Description: Modify Here, Please 
  */
 using System;
@@ -16,8 +16,7 @@ namespace Smart_Accounting.Domain.OpeningBalances {
         public uint Id { get; set; }
         public string AccountId { get; set; }
         public uint PeriodId { get; set; }
-        public double Credit { get; set; }
-        public double Debit { get; set; }
+        public double Amount { get; set; }
         public DateTime? DateAdded { get; set; }
         public DateTime? DateUpdated { get; set; }
 

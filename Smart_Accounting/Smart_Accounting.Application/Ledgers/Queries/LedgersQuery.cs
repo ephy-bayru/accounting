@@ -35,8 +35,7 @@ namespace Smart_Accounting.Application.Ledgers.Queries {
                     Discription = ledger.Discription,
                     Jornal = ledger.Jornal.Select (jor => new Jornal () {
                         JornalId = jor.JornalId,
-                            Credit = jor.Credit,
-                            Debit = jor.Debit,
+                            Amount = jor.Amount,
                             Reference = jor.Reference,
                             AccountId = jor.AccountId,
                             DateAdded = jor.DateAdded,
@@ -56,8 +55,7 @@ namespace Smart_Accounting.Application.Ledgers.Queries {
                     Period = $"{l.Period.Start} {l.Period.End}",
                     Jornals = l.Jornal.Select(j => new JornalEntryViewModel(){
                         Id = j.JornalId,
-                        Credit = (float) j.Credit,
-                        Debit = (float) j.Debit,
+                        Amount = (float) j.Amount,
                         AccountId = j.AccountId,
                         Account = j.Account.AccountId
                     }).ToList()
@@ -71,8 +69,7 @@ namespace Smart_Accounting.Application.Ledgers.Queries {
                     Discription = ledger.Discription,
                     Jornal = ledger.Jornal.Select (jor => new Jornal () {
                         JornalId = jor.JornalId,
-                            Credit = jor.Credit,
-                            Debit = jor.Debit,
+                            Amount = jor.Amount,
                             Reference = jor.Reference,
                             AccountId = jor.AccountId
                     }).ToList ()

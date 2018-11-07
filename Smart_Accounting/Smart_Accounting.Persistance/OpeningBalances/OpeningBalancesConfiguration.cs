@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Nov 2, 2018 3:29 PM
+ * @Last Modified Time: Nov 6, 2018 4:55 PM
  * @Description: Modify Here, Please 
  */
 using Microsoft.EntityFrameworkCore;
@@ -28,7 +28,7 @@ namespace Smart_Accounting.Persistance.OpeningBalances {
                 .HasColumnName ("ACCOUNT_ID")
                 .HasColumnType ("varchar(30)");
 
-            builder.Property (e => e.Credit).HasColumnName ("credit");
+            builder.Property (e => e.Amount).HasColumnName ("amount");
 
             builder.Property (e => e.DateAdded)
                 .HasColumnName ("date_added")
@@ -41,7 +41,7 @@ namespace Smart_Accounting.Persistance.OpeningBalances {
                 .HasDefaultValueSql ("'CURRENT_TIMESTAMP'")
                 .ValueGeneratedOnAddOrUpdate ();
 
-            builder.Property (e => e.Debit).HasColumnName ("debit");
+
 
             builder.Property (e => e.PeriodId).HasColumnName ("PERIOD_ID");
 

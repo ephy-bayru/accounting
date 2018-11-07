@@ -3,13 +3,15 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Nov 3, 2018 12:20 PM
+ * @Last Modified Time: Nov 6, 2018 5:25 PM
  * @Description: Class used to make all the retriving operations
  * required for Account
  */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Smart_Accounting.Application.AccountCharts.Interfaces;
+using Smart_Accounting.Application.AccountCharts.Models;
 using Smart_Accounting.Application.Interfaces;
 using Smart_Accounting.Domain.AccountCharts;
 
@@ -42,7 +44,8 @@ namespace Smart_Accounting.Application.AccountCharts.Queries {
                     Name = account.Name,
                     DateAdded = account.DateAdded,
                     DateUpdated = account.DateUpdated,
-                    OpeningBalance = account.OpeningBalance
+                    OpeningBalance = account.OpeningBalance,
+                    Jornal = account.Jornal
             });
 
         }
@@ -91,6 +94,23 @@ namespace Smart_Accounting.Application.AccountCharts.Queries {
             return AccountChartQuariable ()
                 .Where (account => account.OrganizationId == organizationId)
                 .ToList ();
+        }
+
+        /// <summary>
+        /// Returns Account Detailed View
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<AccountView> GetAccountViews() {
+            return _database.AccountChart
+                                .Select(account => new AccountView() {
+                                    AccountId = account.AccountId,
+                                    AccountName = account.Name,
+                                    ParentAccount = account.AccountCode,
+                                    TotalAmount = account.OpeningBalance.Sum(o => o.Amount),
+                                    DateAdded = (DateTime) account.DateAdded,
+                                    DateUpdated = (DateTime) account.DateUpdated
+
+                                }).ToList();
         }
     }
 }

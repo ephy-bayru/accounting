@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Oct 10, 2018 4:06 PM
+ * @Last Modified Time: Nov 6, 2018 5:17 PM
  * @Description: Account    
  */
 using System.Collections.Generic;
@@ -34,7 +34,7 @@ namespace Smart_Accounting.API.Controllers.Accountss {
         [ProducesResponseType (500)]
         public IActionResult GetAllAccounts (string type = "ALL") {
 
-            var account = _accountQuery.GetAllAccounts (type);
+            var account = _accountQuery.GetAccountViews ();
 
             return StatusCode (200, account);
         }

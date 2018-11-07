@@ -15,8 +15,7 @@ using Smart_Accounting.Domain.Ledgers;
 namespace Smart_Accounting.Domain.Jornals {
     public class Jornal {
         public uint JornalId { get; set; }
-        public double Credit { get; set; }
-        public double Debit { get; set; }
+        public double Amount { get; set; }
         public uint LedgerId { get; set; }
         public string AccountId { get; set; }
         public sbyte? Reconciled { get; set; }

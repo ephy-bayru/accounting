@@ -11,7 +11,6 @@ namespace Smart_Accounting.Persistance.Jornals {
                 .HasName ("fk_jornal_account_idx");
 
             builder.Property (e => e.JornalId).HasColumnName ("JORNAL_ID");
-        
 
             builder.HasIndex (e => e.LedgerId)
                 .HasName ("fk_jornal_ledger_id_idx");
@@ -20,12 +19,12 @@ namespace Smart_Accounting.Persistance.Jornals {
                 .IsRequired ()
                 .HasColumnName ("ACCOUNT_ID")
                 .HasColumnType ("varchar(30)");
-            
+
             builder.Property (e => e.Status)
                 .HasColumnName ("status")
                 .HasColumnType ("varchar(10)");
 
-            builder.Property (e => e.Credit).HasColumnName ("credit");
+            builder.Property (e => e.Amount).HasColumnName ("amount");
 
             builder.Property (e => e.CurrencyCode).HasColumnName ("CURRENCY_CODE");
 
@@ -40,7 +39,8 @@ namespace Smart_Accounting.Persistance.Jornals {
                 .HasDefaultValueSql ("'CURRENT_TIMESTAMP'")
                 .ValueGeneratedOnAddOrUpdate ();
 
-            builder.Property (e => e.Debit).HasColumnName ("debit");
+            builder.Property (e => e.LedgerId).HasColumnName ("LEDGER_ID");
+            
 
             builder.Property (e => e.ExchangeRate).HasColumnName ("exchange_rate");
 
@@ -56,6 +56,11 @@ namespace Smart_Accounting.Persistance.Jornals {
                 .HasColumnName ("reference")
                 .HasColumnType ("varchar(30)");
 
+            builder.HasOne (d => d.Ledger)
+                .WithMany (p => p.Jornal)
+                .HasForeignKey (d => d.LedgerId)
+                .HasConstraintName ("fk_jornal_ledger_id");
+                
             builder.HasOne (d => d.Account)
                 .WithMany (p => p.Jornal)
                 .HasForeignKey (d => d.AccountId)

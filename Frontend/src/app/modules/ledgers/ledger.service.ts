@@ -48,8 +48,7 @@ export class Ledger {
 }
 
 export class Jornal {
-  credit: number;
-  debit: number;
+  amount: number;
   accountId: number;
   reference: number;
 }

@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Nov 3, 2018 12:36 PM
+ * @Last Modified Time: Nov 6, 2018 4:55 PM
  * @Description: Used to convert between Dto objects and domain object 
  *          and implements the IAccountChartFactory
  */
@@ -42,7 +42,7 @@ namespace Smart_Accounting.Application.AccountCharts.Factories {
                     Type = newType.PostingType,
                     OpeningBalance = new List<OpeningBalance> () {
                         new OpeningBalance () {
-                        Credit = newType.OpeningBalance,
+                        Amount = newType.OpeningBalance,
                         PeriodId = activePeriod.Id
                         }
                     }

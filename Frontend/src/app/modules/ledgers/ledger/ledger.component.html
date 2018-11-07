@@ -25,8 +25,7 @@
             <thead>
               <tr>
                 <th>Account</th>
-                <th>Debit</th>
-                <th>Credit</th>
+                <th>Amount</th>
                 <th>Reference</th>
                 <th>Action</th>
               </tr>
@@ -39,11 +38,7 @@
                   [fields]="accountFields" formControlName="AccountId" [dataSource]='accountList'></ejs-dropdownlist>
                 </td>
                 <td>
-                  <ejs-numerictextbox formControlName="Credit" [attr.name]="'creation'+i" [attr.id]="'credit'+i" placeholder="Credit">
-                  </ejs-numerictextbox>
-                </td>
-                <td>
-                  <ejs-numerictextbox formControlName="Debit" [attr.name]="'debiit'+i" [attr.id]="'debit'+i" placeholder="Debit">
+                  <ejs-numerictextbox formControlName="Amount" [attr.name]="'Amount'+i" [attr.id]="'Amount'+i" placeholder="Amount">
                   </ejs-numerictextbox>
                 </td>
                 <td>

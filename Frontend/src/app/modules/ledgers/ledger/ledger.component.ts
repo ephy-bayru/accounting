@@ -8,14 +8,12 @@ import { HttpErrorResponse } from '@angular/common/http';
 function balanceChecker(): ValidatorFn {
 
   return (c: AbstractControl): { [key: string]: boolean } | null => {
-    let creditSum = 0;
-    let debitSum = 0;
+    let amountSum = 0;
     this.accounts.controls.forEach(element => {
-      creditSum += element.Credit;
-      debitSum += element.Debit;
+      amountSum += element.Amouunt;
     });
 
-    if (creditSum === debitSum) {
+    if (amountSum === 0) {
       return null;
     }
 
@@ -37,8 +35,7 @@ export class LedgerComponent implements OnInit {
   public isEqual: Boolean = true;
   public accountForm: FormGroup;
   public accountQuery: Query;
-  public creditSum = 0;
-  public debitSum = 0;
+  public amountSum = 0;
   public accountFields: Object;
   constructor(private formBuilder: FormBuilder,
     private ledgerService: LedgerService,
@@ -59,13 +56,12 @@ export class LedgerComponent implements OnInit {
     dm.ready.then((e: ReturnOption) => this.accountList = <Object[]>e.result).catch((e) => true);
 
     this.accounts.valueChanges.subscribe(value => {
-      this.creditSum = 0;
-      this.debitSum = 0;
+      this.amountSum = 0;
+
       value.forEach(element => {
-        this.creditSum += element.Credit;
-        this.debitSum += element.Debit;
+        this.amountSum += element.Amount;
       });
-      if (this.creditSum === this.debitSum) {
+      if (this.amountSum === 0) {
         this.isEqual = true;
 
         this.accounts.controls.forEach(c => c.clearValidators());
@@ -86,14 +82,12 @@ export class LedgerComponent implements OnInit {
       accounts: this.formBuilder.array([
         this.formBuilder.group({
           AccountId: [(data.AccountId) ? data.AccountId : '', Validators.required],
-          Credit: [(data.Credit) ? data.Credit : 0, Validators.required],
-          Debit: [(data.Debit) ? data.Debit : 0, Validators.required],
+          Amount: [(data.Amount) ? data.Amount : 0, Validators.required],
           Reference: [(data.Reference) ? data.Reference : '']
         }),
         this.formBuilder.group({
           AccountId: [(data.AccountId) ? data.AccountId : '', Validators.required],
-          Credit: [(data.Credit) ? data.Credit : 0, Validators.required],
-          Debit: [(data.Debit) ? data.Debit : 0, Validators.required],
+          Amount: [(data.Amount) ? data.Amount : 0, Validators.required],
           Reference: [(data.Reference) ? data.Reference : '']
         })])
 
@@ -129,8 +123,7 @@ export class LedgerComponent implements OnInit {
 
     this.accounts.controls.forEach(element => {
       ledger.jornal.push({
-        credit: (element.get('Credit').value) ? element.get('Credit').value : 0,
-        debit: (element.get('Debit').value) ? element.get('Debit').value : 0,
+        amount: (element.get('Amount').value) ? element.get('Amount').value : 0,
         accountId: element.get('AccountId').value,
         reference: (element.get('Reference').value) ? element.get('Reference').value : 0,
       });
@@ -144,8 +137,7 @@ export class LedgerComponent implements OnInit {
   addForm() {
     this.accounts.push(this.formBuilder.group({
       AccountId: ['', Validators.required],
-      Credit: [0, Validators.required],
-      Debit: [0, Validators.required],
+      Amount: [0, Validators.required],
       Reference: [''],
     }));
 

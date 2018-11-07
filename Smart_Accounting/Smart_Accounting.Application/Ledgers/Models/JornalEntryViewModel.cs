@@ -19,8 +19,7 @@ namespace Smart_Accounting.Application.Ledgers.Models {
         public uint Id { get; set; }
         public string Account { get; set; }
         public string AccountId { get; set; }
-        public float Credit { get; set; }
-        public float Debit { get; set; }
+        public double Amount { get; set; }
         public uint Reference { get; set; }
         public DateTime DateAdded { get; set; }
         public DateTime DateUpdated { get; set; }
