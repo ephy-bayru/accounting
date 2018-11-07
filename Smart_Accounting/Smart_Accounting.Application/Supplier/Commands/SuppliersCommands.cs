@@ -23,6 +23,7 @@ namespace Smart_Accounting.Application.Supplier.Commands {
             return newSupplier;
         }
         public bool Update (Suppliers supplier, UpdateSupplierModel updateSupplier) {
+            var sup = supplierCommandFactory.UpdateSupplier(supplier, updateSupplier);
             _database.Suppliers.Update (supplier).State = EntityState.Modified;
             _database.Save();
             return true;

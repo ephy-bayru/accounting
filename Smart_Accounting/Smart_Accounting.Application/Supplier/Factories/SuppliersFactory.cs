@@ -42,7 +42,7 @@ namespace Smart_Accounting.Application.Supplier.Factories {
                 Country = supplier.Country,
                 PostalCode = supplier.PostalCode,
                 SubCity = supplier.SubCity,
-                PhoneNo = supplier.Phone_No,
+                PhoneNo = supplier.PhoneNo,
                 Email = supplier.Email,
                 Balance = supplier.Balance,
                 Active = supplier.Active
@@ -63,7 +63,7 @@ namespace Smart_Accounting.Application.Supplier.Factories {
                 Id = updatedSupplier.id,
                 FullName = updatedSupplier.FullName,
                 Email = updatedSupplier.Email,
-                PhoneNo = updatedSupplier.Phone_No,
+                PhoneNo = updatedSupplier.PhoneNo,
                 Country = updatedSupplier.Country,
                 City = updatedSupplier.City,
                 SubCity = updatedSupplier.SubCity,

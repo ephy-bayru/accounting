@@ -53,7 +53,7 @@ namespace Smart_Accounting.Persistance.Supplier {
 
             builder.Property (e => e.PhoneNo)
                 .IsRequired ()
-                .HasColumnName ("PHONE_NO")
+                .HasColumnName ("PHONENO")
                 .HasColumnType ("varchar(45)");
 
             builder.Property (e => e.PostalCode)

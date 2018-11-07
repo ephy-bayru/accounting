@@ -45,7 +45,7 @@ namespace Smart_Accounting.Application.Supplier.Commands.Factories
         {
             currentSupplier.FullName = updateSupplier.FullName;
             currentSupplier.Email = updateSupplier.Email;
-            currentSupplier.PhoneNo = updateSupplier.Phone_No;
+            currentSupplier.PhoneNo = updateSupplier.PhoneNo;
             currentSupplier.Country = updateSupplier.Country;
             currentSupplier.City = updateSupplier.City;
             currentSupplier.SubCity = updateSupplier.SubCity;

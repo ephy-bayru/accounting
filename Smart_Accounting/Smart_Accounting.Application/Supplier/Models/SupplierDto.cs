@@ -10,7 +10,7 @@ namespace Smart_Accounting.Application.Supplier.Models
         [Required]
         public string Email { get; set; }
         [Required]
-        public string Phone_No { get; set; }
+        public string PhoneNo { get; set; }
         [Required]
         public string Country { get; set; }
         [Required]
@@ -19,10 +19,8 @@ namespace Smart_Accounting.Application.Supplier.Models
         public string SubCity { get; set; }
         public string HouseNo { get; set; }
         public string PostalCode { get; set; }
-        public float CreditLimit {get; set; }
         public float Balance {get; set; }
         public sbyte Active { get; set; }
-        public sbyte Blocked { get; set; }
 
     }
 }
