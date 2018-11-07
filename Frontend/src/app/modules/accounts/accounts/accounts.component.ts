@@ -23,22 +23,22 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 
 export class AccountsComponent implements OnInit {
-  public accountList: Object[];
-  public organizationList: Object[];
-  public accountForm: FormGroup;
-  public accountQuery: Query;
-  public isUpdate: Boolean = false;
-  public accountFields: Object;
-  public organizationQuery: Query;
-  public organizationFields: Object;
-  public calendarQuery: Query;
-  public calendarFields: Object;
-  public periodList: Object[];
-  public postingType: Object[];
-  public glType: Object[];
-  private accountId: string;
+  public accountList: Object[];  // Holds Accounts for the drop down
+  public organizationList: Object[]; // holds organization for the drop down
+  public accountForm: FormGroup; // tmain formgroup
+  public accountQuery: Query;  // used  to filter the fields we want to use for account
+  public isUpdate: Boolean = false; // used as a flag to determine current operation
+  public accountFields: Object; // holds the serlected fields to display on the drop down
+  public organizationQuery: Query; // used  to filter the fields we want to use for organization
+  public organizationFields: Object; // holds the selected fields to display on the drop down
+  public calendarQuery: Query; // used  to filter the fields we want to use for calander period
+  public calendarFields: Object; // holds the selected fields to display on the drop down
+  public postingType: Object[]; // holdes values for available general ledger posting types
+  public glType: Object[]; // holdes values for available general ledger  types
 
-  public accountTypes: Object = ['ASSET', 'LIABILITY', 'REVENUE', 'EXPENCE', 'INCOME'];
+  private accountId: string; // used to hold the account Id passed in the route
+
+  public accountTypes: Object;
   @ViewChild('statusBtn') statusBtn: ButtonComponent;
 
   constructor(private formBuilder: FormBuilder,
@@ -47,6 +47,7 @@ export class AccountsComponent implements OnInit {
     private activatedRoute: ActivatedRoute) {
       // intialize the form
     this.createForm();
+    this.accountTypes = ['ASSET', 'LIABILITY', 'REVENUE', 'EXPENCE', 'INCOME'];
     this.postingType = ['CREDIT', 'DEBIT', 'BOTH'];
     this.glType = ['INCOME STATEMENT', 'BALANCE SHEET'];
   }

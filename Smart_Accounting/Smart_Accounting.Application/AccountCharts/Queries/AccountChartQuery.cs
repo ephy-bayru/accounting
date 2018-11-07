@@ -4,7 +4,8 @@
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
  * @Last Modified Time: Nov 3, 2018 12:20 PM
- * @Description: Modify Here, Please 
+ * @Description: Class used to make all the retriving operations
+ * required for Account
  */
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,12 @@ namespace Smart_Accounting.Application.AccountCharts.Queries {
             _database = database;
 
         }
+
+        /// <summary>
+        ///  returns IQuariable<AccountChart> to be used for further
+        ///  processing by other functions
+        /// </summary>
+        /// <returns></returns>
         private IQueryable<AccountChart> AccountChartQuariable () {
             return _database.AccountChart.Select (account => new AccountChart () {
                 AccountCode = account.AccountCode,
@@ -39,28 +46,49 @@ namespace Smart_Accounting.Application.AccountCharts.Queries {
             });
 
         }
+        /// <summary>
+        ///  returns all accounts 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public IEnumerable<AccountChart> GetAllAccounts (string type = "ALL") {
             if (type == "ALL") {
-                return AccountChartQuariable().ToList();
+                return AccountChartQuariable ().ToList ();
             }
-            return AccountChartQuariable()
-                                    .Where (account => account.AccountType == type.ToUpper ());
+            return AccountChartQuariable ()
+                .Where (account => account.AccountType == type.ToUpper ());
         }
+
+        /// <summary>
+        ///  return account of a given   Id
+        /// </summary>
+        /// <param name="accountId"></param>
+        /// <returns></returns>
         public AccountChart GetAccountById (string accountId) {
 
-            return AccountChartQuariable()
-                        .FirstOrDefault (account => account.AccountId == accountId);
+            return AccountChartQuariable ()
+                .FirstOrDefault (account => account.AccountId == accountId);
 
         }
 
+        /// <summary>
+        /// Gets all accounts of a given type 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public IEnumerable<AccountChart> GetAccountByType (string type) {
-            return AccountChartQuariable()
-                    .Where (account => account.AccountType == type)
-                    .ToList ();
+            return AccountChartQuariable ()
+                .Where (account => account.AccountType == type)
+                .ToList ();
         }
 
+        /// <summary>
+        /// Gets all existing accounts registered under a given organization
+        /// </summary>
+        /// <param name="organizationId"></param>
+        /// <returns></returns>
         public IEnumerable<AccountChart> GetAllOrganizationAccount (uint organizationId) {
-            return AccountChartQuariable()
+            return AccountChartQuariable ()
                 .Where (account => account.OrganizationId == organizationId)
                 .ToList ();
         }
