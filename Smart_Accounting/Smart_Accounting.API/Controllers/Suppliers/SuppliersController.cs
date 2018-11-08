@@ -90,7 +90,7 @@ namespace Smart_Accounting.API.Controllers.Suppliers {
             if (!ModelState.IsValid) {
                 // // _logger.LogError("invalid data sent from users");
                 // ModelState.AddModelError("Registration error", "Invalid Suppliers form Data");
-                return StatusCode (422, "Invalid supplier data model sent from users");
+                return StatusCode (422, ModelState);
             }
             var supp = _supplierFactory.CreateNewSupplier (newSupplier);
             _supplierCommands.Create (supp);
