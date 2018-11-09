@@ -24,6 +24,12 @@ export class SuppliersComponent implements OnInit {
   userUpdate = null;
   show: false;
   update: false;
+  vMsg = {
+    'email': [
+      { type: 'required', message: 'Email is required' },
+      { type: 'pattern', message: 'Enter a valid email' }
+    ]
+  };
 
   constructor(
     private suppliersService: SuppliersService,
@@ -68,7 +74,7 @@ export class SuppliersComponent implements OnInit {
         Email: ['', [Validators.required,
         Validators.email,
         Validators.maxLength(256)]],
-        Phone_No: ['', [Validators.required,
+        PhoneNo: ['', [Validators.required,
         Validators.minLength(9),
         Validators.maxLength(32)]],
         Country: ['', Validators.required],
@@ -76,13 +82,12 @@ export class SuppliersComponent implements OnInit {
         SubCity: ['', Validators.required],
         HouseNo: ['', Validators.required],
         PostalCode: ['', Validators.required],
+        Balance: ['', Validators.required],
+        Active: [(Supplier.Active) ? Supplier.Active : true],
         BankAccounts: this.fb.array([
         ]),
       });
   }
-phoneNumber(): FormControl {
-  return this.supplierForm.get('Phone_No') as FormControl;
-}
 
 // ─── SUPPLIERS DATA MODEL ───────────
   prepareFormData(form: FormGroup): Suppliers {
@@ -90,12 +95,14 @@ phoneNumber(): FormControl {
     const supplierData: Suppliers = new Suppliers();
     supplierData.FullName = data.FullName;
     supplierData.Email = data.Email;
-    supplierData.Phone_No = data.Phone_No;
+    supplierData.PhoneNo = data.PhoneNo;
     supplierData.Country = data.Country;
     supplierData.City = data.City;
     supplierData.SubCity = data.SubCity;
-    supplierData.HouseNo = data.House_No;
-    supplierData.PostalCode = data.Postal_Code;
+    supplierData.HouseNo = data.HouseNo;
+    supplierData.PostalCode = data.PostalCode;
+    supplierData.Balance = data.Balance;
+    supplierData.Active = data.Active;
 
     this.BankAccounts.controls.forEach(element => {
       const account: SupplierAccount = new SupplierAccount();
@@ -148,5 +155,31 @@ phoneNumber(): FormControl {
   removeAccount(i) {
     this.BankAccounts.removeAt(i);
   }
+
+  get FullName(): FormControl {
+    return this.supplierForm.get('FullName') as FormControl;
+  }
+  get Email(): FormControl {
+    return this.supplierForm.get('Email') as FormControl;
+  }
+  get City(): FormControl {
+    return this.supplierForm.get('City') as FormControl;
+  }
+  get Country(): FormControl {
+    return this.supplierForm.get('Country') as FormControl;
+  }
+  get SubCity(): FormControl {
+    return this.supplierForm.get('SubCity') as FormControl;
+  }
+  get PhoneNo(): FormControl {
+    return this.supplierForm.get('PhoneNo') as FormControl;
+  }
+  get PostalCode(): FormControl {
+    return this.supplierForm.get('PostalCode') as FormControl;
+  }
+  get Balance(): FormControl {
+    return this.supplierForm.get('Balance') as FormControl;
+  }
+
 
 }

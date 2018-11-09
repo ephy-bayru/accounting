@@ -10,13 +10,13 @@
             <!-- full name field -->
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
               <div class="form-group template">
-                <div class="e-float-input" [ngClass]="{'e-success': supplierForm.controls.First_Name?.valid}">
+                <div class="e-float-input" [ngClass]="{'e-success': supplierForm.controls.FullName?.valid, 'e-error': supplierForm.controls.FullName?.invalid}">
                   <input type="text" id="Full_Name" name="Full_Name" class="required" formControlName="FullName"
                     required>
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="Full_Name">Full Name</label>
                 </div>
-                <div class="text-danger" *ngIf="(supplierForm.controls['FullName'].invalid && supplierForm.controls['FullName'].touched) || (supplierForm.controls['FullName'].invalid && showAllErrors)">
+                <div class="e-error" *ngIf="FullName.errors?.required && FullName.touched">
                   *Full Name is Required!
                 </div>
               </div>
@@ -24,16 +24,18 @@
             <!-- email field -->
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
               <div class="form-group template">
-                <div id="mobile-no" class="e-float-input">
+                <div class="e-float-input" [ngClass]="{'e-success': supplierForm.controls.Email?.valid, 'e-error': supplierForm.controls.Email?.invalid}">
                   <input type="text" id="email" name="email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
                     class="required" formControlName="Email">
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="Email">Email</label>
                 </div>
-                <div class="text-danger" *ngIf="(supplierForm.controls['Email'].invalid && supplierForm.controls['Email'].touched) || (supplierForm.controls['Email'].invalid && showAllErrors)"
-                  >
-                  *Email Required!
+                <div *ngFor="let validation of vMsg.email">
+                  <div class="e-error" *ngIf="Email.hasError(validation.type) && (Email.dirty || Email.touched)">
+                    *{{validation.message}}
+                  </div>
                 </div>
+                
               </div>
             </div>
           </div>
@@ -42,12 +44,12 @@
             <!-- Phone number field -->
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
               <div class="form-group template">
-                <div class="e-float-input">
-                  <input type="number" name="phone" minlength="6" required class="required" formControlName="Phone_No">
+                <div class="e-float-input" [ngClass]="{'e-success': supplierForm.controls.PhoneNo?.valid, 'e-error': supplierForm.controls.PhoneNo?.invalid}">
+                  <input type="number" name="phone" minlength="6" required class="required" formControlName="PhoneNo">
                   <span class="e-float-line"></span>
-                  <label class="e-float-text" for="Phone_No">Phone No</label>
+                  <label class="e-float-text" for="PhoneNo">Phone No</label>
                 </div>
-                <div class="text-danger" *ngIf="(supplierForm.controls['Phone_No'].invalid && supplierForm.controls['Phone_No'].touched) || (supplierForm.controls['Phone_No'].invalid && showAllErrors)">
+                <div class="e-error" *ngIf="PhoneNo.errors?.required && PhoneNo.touched">
                   *Phone Number Required!
                 </div>
               </div>
@@ -55,12 +57,12 @@
             <!-- country field -->
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
               <div class="form-group template">
-                <div class="e-float-input">
+                <div class="e-float-input" [ngClass]="{'e-success': supplierForm.controls.Country?.valid, 'e-error': supplierForm.controls.Country?.invalid}">
                   <input type="text" id="Country" name="Country" class="required" formControlName="Country" required>
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="Country">Country</label>
                 </div>
-                <div class="text-danger" *ngIf="(supplierForm.controls['Country'].invalid && supplierForm.controls['Country'].touched) || (supplierForm.controls['Country'].invalid && showAllErrors)">
+                <div class="e-error" *ngIf="Country.errors?.required && Country.touched">
                   *Country Required!
                 </div>
               </div>
@@ -71,25 +73,25 @@
             <!-- city field -->
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
               <div class="form-group template">
-                <div class="e-float-input">
+                <div class="e-float-input" [ngClass]="{'e-success': supplierForm.controls.City?.valid, 'e-error': supplierForm.controls.City?.invalid}">
                   <input type="text" id="City" name="City" formControlName="City" required>
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="City">City</label>
                 </div>
-                <div class="text-danger" *ngIf="(supplierForm.controls['City'].invalid && supplierForm.controls['City'].touched) || (supplierForm.controls['City'].invalid && showAllErrors)">
+                <div class="e-error" *ngIf="City.errors?.required && City.touched">
                   *City Required!
                 </div>
               </div>
             </div>
             <!-- subcity field -->
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
-              <div class="form-group template">
+              <div class="form-group template" [ngClass]="{'e-success': supplierForm.controls.SubCity?.valid, 'e-error': supplierForm.controls.SubCity?.invalid}">
                 <div class="e-float-input">
                   <input type="text" id="Subcity" name="Subcity"  formControlName="SubCity" required>
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="Subcity">Subcity</label>
                 </div>
-                <div class="text-danger" *ngIf="(supplierForm.controls['SubCity'].invalid && supplierForm.controls['SubCity'].touched) || (supplierForm.controls['SubCity'].invalid && showAllErrors)">
+                <div class="e-error" *ngIf="SubCity.errors?.required && SubCity.touched">
                   *Sub-City Required!
                 </div>
               </div>
@@ -105,27 +107,47 @@
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="House_No">House Number</label>
                 </div>
-                <div class="text-danger" *ngIf="(supplierForm.controls['HouseNo'].invalid && supplierForm.controls['HouseNo'].touched) || (supplierForm.controls['HouseNo'].invalid && showAllErrors)">
-                  *House-No is Required!
-                </div>
               </div>
             </div>
             <!-- Postal code field -->
             <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
               <div class="form-group template">
-                <div class="e-float-input">
+                <div class="e-float-input" [ngClass]="{'e-success': supplierForm.controls.PostalCode?.valid, 'e-error': supplierForm.controls.PostalCode?.invalid}">
                   <input type="text" id="Postal_Code" name="Postal_Code" class="required" formControlName="PostalCode"
                     required>
                   <span class="e-float-line"></span>
                   <label class="e-float-text" for="Postal_Code">Postal Code</label>
                 </div>
-                <div class="text-danger" *ngIf="(supplierForm.controls['PostalCode'].invalid && supplierForm.controls['PostalCode'].touched) || (supplierForm.controls['PostalCode'].invalid && showAllErrors)">
+                <div class="e-error" *ngIf="PostalCode.errors?.required && PostalCode.touched">
                   *Postal-Code is Required!
                 </div>
               </div>
             </div>
 
           </div>
+
+   <div class="row">
+      <!-- Balance  field -->
+      <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+          <div class="form-group template">
+            <div class="e-float-input" [ngClass]="{'e-success': supplierForm.controls.Balance?.valid, 'e-error': supplierForm.controls.Balance?.invalid}">
+              <input type="text" id="Balance" name="Balance" formControlName="Balance" required>
+              <span class="e-float-line"></span>
+              <label class="e-float-text" for="Balance">Balance</label>
+            </div>
+            <div class="e-error" *ngIf="Balance.errors?.required && Balance.touched">
+              *Balance is Required!
+            </div>
+          </div>
+        </div>
+   <!-- Active field -->
+    <div class="col-xs-3 col-sm-3 col-lg-3 col-md-3">
+      <label><b>Active?</b></label>
+      &nbsp;
+      <ejs-switch  name="active"></ejs-switch>
+  </div>
+</div>
+
           <div class="add" [hidden]="BankAccounts.controls.length > 0">
             <label>Supplier Account</label>
             &nbsp;
@@ -144,7 +166,7 @@
                     <span class="e-float-line"></span>
                     <label class="e-float-text" for="Bank_Name">Bank Name</label>
                   </div>
-                  <div class="text-danger"  *ngIf="(account.controls['BankName'].invalid && account.controls['BankName'].touched) || (account.controls['BankName'].invalid && showAllErrors)">
+                  <div class="e-error"  *ngIf="(account.controls['BankName'].invalid && account.controls['BankName'].touched) || (account.controls['BankName'].invalid && showAllErrors)">
                     *Bank Name is Required!
                   </div>
                 </div>
@@ -158,7 +180,7 @@
                     <span class="e-float-line"></span>
                     <label class="e-float-text" for="Account_Number">Account Number</label>
                   </div>
-                  <div class="text-danger" *ngIf="(account.controls['AccountNumber'].invalid && account.controls['AccountNumber'].touched) || (account.controls['AccountNumber'].invalid && showAllErrors)">
+                  <div class="e-error" *ngIf="(account.controls['AccountNumber'].invalid && account.controls['AccountNumber'].touched) || (account.controls['AccountNumber'].invalid && showAllErrors)">
                     *Account Number is Required!
                   </div>
                 </div>

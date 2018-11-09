@@ -5,7 +5,7 @@ import { SuppliersComponent } from './suppliers.component';
 import { SuppliersService } from './../suppliers.service';
 import { SuppliersGridComponent } from './../suppliers-grid/suppliers-grid.component';
 import { SuppliersRoutingModule } from './../suppliers-routing/suppliers-routing.module';
-import { ButtonModule, RadioButtonModule } from '@syncfusion/ej2-ng-buttons';
+import { ButtonModule, RadioButtonModule, SwitchModel, SwitchModule } from '@syncfusion/ej2-ng-buttons';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GridModule, ExcelExportService } from '@syncfusion/ej2-ng-grids';
 import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
@@ -35,7 +35,7 @@ import {
     ButtonModule,
     RadioButtonModule,
     DatePickerModule,
-    GridModule
+    GridModule, SwitchModule
   ],
   declarations: [
     SuppliersComponent,
