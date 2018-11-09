@@ -60,5 +60,6 @@ export class CalanderPeriod {
   Start: string;
   End: string;
   Active: boolean;
+  IsBegining: boolean;
 
 }

@@ -4,7 +4,7 @@ import { ButtonComponent } from '@syncfusion/ej2-ng-buttons';
 import { RangeEventArgs } from '@syncfusion/ej2-calendars';
 import { CalanderPeriod, CalanderService } from '../calander.service';
 import { ActivatedRoute } from '@angular/router';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-calander-form',
@@ -23,9 +23,9 @@ export class CalanderFormComponent implements OnInit {
   @ViewChild('statusBtn') statusBtn: ButtonComponent;
 
   constructor(private formBuilder: FormBuilder,
-              private calanderPeriodAPI: CalanderService,
-            private activatedRoute: ActivatedRoute,
-          private location: Location) {
+    private calanderPeriodAPI: CalanderService,
+    private activatedRoute: ActivatedRoute,
+    private location: Location) {
     this.createForm();
 
   }
@@ -73,7 +73,8 @@ export class CalanderFormComponent implements OnInit {
       calanders: this.formBuilder.array([
         this.formBuilder.group({
           order: ['', Validators.required],
-          active: [false]
+          active: [true],
+          IsBegining: [false]
         })])
 
     });
@@ -82,7 +83,8 @@ export class CalanderFormComponent implements OnInit {
   addPeriod() {
     this.calanders.push(this.formBuilder.group({
       order: ['', Validators.required],
-      active: [false]
+      active: [false],
+      IsBegining: [false]
     }));
   }
 
@@ -113,17 +115,18 @@ export class CalanderFormComponent implements OnInit {
       this.calanderList.push({
         Start: el.value.order[0],
         End: el.value.order[1],
-        Active: el.value.active
+        Active: el.value.active,
+        IsBegining: el.value.IsBegining
       });
     });
 
     this.calanderPeriodAPI.createCalanderPeriod(this.calanderList)
-              .subscribe((result: CalanderPeriod[]) => {
-                                                  alert('Calander Periods Created Successfully');
-                                                  this.location.back();
-                                                  },
-                        (error: HttpErrorResponse) =>{
-                          alert(error);
-                        });
+      .subscribe((result: CalanderPeriod[]) => {
+        alert('Calander Periods Created Successfully');
+        this.location.back();
+      },
+        (error: HttpErrorResponse) => {
+          alert(error);
+        });
   }
 }

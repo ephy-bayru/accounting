@@ -9,5 +9,6 @@ namespace Smart_Accounting.Application.CalendarPeriods.Models
         public DateTime Start;
         public DateTime End;
         public sbyte Active ;
+        public sbyte IsBegining;
     }
 }
