@@ -7,7 +7,5 @@ describe('DepositModule', () => {
     depositModule = new DepositModule();
   });
 
-  it('should create an instance', () => {
-    expect(depositModule).toBeTruthy();
-  });
+
 });

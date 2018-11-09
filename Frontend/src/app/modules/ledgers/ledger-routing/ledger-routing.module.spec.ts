@@ -7,7 +7,5 @@ describe('LedgerRoutingModule', () => {
     ledgerRoutingModule = new LedgerRoutingModule();
   });
 
-  it('should create an instance', () => {
-    expect(ledgerRoutingModule).toBeTruthy();
-  });
+
 });
