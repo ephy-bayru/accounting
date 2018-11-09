@@ -17,5 +17,7 @@ namespace Smart_Accounting.Application.CalendarPeriods.Models {
         public DateTime End{get; set;}
         [Required]
         public sbyte active {get; set;}
+        [Required]
+        public  sbyte isBegining {get; set;}
     }
 }

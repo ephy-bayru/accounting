@@ -10,14 +10,13 @@ namespace Smart_Accounting.Application.CalendarPeriods.Factorys {
             List<CalendarViewModel> calendars = new List<CalendarViewModel> ();
 
             foreach (var item in calendar) {
-                CalendarViewModel cal = new CalendarViewModel() {
+                CalendarViewModel cal = new CalendarViewModel () {
                     Id = item.Id,
                     Start = item.Start,
                     End = item.End
-
                 };
 
-                calendars.Add(cal);
+                calendars.Add (cal);
             }
 
             return calendars;
@@ -30,6 +29,8 @@ namespace Smart_Accounting.Application.CalendarPeriods.Factorys {
                 CalendarPeriod cal = new CalendarPeriod ();
                 cal.Start = item.Start;
                 cal.End = item.End;
+                cal.Active = item.active;
+                cal.IsBegining = item.isBegining;
                 calendars.Add (cal);
             }
 
@@ -38,11 +39,8 @@ namespace Smart_Accounting.Application.CalendarPeriods.Factorys {
         }
 
         public CalendarPeriod UpdateCalander (CalendarPeriod oldCalendar, UpdatedCalanderDto calendar) {
-            
-            
             oldCalendar.Start = calendar.Start;
             oldCalendar.End = calendar.End;
-
             return oldCalendar;
 
         }
