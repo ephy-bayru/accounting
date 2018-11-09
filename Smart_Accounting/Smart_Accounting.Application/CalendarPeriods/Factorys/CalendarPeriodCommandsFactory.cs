@@ -1,3 +1,12 @@
+/*
+ * @CreateTime: Nov 9, 2018 4:58 PM
+ * @Author:  Mikael Araya
+ * @Contact: MikaelAraya12@gmail.com
+ * @Last Modified By:  Mikael Araya
+ * @Last Modified Time: Nov 9, 2018 5:07 PM
+ * @Description: Converts Calendar Period Dto To Calendar period Domain Object 
+ *  and vice versa
+ */
 using System.Collections.Generic;
 using Smart_Accounting.Application.CalendarPeriods.Interfaces;
 using Smart_Accounting.Application.CalendarPeriods.Models;
@@ -13,7 +22,9 @@ namespace Smart_Accounting.Application.CalendarPeriods.Factorys {
                 CalendarViewModel cal = new CalendarViewModel () {
                     Id = item.Id,
                     Start = item.Start,
-                    End = item.End
+                    End = item.End,
+                    IsBegining = (sbyte)item.IsBegining,
+                    Active = item.Active
                 };
 
                 calendars.Add (cal);
@@ -41,6 +52,8 @@ namespace Smart_Accounting.Application.CalendarPeriods.Factorys {
         public CalendarPeriod UpdateCalander (CalendarPeriod oldCalendar, UpdatedCalanderDto calendar) {
             oldCalendar.Start = calendar.Start;
             oldCalendar.End = calendar.End;
+            oldCalendar.IsBegining = calendar.isBegining;
+            oldCalendar.Active = calendar.active;
             return oldCalendar;
 
         }
