@@ -14,6 +14,7 @@ namespace Smart_Accounting.Application.AccountCharts.Models {
         public string AccountId { get; set; }
         public string ParentAccount { get; set; }
         public string AccountName { get; set; }
+        public sbyte? Active {get; set;}
         public double TotalAmount {get; set;}
         public DateTime? DateAdded {get; set;}
         public DateTime? DateUpdated {get; set;}

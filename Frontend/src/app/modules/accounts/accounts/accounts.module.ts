@@ -8,6 +8,11 @@ import { AccountsRoutingModule } from '../accounts-routing/accounts-routing.modu
 import { AccountsComponent } from './accounts.component';
 import { SwitchModule, ButtonModule } from '@syncfusion/ej2-ng-buttons';
 import { AccountsService } from '../accounts.service';
+import { AggregateService, SortService, FilterService, GroupService,
+  EditService, ExcelExportService, ColumnChooserService, ColumnMenuService,
+  DetailRowService, SearchService, PdfExportService, ReorderService,
+  CommandColumnService, ToolbarService, ResizeService } from '@syncfusion/ej2-ng-grids';
+import { CompanyService } from '../../company/company.service';
 
 @NgModule({
   imports: [
@@ -20,6 +25,21 @@ import { AccountsService } from '../accounts.service';
     AccountsRoutingModule
   ],
   declarations: [AccountsComponent],
-  providers: [AccountsService]
+  providers: [AccountsService, AggregateService,
+    SortService,
+    FilterService,
+    GroupService,
+    EditService,
+    ExcelExportService,
+    ColumnChooserService,
+    ColumnMenuService,
+    DetailRowService,
+    SearchService,
+    PdfExportService,
+    ReorderService,
+    CommandColumnService,
+    CompanyService,
+    ToolbarService,
+    ResizeService]
 })
 export class AccountsModule { }

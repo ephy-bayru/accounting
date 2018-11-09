@@ -1,26 +1,34 @@
 <div class="e-card">
 
 
-  <ejs-grid [dataSource]='data' #grid height="200px" [allowExcelExport]="true" id='accounts' [toolbar]='toolbarOptions'
+  <ejs-grid [dataSource]='data' #grid  [allowExcelExport]="true" id='accounts' [toolbar]='toolbarOptions'
     [allowPaging]="true" [pageSettings]='pageSettings' [allowFiltering]="true" [allowSorting]="true" [allowGrouping]="true"
     [allowResizing]='true' [selectionSettings]='selectionOptions' (rowSelected)='rowSelected($event)' [groupSettings]='groupOptions' allowFiltering='true'
     allowTextWrap='true'  [editSettings]='editSettings'
     [selectionSettings]='selectionOptions' [allowPdfExport]='true' (toolbarClick)='toolbarClick($event)'
-    [filterSettings]="filterOptions">
+    [filterSettings]="filterOptions" [allowGrouping]="true" [childGrid]="childGrid"  (dataBound)="onDataBound()">
     <e-columns>
       <e-column field="AccountId" textAlign="left" headerText="ID" isPrimaryKey="true" type="number" width='30' editable="false" filterable="false"
         groupable="false">
       </e-column>
-      <e-column field="AccountCode" textAlign="left" headerText="Parent" isPrimaryKey="false" type="string" editType="textbox" filterable="true"
+      <e-column field="ParentAccount" textAlign="left" headerText="Parent" isPrimaryKey="false" type="string" editType="textbox" filterable="true"
         editable="true" groupable="false" width='50'></e-column>
-        <e-column field="Name" textAlign="left" headerText="Name" isPrimaryKey="false" type="string" editType="textbox" filterable="true"
+        <e-column field="AccountName" textAlign="left" headerText="Name" isPrimaryKey="false" type="string" editType="textbox" filterable="true"
       editable="true" groupable="false"  width='70'></e-column>
-      <e-column field="Active" textAlign="left" headerText="Active" isPrimaryKey="false" type="bool" editType="booleanedit" filterable="true"
+      <e-column field="TotalAmount" textAlign="left" headerText="Amount" isPrimaryKey="false" type="string" editType="textbox" filterable="true"
         editable="true" groupable="true" width='30'></e-column>
-      <e-column field="AccountType"  textAlign="left" headerText="TYPE" isPrimaryKey="false" type="string" editType="textbox" filterable="true"
+      <e-column field="Active"  textAlign="left" headerText="Active" isPrimaryKey="false" type="bool" editType="booleanedit" filterable="true"
         editable="true" groupable="true" width='30'></e-column>
-        <e-column id='commands' headerText='Remove' textAlign="left"  width=30 [commands]='commands'></e-column>
     </e-columns>
+    <e-aggregates>
+      <e-aggregate>
+              <e-columns>
+                  <e-column field="TotalAmount" type="sum" format="C2">
+                      <ng-template #groupFooterTemplate let-data>Sum: {{data.sum}}</ng-template>
+                  </e-column>
+              </e-columns>
+      </e-aggregate>
+  </e-aggregates>
 
   </ejs-grid>
 
