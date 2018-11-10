@@ -109,7 +109,6 @@ export class CustomerComponent implements OnInit {
     customerData.Balance = data.Balance;
     customerData.CreditLimit = data.CreditLimit;
     customerData.Active = data.Active;
-    customerData.Blocked = data.blocked;
 
     this.BankAccounts.controls.forEach(element => {
       const account: CustomerAccount = new CustomerAccount();

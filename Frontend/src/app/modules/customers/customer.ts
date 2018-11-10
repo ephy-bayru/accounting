@@ -8,12 +8,9 @@ export class Customer {
     SubCity: string;
     HouseNo: string;
     PostalCode: string;
-    Date_Created: Date;
-    Date_Updated: Date;
     CreditLimit: number;
     Balance: number;
     Active: number;
-    Blocked: number;
     BankAccounts: CustomerAccount[] = [];
 }
 

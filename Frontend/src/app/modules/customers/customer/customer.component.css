@@ -26,3 +26,6 @@
 #control_wrapper {
     margin: 25px auto;
 }
+.e-add-icon::before{
+    content: "\e823"
+}

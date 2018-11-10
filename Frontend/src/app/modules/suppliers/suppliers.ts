@@ -10,9 +10,12 @@ export class Suppliers {
     PostalCode: string;
     Balance: number;
     Active: number;
-    Date_Created: Date;
-    Date_Updated: Date;
     BankAccounts: SupplierAccount[] = [];
+
+
+    constructor(values: Object = {}) {
+        Object.assign(this, values);
+      }
 }
 export class SupplierAccount {
     AccountNumber: string;

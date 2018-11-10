@@ -7,5 +7,5 @@ export class Users {
     Password: string ;
     Confirm_Password: string ;
     Gender: string;
-    Birth_Date: Date;
+    Birth_Date: number;
 }

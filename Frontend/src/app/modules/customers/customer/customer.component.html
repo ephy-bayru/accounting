@@ -200,7 +200,7 @@
                 </div>
               </div>
               <div class="btns col-xs-12 col-sm-2">
-                <button type="button" ejs-button class="e-round e-info e-small " iconCss="e-icons e-plus-icon"
+                <button type="button" ejs-button class="e-round e-info e-small " iconCss="e-icons e-add-icon" [isPrimary]="true"
                   [disabled]="BankAccounts?.invalid" *ngIf="last" (click)="addAccount()"></button>
                 &nbsp;
                 <button type="button" ejs-button class="e-round e-danger e-small e-icons e-times-icon" (click)="removeAccount(i)"

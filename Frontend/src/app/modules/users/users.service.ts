@@ -60,18 +60,18 @@ export class UsersService {
                 );
   }
 
-  userData(userForm: Users): URLSearchParams {
-    const user = new URLSearchParams();
-      user.set('FirstName', userForm.FirstName);
-      user.set('LastName', userForm.LastName);
-      user.set('Email', userForm.Email);
-      user.set('PhoneNo', userForm.Phone_No);
-      user.set('Password', userForm.Password);
-      user.set('Confirm_Password', userForm.Confirm_Password);
-      user.set('Gender', userForm.Gender);
-      user.set('Birth_Date', userForm.Birth_Date.toISOString());
-    return user;
-  }
+  // userData(userForm: Users): URLSearchParams {
+  //   const user = new URLSearchParams();
+  //     user.set('FirstName', userForm.FirstName);
+  //     user.set('LastName', userForm.LastName);
+  //     user.set('Email', userForm.Email);
+  //     user.set('PhoneNo', userForm.Phone_No);
+  //     user.set('Password', userForm.Password);
+  //     user.set('Confirm_Password', userForm.Confirm_Password);
+  //     user.set('Gender', userForm.Gender);
+  //     user.set('Birth_Date', userForm.Birth_Date.toISOString());
+  //   return user;
+  // }
 
   private extractData(res: Response) {
     const body = res.json();

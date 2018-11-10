@@ -106,7 +106,7 @@ namespace Smart_Accounting.API.NUnitTest.Supplier
             {
                 FullName = "AppDiv",
                 Email = "e@g.com",
-                Phone_No = "0920208549",
+                PhoneNo = "0920208549",
             };
             MockISupplierCommand.Setup(emp => emp.Create(sply));
 
@@ -134,7 +134,7 @@ namespace Smart_Accounting.API.NUnitTest.Supplier
             {
                 FullName = "AppDiv",
                 Email = "e@g.com",
-                Phone_No = "0920208549",
+                PhoneNo = "0920208549",
             };
 
             MockISupplierCommand.Setup(emply => emply.Create(sply));
@@ -155,7 +155,7 @@ namespace Smart_Accounting.API.NUnitTest.Supplier
             {
                 FullName = "ephrem",
                 Email = "e@g.com",
-                Phone_No = "0920208549",
+                PhoneNo = "0920208549",
             };
             MockISupplierCommand.Setup(cmd => cmd.Update(sply, updateSupplier)).Returns(true);
             supplierController = new SuppliersController(
@@ -177,7 +177,7 @@ namespace Smart_Accounting.API.NUnitTest.Supplier
                 id = 1,
                 FullName = "ephrem",
                 Email = "e@g.com",
-                Phone_No = "0920208549",
+                PhoneNo = "0920208549",
             };
 
             UpdateSupplierModel updateSupplier = new UpdateSupplierModel()

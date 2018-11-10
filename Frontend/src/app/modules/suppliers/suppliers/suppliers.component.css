@@ -11,6 +11,10 @@
     text-align: center;
 }
 
+.e-add-icon::before{
+    content: "\e823"
+}
+
 .btn {
     padding-left: 60%;
     margin-left: 15%;

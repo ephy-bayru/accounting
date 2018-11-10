@@ -9,6 +9,7 @@ import { ButtonModule, RadioButtonModule, SwitchModel, SwitchModule } from '@syn
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GridModule, ExcelExportService } from '@syncfusion/ej2-ng-grids';
 import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
+import { SuppliersMockService } from './../suppliers-mock.service';
 import {
   PageService,
   SortService,
@@ -43,6 +44,7 @@ import {
   ],
   providers: [
     SuppliersService,
+    SuppliersMockService,
     SortService,
     FilterService,
     GroupService,
