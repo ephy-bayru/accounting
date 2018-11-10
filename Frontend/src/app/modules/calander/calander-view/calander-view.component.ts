@@ -5,13 +5,14 @@ import { DataManager, WebApiAdaptor, UrlAdaptor } from '@syncfusion/ej2-data';
 import {
   GroupSettingsModel, FilterSettingsModel, ToolbarItems,
   TextWrapSettingsModel, EditSettingsModel, SelectionSettingsModel,
-  PageSettingsModel, CommandModel, ExcelExportProperties, EditEventArgs, RowDeselectEventArgs
+  PageSettingsModel, CommandModel, ExcelExportProperties, EditEventArgs, RowDeselectEventArgs, Column, IRow
 } from '@syncfusion/ej2-grids';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { CalanderService, CalanderPeriod } from '../calander.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { SmartAppConfigService } from '../../../smart-app-config.service';
+import { closest } from '@syncfusion/ej2-base';
 
 @Component({
   selector: 'app-calander-view',
@@ -65,33 +66,82 @@ export class CalanderViewComponent implements OnInit {
     ];
     this.commands = [
       { type: 'Edit', buttonOption: { cssClass: 'e-flat', iconCss: 'e-edit e-icons', click: this.editCalender.bind(this) } },
-      { type: 'Delete', buttonOption: { cssClass: 'e-flat', iconCss: 'e-delete e-icons' } }];
+      { type: 'Delete', buttonOption: { cssClass: 'e-flat', iconCss: 'e-delete e-icons', click: this.deletePeriod.bind(this) } }];
     this.pageSettings = { pageSize: 5 };  // initial page row size for the grid
     this.editSettings = { showDeleteConfirmDialog: true, allowEditing: false, allowAdding: true, allowDeleting: true, mode: 'Dialog' };
   }
+  /*
+  called when user clicks
+  deletes the requested row of period when used clicks
+  */
+  deletePeriod(args: any) {
+    const rowObj: IRow<Column> = this.grid.getRowObjectFromUID(closest(<Element>args.target, '.e-row').getAttribute('data-uid'));
+    const data: Object = rowObj.data;
+
+    this.calanderService.deleteCalanderPeriod(data['Id'])
+      .subscribe((result: boolean) => alert('Period Deleted Successfuly'),
+        this.handleError
+      );
+  }
 
   editCalender(data) {
-    console.log(data);
     this.router.navigate(['calanders/update']);
   }
-  handleError(error: HttpErrorResponse) {
-    console.log(error);
-  }
+
 
   // Click handler for when the toolbar is cliked
   toolbarClick(args: ClickEventArgs): void {
-    if (args.item.id === 'calander_pdfexport') {
-      this.grid.pdfExport(this.appConfig.PDF_EXPORT_PROPERTY);   // when pdf export call grid prdfexport function
-    } else if (args.item.id === 'calander_excelexport') {
-      this.grid.excelExport(this.appConfig.EXCEL_EXPORT_PROPERTY);        // when excel export call grid excelexport function
-    } else if (args.item.id === 'calander_add') {
-      this.router.navigate(['calanders/new']);   // when user click add route to the calander form
-    } else if (args.item.id === 'calander_edit') {
-      this.router.navigate(['calanders/update']);
-    } else if (args.item.id === 'calander_print') {
-      this.grid.print();      // when the user click print print the current page
+
+    switch (args.item.id) {
+      case 'calander_pdfexport':
+        this.grid.pdfExport(this.appConfig.PDF_EXPORT_PROPERTY);   // when pdf export call grid prdfexport function
+        break;
+      case 'calander_excelexport':
+        this.grid.excelExport(this.appConfig.EXCEL_EXPORT_PROPERTY);        // when excel export call grid excelexport function
+        break;
+      case 'calander_add':
+        this.router.navigate(['calanders/new']);   // when user click add route to the calander form
+        break;
+      case 'calander_edit':
+        this.router.navigate(['calanders/update']);
+        break;
+      case 'calander_print':
+        this.grid.print();      // when the user click print print the current page
+        break;
+      default:
+        break;
     }
 
+  }
+
+
+  /*
+  Handeles Http Error Responces
+  */
+  private handleError(error: HttpErrorResponse) {
+
+    if (error.error instanceof ErrorEvent) { // check if the error occured on the client side
+      console.error(`Client Side Error Occured`);
+    } else {
+      /* if error occured on server side
+      check the status code and display appropriate message
+      */
+      switch (error.status) {
+        case 423: // check if request resource is deletable
+          alert(`Can't delete period because it has been linked with other part of system data`);
+          break;
+        case 404: // check if the request resource was found
+          alert('Period With Id Was Not Found');
+          break;
+        case 422:
+        alert('Date Provided Overlaps with existing period date on the system');
+        break;
+        default:
+          alert('Unknow Error Occured Please Try again Late');
+          break;
+      }
+
+    }
 
   }
 

@@ -42,6 +42,7 @@ namespace Smart_Accounting.Application.CalendarPeriods.Queries {
                             Start = calendar.Start,
                             End = calendar.End,
                             Active = calendar.Active,
+                            IsBegining = calendar.IsBegining,
                             Closed = calendar.Closed,
                             DateAdded = calendar.DateAdded,
                             DateUpdated = calendar.DateUpdated

@@ -25,27 +25,18 @@ export class CalanderService {
   createCalanderPeriod(newCalanderPeriod: CalanderPeriod[]): Observable<CalanderPeriod[]> {
     const config = { headers: new HttpHeaders().set('Content-Type', 'application/json') };
     return this.httpClient.post<CalanderPeriod[]>(`${this.url}`, JSON.stringify(newCalanderPeriod),
-    config )
-      .pipe(
-        catchError(this.handleError)
-      );
+    config );
   }
 
   // Update a single instance of CalanderPeriod record and returns a boolean depending on the success or
   // failure of the operation
   updateCalanderPeriod(id: number, updatedCalanderPeriod: CalanderPeriod): Observable<boolean> {
-    return this.httpClient.put<boolean>(`${this.url}/${id}`, updatedCalanderPeriod)
-      .pipe(
-        catchError(this.handleError)
-      );
+    return this.httpClient.put<boolean>(`${this.url}/${id}`, updatedCalanderPeriod);
   }
 
   // deletes a single instance of CalanderPeriod record and returns boolean based on the outcome of the operation
   deleteCalanderPeriod(id: number): Observable<boolean> {
-    return this.httpClient.delete<boolean>(`${this.url}/${id}`)
-      .pipe(
-        catchError(this.handleError)
-      );
+    return this.httpClient.delete<boolean>(`${this.url}/${id}`);
   }
 
   private handleError(error: Response | any) {

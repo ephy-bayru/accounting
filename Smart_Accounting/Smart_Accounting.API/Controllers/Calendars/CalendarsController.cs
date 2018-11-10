@@ -3,13 +3,15 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Oct 13, 2018 10:48 AM
+ * @Last Modified Time: Nov 10, 2018 11:42 AM
  * @Description: Modify Here, Please 
  */
 
 using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Smart_Accounting.Application.CalendarPeriods.Interfaces;
 using Smart_Accounting.Application.CalendarPeriods.Models;
 using Smart_Accounting.Application.Interfaces;
@@ -25,34 +27,38 @@ namespace Smart_Accounting.API.Controllers.Calendarss {
         private readonly ICalendarPeriodsCommandsFactory _factory;
         private readonly ICalendarPeriodQueries _calendarQuery;
         private readonly IResponseFactory _responseFactory;
+        private readonly ILogger<CalendarsController> _logger;
+
         public CalendarsController (ICalendarPeriodQueries calendarQuery,
             ICalendarPeriodsCommands calendarCommand,
             ICalendarPeriodsCommandsFactory factory,
-            IResponseFactory response) {
+            IResponseFactory response,
+            ILogger<CalendarsController> logger) {
             _calendarQuery = calendarQuery;
             _calendarCommand = calendarCommand;
             _factory = factory;
             _responseFactory = response;
+            _logger = logger;
         }
 
         [HttpGet]
         [ProducesResponseType (200)]
         public IActionResult GetAllCalendarPeriod (string type = "ALL") {
             Object calanders;
-switch (type.ToUpper())
-{
+            switch (type.ToUpper ()) {
 
-    case "ACTIVE" : calanders = _calendarQuery.getActivePeriod();
-    break;
-    case "OPEN" : calanders = _calendarQuery.GetOpenPeriods();
-    break;
+                case "ACTIVE":
+                    calanders = _calendarQuery.getActivePeriod ();
+                    break;
+                case "OPEN":
+                    calanders = _calendarQuery.GetOpenPeriods ();
+                    break;
 
-    
-    default: calanders = _calendarQuery.GetAll (); 
-    break;
-}
+                default:
+                    calanders = _calendarQuery.GetAll ();
+                    break;
+            }
 
-        
             return Ok (calanders);
         }
 
@@ -141,6 +147,7 @@ switch (type.ToUpper())
         [HttpDelete ("{id}")]
         [ProducesResponseType (204)]
         [ProducesResponseType (404)]
+        [ProducesResponseType (423)] // Locked (The resource that is being accessed is locked) 
         [ProducesResponseType (500)]
         public IActionResult DeleteCalendarPeriod (uint id) {
 
@@ -148,19 +155,23 @@ switch (type.ToUpper())
                 var calendar = _calendarQuery.GetById (id);
                 // Get the Calander Specified by the Id
 
-                if (calendar != null) {
-                    // if calander exists
-                    if (_calendarCommand.DeleteCalendar (calendar)) {
-                        return StatusCode (204);
-                    } else {
-                        return StatusCode (500, "Unknown Error Occured ");
-                    }
-                } else {
-                    return StatusCode (404);
+                if (calendar == null) {
+                    return StatusCode (404); // if calander exists
                 }
 
-            } catch (Exception) {
-                return StatusCode (500, "Unknown Error Occured try again later");
+                var result = _calendarCommand.DeleteCalendar (calendar);
+                if (result == true) {
+                    return StatusCode (204);
+                } else {
+                    return StatusCode (500, "Unknown Error Occured ");
+                }
+
+            } catch (DbUpdateException e) {
+                _logger.LogInformation (423, e, e.Message);
+                return StatusCode (423, $"Selected Period with id: {id} Can not be deleted because it has been used on other parts of the system  ");
+            } catch (Exception e) {
+                _logger.LogError (500, e, e.Message);
+                return StatusCode (500, "Unknown Error Occured, Please Try again later ");
             }
 
         }

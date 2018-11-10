@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Nov 9, 2018 5:07 PM
+ * @Last Modified Time: Nov 10, 2018 9:58 AM
  * @Description: Converts Calendar Period Dto To Calendar period Domain Object 
  *  and vice versa
  */
@@ -23,8 +23,8 @@ namespace Smart_Accounting.Application.CalendarPeriods.Factorys {
                     Id = item.Id,
                     Start = item.Start,
                     End = item.End,
-                    IsBegining = (sbyte)item.IsBegining,
-                    Active = item.Active
+                    IsBegining = (item.IsBegining == 1) ? true : false,
+                    Active = (item.Active == 1) ? true : false
                 };
 
                 calendars.Add (cal);

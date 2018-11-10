@@ -124,9 +124,37 @@ export class CalanderFormComponent implements OnInit {
       .subscribe((result: CalanderPeriod[]) => {
         alert('Calander Periods Created Successfully');
         this.location.back();
-      },
-        (error: HttpErrorResponse) => {
-          alert(error);
-        });
+      }, this.handleError);
+  }
+
+
+  /*
+  Handeles Http Error Responces
+  */
+  private handleError(error: HttpErrorResponse) {
+
+    if (error.error instanceof ErrorEvent) { // check if the error occured on the client side
+      console.error(`Client Side Error Occured`);
+    } else {
+      /* if error occured on server side
+      check the status code and display appropriate message
+      */
+      switch (error.status) {
+        case 423: // check if request resource is deletable
+          alert(`Can't delete period because it has been linked with other part of system data`);
+          break;
+        case 404: // check if the request resource was found
+          alert('Period With Id Was Not Found');
+          break;
+        case 422:
+          alert(JSON.stringify(error.error));
+          break;
+        default:
+          alert('Unknow Error Occured Please Try again Late');
+          break;
+      }
+
+    }
+
   }
 }
