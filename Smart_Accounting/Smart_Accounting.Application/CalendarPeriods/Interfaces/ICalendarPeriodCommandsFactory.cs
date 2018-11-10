@@ -9,6 +9,7 @@ namespace Smart_Accounting.Application.CalendarPeriods.Interfaces {
         IEnumerable<CalendarPeriod> NewCalendar (IEnumerable<NewCalendarPeriodDto> calendar);
         CalendarPeriod UpdateCalander(CalendarPeriod old, UpdatedCalanderDto updatedCalander);
         IEnumerable<CalendarViewModel> CalendarView (IEnumerable<CalendarPeriod> calendar);
+
         //object UpdateCalander(CalendarPeriod old, UpdateCalendarModel updateCalendar);
     }
 }

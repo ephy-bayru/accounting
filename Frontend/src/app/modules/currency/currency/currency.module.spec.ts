@@ -7,7 +7,4 @@ describe('CurrencyModule', () => {
     currencyModule = new CurrencyModule();
   });
 
-  it('should create an instance', () => {
-    expect(currencyModule).toBeTruthy();
-  });
 });

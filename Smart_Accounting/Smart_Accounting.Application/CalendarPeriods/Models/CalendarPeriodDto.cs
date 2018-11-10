@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Sep 24, 2018 9:24 AM
+ * @Last Modified Time: Nov 9, 2018 4:59 PM
  * @Description: Modify Here, Please 
  */
 using System;
@@ -17,5 +17,7 @@ namespace Smart_Accounting.Application.CalendarPeriods.Models {
         public DateTime End{get; set;}
         [Required]
         public sbyte active {get; set;}
+        [Required]
+        public  sbyte? isBegining {get; set;}
     }
 }

@@ -1,3 +1,12 @@
+/*
+ * @CreateTime: Nov 9, 2018 4:58 PM
+ * @Author:  Mikael Araya
+ * @Contact: MikaelAraya12@gmail.com
+ * @Last Modified By:  Mikael Araya
+ * @Last Modified Time: Nov 10, 2018 9:58 AM
+ * @Description: Converts Calendar Period Dto To Calendar period Domain Object 
+ *  and vice versa
+ */
 using System.Collections.Generic;
 using Smart_Accounting.Application.CalendarPeriods.Interfaces;
 using Smart_Accounting.Application.CalendarPeriods.Models;
@@ -10,14 +19,15 @@ namespace Smart_Accounting.Application.CalendarPeriods.Factorys {
             List<CalendarViewModel> calendars = new List<CalendarViewModel> ();
 
             foreach (var item in calendar) {
-                CalendarViewModel cal = new CalendarViewModel() {
+                CalendarViewModel cal = new CalendarViewModel () {
                     Id = item.Id,
                     Start = item.Start,
-                    End = item.End
-
+                    End = item.End,
+                    IsBegining = (item.IsBegining == 1) ? true : false,
+                    Active = (item.Active == 1) ? true : false
                 };
 
-                calendars.Add(cal);
+                calendars.Add (cal);
             }
 
             return calendars;
@@ -30,6 +40,8 @@ namespace Smart_Accounting.Application.CalendarPeriods.Factorys {
                 CalendarPeriod cal = new CalendarPeriod ();
                 cal.Start = item.Start;
                 cal.End = item.End;
+                cal.Active = item.active;
+                cal.IsBegining = item.isBegining;
                 calendars.Add (cal);
             }
 
@@ -38,11 +50,10 @@ namespace Smart_Accounting.Application.CalendarPeriods.Factorys {
         }
 
         public CalendarPeriod UpdateCalander (CalendarPeriod oldCalendar, UpdatedCalanderDto calendar) {
-            
-            
             oldCalendar.Start = calendar.Start;
             oldCalendar.End = calendar.End;
-
+            oldCalendar.IsBegining = calendar.isBegining;
+            oldCalendar.Active = calendar.active;
             return oldCalendar;
 
         }

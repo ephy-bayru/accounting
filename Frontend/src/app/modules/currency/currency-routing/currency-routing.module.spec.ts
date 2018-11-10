@@ -7,7 +7,5 @@ describe('CurrencyRoutingModule', () => {
     currencyRoutingModule = new CurrencyRoutingModule();
   });
 
-  it('should create an instance', () => {
-    expect(currencyRoutingModule).toBeTruthy();
-  });
+
 });

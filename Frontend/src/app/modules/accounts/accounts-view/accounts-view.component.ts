@@ -3,7 +3,7 @@ import { DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
 import {
   GridComponent, ExcelExportProperties, GroupSettingsModel,
   FilterSettingsModel, ToolbarItems, TextWrapSettingsModel, EditSettingsModel,
-  SelectionSettingsModel, PageSettingsModel, CommandModel, RowSelectEventArgs
+  SelectionSettingsModel, PageSettingsModel, CommandModel, RowSelectEventArgs, GridModel
 } from '@syncfusion/ej2-ng-grids';
 import { Router } from '@angular/router';
 import { AccountsService } from '../accounts.service';
@@ -25,7 +25,6 @@ export class AccountsViewComponent implements OnInit {
   public grid: GridComponent;
   public data: DataManager;
   public excelExportProperties: ExcelExportProperties;
-  public groupOptions: GroupSettingsModel;
   public filterSettings: FilterSettingsModel;
   public toolbarOptions: ToolbarItems[];
   public wrapSettings: TextWrapSettingsModel;
@@ -35,20 +34,36 @@ export class AccountsViewComponent implements OnInit {
   public pageSettings: PageSettingsModel;
   public filterOptions: FilterSettingsModel;
   public commands: CommandModel[];
+  public groupOptions: GroupSettingsModel = { showDropArea: false};
+
+  public childGrid: GridModel;
   constructor(private router: Router, private calanderService: AccountsService, private appConfig: SmartAppConfigService) { }
 
   ngOnInit() {
+
     this.data = new DataManager({
       url: 'http://localhost:53267/api/accounts',
-
       adaptor: new WebApiAdaptor,
       offline: true
     });
 
+    this.childGrid  = {
+      dataSource: this.data,
+      queryString: 'ParentAccount',
+      columns: [
+          { field: 'AccountId', headerText: 'Account Id', textAlign: 'Right', width: 120 },
+          { field: 'AccountName', headerText: 'Name', width: 150 },
+          { field: 'TotalAmount', headerText: 'TotalAmount', width: 150 },
+          { field: 'Active', headerText: 'Status', width: 150 },
+          { field: 'ParentAccount', headerText: 'Parent', width: 150 }
+
+
+      ],
+  };
 
     this.filterOptions = { type: 'Menu' }; // put unique filter menue for each column based on the column type
     this.selectionOptions = { type: 'Single' }; // allow only single row to be selected at a time for edit or delete
-    this.groupOptions = { showGroupedColumn: true }; // make columns used for grouping visable
+
     this.toolbarOptions = [
       'Add',
       'Print',
@@ -67,12 +82,13 @@ export class AccountsViewComponent implements OnInit {
   }
 
   rowSelected(args: RowSelectEventArgs) {
-    console.log(args);
     if (args.data['AccountId']) {
       this.router.navigate([`accounts/update/${args.data['AccountId']}`]);
     }
   }
-
+  onDataBound() {
+    this.grid.detailRowModule.expandAll();
+  }
   // Click handler for when the toolbar is cliked
   toolbarClick(args: ClickEventArgs): void {
     if (args.item.id === 'accounts_pdfexport') {
@@ -89,4 +105,6 @@ export class AccountsViewComponent implements OnInit {
 
 
   }
+
+
 }

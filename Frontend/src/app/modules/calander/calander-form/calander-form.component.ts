@@ -4,7 +4,7 @@ import { ButtonComponent } from '@syncfusion/ej2-ng-buttons';
 import { RangeEventArgs } from '@syncfusion/ej2-calendars';
 import { CalanderPeriod, CalanderService } from '../calander.service';
 import { ActivatedRoute } from '@angular/router';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-calander-form',
@@ -23,9 +23,9 @@ export class CalanderFormComponent implements OnInit {
   @ViewChild('statusBtn') statusBtn: ButtonComponent;
 
   constructor(private formBuilder: FormBuilder,
-              private calanderPeriodAPI: CalanderService,
-            private activatedRoute: ActivatedRoute,
-          private location: Location) {
+    private calanderPeriodAPI: CalanderService,
+    private activatedRoute: ActivatedRoute,
+    private location: Location) {
     this.createForm();
 
   }
@@ -73,7 +73,8 @@ export class CalanderFormComponent implements OnInit {
       calanders: this.formBuilder.array([
         this.formBuilder.group({
           order: ['', Validators.required],
-          active: [false]
+          active: [true],
+          IsBegining: [false]
         })])
 
     });
@@ -82,7 +83,8 @@ export class CalanderFormComponent implements OnInit {
   addPeriod() {
     this.calanders.push(this.formBuilder.group({
       order: ['', Validators.required],
-      active: [false]
+      active: [false],
+      IsBegining: [false]
     }));
   }
 
@@ -113,17 +115,46 @@ export class CalanderFormComponent implements OnInit {
       this.calanderList.push({
         Start: el.value.order[0],
         End: el.value.order[1],
-        Active: el.value.active
+        Active: el.value.active,
+        IsBegining: el.value.IsBegining
       });
     });
 
     this.calanderPeriodAPI.createCalanderPeriod(this.calanderList)
-              .subscribe((result: CalanderPeriod[]) => {
-                                                  alert('Calander Periods Created Successfully');
-                                                  this.location.back();
-                                                  },
-                        (error: HttpErrorResponse) =>{
-                          alert(error);
-                        });
+      .subscribe((result: CalanderPeriod[]) => {
+        alert('Calander Periods Created Successfully');
+        this.location.back();
+      }, this.handleError);
+  }
+
+
+  /*
+  Handeles Http Error Responces
+  */
+  private handleError(error: HttpErrorResponse) {
+
+    if (error.error instanceof ErrorEvent) { // check if the error occured on the client side
+      console.error(`Client Side Error Occured`);
+    } else {
+      /* if error occured on server side
+      check the status code and display appropriate message
+      */
+      switch (error.status) {
+        case 423: // check if request resource is deletable
+          alert(`Can't delete period because it has been linked with other part of system data`);
+          break;
+        case 404: // check if the request resource was found
+          alert('Period With Id Was Not Found');
+          break;
+        case 422:
+          alert(JSON.stringify(error.error));
+          break;
+        default:
+          alert('Unknow Error Occured Please Try again Late');
+          break;
+      }
+
+    }
+
   }
 }

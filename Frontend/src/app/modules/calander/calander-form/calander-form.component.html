@@ -2,28 +2,40 @@
   <form [formGroup]="calanderForm" novalidate (ngSubmit)="onSubmit()" name="calanderForm">
     <h3 class="text-center text-info">Calander Period Form</h3>
 
-    <div formArrayName="calanders" class="content-wrapper">
+    <div formArrayName="calanders" class="container">
       <div *ngFor="let calander of calanders.controls; let i=index; let last=last" class="row" [formGroup]="calander">
-        <div class="col-8">
+        <div class="col col-xs-12">
           <ejs-daterangepicker (change)="dateChanged($event)" (select)="dateSelected($event)" [minDays]="minDays"
             cssClass="customWeekEnds" placeholder="Select Period Range" [maxDays]="maxDays" [firstDayOfWeek]="firstDay"
             [format]="format" formControlName="order" [attr.name]="'calanderPeriod'+i" [attr.id]="'calanderPeriod'+i">
           </ejs-daterangepicker>
         </div>
-        <div class="col-2">
+        <div class="col col-xs-12">
+          <span>Is Begining of Period </span>
+            <ejs-switch [checked]="true" formControlName="IsBegining"></ejs-switch>`
+          </div>
+        <div class="col col-xs-12">
+            <span>Active</span>
           <ejs-switch [checked]="true" formControlName="active"></ejs-switch>`
         </div>
-        <div class="btns" *ngIf="!isUpdate" >
-          <button type="button" ejs-button class="e-round e-info e-small " iconCss="e-icons e-plus-icon" *ngIf="last" [disabled]="calander.invalid"
+
+        <div class="btns" *ngIf="!isUpdate">
+          <button type="button" ejs-button class="e-round e-danger e-small e-icons e-times-icon" (click)="calanders.removeAt(i)">Del</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-10 col-xs-12">
+
+        </div>
+        <div class="col-2 col-xs-12">
+          <button type="button" ejs-button class="e-round e-info e-small " iconCss="e-icons e-plus-icon" [disabled]="calanderForm.invalid"
             (click)="addPeriod()">Add</button>
-          &nbsp;
-          <button type="button" ejs-button class="e-round e-danger e-small e-icons e-times-icon"  (click)="calanders.removeAt(i)">Del</button>
         </div>
       </div>
       <div class="row">
         <div class="col submit-container">
           <button ejs-button class=" e-success" [disabled]="calanderForm.invalid" type="submit">Submit</button>
-          <button ejs-button type="button"  (click)="cancel()" class=" e-warning">Cancel</button>
+          <button ejs-button type="button" (click)="cancel()" class=" e-warning">Cancel</button>
         </div>
       </div>
     </div>

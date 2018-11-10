@@ -10,7 +10,7 @@ describe('AccountsService', () => {
   let account: Accounts;
   let accounts: Accounts[];
   let returnedCompanies: Accounts[];
-  let returned: Accounts[];
+  let returned: Accounts;
   let result: Accounts;
 
   beforeEach(() => {
@@ -21,8 +21,8 @@ describe('AccountsService', () => {
     account.AccountCode = '1';
     account.AccountId = '3';
     account.Name = 'first account';
-    account.organizationId = 1;
-    account.openingBalance = 100;
+    account.OrganizationId = 1;
+    account.OpeningBalance = 100;
     account.Active = true;
 
   });
@@ -41,8 +41,29 @@ describe('AccountsService', () => {
   describe('GetAllaccount', () => {
 
     it('Should Return array of Accounts', () => {
-      accounts = [{ Name: 'AppDiv', organizationId: 1, AccountCode: '1', AccountId: '3', openingBalance: 100, Active: true },
-      { Name: 'AppDiv', organizationId: 1, AccountCode: '1', AccountId: '3', openingBalance: 100, Active: true }
+      accounts = [
+        {
+          Name: 'AppDiv',
+          OrganizationId: 1,
+          AccountCode: '1',
+          AccountId: '3',
+          OpeningBalance: 100,
+          isReconciliation: true,
+          glType: 'Purchase',
+          directPosting: true,
+          Active: true
+        },
+        {
+          Name: 'AppDiv 2',
+          OrganizationId: 1,
+          AccountCode: '2',
+          AccountId: '4',
+          OpeningBalance: 200,
+          isReconciliation: false,
+          glType: 'Sales',
+          directPosting: false,
+          Active: true
+        }
       ];
       httpClient.get.and.returnValue(of(accounts));
       accountsService.getAccountsList().subscribe(
@@ -56,13 +77,25 @@ describe('AccountsService', () => {
   // Test AccountsService Create account Function
   describe('Createaccount', () => {
     it('Should Return A Single account', () => {
-      httpClient.post.and.returnValue(of(accounts));
-      const newComp = [{Name: 'AppDiv', organizationId: 1, AccountCode: '1', AccountId: '3', openingBalance: 100, Active: true }];
+
+      const newComp: Accounts = {
+        Name: 'AppDiv',
+        OrganizationId: 1,
+        AccountCode: '1',
+        AccountId: '3',
+        OpeningBalance: 100,
+        Active: true,
+        isReconciliation: true,
+        directPosting: true,
+        glType: 'Purchase'
+      };
+      httpClient.post.and.returnValue(of(newComp));
+
       accountsService.createAccount(newComp).subscribe(
-        (comp: Accounts[]) => returned = comp
+        (comp: Accounts) => returned = comp
       );
 
-      expect(returned).toBe(accounts);
+      expect(returned).toBe(newComp);
 
     });
   });
@@ -73,9 +106,20 @@ describe('AccountsService', () => {
     it('Should Return True on Success', () => {
       httpClient.put.and.returnValue(of(true));
       let updated = false;
-      const updatedComp = {Name: 'AppDiv', organizationId: 1, AccountCode: '1', AccountId: '3', openingBalance: 100, Active: true };
-      accountsService.updateAccount(1, updatedComp).subscribe(
-        res => updated = res
+      const updatedComp: Accounts = {
+        Name: 'AppDiv',
+        OrganizationId: 1,
+        AccountCode: '1',
+        AccountId: '3',
+        OpeningBalance: 100,
+        directPosting: true,
+        isReconciliation: true,
+        glType: 'Purchase',
+        Active: true
+      };
+
+      accountsService.updateAccount('1', updatedComp).subscribe(
+        resul => updated = resul
       );
 
       expect(updated).toBe(true);

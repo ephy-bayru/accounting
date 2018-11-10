@@ -50,7 +50,7 @@ namespace Smart_Accounting.Application.AccountCharts.Queries {
 
         }
         /// <summary>
-        ///  returns all accounts 
+        ///  returns all accounts
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
@@ -75,7 +75,7 @@ namespace Smart_Accounting.Application.AccountCharts.Queries {
         }
 
         /// <summary>
-        /// Gets all accounts of a given type 
+        /// Gets all accounts of a given type
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
@@ -106,6 +106,7 @@ namespace Smart_Accounting.Application.AccountCharts.Queries {
                                     AccountId = account.AccountId,
                                     AccountName = account.Name,
                                     ParentAccount = account.AccountCode,
+                                    Active = account.Active,
                                     TotalAmount = account.OpeningBalance.Sum(o => o.Amount),
                                     DateAdded = (DateTime) account.DateAdded,
                                     DateUpdated = (DateTime) account.DateUpdated
