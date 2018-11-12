@@ -1,5 +1,7 @@
 <div class="wrapper">
   <ejs-sidebar id="sidebar" #sidebar  [type]='type'  [target]='target'>
+      <ejs-toolbar>
+      </ejs-toolbar>
     <e-card>
       <div class="avatar-block">
         <!-- Card Component -->
@@ -15,13 +17,29 @@
   </ejs-sidebar>
   
   <div id="head">
-    <button ejs-button id="toggle" #togglebtn cssClass="e-flat" iconCss="e-icons burg-icon" isToggle="true" (click)="btnClick()"
+    <!-- <button ejs-button id="toggle" #togglebtn cssClass="e-flat" iconCss="e-icons burg-icon" isToggle="true" (click)="btnClick()"
       content="Open">
-    </button>
+    </button> -->
+    <div class="tool">
+        <ejs-toolbar>
+            <e-items>
+                <e-item prefixIcon='e-tbar-menu-icon tb-icons' tooltipText='Menu'></e-item>
+                <!-- <e-item prefixIcon='e-tbar-search-icon tb-icons' tooltipText='Search' align='Right'></e-item> -->
+                <e-item prefixIcon='e-tbar-settings-icon tb-icons' tooltipText='Popup' align='Right'></e-item>
+            </e-items>
+        </ejs-toolbar>
+    </div>
+
+
     <div id="maincontent" class="content">
         <router-outlet></router-outlet>
   </div>
   </div>
+
+  
+
+
+
 
   </div>
 

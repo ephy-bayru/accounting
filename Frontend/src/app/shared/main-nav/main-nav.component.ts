@@ -8,7 +8,8 @@ import { NodeSelectEventArgs } from '@syncfusion/ej2-navigations';
 @Component({
   selector: 'app-main-nav',
   templateUrl: './main-nav.component.html',
-  styleUrls: ['./main-nav.component.css']
+  styleUrls: ['./main-nav.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MainNavComponent {
   title = 'sidebar';
