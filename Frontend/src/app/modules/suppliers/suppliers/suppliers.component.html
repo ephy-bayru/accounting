@@ -1,8 +1,9 @@
+<div class="col-lg-12">
+  <h4 class="form-title">Supplier Form</h4>
+</div>
 <div class="e-card">
   <div class="col-lg-12 control-section e-input-section">
-    <div class="col-lg-12">
-      <h4 class="form-title">Supplier Form</h4>
-    </div>
+    
     <div>
       <form id="reactive" [formGroup]="supplierForm" (ngSubmit)="onSubmit()">
         <div class="content-wrapper">
@@ -189,7 +190,7 @@
                 <button type="button" ejs-button class="e-round e-info e-small " iconCss="e-icons e-add-icon" (click)="addAccount()"
                   [disabled]="BankAccounts?.invalid" *ngIf="last"></button>
                 &nbsp;
-                <button type="button" ejs-button class="e-round e-danger e-small e-icons e-times-icon" (click)="removeAccount(i)"></button>
+                <button type="button" ejs-button class="e-round e-danger e-small e-icons e-times-icon" iconCss="e-icons e-del-icon" (click)="removeAccount(i)"></button>
               </div>
             </section>
           </div>
@@ -206,3 +207,6 @@
         </div>
       </form>
     </div>
+<div>
+  
+</div>

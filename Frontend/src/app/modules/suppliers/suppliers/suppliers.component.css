@@ -6,13 +6,19 @@
     padding-right: 2%;
     padding-bottom: 1%; */
     margin-top: 1%;
+    position: relative;
 }
 .form-title {
-    text-align: center;
+    text-align: left;
+    margin-left: 5%;
+
 }
 
 .e-add-icon::before{
     content: "\e823"
+}
+.e-del-icon::before{
+    content: "\e825"
 }
 
 .btn {
