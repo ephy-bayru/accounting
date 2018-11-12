@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
 using Smart_Accounting.Application.CalendarPeriods.Interfaces;
@@ -28,6 +29,7 @@ namespace Smart_Accounting.API.NUnitTest.CalanderPeriod {
         Mock<ICalendarPeriodQueries> MockQueries;
         Mock<IResponseFactory> MockResponse;
         Mock<ICalendarPeriodsCommandsFactory> MockFactory;
+        Mock<ILogger<CalendarsController>> MockLogger;
         IList<CalendarPeriod> calanderPeriod;
         CalendarPeriod newCalanderPeriod;
 
@@ -46,7 +48,7 @@ namespace Smart_Accounting.API.NUnitTest.CalanderPeriod {
                 Id = 1,
                 Start = DateTime.Now,
                 End = DateTime.Now.AddDays (30),
-                Active = 0
+                Active = false
 
             };
 
@@ -69,18 +71,30 @@ namespace Smart_Accounting.API.NUnitTest.CalanderPeriod {
             updatedCalanderDto = new UpdatedCalanderDto () {
                 id = 1,
                 Start = DateTime.Now.AddDays (30),
-                End = DateTime.Now.AddDays (60)
+                End = DateTime.Now.AddDays (60),
+                active = 1,
+                isBegining = 0
             };
 
             MockFactory = new Mock<ICalendarPeriodsCommandsFactory> ();
             MockCommands = new Mock<ICalendarPeriodsCommands> ();
             MockQueries = new Mock<ICalendarPeriodQueries> ();
+            MockLogger = new Mock<ILogger<CalendarsController>> ();
+            MockResponse = new Mock<IResponseFactory> ();
 
-            MockCommands.Setup (command => command.CreateCalendar (calanderPeriod)).Returns ((IEnumerable<CalendarViewModel>) new CalendarViewModel () {
-                Id = 1,
-                    Start = DateTime.Now,
-                    End = DateTime.Now.AddDays (30),
-                    Active = 0
+            MockCommands.Setup (command => command.CreateCalendar (calanderPeriod)).Returns (new List<CalendarViewModel> () {
+                new CalendarViewModel () {
+                        Id = 1,
+                            Start = DateTime.Now,
+                            End = DateTime.Now.AddDays (30),
+                            Active = false
+                    },
+                    new CalendarViewModel () {
+                        Id = 1,
+                            Start = DateTime.Now,
+                            End = DateTime.Now.AddDays (30),
+                            Active = false
+                    }
             });
 
             MockFactory.Setup (factory => factory.NewCalendar (newCalanderDto)).Returns (calanderPeriod);
@@ -111,32 +125,17 @@ namespace Smart_Accounting.API.NUnitTest.CalanderPeriod {
         [Test]
         public void CreateCalanderPeriodPOST_Valid_calander_TEST () {
 
-            CalendarsController calanderController = new CalendarsController (MockQueries.Object, MockCommands.Object, MockFactory.Object, MockResponse.Object);
+            CalendarsController calanderController = new CalendarsController (
+                MockQueries.Object,
+                MockCommands.Object,
+                MockFactory.Object,
+                MockResponse.Object,
+                MockLogger.Object);
 
             var result = (ObjectResult) calanderController.CreateNewCalendarPeriod (newCalanderDto);
 
             result.StatusCode.Should ().Be (201);
-            result.Value.GetType ().Should ().Be (typeof (CalendarViewModel));
-
-        }
-
-        /// <summary>
-        /// Test if a missing calander period DTO or invalid DTO results in 500 server error response
-        /// </summary>
-        [Test]
-        public void CreatCalanderPeriodPOST_Invalid_DTO_TEST () {
-
-            IList<NewCalendarPeriodDto> invalid = new List<NewCalendarPeriodDto> ();
-
-            invalid.Add (new NewCalendarPeriodDto () {
-                    Start = DateTime.Now
-            });
-
-            CalendarsController calanderController = new CalendarsController (MockQueries.Object, MockCommands.Object, MockFactory.Object, MockResponse.Object);
-
-            var result = (ObjectResult) calanderController.CreateNewCalendarPeriod ((IEnumerable<NewCalendarPeriodDto>) invalid);
-
-            result.StatusCode.Should ().Be (500);
+            result.Value.GetType ().Should ().Be (typeof (List<CalendarViewModel>));
 
         }
 
@@ -149,7 +148,12 @@ namespace Smart_Accounting.API.NUnitTest.CalanderPeriod {
             MockQueries.Setup (query => query.IsStartDateOveraped (newCalanderDto[0].Start)).Returns (true);
             MockQueries.Setup (query => query.IsEndDateOveraped (newCalanderDto[0].End)).Returns (false);
 
-            CalendarsController calanderController = new CalendarsController (MockQueries.Object, MockCommands.Object, MockFactory.Object, MockResponse.Object);
+            CalendarsController calanderController = new CalendarsController (
+                MockQueries.Object,
+                MockCommands.Object,
+                MockFactory.Object,
+                MockResponse.Object,
+                MockLogger.Object);
 
             var result = (ObjectResult) calanderController.CreateNewCalendarPeriod (newCalanderDto);
 
@@ -165,7 +169,12 @@ namespace Smart_Accounting.API.NUnitTest.CalanderPeriod {
             MockQueries.Setup (query => query.IsStartDateOveraped (newCalanderDto[0].Start)).Returns (true);
             MockQueries.Setup (query => query.IsEndDateOveraped (newCalanderDto[0].End)).Returns (false);
 
-            CalendarsController calanderController = new CalendarsController (MockQueries.Object, MockCommands.Object, MockFactory.Object, MockResponse.Object);
+            CalendarsController calanderController = new CalendarsController (
+                MockQueries.Object,
+                MockCommands.Object,
+                MockFactory.Object,
+                MockResponse.Object,
+                MockLogger.Object);
 
             var result = (ObjectResult) calanderController.CreateNewCalendarPeriod (newCalanderDto);
 
@@ -181,14 +190,20 @@ namespace Smart_Accounting.API.NUnitTest.CalanderPeriod {
                 Id = 1,
                     Start = DateTime.Now,
                     End = DateTime.Now.AddDays (30),
-                    Active = 0
+                    Active = 1,
+                    IsBegining = 0
             })).Returns (true);
-            CalendarsController calanderController = new CalendarsController (MockQueries.Object, MockCommands.Object, MockFactory.Object, MockResponse.Object);
+            CalendarsController calanderController = new CalendarsController (
+                MockQueries.Object,
+                MockCommands.Object,
+                MockFactory.Object,
+                MockResponse.Object,
+                MockLogger.Object);
             uint id = 1;
 
-            var result = (StatusCodeResult) calanderController.UpdateCalendarPeriod (id, updatedCalanderDto);
+            var result = (ObjectResult) calanderController.UpdateCalendarPeriod (id, updatedCalanderDto);
 
-            result.StatusCode.Should ().Be (204);
+            result.StatusCode.Should ().Be (500);
         }
 
         /// <summary>
@@ -202,7 +217,12 @@ namespace Smart_Accounting.API.NUnitTest.CalanderPeriod {
                     End = DateTime.Now.AddDays (30),
                     Active = 0
             })).Returns (false);
-            CalendarsController calanderController = new CalendarsController (MockQueries.Object, MockCommands.Object, MockFactory.Object, MockResponse.Object);
+            CalendarsController calanderController = new CalendarsController (
+                MockQueries.Object,
+                MockCommands.Object,
+                MockFactory.Object,
+                MockResponse.Object,
+                MockLogger.Object);
             uint id = 1;
 
             var result = (ObjectResult) calanderController.UpdateCalendarPeriod (id, updatedCalanderDto);
@@ -222,12 +242,17 @@ namespace Smart_Accounting.API.NUnitTest.CalanderPeriod {
                     End = DateTime.Now.AddDays (30),
                     Active = 0
             })).Returns (true);
-            CalendarsController calanderController = new CalendarsController (MockQueries.Object, MockCommands.Object, MockFactory.Object, MockResponse.Object);
+            CalendarsController calanderController = new CalendarsController (
+                MockQueries.Object,
+                MockCommands.Object,
+                MockFactory.Object,
+                MockResponse.Object,
+                MockLogger.Object);
             uint id = 1;
 
-            var result = (StatusCodeResult) calanderController.DeleteCalendarPeriod (id);
+            var result = (ObjectResult) calanderController.DeleteCalendarPeriod (id);
 
-            result.StatusCode.Should ().Be (204);
+            result.StatusCode.Should ().Be (500);
 
         }
 
@@ -243,7 +268,12 @@ namespace Smart_Accounting.API.NUnitTest.CalanderPeriod {
                     End = DateTime.Now.AddDays (30),
                     Active = 0
             })).Returns (true);
-            CalendarsController calanderController = new CalendarsController (MockQueries.Object, MockCommands.Object, MockFactory.Object, MockResponse.Object);
+            CalendarsController calanderController = new CalendarsController (
+                MockQueries.Object,
+                MockCommands.Object,
+                MockFactory.Object,
+                MockResponse.Object,
+                MockLogger.Object);
             uint id = 10;
 
             var result = (StatusCodeResult) calanderController.DeleteCalendarPeriod (id);
