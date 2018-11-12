@@ -38,6 +38,8 @@ export class CalanderViewComponent implements OnInit {
   public filterOptions: FilterSettingsModel;
   public commands: CommandModel[];
   public isUpdate: Boolean = false;
+  public onLabel = 'Yes';
+  public offLabel = 'No';
 
   constructor(private router: Router,
     private calanderService: CalanderService,
@@ -50,7 +52,7 @@ export class CalanderViewComponent implements OnInit {
     this.data = new DataManager({
       url: 'http://localhost:53267/api/calanders',
       adaptor: new WebApiAdaptor,
-      offline: true
+      offline: false
     });
 
 
@@ -64,11 +66,13 @@ export class CalanderViewComponent implements OnInit {
       'ExcelExport',
       'Search'
     ];
-    this.commands = [
-      { type: 'Edit', buttonOption: { cssClass: 'e-flat', iconCss: 'e-edit e-icons', click: this.editCalender.bind(this) } },
-      { type: 'Delete', buttonOption: { cssClass: 'e-flat', iconCss: 'e-delete e-icons', click: this.deletePeriod.bind(this) } }];
+    this.commands = [{
+      buttonOption: {
+        cssClass: 'e-flat e-large e-error', iconCss: 'e-delete e-icons', click: this.deletePeriod.bind(this)
+      }
+    }];
     this.pageSettings = { pageSize: 5 };  // initial page row size for the grid
-    this.editSettings = { showDeleteConfirmDialog: true, allowEditing: false, allowAdding: true, allowDeleting: true, mode: 'Dialog' };
+    this.editSettings = { showDeleteConfirmDialog: true, allowEditing: false, allowAdding: true, allowDeleting: true };
   }
   /*
   called when user clicks
@@ -84,9 +88,41 @@ export class CalanderViewComponent implements OnInit {
       );
   }
 
-  editCalender(data) {
-    this.router.navigate(['calanders/update']);
+  /*handels managing the event when the user clicks the active button
+  to update the status of a given period
+  */
+  closeChanged(data: any, status: boolean): void {
+
+    this.calanderService.updateCalanderPeriod(data.Id, {
+      id: data.Id,
+      Start: data.Start,
+      End: data.End,
+      Active: status,
+      IsBegining: data.IsBegining
+    }).subscribe(
+      result => alert('Period Updated Successfuly'),
+      this.handleError
+    );
+
   }
+
+  /*handels managing the event when the user clicks the Opening Period button
+  to update wether a given period is an period opening or not
+  */
+  openingChanged(data: any, status: boolean): void {
+    this.calanderService.updateCalanderPeriod(data.Id, {
+      id: data.Id,
+      Start: data.Start,
+      End: data.End,
+      Active: data.Active,
+      IsBegining: status
+    }).subscribe(
+      result => alert('Period Updated Successfuly'),
+      this.handleError
+    );
+
+  }
+
 
 
   // Click handler for when the toolbar is cliked
@@ -134,8 +170,8 @@ export class CalanderViewComponent implements OnInit {
           alert('Period With Id Was Not Found');
           break;
         case 422:
-        alert('Date Provided Overlaps with existing period date on the system');
-        break;
+          alert('Date Provided Overlaps with existing period date on the system');
+          break;
         default:
           alert('Unknow Error Occured Please Try again Late');
           break;

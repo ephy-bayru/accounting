@@ -12,29 +12,23 @@
         </div>
         <div class="col col-xs-12">
           <span>Is Begining of Period </span>
-            <ejs-switch [checked]="true" formControlName="IsBegining"></ejs-switch>`
+            <ejs-switch [checked]="true" formControlName="IsBegining"></ejs-switch>
           </div>
         <div class="col col-xs-12">
             <span>Active</span>
-          <ejs-switch [checked]="true" formControlName="active"></ejs-switch>`
+          <ejs-switch [checked]="true" formControlName="active" ></ejs-switch>
         </div>
 
         <div class="btns" *ngIf="!isUpdate">
-          <button type="button" ejs-button class="e-round e-danger e-small e-icons e-times-icon" (click)="calanders.removeAt(i)">Del</button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-10 col-xs-12">
-
-        </div>
-        <div class="col-2 col-xs-12">
-          <button type="button" ejs-button class="e-round e-info e-small " iconCss="e-icons e-plus-icon" [disabled]="calanderForm.invalid"
-            (click)="addPeriod()">Add</button>
+          <button type="button" ejs-button class="e-round e-danger e-small" iconCss="e-icons e-delete-icon" (click)="calanders.removeAt(i)"></button>
+          <div></div>
+          <button type="button" ejs-button class="e-round e-info e-small " *ngIf="last" iconCss="e-icons e-add-icon" [disabled]="calanderForm.invalid"
+          (click)="addPeriod()"></button>
         </div>
       </div>
       <div class="row">
         <div class="col submit-container">
-          <button ejs-button class=" e-success" [disabled]="calanderForm.invalid" type="submit">Submit</button>
+          <button ejs-button class=" e-success" [disabled]="calanderForm.invalid"  type="submit">Submit</button>
           <button ejs-button type="button" (click)="cancel()" class=" e-warning">Cancel</button>
         </div>
       </div>

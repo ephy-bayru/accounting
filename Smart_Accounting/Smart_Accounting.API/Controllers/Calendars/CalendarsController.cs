@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Nov 10, 2018 11:42 AM
+ * @Last Modified Time: Nov 12, 2018 10:19 AM
  * @Description: Modify Here, Please 
  */
 
@@ -44,22 +44,21 @@ namespace Smart_Accounting.API.Controllers.Calendarss {
         [HttpGet]
         [ProducesResponseType (200)]
         public IActionResult GetAllCalendarPeriod (string type = "ALL") {
-            Object calanders;
+
             switch (type.ToUpper ()) {
 
                 case "ACTIVE":
-                    calanders = _calendarQuery.getActivePeriod ();
-                    break;
+                    var activeCalander = _calendarQuery.getActivePeriod ();
+                    return StatusCode (200, activeCalander);
                 case "OPEN":
-                    calanders = _calendarQuery.GetOpenPeriods ();
-                    break;
-
+                    var calanders = _calendarQuery.GetOpenPeriods ();
+                    return StatusCode (200, calanders);
                 default:
-                    calanders = _calendarQuery.GetAll ();
-                    break;
-            }
+                    var allCalanders = _calendarQuery.GetAll ();
+                    var respone = _responseFactory.Create (allCalanders);
+                    return StatusCode (200, respone);
 
-            return Ok (calanders);
+            }
         }
 
         [HttpGet ("{id}")]
@@ -105,12 +104,13 @@ namespace Smart_Accounting.API.Controllers.Calendarss {
 
         }
 
-        [HttpPut]
-        [HttpPut ("{id}")]
+        [HttpPut("{id}")]
         [ProducesResponseType (204)]
         [ProducesResponseType (400)]
-        [ProducesResponseType (422)]
-        public IActionResult UpdateCalendarPeriod (uint id, [FromBody] UpdatedCalanderDto data) {
+        [ProducesResponseType (404)]
+        [ProducesResponseType (422)] // Locked (The resource that is being accessed is locked) 
+        [ProducesResponseType (500)]
+        public ActionResult UpdateCalendarPeriod (uint id, [FromBody] UpdatedCalanderDto data) {
 
             if (ModelState.IsValid) {
 
@@ -118,7 +118,9 @@ namespace Smart_Accounting.API.Controllers.Calendarss {
 
                 var calendar = _calendarQuery.GetById (id);
                 //  check if calander with the specified id exists
-                if (calendar != null) {
+                if (calendar == null) {
+                    return StatusCode(404);
+                } 
 
                     var calanerFactory = _factory.UpdateCalander (calendar, data);
 
@@ -133,11 +135,7 @@ namespace Smart_Accounting.API.Controllers.Calendarss {
 
                         return StatusCode (500, "unkown error");
                     }
-
-                } else {
-
-                    return StatusCode (404);
-                }
+    
             } else {
                 return StatusCode (422, "required field is missing");
             }
