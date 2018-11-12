@@ -6,21 +6,30 @@
     [allowResizing]='true' [selectionSettings]='selectionOptions' [groupSettings]='groupOptions' allowFiltering='true'
     allowTextWrap='true' [textWrapSettings]='wrapSettings' gridLines='Both' [editSettings]='editSettings'
     [selectionSettings]='selectionOptions' [allowPdfExport]='true' (toolbarClick)='toolbarClick($event)'
-    [filterSettings]="filterOptions">
+    [filterSettings]="filterOptions" >
     <e-columns>
-      <e-column field="Id" headerText="ID" isPrimaryKey="true" type="number" width='50' editable="false" filterable="false"
+      <e-column field="Id" headerText="ID" isPrimaryKey="true" type="number" width='30' editable="false" filterable="false"
         groupable="false">
       </e-column>
-      <e-column field="Start" headerText="Start" isPrimaryKey="false" type="datetime" editType="datepickeredit"
+      <e-column textAlign="center" field="Start" headerText="Start" isPrimaryKey="false" type="datetime" editType="datepickeredit"
         filterable="true" editable="true" groupable="false" format="yMd" width='100'></e-column>
-      <e-column field="End" headerText="End" isPrimaryKey="false" type="datetime" editType="datepickeredit" filterable="true"
-        editable="true" groupable="false" format="yMd" width='150'></e-column>
-      <e-column field="Active" headerText="Active" isPrimaryKey="false" type="boolean" editType="booleanedit" filterable="true"
-        editable="true" groupable="true" width='50'></e-column>
-        <e-column field="IsBegining" headerText="Period Begining" isPrimaryKey="false" type="boolean" editType="booleanedit" filterable="true"
-        editable="true" groupable="true" width='50'></e-column>
+      <e-column textAlign="center" field="End" headerText="End" isPrimaryKey="false" type="datetime" editType="datepickeredit" filterable="true"
+        editable="true" groupable="false" format="yMd" width='100'></e-column>
+      <e-column  headerText="Active"
+        editable="true" groupable="true" width='50' textAlign="center"  >
+      <ng-template #template let-data>
+        <ejs-switch [checked]="data.Active" [offLabel]="offLabel" [onLabel]="onLabel" #active (change)="closeChanged(data, active.checked)"  ></ejs-switch>
+      </ng-template>
 
-        <e-column headerText='Remove'  width="40" [commands]='commands'></e-column>
+      </e-column>
+        <e-column  headerText="Period Begining" isPrimaryKey="false" type="boolean" textAlign="center" editType="booleanedit" filterable="true"
+        editable="true" groupable="true" width='50'>
+        <ng-template #template let-data>
+          <ejs-switch [offLabel]="offLabel" [onLabel]="onLabel" #opening (change)="openingChanged(data, opening.checked)"   [checked]="data.IsBegining"  ></ejs-switch>
+        </ng-template>
+      </e-column>
+
+        <e-column headerText='Action' textAlign="center" width="25" [commands]='commands'></e-column>
     </e-columns>
   </ejs-grid>
 </section>

@@ -9,7 +9,7 @@ namespace Smart_Accounting.Application.CalendarPeriods.Interfaces
 {
     public interface ICalendarPeriodQueries {
         CalendarPeriod GetById (uint id);
-        IEnumerable<CalendarPeriod> GetAll ();
+        List<CalendarPeriod> GetAll ();
         bool IsStartDateOveraped (DateTime startDate);
         bool IsEndDateOveraped (DateTime endDate);
         CalendarPeriod getActivePeriod ();

@@ -30,3 +30,11 @@ h3 {
 .btns {
   text-align: center;
 }
+
+.e-add-icon::before{
+  content: "\e823"
+}
+
+.e-delete-icon::before{
+  content: "\e825"
+}

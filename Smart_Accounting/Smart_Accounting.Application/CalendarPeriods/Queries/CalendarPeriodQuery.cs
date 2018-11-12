@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Nov 9, 2018 4:44 PM
+ * @Last Modified Time: Nov 12, 2018 10:15 AM
  * @Description: Class that implements the ICalendarPeriodQuariable 
  *      to perform the all the read operations related to calendar period
  */
@@ -94,7 +94,7 @@ namespace Smart_Accounting.Application.CalendarPeriods.Queries {
         /// Used to retrive all records of calendar periof
         /// </summary>
         /// <returns>IEnumerable<CalendarPeriod></returns>
-        public IEnumerable<CalendarPeriod> GetAll () {
+        public List<CalendarPeriod> GetAll () {
             try {
 
                 return CalendarPeriodIQuariable ()

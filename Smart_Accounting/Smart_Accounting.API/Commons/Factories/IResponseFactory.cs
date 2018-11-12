@@ -1,3 +1,11 @@
+/*
+ * @CreateTime: Nov 12, 2018 10:22 AM
+ * @Author:  Mikael Araya
+ * @Contact: MikaelAraya12@gmail.com
+ * @Last Modified By:  Mikael Araya
+ * @Last Modified Time: Nov 12, 2018 10:22 AM
+ * @Description: Modify Here, Please 
+ */
 using System.Collections.Generic;
 using Smart_Accounting.API.Commons.Models;
 using Smart_Accounting.Application.CalendarPeriods.Models;

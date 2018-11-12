@@ -25,7 +25,7 @@ export class CalanderService {
   createCalanderPeriod(newCalanderPeriod: CalanderPeriod[]): Observable<CalanderPeriod[]> {
     const config = { headers: new HttpHeaders().set('Content-Type', 'application/json') };
     return this.httpClient.post<CalanderPeriod[]>(`${this.url}`, JSON.stringify(newCalanderPeriod),
-    config );
+      config);
   }
 
   // Update a single instance of CalanderPeriod record and returns a boolean depending on the success or
@@ -42,6 +42,7 @@ export class CalanderService {
   private handleError(error: Response | any) {
     return Observable.throw(error.status);
   }
+
 
 }
 
