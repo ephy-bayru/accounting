@@ -3,18 +3,19 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Oct 17, 2018 2:05 PM
+ * @Last Modified Time: Nov 13, 2018 12:30 PM
  * @Description: Modify Here, Please 
  */
 using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Smart_Accounting.Application.Ledgers.Models {
-    public  class LedgerDto {
+    public class LedgerDto {
         [Required]
-        public DateTime CreatedOn {get; set;}
+        public DateTime CreatedOn { get; set; }
+
         [Required]
-        public uint PeriodId {get; set;}
-        public string Description {get; set;}
+        public uint PeriodId { get; set; }
+        public string Description { get; set; }
     }
 }

@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Oct 17, 2018 2:19 PM
+ * @Last Modified Time: Nov 13, 2018 12:30 PM
  * @Description: Modify Here, Please 
  */
 namespace Smart_Accounting.Application.Ledgers.Models
@@ -13,6 +13,9 @@ namespace Smart_Accounting.Application.Ledgers.Models
         public double Amount {get; set;}
         public string AccountId {get; set;}
         public uint Reference {get; set;}
+
+        public uint? PostingType { get; set; }
+        public uint? PostingEntityId { get; set; }
 
 
     }

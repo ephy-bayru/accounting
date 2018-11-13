@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Oct 17, 2018 2:37 PM
+ * @Last Modified Time: Nov 13, 2018 12:31 PM
  * @Description: Modify Here, Please 
  */
 using Smart_Accounting.Application.CalendarPeriods.Interfaces;
@@ -30,7 +30,9 @@ namespace Smart_Accounting.Application.Ledgers.Factories {
                 ledger.Jornal.Add (new Jornal () {
                         Amount = item.Amount,
                         AccountId = item.AccountId,
-                        Reference = item.Reference.ToString()
+                        Reference = item.Reference.ToString(),
+                        PostingType = item.PostingType,
+                        PostingEntityId = item.PostingEntityId                        
                 });
             }
 
