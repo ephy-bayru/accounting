@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Oct 18, 2018 10:24 AM
+ * @Last Modified Time: Nov 13, 2018 12:38 PM
  * @Description: Modify Here, Please 
  */
 using Microsoft.AspNetCore.Mvc;
@@ -69,7 +69,7 @@ namespace Smart_Accounting.API.Controllers.Ledger {
                     if(!ModelState.IsValid) {
                         return StatusCode(422, ModelState);
                     }
-                    var entry = _factory.CreateLedger(newEntry);
+                    var entry = _factory.CreateGeneralLedgerEntry(newEntry);
 
                     var result = _commands.CreateLedger(entry);
 

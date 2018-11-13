@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Oct 18, 2018 10:10 AM
+ * @Last Modified Time: Nov 13, 2018 12:38 PM
  * @Description: Modify Here, Please 
  */
 using Smart_Accounting.Domain.Ledgers;

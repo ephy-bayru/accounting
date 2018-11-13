@@ -3,7 +3,7 @@
  * @Author:  Mikael Araya
  * @Contact: MikaelAraya12@gmail.com
  * @Last Modified By:  Mikael Araya
- * @Last Modified Time: Nov 13, 2018 12:31 PM
+ * @Last Modified Time: Nov 13, 2018 12:37 PM
  * @Description: Modify Here, Please 
  */
 using Smart_Accounting.Application.CalendarPeriods.Interfaces;
@@ -19,8 +19,10 @@ namespace Smart_Accounting.Application.Ledgers.Factories {
         public LedgerFactories(ICalendarPeriodQueries calanderQuery) {
             _calanderQuery = calanderQuery;
         }
-        public Ledger CreateLedger (NewLedgerEntryDto newLedger) {
-            Ledger ledger = new Ledger () {
+
+        public Ledger CreateGeneralLedgerEntry(NewLedgerEntryDto newLedger)
+        {
+                Ledger ledger = new Ledger () {
                 PeriodId = _calanderQuery.getActivePeriodId(),
                 Discription = newLedger.Description,
 
@@ -37,6 +39,10 @@ namespace Smart_Accounting.Application.Ledgers.Factories {
             }
 
             return ledger;
+        }
+        public Ledger CreatePaymentLedgerEntry(NewLedgerEntryDto newLedger)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
