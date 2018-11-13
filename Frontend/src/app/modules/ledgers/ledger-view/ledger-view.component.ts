@@ -1,12 +1,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
 import { GridComponent } from '@syncfusion/ej2-ng-grids';
-import { GroupSettingsModel, FilterSettingsModel, CommandModel,
-  TextWrapSettingsModel, EditSettingsModel, SelectionSettingsModel } from '@syncfusion/ej2-grids';
+import {
+  GroupSettingsModel, FilterSettingsModel, CommandModel,
+  TextWrapSettingsModel, EditSettingsModel, SelectionSettingsModel
+} from '@syncfusion/ej2-grids';
 import { Router } from '@angular/router';
 import { SmartAppConfigService } from '../../../smart-app-config.service';
 import { LedgerService } from '../ledger.service';
 import { ClickEventArgs } from '@syncfusion/ej2-navigations';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-ledger-view',
@@ -40,7 +43,15 @@ export class LedgerViewComponent implements OnInit {
     this.data = new DataManager({
       url: 'http://localhost:53267/api/ledger',
       adaptor: new WebApiAdaptor,
+      offline: true
     });
+
+    this.ledgerService.getAllLedgerEntries().subscribe(
+      (data: any) => this.data = data,
+      (error: HttpErrorResponse) => console.error(error)
+    );
+
+
     this.initialPage = { pageCount: 5, pageSizes: true };
     this.groupOptions = { showGroupedColumn: true };
     this.filterSettings = { type: 'Menu' };

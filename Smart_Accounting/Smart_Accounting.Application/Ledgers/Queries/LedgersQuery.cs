@@ -33,16 +33,7 @@ namespace Smart_Accounting.Application.Ledgers.Queries {
                     DateAdded = ledger.DateAdded,
                     DateUpdated = ledger.DateUpdated,
                     Discription = ledger.Discription,
-                    Jornal = ledger.Jornal.Select (jor => new Jornal () {
-                        JornalId = jor.JornalId,
-                            Amount = jor.Amount,
-                            Reference = jor.Reference,
-                            AccountId = jor.AccountId,
-                            DateAdded = jor.DateAdded,
-                            DateUpdated = jor.DateUpdated,
-                            ReconcieldOn = jor.ReconcieldOn,
-                            Reconciled = jor.Reconciled,
-                    }).ToList()
+                    Jornal = ledger.Jornal
             }).ToList ();
         }
 
@@ -59,7 +50,7 @@ namespace Smart_Accounting.Application.Ledgers.Queries {
                         AccountId = j.AccountId,
                         Account = j.Account.AccountId
                     }).ToList()
-            });
+            }).ToList();
         }
 
         public Ledger GetLedgerEntryById (uint id) {

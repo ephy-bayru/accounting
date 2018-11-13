@@ -12,7 +12,7 @@ using Smart_Accounting.Domain.Ledgers;
 
 namespace Smart_Accounting.Application.Ledgers.Interfaces {
     public interface ILedgersFactory {
-        Ledger CreateLedger (NewLedgerEntryDto newLedger);
+        Ledger CreateGeneralLedgerEntry (NewLedgerEntryDto newLedger);
 
 
 

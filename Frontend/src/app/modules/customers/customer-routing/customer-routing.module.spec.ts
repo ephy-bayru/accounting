@@ -7,7 +7,4 @@ describe('CustomerRoutingModule', () => {
     customerRoutingModule = new CustomerRoutingModule();
   });
 
-  it('should create an instance', () => {
-    expect(customerRoutingModule).toBeTruthy();
-  });
 });

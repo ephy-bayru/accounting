@@ -33,7 +33,7 @@
             <tbody>
               <tr *ngFor="let account of accounts.controls; let i=index; let last=last;" [formGroup]="account">
                 <td>
-                  {{account.errors['balanceNotEqual'] }}
+
                   <ejs-dropdownlist [attr.id]="'parentAccount'+i" placeholder="Parent Account" [attr.name]="'parentAccount'+i" [query]="accountQuery"
                   [fields]="accountFields" formControlName="AccountId" [dataSource]='accountList'></ejs-dropdownlist>
                 </td>
@@ -53,8 +53,8 @@
             <tfoot>
               <tr>
                 <td>Total</td>
-                <td>{{creditSum}}</td>
-                <td>{{debitSum}}</td>
+                <td>{{amountSum}}</td>
+                <td>&nbsp;</td>
                 <td colspan="2"> <button type="button" ejs-button class="e-pluse e-info" iconCss="e-icons e-plus-icon"
                     (click)="addForm()">Add</button></td>
               </tr>

@@ -41,12 +41,15 @@ export class LedgerComponent implements OnInit {
     private ledgerService: LedgerService,
     private location: Location) {
     this.createForm();
+
+    this.accountQuery = new Query().select(['Name', 'AccountId']);
+    this.accountFields = { text: 'Name', value: 'AccountId' };
   }
 
   ngOnInit() {
 
-    this.accountQuery = new Query().select(['Name', 'AccountId']);
-    this.accountFields = { text: 'Name', value: 'AccountId' };
+    this.accountQuery = new Query().select(['AccountName', 'AccountId']);
+    this.accountFields = { text: 'AccountName', value: 'AccountId' };
 
 
     const dm: DataManager = new DataManager(

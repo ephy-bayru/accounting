@@ -40,9 +40,11 @@ namespace Smart_Accounting.Application.Ledgers.Factories {
 
             return ledger;
         }
+
         public Ledger CreatePaymentLedgerEntry(NewLedgerEntryDto newLedger)
         {
             throw new System.NotImplementedException();
         }
     }
+
 }
