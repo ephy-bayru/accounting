@@ -10,19 +10,18 @@ namespace Smart_Accounting.Persistance.Jornals {
             builder.HasIndex (e => e.AccountId)
                 .HasName ("fk_jornal_account_idx");
 
-            builder.Property (e => e.JornalId).HasColumnName ("JORNAL_ID");
-
             builder.HasIndex (e => e.LedgerId)
                 .HasName ("fk_jornal_ledger_id_idx");
+
+            builder.HasIndex (e => e.PostingType)
+                .HasName ("fk_jornal_posting_type_idx");
+
+            builder.Property (e => e.JornalId).HasColumnName ("JORNAL_ID");
 
             builder.Property (e => e.AccountId)
                 .IsRequired ()
                 .HasColumnName ("ACCOUNT_ID")
                 .HasColumnType ("varchar(30)");
-
-            builder.Property (e => e.Status)
-                .HasColumnName ("status")
-                .HasColumnType ("varchar(10)");
 
             builder.Property (e => e.Amount).HasColumnName ("amount");
 
@@ -39,10 +38,13 @@ namespace Smart_Accounting.Persistance.Jornals {
                 .HasDefaultValueSql ("'CURRENT_TIMESTAMP'")
                 .ValueGeneratedOnAddOrUpdate ();
 
-            builder.Property (e => e.LedgerId).HasColumnName ("LEDGER_ID");
-            
-
             builder.Property (e => e.ExchangeRate).HasColumnName ("exchange_rate");
+
+            builder.Property (e => e.LedgerId).HasColumnName ("LEDGER_ID");
+
+            builder.Property (e => e.PostingEntityId).HasColumnName ("posting_entity_id");
+
+            builder.Property (e => e.PostingType).HasColumnName ("posting_type");
 
             builder.Property (e => e.ReconcieldOn)
                 .HasColumnName ("reconcield_on")
@@ -56,16 +58,16 @@ namespace Smart_Accounting.Persistance.Jornals {
                 .HasColumnName ("reference")
                 .HasColumnType ("varchar(30)");
 
-            builder.HasOne (d => d.Ledger)
-                .WithMany (p => p.Jornal)
-                .HasForeignKey (d => d.LedgerId)
-                .HasConstraintName ("fk_jornal_ledger_id");
-                
             builder.HasOne (d => d.Account)
                 .WithMany (p => p.Jornal)
                 .HasForeignKey (d => d.AccountId)
                 .OnDelete (DeleteBehavior.ClientSetNull)
                 .HasConstraintName ("fk_jornal_account");
+
+            builder.HasOne (d => d.PostingTypeNavigation)
+                .WithMany (p => p.Jornal)
+                .HasForeignKey (d => d.PostingType)
+                .HasConstraintName ("fk_jornal_posting_type");
         }
     }
 }
