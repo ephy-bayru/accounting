@@ -39,3 +39,9 @@
 #control_wrapper {
     margin: 25px auto;
 }
+/* For Success state */
+.e-float-input.e-success label.e-float-text,
+.e-float-input.e-success input:focus ~ label.e-float-text,
+.e-float-input.e-success input:valid ~ label.e-float-text {
+  color: #22b24b;
+}
