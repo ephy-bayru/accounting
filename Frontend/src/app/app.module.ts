@@ -38,6 +38,7 @@ import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 import { LedgerViewComponent } from './modules/ledgers/ledger-view/ledger-view.component';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { DepositModule } from './modules/deposit/deposit.module';
+import { PaymentEntryFormComponent } from './modules/ledgers/payment-entry-form/payment-entry-form.component';
 
 
 @NgModule({

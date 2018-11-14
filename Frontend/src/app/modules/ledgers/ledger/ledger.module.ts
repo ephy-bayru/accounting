@@ -14,6 +14,7 @@ import {
 } from '@syncfusion/ej2-ng-grids';
 import { NumericTextBoxModule } from '@syncfusion/ej2-ng-inputs';
 import { ButtonModule, SwitchModule } from '@syncfusion/ej2-ng-buttons';
+import { PaymentEntryFormComponent } from '../payment-entry-form/payment-entry-form.component';
 
 @NgModule({
   imports: [
@@ -28,7 +29,7 @@ import { ButtonModule, SwitchModule } from '@syncfusion/ej2-ng-buttons';
     GridModule,
     SwitchModule,
   ],
-  declarations: [LedgerComponent],
+  declarations: [LedgerComponent, PaymentEntryFormComponent],
   providers: [LedgerService,
     SortService,
     FilterService,

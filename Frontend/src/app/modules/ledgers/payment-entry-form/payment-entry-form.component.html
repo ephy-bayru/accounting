@@ -1,0 +1,115 @@
+<section>
+  <div class="container-fluid">
+    <form [formGroup]="paymentForm">
+      <div class="row">
+        <div class="col-4 col-xs-12">
+          <div class="row">
+            <div class="col-12">
+              <ejs-dropdownlist id='currencyId' name="currencyId" placeholder="Currency" formControlName="currencyId"
+                [dataSource]='currencyList'></ejs-dropdownlist>
+              <div class="e-error" *ngIf="currencyId.errors">
+                <div *ngIf="currencyId.errors['required']">*Currency is Required</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <ejs-datepicker formControlName="createdOn" placeholder="Entry Date" id="entryDate" name="entryDate"></ejs-datepicker>
+              <div class="e-error" *ngIf="createdOn.errors">
+
+
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="col-4 col-xs-12">
+          <div class="row">
+            <div class="col-12">
+              <ejs-dropdownlist id='postingId' name="postingId" placeholder="Account Type" formControlName="postingId"
+                [dataSource]='postingTypeList'></ejs-dropdownlist>
+              <span class="e-float-line"></span>
+              <div class="text-danger" *ngIf="postingId.errors">
+                <div *ngIf="postingId.errors['required']">*Poster is Required</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <ejs-dropdownlist id='posterId' name="posterId" placeholder="Pay To" formControlName="posterId"
+                [dataSource]='postersList'></ejs-dropdownlist>
+              <span class="e-float-line"></span>
+              <div class="text-danger" *ngIf="postingId.errors">
+                <div *ngIf="posterId.errors['required']">*You Must select the person recieving the payment</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-12">
+                <ejs-dropdownlist id='bankId' name="bankId" placeholder="Account Type" formControlName="bankId"
+                  [dataSource]='posterBanks'></ejs-dropdownlist>
+                <span class="e-float-line"></span>
+                <div class="text-danger" *ngIf="postingId.errors">
+                  <div *ngIf="bankId.errors['required']">*You Must select the person recieving the payment</div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-4 col-xs-12"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <table class="table table-strip">
+            <thead>
+              <tr>
+                <th>Account</th>
+                <th>Amount</th>
+                <th>Reference</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody formArrayName="posts">
+              <tr *ngFor="let post of posts.controls; let i=index; let last=last;" [formGroup]="post">
+                <td>
+                  <ejs-dropdownlist [attr.id]="'account'+i" placeholder="Account" [attr.name]="'account'+i" [query]="accountQuery"
+                    [fields]="accountFields" formControlName="AccountId" [dataSource]='accountList'></ejs-dropdownlist>
+                </td>
+                <td>
+                  <ejs-numerictextbox formControlName="Amount" [attr.name]="'Amount'+i" [attr.id]="'Amount'+i"
+                    placeholder="Amount">
+                  </ejs-numerictextbox>
+                </td>
+                <td>
+                  <input [attr.name]="'Reference'+i" class="e-input" formControlName="Reference" [attr.id]="'Reference'+i"
+                    placeholder="Reference" />
+                </td>
+                <td>
+                  <button type="button" ejs-button class="e-round e-danger e-small e-icons e-times-icon" *ngIf="accounts.controls.length > 2"
+                    (click)="removeRow(i)">Remove</button>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Total</td>
+                <td>{{amountSum}}</td>
+                <td>&nbsp;</td>
+                <td colspan="2"> <button type="button" ejs-button class="e-pluse e-info" iconCss="e-icons e-plus-icon"
+                    (click)="addForm()">Add</button></td>
+              </tr>
+              <tr *ngIf="accounts?.errors" class="error-block">
+                <td colspan="5">
+                  <p *ngIf="accounts?.errors['balanceNotEqual'] == true"> {{accounts?.errors['balanceNotEqual']}}
+                    Credit And Debit amount are not Equal </p>
+                </td>
+              </tr>
+
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
